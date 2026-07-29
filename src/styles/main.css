@@ -12,6 +12,7 @@
  --mu: #b0cfc0;
  --di: #2e4038;
  --pad: clamp(20px,5vw,64px);
+ --wrap-max: 1280px;
  --nav: 56px;
  --rad: 7px;
  --ease: .32s cubic-bezier(.25,.46,.45,.94);
@@ -68,7 +69,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--a) transparent; }
 /* ── GLOBAL TEXT GLOW ────────────────────────────────────────── */
 body.light .hero-name .ac { text-shadow: none; }
 body.light .sec-hd h2 em { text-shadow: none; }
-.wrap { max-width: 1280px; margin: 0 auto; padding: 0 var(--pad); width: 100%; }
+.wrap { max-width: var(--wrap-max); margin: 0 auto; padding: 0 var(--pad); width: 100%; }
 section { padding: 110px 0; }
 .sec-hd {
  display: flex;
@@ -154,7 +155,7 @@ body.light .sec-hd-icon { border-color: rgba(0,0,0,.12); }
 }
 .nav-inner {
  width: 100%;
- max-width: calc(1280px - 2 * var(--pad));
+ max-width: calc(var(--wrap-max) - 2 * var(--pad));
  margin: 0 auto;
  height: 44px;
  display: grid;
@@ -607,7 +608,7 @@ body.light #projects, body.light #education, body.light #contact {
 body.light #skills, body.light #contact {
  background: transparent;
 }
-#contact .wrap { margin: 0 auto; max-width: 1280px; }
+#contact .wrap { margin: 0 auto; max-width: var(--wrap-max); }
 
 .skill-cat { font-size: .6rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--a2); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
 .skill-cat::after { content: ''; flex: 1; height: 1px; background: var(--br); }
@@ -702,6 +703,7 @@ body.light #about { background: transparent; }
 }
 @media (min-width: 1025px) {
   .hero-block { max-width: 470px; }
+  :root { --wrap-max: 1180px; }
 }
 .hero-avail {
  display: flex;
