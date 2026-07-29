@@ -3,9 +3,6 @@ import TypingText from './TypingText';
 
 const Hero = () => (
   <section id="home">
-    <div className="tube-light" aria-hidden="true">
-      <div className="tube-bar"></div>
-    </div>
     <div className="wrap">
       <div className="hero-inner">
 
