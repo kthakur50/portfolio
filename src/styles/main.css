@@ -36,6 +36,29 @@ body.light {
  -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none;
  transition: background-color .3s ease, border-color .3s ease, color .3s ease, fill .3s ease, stroke .3s ease;
 }
+
+/* ── THEME TOGGLE: forced, synchronized crossfade ──────────────
+   Applied briefly (via JS) on the <html> element while switching
+   light/dark so every element animates color/background/border
+   together at one duration, instead of some snapping instantly
+   because their own transition rule doesn't list color props. */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+ transition-property: background-color, background, border-color, color, fill, stroke, box-shadow !important;
+ transition-duration: .4s !important;
+ transition-timing-function: cubic-bezier(.4,0,.2,1) !important;
+ transition-delay: 0s !important;
+}
+@media (prefers-reduced-motion: reduce) {
+ html.theme-transition,
+ html.theme-transition *,
+ html.theme-transition *::before,
+ html.theme-transition *::after {
+  transition: none !important;
+ }
+}
 html {
  scroll-behavior: smooth;
  -webkit-text-size-adjust: 100%;
