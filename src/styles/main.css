@@ -692,8 +692,7 @@ body.light .sc-tw svg {
  filter: brightness(.62) saturate(1.7) contrast(1.15);
 }
 .skill-chip svg { width: 27px; height: 27px; display: block; max-width: none; flex-shrink: 0; transform: none; min-width: 27px; box-sizing: content-box; padding: 7px; border: 1px solid rgba(127,127,127,.25); border-radius: var(--rad); background: rgba(127,127,127,.08); filter: brightness(1.15) saturate(1.25); }
-.skill-chip span { font-size: .64rem; font-weight: 600; letter-spacing: .02em; text-transform: none; color: inherit; opacity: .96; white-space: normal; overflow: visible; text-overflow: clip; max-width: 100%; text-align: center; display: block; line-height: 1.25; padding: 0 2px 1px; }
-.skill-chip.sc-tw span { white-space: nowrap; }
+.skill-chip span { font-size: .64rem; font-weight: 600; letter-spacing: .02em; text-transform: none; color: inherit; opacity: .96; white-space: nowrap; overflow: visible; text-overflow: clip; max-width: 100%; text-align: center; display: block; line-height: 1.25; padding: 0 2px 1px; }
 .skill-chip {
   display: flex;
   flex-direction: column;
