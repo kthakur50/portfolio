@@ -1617,7 +1617,7 @@ body.light .skill-card--tl {
  align-self: center;
 }
 @media (min-width: 1025px) {
-  .hero-right { align-self: flex-start; margin-top: calc(0.45 * clamp(1.9rem, 4.2vw, 4.6rem) + 6px); }
+  .hero-right { align-self: flex-start; margin-top: calc(0.9 * clamp(1.9rem, 4.2vw, 4.6rem) + 226.3px - 0.5 * clamp(180px, 16vw, 260px)); }
 }
 /* ── WIN3D SCENE ─────────────────────────────────────────────── */
 .win3d-scene {
