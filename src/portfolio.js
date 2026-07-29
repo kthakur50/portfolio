@@ -1,8 +1,23 @@
 function initTheme() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let themeTransitionTimer = null;
+
+  const toggleTheme = () => {
+    if (prefersReducedMotion) {
+      document.body.classList.toggle('light');
+      return;
+    }
+    const root = document.documentElement;
+    root.classList.add('theme-transition');
+    document.body.classList.toggle('light');
+    clearTimeout(themeTransitionTimer);
+    themeTransitionTimer = setTimeout(() => {
+      root.classList.remove('theme-transition');
+    }, 500);
+  };
+
   ['themeBtn', 'themeBtnM'].forEach(id => {
-    document.getElementById(id)?.addEventListener('click', () =>
-      document.body.classList.toggle('light')
-    );
+    document.getElementById(id)?.addEventListener('click', toggleTheme);
   });
 }
 
