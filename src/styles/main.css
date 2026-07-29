@@ -1625,7 +1625,7 @@ body.light .skill-card--tl {
  align-self: center;
 }
 @media (min-width: 1025px) {
-  .hero-right { align-self: flex-start; margin-top: calc(0.9 * clamp(1.9rem, 4.2vw, 4.6rem) + 146px - 0.5 * clamp(180px, 16vw, 260px) + 24px); }
+  .hero-right { align-self: flex-start; margin-top: calc(0.9 * clamp(1.9rem, 3.9vw, 4.2rem) + 146px - 0.5 * clamp(160px, 14vw, 228px) + 24px); }
 }
 /* ── WIN3D SCENE ─────────────────────────────────────────────── */
 .win3d-scene {
@@ -1638,8 +1638,8 @@ body.light .skill-card--tl {
 }
 .win3d-perspective {
  perspective: none;
- width: clamp(180px, 16vw, 260px);
- height: clamp(180px, 16vw, 260px);
+ width: clamp(160px, 14vw, 228px);
+ height: clamp(160px, 14vw, 228px);
  display: flex;
  align-items: center;
  justify-content: center;
@@ -1657,8 +1657,8 @@ body.light .skill-card--tl {
 
 /* ── CUBE ────────────────────────────────────────────────────── */
 .win3d-cube {
- width: clamp(180px, 16vw, 260px);
- height: clamp(180px, 16vw, 260px);
+ width: clamp(160px, 14vw, 228px);
+ height: clamp(160px, 14vw, 228px);
  position: relative;
  z-index: 1;
  transform-style: preserve-3d;
@@ -1668,16 +1668,16 @@ body.light .skill-card--tl {
  -webkit-backface-visibility: hidden;
 }
 .win3d-scene.mode-3d .win3d-cube {
- width: clamp(180px, 16vw, 260px);
- height: clamp(180px, 16vw, 260px);
+ width: clamp(160px, 14vw, 228px);
+ height: clamp(160px, 14vw, 228px);
 }
 
 /* ── FACES ───────────────────────────────────────────────────── */
 
 .win3d-face {
  position: absolute;
- width: clamp(180px, 16vw, 260px);
- height: clamp(180px, 16vw, 260px);
+ width: clamp(160px, 14vw, 228px);
+ height: clamp(160px, 14vw, 228px);
  display: grid;
  grid-template-columns: 1fr 1fr;
  grid-template-rows: 1fr 1fr;
@@ -1695,8 +1695,8 @@ body.light .skill-card--tl {
  grid-template-rows: 1fr 1fr;
  gap: 4px;
  padding: 4px;
- width: clamp(180px, 16vw, 260px);
- height: clamp(180px, 16vw, 260px);
+ width: clamp(160px, 14vw, 228px);
+ height: clamp(160px, 14vw, 228px);
  background: transparent;
  border: none;
  border-radius: 20px;
