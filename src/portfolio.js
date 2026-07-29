@@ -249,16 +249,20 @@ function initWin3DCube() {
   const RADII = ['14px 0 0 0','0 14px 0 0','0 0 0 14px','0 0 14px 0'];
 
   // ── Tile factory ──────────────────────────────────────────────
+  function slugify(name) {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  }
   function makeTile(skill, isCube) {
     const d = document.createElement('div');
+    const brandCls = 'skill-' + slugify(skill.name);
     if (isCube) {
       const brandColor = glowMap[skill.name] || '#aaaaaa';
-      d.className = 'wt wt-cube-single';
+      d.className = `wt wt-cube-single ${brandCls}`;
       d.style.setProperty('--tile-glow', brandColor + '88');
       const svg = skill.svg.replace(/width="38" height="38"/g, 'width="72" height="72"');
       d.innerHTML = `<div class="wt-inner">${svg}<span class="wt-name">${skill.name}</span></div>`;
     } else {
-      d.className = 'wt';
+      d.className = `wt ${brandCls}`;
       d.style.setProperty('--tile-glow', (glowMap[skill.name] || '#fff') + '99');
       d.innerHTML = `<div class="wt-inner">${skill.svg}<span class="wt-name">${skill.name}</span></div>`;
     }
