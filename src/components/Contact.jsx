@@ -1,33 +1,4 @@
-import { useState } from 'react';
-
 const Contact = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [error, setError] = useState('');
-  const [open, setOpen] = useState(false);
-
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleCancel = () => {
-    setForm({ name: '', email: '', message: '' });
-    setError('');
-  };
-
-  const handleSend = () => {
-    const { name, email, message } = form;
-    if (!name.trim() || !email.trim() || !message.trim()) {
-      setError('Please fill in all fields before sending.');
-      return;
-    }
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
-      setError('Please enter a valid email address.');
-      return;
-    }
-    setError('');
-    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-    const body    = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:kthakur0578@gmail.com?subject=${subject}&body=${body}`;
-  };
-
   return (
     <section id="contact">
       <div className="wrap">
@@ -44,7 +15,7 @@ const Contact = () => {
           <div className="c-info sr" style={{ transitionDelay: '.05s' }}>
             <p>
               Got a project in mind, a job opening, or just want to talk shop?
-              Drop me a message below — I read everything and reply within a day.
+              Shoot me an email — I read everything and reply within a day.
             </p>
             <div className="c-info-links">
               <a href="https://linkedin.com/in/kaushalt18" target="_blank" rel="noopener" className="btn-o">
@@ -64,52 +35,12 @@ const Contact = () => {
           </div>
 
           <div className="c-message-box sr" style={{ transitionDelay: '.13s' }}>
-            <button
-              type="button"
-              className={`c-accordion-toggle ${open ? 'is-open' : ''}`}
-              onClick={() => setOpen(!open)}
-              aria-expanded={open}
-            >
-              <span className="c-accordion-icon">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                </svg>
-              </span>
-              <span className="c-accordion-label-wrap">
-                <span className="c-accordion-label">Send me a message</span>
-              </span>
-              <svg className="c-accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="6 9 12 15 18 9"/>
+            <a href="mailto:kthakur0578@gmail.com" className="btn-o btn-send">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
               </svg>
-            </button>
-
-            <div className={`c-accordion-panel ${open ? 'is-open' : ''}`}>
-              <div className="c-form">
-                <div className="c-form-row">
-                  <div className="c-form-field">
-                    <label htmlFor="c-name">Name</label>
-                    <input id="c-name" name="name" type="text" placeholder="Your name" value={form.name} onChange={handleChange}/>
-                  </div>
-                  <div className="c-form-field">
-                    <label htmlFor="c-email">Email</label>
-                    <input id="c-email" name="email" type="email" placeholder="your@email.com" value={form.email} onChange={handleChange}/>
-                  </div>
-                </div>
-                <div className="c-form-field">
-                  <label htmlFor="c-msg">Message</label>
-                  <textarea id="c-msg" name="message" placeholder="Your message here..." value={form.message} onChange={handleChange}></textarea>
-                </div>
-                {error && <p className="c-form-error">{error}</p>}
-                <div className="c-form-actions">
-                  <button type="button" className="btn-o btn-o-sm" onClick={handleCancel}>
-                    Cancel
-                  </button>
-                  <button type="button" className="btn-o btn-o-sm btn-send" onClick={handleSend}>
-                    Send Message <span className="arr">→</span>
-                  </button>
-                </div>
-              </div>
-            </div>
+              Email Me <span className="arr">→</span>
+            </a>
           </div>
         </div>
       </div>
