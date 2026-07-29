@@ -9,14 +9,9 @@ const Contact = () => {
           <h2>Contact<em>.</em></h2>
         </div>
 
-        <div className="c-info-title sr" style={{ transitionDelay: '.02s' }}>Get in touch</div>
-
         <div className="contact-grid">
           <div className="c-info sr" style={{ transitionDelay: '.05s' }}>
-            <p>
-              Got a project in mind, a job opening, or just want to talk shop?
-              Shoot me an email — I read everything and reply within a day.
-            </p>
+            <p>Have a project in mind? Let's talk.</p>
             <div className="c-info-links">
               <a href="mailto:kthakur0578@gmail.com" className="btn-o btn-send">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
