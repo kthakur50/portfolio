@@ -1280,27 +1280,17 @@ body.light .edu-inst { color: var(--a); }
  align-items: flex-start;
  gap: 24px;
  max-width: 620px;
- padding: 42px 46px;
- border: 1px solid var(--br);
- border-radius: calc(var(--rad) * 2);
- background: rgba(255,255,255,.015);
+ padding: 42px 0;
+ background: transparent;
  position: relative;
- overflow: hidden;
 }
-.contact-card::before {
- content: '';
- position: absolute;
- top: 0; left: 0;
- width: 100%; height: 1px;
- background: linear-gradient(to right, var(--a2) 0%, rgba(34,160,99,0) 65%);
-}
-body.light .contact-card { background: rgba(0,0,0,.015); }
+body.light .contact-card { background: transparent; }
 .contact-lead {
  font-size: .93rem;
  color: var(--mu);
  line-height: 1.7;
  margin: 0;
- max-width: 46ch;
+ max-width: 58ch;
 }
 .contact-links {
  display: flex;
@@ -1617,7 +1607,7 @@ body.light .skill-card--tl {
  align-self: center;
 }
 @media (min-width: 1025px) {
-  .hero-right { align-self: flex-start; margin-top: calc(0.9 * clamp(1.9rem, 4.2vw, 4.6rem) + 226.3px - 0.5 * clamp(180px, 16vw, 260px)); }
+  .hero-right { align-self: flex-start; margin-top: calc(0.9 * clamp(1.9rem, 4.2vw, 4.6rem) + 126.8px - 0.5 * clamp(180px, 16vw, 260px)); }
 }
 /* ── WIN3D SCENE ─────────────────────────────────────────────── */
 .win3d-scene {
@@ -2175,7 +2165,7 @@ body.light .skill-tailwind-css svg {
 
   /* Contact */
   .c-info-links { flex-direction: row; flex-wrap: wrap; gap: 8px; }
-  .contact-card { padding: 30px 24px; gap: 20px; }
+  .contact-card { padding: 26px 0; gap: 20px; }
 
   /* Footer */
 }
