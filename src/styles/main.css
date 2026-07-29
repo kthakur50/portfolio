@@ -728,7 +728,7 @@ body.light #about { background: transparent; }
 }
 @media (min-width: 1025px) {
   .hero-block { max-width: 470px; }
-  :root { --wrap-max: 1180px; }
+  :root { --wrap-max: 1120px; }
 }
 .hero-avail {
  display: flex;
