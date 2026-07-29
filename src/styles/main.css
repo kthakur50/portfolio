@@ -76,7 +76,6 @@ body {
  -moz-osx-font-smoothing: grayscale;
  text-rendering: optimizeLegibility;
  overflow-x: hidden;
- transform: translateZ(0);
 }
 body.light {
  background: #ffffff;
@@ -2440,7 +2439,7 @@ body.light .skill-tailwind-css svg {
 .site-footer-text {
  margin: 0;
  font-size: .78rem;
- color: rgba(255,255,255,.35);
+ color: rgba(255,255,255,.55);
  letter-spacing: .04em;
  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
  font-weight: 400;
