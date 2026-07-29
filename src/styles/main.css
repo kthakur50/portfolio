@@ -1274,6 +1274,75 @@ body.light .edu-inst { color: var(--a); }
  gap: 8px;
  margin-top: 4px;
 }
+.contact-card {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ gap: 24px;
+ max-width: 620px;
+ padding: 42px 46px;
+ border: 1px solid var(--br);
+ border-radius: calc(var(--rad) * 2);
+ background: rgba(255,255,255,.015);
+ position: relative;
+ overflow: hidden;
+}
+.contact-card::before {
+ content: '';
+ position: absolute;
+ top: 0; left: 0;
+ width: 100%; height: 1px;
+ background: linear-gradient(to right, var(--a2) 0%, rgba(34,160,99,0) 65%);
+}
+body.light .contact-card { background: rgba(0,0,0,.015); }
+.contact-lead {
+ font-size: .93rem;
+ color: var(--mu);
+ line-height: 1.7;
+ margin: 0;
+ max-width: 46ch;
+}
+.contact-email {
+ display: inline-flex;
+ align-items: center;
+ gap: 11px;
+ font-size: clamp(1.15rem, 2.6vw, 1.55rem);
+ font-weight: 600;
+ color: var(--tx);
+ letter-spacing: -.01em;
+ word-break: break-all;
+ transition: color .3s ease;
+}
+.contact-email svg { flex: none; color: var(--a2); }
+.contact-email-arr {
+ display: inline-block;
+ color: var(--a2);
+ transition: transform var(--ease);
+}
+.contact-email:hover { color: var(--a2); }
+.contact-email:hover .contact-email-arr { transform: translateX(6px); }
+.contact-socials { display: flex; gap: 10px; margin-top: 2px; }
+.contact-social {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ border: 1px solid rgba(138,170,152,.12);
+ background: rgba(255,255,255,.025);
+ color: var(--tx);
+ transition: color .3s ease, border-color .3s ease, background-color .3s ease, transform .3s cubic-bezier(.25,.46,.45,.94);
+}
+body.light .contact-social { border-color: rgba(138,170,152,.25); background: rgba(0,0,0,.02); }
+.contact-social:hover {
+ border-color: rgba(34,160,99,.5);
+ color: var(--a2);
+ background: rgba(34,160,99,.08);
+ transform: translateY(-2px);
+}
+body.light .contact-social:hover { border-color: rgba(25,106,71,.3); background: rgba(25,106,71,.06); }
+
 footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: transparent; }
 body.light footer { background: #ffffff; }
 
@@ -2096,6 +2165,7 @@ body.light .skill-tailwind-css svg {
 
   /* Contact */
   .c-info-links { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .contact-card { padding: 30px 24px; gap: 20px; }
 
   /* Footer */
 }
