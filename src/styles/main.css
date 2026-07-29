@@ -603,6 +603,48 @@ body.light .hero-name .ac-plain {
  0%, 50% { opacity: 1; }
  51%, 100% { opacity: 0; }
 }
+
+/* Flip text (split-flap, top -> bottom flip) */
+.flip-text {
+ position: relative;
+ display: inline-block;
+ overflow: hidden;
+ white-space: nowrap;
+ vertical-align: bottom;
+ line-height: 1.35;
+ perspective: 500px;
+}
+.flip-text-measure {
+ visibility: hidden;
+ white-space: nowrap;
+ display: inline-block;
+}
+.flip-text-card {
+ position: absolute;
+ left: 0;
+ top: 0;
+ display: inline-block;
+ white-space: nowrap;
+ transform-style: preserve-3d;
+ backface-visibility: hidden;
+ transform-origin: top center;
+ will-change: transform, opacity;
+}
+.is-flipping-out {
+ animation: flipOutDown var(--flip-dur, 650ms) cubic-bezier(.5, 0, .15, 1) forwards;
+}
+.is-flipping-in {
+ animation: flipInDown var(--flip-dur, 650ms) cubic-bezier(.5, 0, .15, 1) forwards;
+}
+@keyframes flipOutDown {
+ 0% { transform: rotateX(0deg); opacity: 1; }
+ 100% { transform: rotateX(-100deg); opacity: 0; }
+}
+@keyframes flipInDown {
+ 0% { transform: rotateX(90deg); opacity: 0; }
+ 55% { opacity: 1; }
+ 100% { transform: rotateX(0deg); opacity: 1; }
+}
 body.light .hero-info-time { color: #3a5e4a; }
 body.light .hero-info-time em { color: var(--a); }
 body.light .hero-info { border-color: rgba(138,170,152,.25); background: rgba(0,0,0,.02); }
@@ -2137,10 +2179,20 @@ body.light .skill-tailwind-css svg {
   /* Contact */
   .c-info-links { flex-direction: row; flex-wrap: wrap; gap: 8px; }
   .contact-card { padding: 26px 0; gap: 20px; }
-  .contact-links { flex-direction: column; width: 100%; }
-  .contact-links a { width: 100%; justify-content: center; box-sizing: border-box; }
+  .contact-links { flex-direction: row; flex-wrap: nowrap; width: 100%; gap: clamp(6px, 1.6vw, 10px); }
+  .contact-links a { flex: 1; width: auto; min-width: 0; justify-content: center; box-sizing: border-box; padding: clamp(8px, 1.6vw, 12px) clamp(6px, 1.4vw, 10px); font-size: clamp(.58rem, 1.8vw, .72rem); }
+  .contact-links a .arr { display: none; }
 
   /* Footer */
+}
+
+/* ── TABLET (landscape/portrait, 769–1024px): compact contact row + smaller cube ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .contact-links { flex-wrap: nowrap; gap: clamp(6px, 1vw, 10px); }
+  .contact-links a { flex: 1; min-width: 0; justify-content: center; white-space: nowrap; padding: clamp(8px, 1.1vw, 11px) clamp(8px, 1.3vw, 13px); font-size: clamp(.62rem, 1.4vw, .74rem); }
+  .contact-links a .arr { display: none; }
+
+  .win3d-scene { transform: scale(.8); }
 }
 
 /* ── TABLET: use the same floating hamburger card as phone ─────── */
@@ -2293,6 +2345,8 @@ body.light .skill-tailwind-css svg {
     flex: 1;
     min-width: 0;
   }
+  .contact-links { gap: clamp(4px, 1.6vw, 7px); }
+  .contact-links a { font-size: clamp(.5rem, 2vw, .6rem); padding: clamp(6px, 1.8vw, 8px) clamp(4px, 1.4vw, 7px); gap: 4px; }
 
   /* Cube: same style/size as desktop */
 
@@ -2347,6 +2401,9 @@ body.light .skill-tailwind-css svg {
   .hero-info-item svg { width: 15px; height: 15px; }
   .hero-btns { margin-top: 3px; }
   .hero-btns .btn-o { font-size: .62rem; padding: 6px 9px; }
+  .contact-links { gap: 5px; }
+  .contact-links a { font-size: .54rem; padding: 6px 5px; gap: 3px; }
+  .contact-links a svg { width: 12px; height: 12px; }
 
 
 
@@ -2390,6 +2447,10 @@ body.light .skill-tailwind-css svg {
   .hero-info-col:last-child { padding-left: 4px; }
   .hero-info-item { font-size: .54rem; height: auto; min-height: 30px; gap: 4px; padding: 4px 0; line-height: 1.25; white-space: nowrap; overflow: visible; }
   .hero-info-item svg { width: 13px; height: 13px; }
+
+  .contact-links { gap: 4px; }
+  .contact-links a { font-size: .5rem; padding: 5px 4px; gap: 3px; }
+  .contact-links a svg { width: 11px; height: 11px; }
 
   .skill-one-card { gap: 8px; }
   .skill-one-card .skill-group { padding: 12px 10px 12px !important; }
