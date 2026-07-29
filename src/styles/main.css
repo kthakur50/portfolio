@@ -1302,6 +1302,13 @@ body.light .contact-card { background: rgba(0,0,0,.015); }
  margin: 0;
  max-width: 46ch;
 }
+.contact-links {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ justify-content: flex-start;
+ gap: 8px;
+}
 .contact-email {
  display: inline-flex;
  align-items: center;
