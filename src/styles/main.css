@@ -1161,7 +1161,6 @@ body.light #education { background: transparent; }
  display: flex;
  flex-direction: column;
  width: 100%;
- padding-left: 54px;
  position: relative;
 }
 .edu-item {
@@ -1169,28 +1168,10 @@ body.light #education { background: transparent; }
  padding-bottom: 24px;
 }
 .edu-item:last-child { padding-bottom: 0; }
-.edu-item::before {
- content: '';
- position: absolute;
- left: -29px;
- top: 52px;
- bottom: 0;
- width: 1px;
- background: linear-gradient(
- 180deg,
- var(--br) 75%,
- transparent 100%
- );
- opacity: .5;
-}
-body.light .edu-item::before { opacity: .7; }
 .edu-node {
- position: absolute;
- left: -46px;
- top: 14px;
- transform: none;
- width: 34px;
- height: 34px;
+ position: relative;
+ width: 40px;
+ height: 40px;
  border-radius: var(--rad);
  background: rgba(255,255,255,.04);
  border: 1px solid rgba(255,255,255,.10);
@@ -1201,7 +1182,6 @@ body.light .edu-item::before { opacity: .7; }
  box-sizing: border-box;
  color: var(--tx);
  flex-shrink: 0;
- z-index: 2;
  transition: background var(--ease), border-color var(--ease), box-shadow var(--ease), color var(--ease);
 }
 .edu-item:hover .edu-node {
@@ -1220,6 +1200,9 @@ body.light .edu-item:hover .edu-node {
 }
 .edu-node svg { width: 100%; height: 100%; display: block; }
 .edu-card {
+ display: flex;
+ align-items: flex-start;
+ gap: 16px;
  background: rgba(255,255,255,.04);
  border: 1px solid rgba(255,255,255,.10);
  border-radius: var(--rad);
@@ -1230,6 +1213,10 @@ body.light .edu-item:hover .edu-node {
  will-change: transform;
  backface-visibility: hidden;
  -webkit-backface-visibility: hidden;
+}
+.edu-card-body {
+ flex: 1;
+ min-width: 0;
 }
 .edu-item:hover .edu-card {
  background: rgba(34,160,99,.08);
@@ -2041,8 +2028,7 @@ body.light .skill-tailwind-css svg {
 
   /* Experience & Education */
   .exp-list { padding-left: 52px; }
-  .edu-list { padding-left: 52px; }
-  .edu-card { display: flex; flex-direction: column; }
+  .edu-card-body { display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
   .edu-deg-title { order: 1; }
   .edu-inst { order: 2; }
@@ -2181,10 +2167,9 @@ body.light .skill-tailwind-css svg {
   .masonry-desc { font-size: .74rem; }
 
   /* Education */
-  .edu-list { padding-left: 44px; }
-  .edu-node { left: -42px; width: 30px; height: 30px; top: 14px; }
-  .edu-item::before { left: -27px; top: 46px; }
-  .edu-card { padding: 15px 17px; min-height: 54px; display: flex; flex-direction: column; }
+  .edu-node { width: 30px; height: 30px; padding: 6px; }
+  .edu-card { padding: 15px 17px; min-height: 54px; }
+  .edu-card-body { display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
   .edu-deg-title { font-size: .92rem; order: 1; }
   .edu-inst { font-size: .74rem; order: 2; }
@@ -2385,7 +2370,8 @@ body.light .skill-tailwind-css svg {
   .masonry-cat { font-size: .6rem; }
 
   /* Education: timeline sizing now matches tablet (inherited from 768px rules) */
-  .edu-card { padding: 13px 14px; min-height: 50px; display: flex; flex-direction: column; }
+  .edu-card { padding: 13px 14px; min-height: 50px; }
+  .edu-card-body { display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
   .edu-inst-sep { display: inline; }
   .edu-inst-loc { display: inline; margin-top: 0; }
