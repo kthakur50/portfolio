@@ -19,11 +19,6 @@ const Hero = () => (
           {/* wrapper so avail, info-box, buttons are all same width */}
           <div className="hero-block">
 
-            <div className="hero-avail">
-              Available for freelance &amp; full-time opportunities
-              <span className="hero-avail-line" />
-            </div>
-
             <div className="hero-info sr" style={{ transitionDelay: '.08s' }}>
               <div className="hero-info-grid">
                 <div className="hero-info-col">
