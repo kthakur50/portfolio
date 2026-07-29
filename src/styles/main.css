@@ -1225,17 +1225,18 @@ body.light .edu-item:hover .edu-card {
 }
 body.light .edu-inst { color: var(--a); }
 .contact-grid {
- display: grid;
- grid-template-columns: 1fr 1fr;
- gap: 60px;
- align-items: start;
+ display: flex;
+ justify-content: center;
  margin: 0;
 }
 .c-info {
  display: flex;
  flex-direction: column;
+ align-items: center;
+ text-align: center;
  justify-content: flex-start;
  gap: 18px;
+ max-width: 560px;
 }
 .c-info-title {
  font-size: .68rem;
@@ -1266,22 +1267,9 @@ body.light .edu-inst { color: var(--a); }
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
+ justify-content: center;
  gap: 8px;
  margin-top: 4px;
-}
-.c-message-box {
- display: flex;
- align-items: center;
- justify-content: center;
- border-radius: var(--rad);
- border: 1px solid rgba(255,255,255,.09);
- background: rgba(255,255,255,.025);
- padding: 40px 24px;
- transition: border-color var(--ease), background var(--ease);
-}
-body.light .c-message-box {
- background: rgba(255,255,255,.55);
- border-color: rgba(0,0,0,.08);
 }
 footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: transparent; }
 .btn-send {
@@ -1867,7 +1855,6 @@ body.light .wt.wt-cube-single .wt-name {
 /* ── MEDIUM DESKTOP / LARGE TABLET LANDSCAPE (≤ 1200px) ────── */
 @media (max-width: 1200px) {
   .hero-name { font-size: clamp(2.1rem, 4.6vw, 5.25rem); }
-  .contact-grid { gap: 36px; }
   .masonry-list { grid-template-columns: repeat(3, 1fr); }
 }
 
@@ -1957,9 +1944,6 @@ body.light .wt.wt-cube-single .wt-name {
   .edu-deg-title { order: 1; }
   .edu-inst { order: 2; }
   .edu-yr { order: 3; margin-left: 0; margin-top: 8px; text-align: left; align-self: flex-start; }
-
-  /* Contact */
-  .contact-grid { grid-template-columns: 1fr 1.5fr; gap: 36px; }
 
   /* Footer: centered row */
 }
@@ -2122,7 +2106,6 @@ body.light .wt.wt-cube-single .wt-name {
   .edu-yr { font-size: .58rem; white-space: nowrap; order: 3; margin-left: 0; margin-top: 8px; text-align: left; align-self: flex-start; }
 
   /* Contact */
-  .contact-grid { grid-template-columns: 1fr; gap: 24px; }
   .c-info-links { flex-direction: row; flex-wrap: wrap; gap: 8px; }
 
   /* Footer */
@@ -2321,9 +2304,6 @@ body.light .wt.wt-cube-single .wt-name {
   .edu-header-row { display: contents; }
   .edu-inst-sep { display: inline; }
   .edu-inst-loc { display: inline; margin-top: 0; }
-
-  /* Contact */
-  .contact-grid { grid-template-columns: 1fr; gap: 20px; }
 
   /* Footer */
 }
