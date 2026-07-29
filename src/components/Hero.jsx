@@ -1,5 +1,5 @@
 import HeroCube from './HeroCube';
-import TypingText from './TypingText';
+import FlipText from './FlipText';
 
 const Hero = () => (
   <section id="home">
@@ -26,7 +26,7 @@ const Hero = () => (
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="4" width="20" height="13" rx="2"/><path d="M1 20h22"/>
                     </svg>
-                    <TypingText texts={["GenAI Engineer", "Fullstack Developer"]} />
+                    <FlipText texts={["GenAI Engineer", "Fullstack Developer"]} />
                   </div>
                   <div className="hero-info-item">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--mu)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
