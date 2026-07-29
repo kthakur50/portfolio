@@ -10,7 +10,7 @@ const Contact = () => {
         </div>
 
         <div className="contact-card sr" style={{ transitionDelay: '.05s' }}>
-          <p className="contact-lead">I'm always open to discussing new projects, freelance opportunities, or full-time roles — feel free to reach out, and I'll get back to you as soon as I can.</p>
+          <p className="contact-lead">I'm always open to discussing new projects, freelance opportunities, collaborations, or full-time roles across web development and GenAI engineering. Feel free to reach out anytime — I usually reply within a day, and I'd love to hear what you're building.</p>
 
           <div className="contact-links">
             <a href="mailto:kthakur0578@gmail.com" className="btn-o">
