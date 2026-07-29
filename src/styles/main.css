@@ -1971,23 +1971,9 @@ body.light .skill-tailwind-css svg {
   .hero-btns { flex-wrap: nowrap; gap: clamp(8px, 1.2vw, 12px); order: unset; margin-top: 0; width: 100%; }
   .hero-btns .btn-o { font-size: clamp(.8rem, 1.4vw, .95rem); padding: clamp(10px, 1.3vw, 14px) clamp(14px, 1.7vw, 20px); flex: 1; }
 
-  /* Cube: slightly smaller, with breathing room above/below */
-  .win3d-scene { width: clamp(140px, 18vw, 200px); margin: 0; }
-  .win3d-perspective, .win3d-cube { width: clamp(140px, 18vw, 200px); height: clamp(140px, 18vw, 200px); }
-  .win3d-face { width: clamp(140px, 18vw, 200px); height: clamp(140px, 18vw, 200px); }
-  .win3d-front  { transform: translateZ(clamp(70px, 9vw, 100px)); }
-  .win3d-back   { transform: rotateY(180deg) translateZ(clamp(70px, 9vw, 100px)); }
-  .win3d-right  { transform: rotateY(90deg) translateZ(clamp(70px, 9vw, 100px)); }
-  .win3d-left   { transform: rotateY(-90deg) translateZ(clamp(70px, 9vw, 100px)); }
-  .win3d-top    { transform: rotateX(90deg) translateZ(clamp(70px, 9vw, 100px)); }
-  .win3d-bottom { transform: rotateX(-90deg) translateZ(clamp(70px, 9vw, 100px)); }
-  .win3d-scene.mode-3d .win3d-cube, .win3d-scene.mode-3d .win3d-face { width: clamp(140px, 18vw, 200px); height: clamp(140px, 18vw, 200px); }
-  .win3d-scene.mode-3d .win3d-front  { transform: translateZ(clamp(70px, 9vw, 100px)); }
-  .win3d-scene.mode-3d .win3d-back   { transform: rotateY(180deg) translateZ(clamp(70px, 9vw, 100px)); }
-  .win3d-scene.mode-3d .win3d-right  { transform: rotateY(90deg) translateZ(clamp(70px, 9vw, 100px)); }
-  .win3d-scene.mode-3d .win3d-left   { transform: rotateY(-90deg) translateZ(clamp(70px, 9vw, 100px)); }
-  .win3d-scene.mode-3d .win3d-top    { transform: rotateX(90deg) translateZ(clamp(70px, 9vw, 100px)); }
-  .win3d-scene.mode-3d .win3d-bottom { transform: rotateX(-90deg) translateZ(clamp(70px, 9vw, 100px)); }
+  /* Cube: same style/size as desktop */
+
+
 
   /* Skills: 3 columns always */
   .skill-one-card { grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -2104,27 +2090,9 @@ body.light .skill-tailwind-css svg {
     flex: 1;
   }
 
-  /* Cube: centered below, slightly smaller, with breathing room above/below */
-  .win3d-scene { width: clamp(150px, 22vw, 192px); margin: 0; }
-  .win3d-perspective, .win3d-cube, .win3d-face { width: clamp(150px, 22vw, 192px); height: clamp(150px, 22vw, 192px); }
-  .win3d-front  { transform: translateZ(clamp(75px, 11vw, 96px)); }
-  .win3d-back   { transform: rotateY(180deg) translateZ(clamp(75px, 11vw, 96px)); }
-  .win3d-right  { transform: rotateY(90deg) translateZ(clamp(75px, 11vw, 96px)); }
-  .win3d-left   { transform: rotateY(-90deg) translateZ(clamp(75px, 11vw, 96px)); }
-  .win3d-top    { transform: rotateX(90deg) translateZ(clamp(75px, 11vw, 96px)); }
-  .win3d-bottom { transform: rotateX(-90deg) translateZ(clamp(75px, 11vw, 96px)); }
-  .win3d-scene.mode-3d .win3d-cube,
-  .win3d-scene.mode-3d .win3d-face { width: clamp(150px, 22vw, 192px); height: clamp(150px, 22vw, 192px); }
-  .win3d-scene.mode-3d .win3d-front  { transform: translateZ(clamp(75px, 11vw, 96px)); }
-  .win3d-scene.mode-3d .win3d-back   { transform: rotateY(180deg) translateZ(clamp(75px, 11vw, 96px)); }
-  .win3d-scene.mode-3d .win3d-right  { transform: rotateY(90deg) translateZ(clamp(75px, 11vw, 96px)); }
-  .win3d-scene.mode-3d .win3d-left   { transform: rotateY(-90deg) translateZ(clamp(75px, 11vw, 96px)); }
-  .win3d-scene.mode-3d .win3d-top    { transform: rotateX(90deg) translateZ(clamp(75px, 11vw, 96px)); }
-  .win3d-scene.mode-3d .win3d-bottom { transform: rotateX(-90deg) translateZ(clamp(75px, 11vw, 96px)); }
-  .win3d-scene.mode-3d .win3d-face .wt svg { width: clamp(16px, 2.3vw, 21px); height: clamp(16px, 2.3vw, 21px); }
-  .win3d-scene.mode-3d .win3d-face .wt-name { font-size: clamp(.46rem, .85vw, .55rem); }
-  .win3d-scene.mode-3d .win3d-face.win3d-face-single .wt-cube-single svg { width: 44px !important; height: 44px !important; }
-  .win3d-scene.mode-3d .win3d-face.win3d-face-single .wt-name { font-size: .6rem; }
+  /* Cube: same style/size as desktop */
+
+
 
   /* About */
   .about-para { font-size: .85rem; line-height: 1.95; }
@@ -2326,24 +2294,9 @@ body.light .skill-tailwind-css svg {
     min-width: 0;
   }
 
-  /* Cube: bottom of right col — fixed size, identical on every phone */
-  .win3d-scene { width: 140px; margin: 0; }
-  .win3d-perspective, .win3d-cube, .win3d-face { width: 140px; height: 140px; }
-  .win3d-front  { transform: translateZ(70px); }
-  .win3d-back   { transform: rotateY(180deg) translateZ(70px); }
-  .win3d-right  { transform: rotateY(90deg) translateZ(70px); }
-  .win3d-left   { transform: rotateY(-90deg) translateZ(70px); }
-  .win3d-top    { transform: rotateX(90deg) translateZ(70px); }
-  .win3d-bottom { transform: rotateX(-90deg) translateZ(70px); }
-  .win3d-scene.mode-3d .win3d-cube,
-  .win3d-scene.mode-3d .win3d-face { width: 140px; height: 140px; }
-  .win3d-scene.mode-3d .win3d-front  { transform: translateZ(70px); }
-  .win3d-scene.mode-3d .win3d-back   { transform: rotateY(180deg) translateZ(70px); }
-  .win3d-scene.mode-3d .win3d-right  { transform: rotateY(90deg) translateZ(70px); }
-  .win3d-scene.mode-3d .win3d-left   { transform: rotateY(-90deg) translateZ(70px); }
-  .win3d-scene.mode-3d .win3d-top    { transform: rotateX(90deg) translateZ(70px); }
-  .win3d-scene.mode-3d .win3d-bottom { transform: rotateX(-90deg) translateZ(70px); }
-  .wt-name { font-size: .56rem; }
+  /* Cube: same style/size as desktop */
+
+
 
   /* Skills: sizing now handled by the single fluid rule set at 768px, so it scales
      smoothly and stays visually consistent down to the smallest phone. */
@@ -2395,23 +2348,8 @@ body.light .skill-tailwind-css svg {
   .hero-btns { margin-top: 3px; }
   .hero-btns .btn-o { font-size: .62rem; padding: 6px 9px; }
 
-  .win3d-scene { width: 140px; }
-  .win3d-perspective, .win3d-cube, .win3d-face { width: 140px; height: 140px; }
-  .win3d-front  { transform: translateZ(70px); }
-  .win3d-back   { transform: rotateY(180deg) translateZ(70px); }
-  .win3d-right  { transform: rotateY(90deg) translateZ(70px); }
-  .win3d-left   { transform: rotateY(-90deg) translateZ(70px); }
-  .win3d-top    { transform: rotateX(90deg) translateZ(70px); }
-  .win3d-bottom { transform: rotateX(-90deg) translateZ(70px); }
-  .win3d-scene.mode-3d .win3d-cube, .win3d-scene.mode-3d .win3d-face { width: 140px; height: 140px; }
-  .win3d-scene.mode-3d .win3d-front  { transform: translateZ(70px); }
-  .win3d-scene.mode-3d .win3d-back   { transform: rotateY(180deg) translateZ(70px); }
-  .win3d-scene.mode-3d .win3d-right  { transform: rotateY(90deg) translateZ(70px); }
-  .win3d-scene.mode-3d .win3d-left   { transform: rotateY(-90deg) translateZ(70px); }
-  .win3d-scene.mode-3d .win3d-top    { transform: rotateX(90deg) translateZ(70px); }
-  .win3d-scene.mode-3d .win3d-bottom { transform: rotateX(-90deg) translateZ(70px); }
 
-  /* Experience & Education: timeline sizing now matches tablet (inherited from 768px rules) */
+
 
   /* Projects: single column below 430px — 2-col makes the card graphics illegible */
   .masonry-list { grid-template-columns: 1fr; gap: 12px; }
@@ -2444,14 +2382,7 @@ body.light .skill-tailwind-css svg {
 
   .hero-name { font-size: clamp(1.9rem, 10vw, 2.3rem); margin-top: 5px; margin-bottom: 12px; }
 
-  .win3d-scene { width: 140px; }
-  .win3d-perspective, .win3d-cube, .win3d-face { width: 140px; height: 140px; }
-  .win3d-front  { transform: translateZ(70px); }
-  .win3d-back   { transform: rotateY(180deg) translateZ(70px); }
-  .win3d-right  { transform: rotateY(90deg) translateZ(70px); }
-  .win3d-left   { transform: rotateY(-90deg) translateZ(70px); }
-  .win3d-top    { transform: rotateX(90deg) translateZ(70px); }
-  .win3d-bottom { transform: rotateX(-90deg) translateZ(70px); }
+
 
   .hero-info { padding: 12px 11px; }
   .hero-info-col { gap: 5px; }
