@@ -150,13 +150,13 @@ body.light .sec-hd-icon { border-color: rgba(0,0,0,.12); }
  left: 0;
  right: 0;
  bottom: 0;
- height: 90px;
+ height: 46px;
  z-index: 40;
  pointer-events: none;
- backdrop-filter: blur(6px);
- -webkit-backdrop-filter: blur(6px);
- mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
- -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+ backdrop-filter: blur(3px);
+ -webkit-backdrop-filter: blur(3px);
+ mask-image: linear-gradient(to top, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 100%);
+ -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 100%);
 }
 .sr { opacity: 0; transform: translateY(24px) translateZ(0); transition: opacity .6s cubic-bezier(.25,.46,.45,.94), transform .6s cubic-bezier(.25,.46,.45,.94); will-change: opacity, transform; }
 .sr.on { opacity: 1; transform: translateY(0) translateZ(0); }
@@ -658,7 +658,7 @@ body.light .sc-express { --cc: 60,60,60; }
 .sc-node    { --cc: 51,153,51; }
 .sc-express { --cc: 180,180,180; }
 .sc-api     { --cc: 133,234,45; }
-.sc-fastapi { --cc: 5,153,139; }
+.sc-fastapi { --cc: 0,150,136; }
 .sc-mongo   { --cc: 67,153,52; }
 .sc-pg      { --cc: 51,103,145; }
 .sc-python  { --cc: 55,118,171; }
@@ -1608,6 +1608,9 @@ body.light .skill-card--tl {
  padding-right: clamp(32px, 5vw, 56px);
  position: relative;
  align-self: center;
+}
+@media (min-width: 1025px) {
+  .hero-right { align-self: flex-start; margin-top: calc(0.45 * clamp(1.9rem, 4.2vw, 4.6rem) + 6px); }
 }
 /* ── WIN3D SCENE ─────────────────────────────────────────────── */
 .win3d-scene {
