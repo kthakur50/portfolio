@@ -106,7 +106,8 @@ section { padding: 110px 0; }
 .sec-hd::before { display: none; }
 .sec-hd::after {
  content: '';
- flex: 1;
+ flex: 0 0 auto;
+ width: clamp(60px, 8vw, 120px);
  height: 1px;
  background: linear-gradient(to right, var(--br) 60%, rgba(255,255,255,0) 100%);
  opacity: .55;
