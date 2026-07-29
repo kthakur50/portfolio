@@ -200,10 +200,10 @@ const IconPostman = () => (
   </svg>
 );
 
-/* FastAPI — official teal/green logomark */
+/* FastAPI — official logomark (accurate bolt + ring) */
 const IconFastAPI = () => (
-  <svg viewBox="0 0 128 128" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
-    <path fill="#05998b" d="M64 0a64 64 0 100 128A64 64 0 0064 0zM45.1 100.65V69.246H27.65L64.406 27.35v31.404H80.35L45.1 100.65z"/>
+  <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#009688" d="M12 0C5.375 0 0 5.375 0 12c0 6.627 5.375 12 12 12 6.626 0 12-5.373 12-12 0-6.625-5.373-12-12-12zm-.624 21.62v-7.528H7.19L13.203 2.38v7.528h4.029L11.376 21.62z"/>
   </svg>
 );
 
