@@ -216,8 +216,8 @@ body.light .nav-logo .logo-k { color: #24382c; }
 .nav-logo .logo-k em { font-style: normal; color: var(--a2); }
 .nav-logo:hover { opacity: .75; }
 .nav-right { display: flex; align-items: center; gap: 4px; justify-content: flex-end; }
-.nav-right .nav-ham { margin-left: 6px; }
-.nav-sep-line { width: 1px; height: 16px; background: rgba(255,255,255,.15); margin: 0 2px; flex-shrink: 0; }
+.nav-right .nav-ham { margin-left: 2px; }
+.nav-sep-line { width: 1px; height: 16px; background: rgba(255,255,255,.15); margin: 0 1px; flex-shrink: 0; }
 body.light .nav-sep-line { background: rgba(0,0,0,.15); }
 .nav-desk-links {
  display: flex;
@@ -604,7 +604,7 @@ body.light .hero-name .ac-plain {
  51%, 100% { opacity: 0; }
 }
 
-/* Flip text (split-flap, top -> bottom flip) */
+/* Flip text (split-flap, bottom -> top flip) */
 .flip-text {
  position: relative;
  display: inline-block;
@@ -627,21 +627,21 @@ body.light .hero-name .ac-plain {
  white-space: nowrap;
  transform-style: preserve-3d;
  backface-visibility: hidden;
- transform-origin: top center;
+ transform-origin: bottom center;
  will-change: transform, opacity;
 }
 .is-flipping-out {
- animation: flipOutDown var(--flip-dur, 650ms) cubic-bezier(.5, 0, .15, 1) forwards;
+ animation: flipOutUp var(--flip-dur, 650ms) cubic-bezier(.5, 0, .15, 1) forwards;
 }
 .is-flipping-in {
- animation: flipInDown var(--flip-dur, 650ms) cubic-bezier(.5, 0, .15, 1) forwards;
+ animation: flipInUp var(--flip-dur, 650ms) cubic-bezier(.5, 0, .15, 1) forwards;
 }
-@keyframes flipOutDown {
+@keyframes flipOutUp {
  0% { transform: rotateX(0deg); opacity: 1; }
- 100% { transform: rotateX(-100deg); opacity: 0; }
+ 100% { transform: rotateX(100deg); opacity: 0; }
 }
-@keyframes flipInDown {
- 0% { transform: rotateX(90deg); opacity: 0; }
+@keyframes flipInUp {
+ 0% { transform: rotateX(-90deg); opacity: 0; }
  55% { opacity: 1; }
  100% { transform: rotateX(0deg); opacity: 1; }
 }
