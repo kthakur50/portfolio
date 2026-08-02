@@ -1830,6 +1830,7 @@ body.light .win3d-face .wt-cube-single {
 .win3d-scene.mode-3d .win3d-face:not(.win3d-front) .wt {
  border-width: .5px;
  margin: -.25px;
+ border-radius: 5px;
 }
 
 /* ── CUBE SINGLE TILE (grey glass) ──────────────────────────── */
