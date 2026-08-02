@@ -35,7 +35,7 @@ const Snowfall = () => {
     window.addEventListener('resize', resize);
 
     const PENCIL_COLOR = '150, 150, 150'; // grey
-    const MAX_LIFE = 55; // frames before a point is fully erased
+    const MAX_LIFE = 32; // frames before a point is fully erased
 
     let points = [];
     let lastX = null;
