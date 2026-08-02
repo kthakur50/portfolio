@@ -1168,7 +1168,7 @@ body.light #education { background: transparent; }
  box-sizing: border-box;
  color: var(--tx);
  flex-shrink: 0;
- margin-top: -6px;
+ margin-top: 0;
  transition: background var(--ease), border-color var(--ease), box-shadow var(--ease), color var(--ease);
 }
 .edu-item:hover .edu-node {
@@ -2159,7 +2159,7 @@ body.light .skill-tailwind-css svg {
   .masonry-desc { font-size: .74rem; }
 
   /* Education */
-  .edu-node { width: 26px; height: 26px; padding: 5px; margin-top: -4px; }
+  .edu-node { width: 26px; height: 26px; padding: 5px; margin-top: 0; }
   .edu-card { padding: 15px 17px; min-height: 54px; }
   .edu-card-body { display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
