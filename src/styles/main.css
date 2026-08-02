@@ -1156,19 +1156,19 @@ body.light #education { background: transparent; }
 .edu-item:last-child { padding-bottom: 0; }
 .edu-node {
  position: relative;
- width: 40px;
- height: 40px;
+ width: 32px;
+ height: 32px;
  border-radius: var(--rad);
  background: rgba(255,255,255,.04);
  border: 1px solid rgba(255,255,255,.10);
  display: inline-flex;
  align-items: center;
  justify-content: center;
- padding: 8px;
+ padding: 7px;
  box-sizing: border-box;
  color: var(--tx);
  flex-shrink: 0;
- margin-top: -10px;
+ margin-top: -6px;
  transition: background var(--ease), border-color var(--ease), box-shadow var(--ease), color var(--ease);
 }
 .edu-item:hover .edu-node {
@@ -2159,7 +2159,7 @@ body.light .skill-tailwind-css svg {
   .masonry-desc { font-size: .74rem; }
 
   /* Education */
-  .edu-node { width: 30px; height: 30px; padding: 6px; margin-top: -6px; }
+  .edu-node { width: 26px; height: 26px; padding: 5px; margin-top: -4px; }
   .edu-card { padding: 15px 17px; min-height: 54px; }
   .edu-card-body { display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
