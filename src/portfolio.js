@@ -72,6 +72,13 @@ function initScroll() {
         l.classList.toggle('active', l.getAttribute('href') === '#' + id)
       );
       scrollToSection(id);
+
+      const mob = document.getElementById('navMob');
+      const ham = document.getElementById('ham');
+      if (mob && mob.classList.contains('open')) {
+        mob.classList.remove('open');
+        ham?.classList.remove('open');
+      }
     });
   });
 
