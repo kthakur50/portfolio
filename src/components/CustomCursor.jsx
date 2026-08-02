@@ -1,64 +1,91 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Custom arrow cursor — follows the mouse and wobbles like it's
- * writing. Only active on devices with a fine pointer (desktop mice);
- * touch devices keep the default behaviour untouched.
+ * Ink-trail effect — a faint scribble follows the mouse and fades out
+ * almost instantly. The system cursor is left completely normal; this
+ * only ever draws on a transparent, click-through canvas. Only active
+ * on devices with a fine pointer (desktop mice); touch devices are
+ * untouched.
  */
 const CustomCursor = () => {
-  const cursorRef = useRef(null);
+  const canvasRef = useRef(null);
 
   useEffect(() => {
     if (!window.matchMedia('(pointer: fine)').matches) return undefined;
 
-    const el = cursorRef.current;
-    if (!el) return undefined;
+    const canvas = canvasRef.current;
+    if (!canvas) return undefined;
+    const ctx = canvas.getContext('2d');
 
-    let x = window.innerWidth / 2;
-    let y = window.innerHeight / 2;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    const resize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const accent = getComputedStyle(document.documentElement)
+      .getPropertyValue('--a2')
+      .trim() || '#22a063';
+
+    let lastX = null;
+    let lastY = null;
+    let prevX = null;
+    let prevY = null;
+    let hasMoved = false;
     let raf;
 
-    const move = (e) => {
-      x = e.clientX;
-      y = e.clientY;
-      if (!raf) {
-        raf = requestAnimationFrame(() => {
-          el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-          raf = null;
-        });
-      }
+    const onMove = (e) => {
+      lastX = e.clientX;
+      lastY = e.clientY;
+      hasMoved = true;
     };
+    window.addEventListener('mousemove', onMove, { passive: true });
 
-    const show = () => el.classList.add('is-active');
-    const hide = () => el.classList.remove('is-active');
-    const onDown = () => el.classList.add('is-pressed');
-    const onUp = () => el.classList.remove('is-pressed');
+    const loop = () => {
+      // Erase a slice of the canvas every frame so the scribble
+      // vanishes almost as soon as it's drawn.
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = 'rgba(0,0,0,0.22)';
+      ctx.fillRect(0, 0, width, height);
+      ctx.globalCompositeOperation = 'source-over';
 
-    document.body.classList.add('has-custom-cursor');
-    window.addEventListener('mousemove', move, { passive: true });
-    document.addEventListener('mouseenter', show);
-    document.addEventListener('mouseleave', hide);
-    window.addEventListener('mousedown', onDown);
-    window.addEventListener('mouseup', onUp);
+      if (hasMoved && prevX !== null) {
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 1.6;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.globalAlpha = 0.55;
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(lastX, lastY);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+      if (lastX !== null) {
+        prevX = lastX;
+        prevY = lastY;
+      }
+      hasMoved = false;
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
 
     return () => {
-      document.body.classList.remove('has-custom-cursor');
-      window.removeEventListener('mousemove', move);
-      document.removeEventListener('mouseenter', show);
-      document.removeEventListener('mouseleave', hide);
-      window.removeEventListener('mousedown', onDown);
-      window.removeEventListener('mouseup', onUp);
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('mousemove', onMove);
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);
 
-  return (
-    <div className="custom-cursor" ref={cursorRef} aria-hidden="true">
-      <svg className="custom-cursor-arrow" viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4 2.4 20.5 12l-6.9 1.4-3.7 6.3z" fill="#f0f5ee" stroke="#20301f" strokeWidth="1.4" strokeLinejoin="round"/>
-      </svg>
-    </div>
-  );
+  return <canvas className="cursor-trail" ref={canvasRef} aria-hidden="true" />;
 };
 
 export default CustomCursor;
