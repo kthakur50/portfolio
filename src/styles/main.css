@@ -447,12 +447,17 @@ body.light #home { background: #ffffff; --htc: 200,225,215; }
 }
 .tube-bar {
  position: absolute;
- top: 0; left: 0;
+ top: -2px; left: 0;
  width: 100%;
- height: 2px;
+ height: 6px;
  border-radius: 2px;
  z-index: 2;
- clip-path: inset(-200px -200px -200px -200px);
+ clip-path: polygon(
+   0% 50%, 4% 38%, 10% 25%, 20% 12%, 35% 3%, 50% 0%,
+   65% 3%, 80% 12%, 90% 25%, 96% 38%, 100% 50%,
+   96% 62%, 90% 75%, 80% 88%, 65% 97%, 50% 100%,
+   35% 97%, 20% 88%, 10% 75%, 4% 62%
+ );
  background: linear-gradient(90deg,
    rgba(255,255,255,0) 0%,
    rgba(255,255,255,.55) 6%,
@@ -1059,7 +1064,7 @@ body.light #projects { background: transparent; }
  border-radius: var(--rad);
  overflow: hidden;
  background: var(--card-bg);
- border: 1px solid rgba(255,255,255,.06);
+ border: 1px solid rgba(255,255,255,.10);
  box-shadow: var(--card-shadow);
  transition: box-shadow .45s cubic-bezier(.25,.46,.45,.94),
  transform .45s cubic-bezier(.25,.46,.45,.94),
@@ -1071,7 +1076,7 @@ body.light #projects { background: transparent; }
  display: flex;
  flex-direction: column;
 }
-body.light .masonry-item-inner { border-color: rgba(0,0,0,.05); }
+body.light .masonry-item-inner { border-color: rgba(0,0,0,.07); }
 .masonry-item:hover .masonry-item-inner {
  transform: translateY(-2px) translateZ(0);
  box-shadow: none;
@@ -1490,32 +1495,32 @@ body.light .skill-one-card {
  border-right: 1px solid rgba(255,255,255,.08) !important;
 }
 .skill-one-card .skill-card--fe {
- border-color: rgba(34,197,94,.10) !important;
- background: rgba(34,197,94,.02) !important;
+ border-color: rgba(255,255,255,.10) !important;
+ background: rgba(255,255,255,.04) !important;
 }
 .skill-one-card .skill-card--be {
- border-color: rgba(34,197,94,.10) !important;
- background: rgba(34,197,94,.02) !important;
+ border-color: rgba(255,255,255,.10) !important;
+ background: rgba(255,255,255,.04) !important;
 }
 .skill-one-card .skill-card--tl {
- border-color: rgba(34,197,94,.10) !important;
- background: rgba(34,197,94,.02) !important;
+ border-color: rgba(255,255,255,.10) !important;
+ background: rgba(255,255,255,.04) !important;
 }
 body.light .skill-one-card .skill-group {
  background: rgba(255,255,255,.85) !important;
  border-color: rgba(0,0,0,.08) !important;
 }
 body.light .skill-one-card .skill-card--fe {
- background: rgba(236,253,245,.95) !important;
- border-color: rgba(34,197,94,.25) !important;
+ background: rgba(255,255,255,.55) !important;
+ border-color: rgba(0,0,0,.07) !important;
 }
 body.light .skill-one-card .skill-card--be {
- background: rgba(236,253,245,.95) !important;
- border-color: rgba(34,197,94,.25) !important;
+ background: rgba(255,255,255,.55) !important;
+ border-color: rgba(0,0,0,.07) !important;
 }
 body.light .skill-one-card .skill-card--tl {
- background: rgba(236,253,245,.95) !important;
- border-color: rgba(34,197,94,.25) !important;
+ background: rgba(255,255,255,.55) !important;
+ border-color: rgba(0,0,0,.07) !important;
 }
 .skill-card {
  position: relative;
@@ -1529,7 +1534,7 @@ body.light .skill-one-card .skill-card--tl {
  overflow: visible;
  opacity: 1;
  background: rgba(255,255,255,.04);
- border: 1px solid rgba(255,255,255,.12);
+ border: 1px solid rgba(255,255,255,.10);
  box-shadow: none;
 
 }
@@ -1547,9 +1552,9 @@ body.light .skill-one-card .skill-card--tl {
  gap: 7px;
 }
 body.light .skill-card {
- background: rgba(255,255,255,.9);
+ background: rgba(255,255,255,.55);
  border: 1px solid rgba(0,0,0,.07);
- box-shadow: none;
+ box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card .skill-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; overflow: hidden; border-radius: calc(var(--rad) - 2px); padding: 2px; margin: -2px; }
 .skill-card .skill-chip {
@@ -1568,25 +1573,33 @@ body.light .skill-card {
 }
 .skill-card .skill-chip svg { width: 31px; height: 31px; min-width: 31px; padding: 8px; border: 1px solid rgba(127,127,127,.25); border-radius: var(--rad); background: rgba(127,127,127,.08); filter: brightness(1.15) saturate(1.25); }
 .skill-card--fe {
- border-color: rgba(34,197,94,.2); background: rgba(34,197,94,.06);
+ border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
  box-shadow: none;
 }
 body.light .skill-card--fe {
- background: rgba(236,253,245,.95);
- border-color: rgba(34,197,94,.3);
- box-shadow: none;
+ background: rgba(255,255,255,.55);
+ border-color: rgba(0,0,0,.07);
+ box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card--fe .skill-cat { color: #4ade80; }
 
+.skill-card--be {
+ border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
+ box-shadow: none;
+}
 body.light .skill-card--be {
- background: rgba(236,253,245,.95);
- border-color: rgba(34,197,94,.3); box-shadow: none;
+ background: rgba(255,255,255,.55);
+ border-color: rgba(0,0,0,.07); box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card--be .skill-cat { color: #4ade80; }
 
+.skill-card--tl {
+ border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
+ box-shadow: none;
+}
 body.light .skill-card--tl {
- background: rgba(236,253,245,.95);
- border-color: rgba(34,197,94,.3); box-shadow: none;
+ background: rgba(255,255,255,.55);
+ border-color: rgba(0,0,0,.07); box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card--tl .skill-cat { color: #4ade80; }
 .skill-card::before {
