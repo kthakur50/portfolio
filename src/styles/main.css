@@ -1640,6 +1640,7 @@ body.light .skill-card--tl {
 }
 @media (min-width: 1025px) {
   .hero-right { align-self: flex-start; margin-top: calc(0.9 * clamp(1.9rem, 3.9vw, 4.2rem) + 146px - 0.5 * clamp(160px, 14vw, 228px) + 24px); }
+  .win3d-scene { transform: scale(.88); }
 }
 /* ── WIN3D SCENE ─────────────────────────────────────────────── */
 .win3d-scene {
@@ -1719,8 +1720,8 @@ body.light .skill-card--tl {
  -webkit-backface-visibility: visible;
 }
 .win3d-scene.mode-3d .win3d-face:not(.win3d-front) {
- gap: 1px;
- padding: 1px;
+ gap: 0px;
+ padding: 0px;
 }
 /* single-tile face: full-face one skill */
 .win3d-scene.mode-3d .win3d-face.win3d-face-single {
