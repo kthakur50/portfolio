@@ -423,21 +423,7 @@ body.light .nav-mob {
  background: transparent;
 }
 #home::before {
- content: '';
- position: absolute;
- top: 0;
- left: 50%;
- transform: translateX(-50%);
- width: clamp(480px, 68vw, 880px);
- height: 62%;
- background: radial-gradient(ellipse at top,
-   rgba(var(--htc), .32) 0%,
-   rgba(var(--htc), .16) 32%,
-   rgba(var(--htc), .06) 55%,
-   rgba(var(--htc), 0) 78%);
- pointer-events: none;
- z-index: 1;
- animation: tubeFlicker 9s ease-in-out infinite;
+ display: none;
 }
 #home::after {
  display: none;
@@ -1731,6 +1717,10 @@ body.light .skill-card--tl {
  box-shadow: none;
  backface-visibility: visible;
  -webkit-backface-visibility: visible;
+}
+.win3d-scene.mode-3d .win3d-face:not(.win3d-front) {
+ gap: 1px;
+ padding: 1px;
 }
 /* single-tile face: full-face one skill */
 .win3d-scene.mode-3d .win3d-face.win3d-face-single {
