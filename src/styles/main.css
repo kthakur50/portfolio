@@ -2132,9 +2132,8 @@ body.light .skill-tailwind-css svg {
     flex: 1;
   }
 
-  /* Cube: same style/size as desktop */
-
-
+  /* Cube: scaled down for phone */
+  .win3d-scene { transform: scale(.76); }
 
   /* About */
   .about-para { font-size: .85rem; line-height: 1.95; }
@@ -2191,7 +2190,7 @@ body.light .skill-tailwind-css svg {
   .contact-links a { flex: 1; min-width: 0; justify-content: center; white-space: nowrap; padding: clamp(8px, 1.1vw, 11px) clamp(8px, 1.3vw, 13px); font-size: clamp(.62rem, 1.4vw, .74rem); }
   .contact-links a .arr { display: none; }
 
-  .win3d-scene { transform: scale(.8); }
+  .win3d-scene { transform: scale(.7); }
 }
 
 /* ── TABLET: use the same floating hamburger card as phone ─────── */
@@ -2347,8 +2346,8 @@ body.light .skill-tailwind-css svg {
   .contact-links { gap: clamp(4px, 1.6vw, 7px); }
   .contact-links a { font-size: clamp(.5rem, 2vw, .6rem); padding: clamp(6px, 1.8vw, 8px) clamp(4px, 1.4vw, 7px); gap: 4px; }
 
-  /* Cube: same style/size as desktop */
-
+  /* Cube: scaled down a bit more for small phones */
+  .win3d-scene { transform: scale(.68); }
 
 
   /* Skills: sizing now handled by the single fluid rule set at 768px, so it scales
