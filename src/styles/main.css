@@ -1197,6 +1197,7 @@ body.light .edu-item:hover .edu-node {
 }
 .edu-node svg { width: 100%; height: 100%; display: block; }
 .edu-card {
+ position: relative;
  display: flex;
  align-items: flex-start;
  gap: 16px;
@@ -1210,6 +1211,26 @@ body.light .edu-item:hover .edu-node {
  will-change: transform;
  backface-visibility: hidden;
  -webkit-backface-visibility: hidden;
+}
+.edu-card::before {
+ content: '';
+ position: absolute;
+ left: 39px;
+ top: 52px;
+ bottom: 18px;
+ width: 1.5px;
+ background: linear-gradient(to bottom, rgba(255,255,255,.18), rgba(255,255,255,0));
+ opacity: 1;
+ transition: background var(--ease);
+}
+body.light .edu-card::before {
+ background: linear-gradient(to bottom, rgba(0,0,0,.14), rgba(0,0,0,0));
+}
+.edu-item:hover .edu-card::before {
+ background: linear-gradient(to bottom, rgba(34,160,99,.5), rgba(34,160,99,0));
+}
+body.light .edu-item:hover .edu-card::before {
+ background: linear-gradient(to bottom, rgba(25,106,71,.4), rgba(25,106,71,0));
 }
 .edu-card-body {
  flex: 1;
@@ -2169,6 +2190,7 @@ body.light .skill-tailwind-css svg {
   /* Education */
   .edu-node { width: 30px; height: 30px; padding: 5px; }
   .edu-card { padding: 15px 17px; min-height: 54px; }
+  .edu-card::before { left: 32px; top: 45px; bottom: 15px; }
   .edu-card-body { display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
   .edu-deg-title { font-size: .92rem; order: 1; }
@@ -2225,10 +2247,12 @@ body.light .skill-tailwind-css svg {
     left: auto;
     right: 0;
     bottom: 0;
+    height: 100vh;
     height: 100svh;
+    height: 100dvh;
     max-height: none;
     overflow-y: auto;
-    width: min(100vw, 380px);
+    width: min(70vw, 300px);
     background: rgba(15, 15, 15, 0.98);
     backdrop-filter: blur(28px) saturate(160%);
     -webkit-backdrop-filter: blur(28px) saturate(160%);
@@ -2389,6 +2413,7 @@ body.light .skill-tailwind-css svg {
 
   /* Education: timeline sizing now matches tablet (inherited from 768px rules) */
   .edu-card { padding: 13px 14px; min-height: 50px; }
+  .edu-card::before { left: 29px; top: 43px; bottom: 13px; }
   .edu-card-body { display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
   .edu-inst-sep { display: inline; }
