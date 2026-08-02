@@ -349,6 +349,11 @@ body.light .nav-toggle:hover { color: #24382c; background: transparent; }
 body.light .i-sun { opacity: 1; transform: translate(-50%,-50%) rotate(0deg) scale(1); }
 body.light .i-moon { opacity: 0; transform: translate(-50%,-50%) rotate(90deg) scale(.4); }
 .nav-mob-ctrl { display: none; align-items: center; gap: 6px; justify-self: end; grid-column: 3; }
+/* Prevent background scroll while the phone/tablet nav card is open —
+   this is what stopped the card from jumping up/down: iOS/Android
+   toolbars resize the viewport as the page scrolls behind the card,
+   which shifted its height and vertical centering mid-animation. */
+body.nav-mob-locked { overflow: hidden; }
 .nav-ham {
  display: flex; flex-direction: column; justify-content: center; gap: 5px;
  width: 36px; height: 36px; border-radius: var(--rad);
@@ -1997,21 +2002,11 @@ body.light .skill-tailwind-css svg {
   :root { --pad: clamp(20px, 4vw, 48px); }
   section { padding: 80px 0; }
 
-  /* Navbar: hamburger opens icons inline inside the navbar (tablet) */
+  /* Navbar: sizing only — show/hide behaviour for the hamburger card
+     lives in the single "TABLET: floating hamburger card" block below,
+     so it isn't duplicated/fought over across two rule sets. */
   .nav-inner { height: 44px; padding: 0 clamp(12px, 2vw, 20px); }
   .nav-logo .logo-k { font-size: clamp(.78rem, 1.5vw, .95rem); }
-  .nav-mob-ctrl { display: none !important; }
-  .nav-mob { display: none !important; }
-  .nav-right { display: flex !important; gap: 8px; }
-  .nav-ham {
-    display: flex !important;
-    width: clamp(30px, 4vw, 36px); height: clamp(30px, 4vw, 36px); padding: 6px;
-  }
-  .nav-sep-line { display: flex; width: 1px; height: 16px; }
-  .nav-toggle {
-    width: clamp(30px, 4vw, 36px); height: clamp(30px, 4vw, 36px);
-  }
-  .nav-toggle svg { width: clamp(14px, 2vw, 17px); height: clamp(14px, 2vw, 17px); }
   /* Icons open inline within the navbar itself, kept small */
   .nav-desk-links a { padding: 7px 9px; }
   .nav-desk-links a svg { width: 16px; height: 16px; }
@@ -2257,8 +2252,8 @@ body.light .skill-tailwind-css svg {
     left: auto;
     right: 0;
     bottom: 0;
-    height: 100dvh;
-    width: min(78vw, 300px);
+    height: 100svh;
+    width: min(62vw, 250px);
     background: rgba(15, 15, 15, 0.96);
     backdrop-filter: blur(28px) saturate(160%);
     -webkit-backdrop-filter: blur(28px) saturate(160%);
@@ -2367,7 +2362,7 @@ body.light .skill-tailwind-css svg {
   .hero-block { min-width: 0; width: 100%; }
   .hero-avail { font-size: clamp(.5rem, 1.3vw, .62rem); margin-bottom: clamp(9px, 2vw, 13px); }
   .hero-info { padding: clamp(16px, 3.4vw, 22px) clamp(12px, 3vw, 17px); margin-bottom: clamp(9px, 1.8vw, 12px); }
-  .hero-info-grid { flex-direction: row; align-items: stretch; gap: 0; }
+  .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(8px, 2vw, 12px); }
   .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(11px, 2.6vw, 16px); }
   .hero-info-col:first-child { padding-right: clamp(4px, 1vw, 8px); border-right: none; padding-bottom: 0; border-bottom: none; }
   .hero-info-col:last-child { padding-left: clamp(4px, 1vw, 8px); padding-top: 0; }
@@ -2430,7 +2425,7 @@ body.light .skill-tailwind-css svg {
   .hero-name { font-size: clamp(2.3rem, 11vw, 3rem); margin-top: 6px; margin-bottom: 13px; }
   .hero-avail { font-size: .64rem; margin-bottom: 14px; }
   .hero-info { padding: 14px 13px; margin-bottom: 11px; }
-  .hero-info-grid { flex-direction: row; gap: 0; }
+  .hero-info-grid { flex-direction: row; gap: 10px; }
   .hero-info-col { gap: 12px; }
   .hero-info-col:first-child { padding-right: 6px; }
   .hero-info-col:last-child { padding-left: 6px; }
@@ -2479,6 +2474,7 @@ body.light .skill-tailwind-css svg {
 
 
   .hero-info { padding: 12px 11px; }
+  .hero-info-grid { gap: 8px; }
   .hero-info-col { gap: 11px; }
   .hero-info-col:first-child { padding-right: 4px; }
   .hero-info-col:last-child { padding-left: 4px; }
@@ -2513,7 +2509,7 @@ body.light .skill-tailwind-css svg {
   .skill-chip { cursor: pointer; }
 }
 
-/* ── CUSTOM PENCIL CURSOR ────────────────────────────────────── */
+/* ── CUSTOM ARROW CURSOR ─────────────────────────────────────── */
 @media (pointer: fine) {
   body.has-custom-cursor,
   body.has-custom-cursor * {
@@ -2533,20 +2529,20 @@ body.light .skill-tailwind-css svg {
   will-change: transform;
 }
 .custom-cursor.is-active { opacity: 1; }
-.custom-cursor-pencil {
+.custom-cursor-arrow {
   position: absolute;
-  top: -6px;
-  left: -4px;
+  top: 0;
+  left: 0;
   display: block;
   filter: drop-shadow(0 3px 6px rgba(0,0,0,.35));
-  transform-origin: 82% 82%;
-  animation: pencilWrite 480ms ease-in-out infinite;
+  transform-origin: 15% 10%;
+  animation: arrowWrite 480ms ease-in-out infinite;
   transition: transform .12s ease;
 }
-.custom-cursor.is-pressed .custom-cursor-pencil {
+.custom-cursor.is-pressed .custom-cursor-arrow {
   transform: scale(.88);
 }
-@keyframes pencilWrite {
+@keyframes arrowWrite {
   0%, 100% { transform: rotate(-7deg); }
   50%      { transform: rotate(7deg); }
 }
@@ -2563,41 +2559,6 @@ body.light .skill-tailwind-css svg {
  justify-content: center;
  gap: 16px;
  flex-wrap: wrap;
-}
-.site-footer-socials {
- display: flex;
- align-items: center;
- justify-content: center;
- gap: 10px;
- margin-top: -3px;
-}
-.site-footer-icon {
- display: inline-flex;
- align-items: center;
- justify-content: center;
- width: 32px;
- height: 32px;
- border-radius: 6px;
- background: rgba(255,255,255,.04);
- border: 1px solid rgba(255,255,255,.10);
- color: var(--tx);
- transition: background var(--ease), border-color var(--ease), color var(--ease), transform var(--ease);
-}
-.site-footer-icon svg { display: block; overflow: hidden; border-radius: 3px; }
-.site-footer-icon:hover {
- background: rgba(34,160,99,.08);
- border-color: rgba(34,160,99,.5);
- color: #27b872;
- transform: translateY(-2px);
-}
-body.light .site-footer-icon {
- background: rgba(255,255,255,.55);
- border-color: rgba(0,0,0,.07);
- color: var(--tx);
-}
-body.light .site-footer-icon:hover {
- border-color: rgba(25,106,71,.2);
- color: var(--a2);
 }
 .site-footer-text {
  margin: 0;
