@@ -123,6 +123,12 @@ function initHam() {
       else openMob();
     });
 
+    const navMobClose = document.getElementById('navMobClose');
+    navMobClose?.addEventListener('click', e => {
+      e.stopPropagation();
+      closeMob();
+    });
+
     // Tap/click anywhere outside the card (or press Escape) closes it.
     document.addEventListener('click', e => {
       if (!mob.classList.contains('open')) return;
