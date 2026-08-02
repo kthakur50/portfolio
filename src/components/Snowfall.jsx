@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Subtle snow-from-cursor effect — tiny snowflakes spawn near the
- * mouse as it moves, then drift down and fade out. Click-through
- * canvas, only active on fine-pointer (desktop) devices; respects
+ * Green "pencil writing" cursor trail — as the mouse moves it leaves
+ * behind a hand-drawn-looking squiggly green line, which fades away
+ * and erases itself automatically over time. Click-through canvas,
+ * only active on fine-pointer (desktop) devices; respects
  * reduced-motion and pauses when the tab isn't visible.
  */
 const Snowfall = () => {
@@ -33,33 +34,39 @@ const Snowfall = () => {
     resize();
     window.addEventListener('resize', resize);
 
-    let flakes = [];
-    let mouseX = null;
-    let mouseY = null;
-    let lastSpawn = 0;
+    const PENCIL_COLOR = '34, 197, 94'; // green
+    const MAX_LIFE = 55; // frames before a point is fully erased
 
-    const spawn = (x, y) => {
-      flakes.push({
-        x: x + rand(-6, 6),
-        y: y + rand(-6, 6),
-        r: rand(1, 2.6),
-        speedY: rand(0.35, 0.9),
-        speedX: rand(-0.25, 0.25),
-        sway: rand(0, Math.PI * 2),
-        swaySpeed: rand(0.02, 0.05),
-        life: 0,
-        maxLife: rand(70, 130),
-      });
-    };
+    let points = [];
+    let lastX = null;
+    let lastY = null;
 
     const onMove = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      const now = performance.now();
-      if (now - lastSpawn > 40 && flakes.length < 140) {
-        spawn(mouseX, mouseY);
-        lastSpawn = now;
+      const x = e.clientX;
+      const y = e.clientY;
+
+      if (lastX === null) {
+        points.push({ x, y, life: 0 });
+      } else {
+        const dx = x - lastX;
+        const dy = y - lastY;
+        const dist = Math.hypot(dx, dy);
+        // subdivide fast movements so the line stays smooth, with a
+        // tiny hand-jitter so it reads as "written" rather than ruled
+        const steps = Math.max(1, Math.min(8, Math.round(dist / 6)));
+        for (let i = 1; i <= steps; i += 1) {
+          const t = i / steps;
+          points.push({
+            x: lastX + dx * t + rand(-0.6, 0.6),
+            y: lastY + dy * t + rand(-0.6, 0.6),
+            life: 0,
+          });
+        }
       }
+
+      lastX = x;
+      lastY = y;
+      if (points.length > 400) points = points.slice(points.length - 400);
     };
     window.addEventListener('mousemove', onMove, { passive: true });
 
@@ -68,24 +75,31 @@ const Snowfall = () => {
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = '#ffffff';
-      flakes = flakes.filter((f) => f.life < f.maxLife);
-      flakes.forEach((f) => {
-        f.life += 1;
-        f.sway += f.swaySpeed;
-        f.x += f.speedX + Math.sin(f.sway) * 0.25;
-        f.y += f.speedY;
 
-        const fadeIn = Math.min(f.life / 10, 1);
-        const fadeOut = 1 - Math.max(0, (f.life - (f.maxLife - 20)) / 20);
-        const opacity = 0.55 * fadeIn * fadeOut;
+      points.forEach((p) => { p.life += 1; });
+      points = points.filter((p) => p.life < MAX_LIFE);
 
-        ctx.globalAlpha = opacity;
+      ctx.lineJoin = 'round';
+      ctx.lineCap = 'round';
+
+      for (let i = 1; i < points.length; i += 1) {
+        const a = points[i - 1];
+        const b = points[i];
+        // a broken stroke (new pointer lift) shows as a big jump — skip it
+        if (Math.hypot(b.x - a.x, b.y - a.y) > 40) continue;
+
+        const fadeOut = 1 - b.life / MAX_LIFE;
+        const opacity = Math.max(0, fadeOut) * 0.8;
+        if (opacity <= 0) continue;
+
+        ctx.strokeStyle = `rgba(${PENCIL_COLOR}, ${opacity})`;
+        ctx.lineWidth = 1.6;
         ctx.beginPath();
-        ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      ctx.globalAlpha = 1;
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+
       if (running) raf = requestAnimationFrame(draw);
     };
     raf = requestAnimationFrame(draw);
