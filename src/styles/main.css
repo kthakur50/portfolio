@@ -1640,9 +1640,9 @@ body.light .skill-card--tl {
  border-radius: var(--rad);
  background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(var(--tc),.06) 0%, transparent 75%);
 }
-.skill-card--fe { --tc: 250,204,21; }
-.skill-card--be { --tc: 250,204,21; }
-.skill-card--tl { --tc: 250,204,21; }
+.skill-card--fe { --tc: 239,68,68; }
+.skill-card--be { --tc: 239,68,68; }
+.skill-card--tl { --tc: 239,68,68; }
 .skill-card.sk-glow::before {
  animation: tubeFlicker 9s ease-in-out infinite;
  opacity: 1;
