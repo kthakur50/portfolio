@@ -2531,6 +2531,7 @@ body.light .skill-tailwind-css svg {
  align-items: center;
  justify-content: center;
  gap: 10px;
+ margin-top: -3px;
 }
 .site-footer-icon {
  display: inline-flex;
