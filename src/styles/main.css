@@ -462,9 +462,9 @@ body.light #home { background: #ffffff; --htc: 200,225,215; }
    rgba(255,255,255,.55) 94%,
    rgba(255,255,255,0) 100%);
  box-shadow:
-   0 0 10px 3px rgba(255,255,255,.65),
-   0 0 24px 10px rgba(255,255,255,.4),
-   0 0 54px 22px rgba(255,255,255,.18);
+   0 0 14px 4px rgba(255,255,255,.65),
+   0 0 34px 14px rgba(255,255,255,.4),
+   0 0 78px 32px rgba(255,255,255,.18);
  animation: tubeFlicker 9s ease-in-out infinite;
 }
 body.light .tube-bar {
@@ -477,9 +477,9 @@ body.light .tube-bar {
    rgba(255,255,255,.55) 94%,
    rgba(255,255,255,0) 100%);
  box-shadow:
-   0 0 10px 3px rgba(200,220,255,.55),
-   0 0 24px 10px rgba(200,220,255,.32),
-   0 0 54px 22px rgba(200,220,255,.15);
+   0 0 14px 4px rgba(200,220,255,.55),
+   0 0 34px 14px rgba(200,220,255,.32),
+   0 0 78px 32px rgba(200,220,255,.15);
 }
 #home .wrap { position: relative; z-index: 2; width: 100%; }
 .hero-inner { display: flex; flex-direction: row; align-items: center; width: 100%; position: relative; gap: 92px; }
