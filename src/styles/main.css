@@ -2371,7 +2371,7 @@ body.light .skill-tailwind-css svg {
   .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(11px, 2.6vw, 16px); }
   .hero-info-col:first-child { padding-right: clamp(4px, 1vw, 8px); border-right: none; padding-bottom: 0; border-bottom: none; }
   .hero-info-col:last-child { padding-left: clamp(4px, 1vw, 8px); padding-top: 0; }
-  .hero-info-item { font-size: clamp(.54rem, 1.65vw, .62rem); height: auto; min-height: clamp(30px, 5.4vw, 35px); gap: clamp(4px, 1vw, 7px); white-space: nowrap; line-height: 1.35; padding: clamp(4px, .9vw, 6px) 0; overflow: visible; }
+  .hero-info-item { font-size: clamp(.6rem, 1.75vw, .68rem); height: auto; min-height: clamp(30px, 5.4vw, 35px); gap: clamp(4px, 1vw, 7px); white-space: nowrap; line-height: 1.35; padding: clamp(4px, .9vw, 6px) 0; overflow: visible; }
   .hero-info-item svg { width: clamp(12px, 2.2vw, 15px); height: clamp(12px, 2.2vw, 15px); flex-shrink: 0; }
   /* Buttons */
   .hero-btns { flex-wrap: wrap; gap: clamp(4px, 1.5vw, 7px); margin-top: clamp(2px, 1vw, 5px); }
@@ -2434,7 +2434,7 @@ body.light .skill-tailwind-css svg {
   .hero-info-col { gap: 12px; }
   .hero-info-col:first-child { padding-right: 6px; }
   .hero-info-col:last-child { padding-left: 6px; }
-  .hero-info-item { font-size: .58rem; height: auto; min-height: 32px; gap: 5px; padding: 4px 0; line-height: 1.3; white-space: nowrap; overflow: visible; }
+  .hero-info-item { font-size: .64rem; height: auto; min-height: 32px; gap: 5px; padding: 4px 0; line-height: 1.3; white-space: nowrap; overflow: visible; }
   .hero-info-item svg { width: 13px; height: 13px; }
   .hero-btns { margin-top: 3px; }
   .hero-btns .btn-o { font-size: .62rem; padding: 6px 9px; }
@@ -2482,7 +2482,7 @@ body.light .skill-tailwind-css svg {
   .hero-info-col { gap: 11px; }
   .hero-info-col:first-child { padding-right: 4px; }
   .hero-info-col:last-child { padding-left: 4px; }
-  .hero-info-item { font-size: .52rem; height: auto; min-height: 28px; gap: 4px; padding: 4px 0; line-height: 1.25; white-space: nowrap; overflow: visible; }
+  .hero-info-item { font-size: .58rem; height: auto; min-height: 28px; gap: 4px; padding: 4px 0; line-height: 1.25; white-space: nowrap; overflow: visible; }
   .hero-info-item svg { width: 11px; height: 11px; }
 
   .contact-links { gap: 4px; }
@@ -2511,6 +2511,44 @@ body.light .skill-tailwind-css svg {
   .masonry-link { min-height: 36px; display: inline-flex; align-items: center; }
   .mq-chip { min-height: 36px; }
   .skill-chip { cursor: pointer; }
+}
+
+/* ── CUSTOM PENCIL CURSOR ────────────────────────────────────── */
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity .2s ease;
+  will-change: transform;
+}
+.custom-cursor.is-active { opacity: 1; }
+.custom-cursor-pencil {
+  position: absolute;
+  top: -6px;
+  left: -4px;
+  display: block;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,.35));
+  transform-origin: 82% 82%;
+  animation: pencilWrite 480ms ease-in-out infinite;
+  transition: transform .12s ease;
+}
+.custom-cursor.is-pressed .custom-cursor-pencil {
+  transform: scale(.88);
+}
+@keyframes pencilWrite {
+  0%, 100% { transform: rotate(-7deg); }
+  50%      { transform: rotate(7deg); }
 }
 
 /* ── FOOTER ──────────────────────────────────────────────────── */
