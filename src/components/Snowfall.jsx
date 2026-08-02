@@ -34,7 +34,7 @@ const Snowfall = () => {
     resize();
     window.addEventListener('resize', resize);
 
-    const PENCIL_COLOR = '34, 197, 94'; // green
+    const PENCIL_COLOR = '150, 150, 150'; // grey
     const MAX_LIFE = 55; // frames before a point is fully erased
 
     let points = [];
@@ -93,7 +93,7 @@ const Snowfall = () => {
         if (opacity <= 0) continue;
 
         ctx.strokeStyle = `rgba(${PENCIL_COLOR}, ${opacity})`;
-        ctx.lineWidth = 1.6;
+        ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
