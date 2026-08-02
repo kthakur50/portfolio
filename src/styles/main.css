@@ -447,17 +447,12 @@ body.light #home { background: #ffffff; --htc: 200,225,215; }
 }
 .tube-bar {
  position: absolute;
- top: -2px; left: 0;
+ top: 0; left: 0;
  width: 100%;
- height: 6px;
+ height: 2px;
  border-radius: 2px;
  z-index: 2;
- clip-path: polygon(
-   0% 50%, 4% 38%, 10% 25%, 20% 12%, 35% 3%, 50% 0%,
-   65% 3%, 80% 12%, 90% 25%, 96% 38%, 100% 50%,
-   96% 62%, 90% 75%, 80% 88%, 65% 97%, 50% 100%,
-   35% 97%, 20% 88%, 10% 75%, 4% 62%
- );
+ clip-path: inset(-200px -200px -200px -200px);
  background: linear-gradient(90deg,
    rgba(255,255,255,0) 0%,
    rgba(255,255,255,.55) 6%,
@@ -859,16 +854,21 @@ body.light #experience { background: transparent; }
  left: -29px;
  top: 54px;
  bottom: 40px;
- width: 1px;
- background: linear-gradient(
- 180deg,
- var(--br) 0%,
- var(--br) 75%,
- transparent 100%
- );
- opacity: .5;
+ width: 1.5px;
+ background: linear-gradient(to bottom, rgba(255,255,255,.18), rgba(255,255,255,0));
+ opacity: 1;
+ transition: background var(--ease);
 }
-body.light .exp-item::before { opacity: .7; }
+body.light .exp-item::before {
+ background: linear-gradient(to bottom, rgba(0,0,0,.14), rgba(0,0,0,0));
+ opacity: 1;
+}
+.exp-item:hover::before {
+ background: linear-gradient(to bottom, rgba(34,160,99,.5), rgba(34,160,99,0));
+}
+body.light .exp-item:hover::before {
+ background: linear-gradient(to bottom, rgba(25,106,71,.4), rgba(25,106,71,0));
+}
 .exp-item:last-child::before { bottom: 0; }
 .exp-item {
  position: relative;
@@ -2506,6 +2506,41 @@ body.light .skill-tailwind-css svg {
  border-top: 1px solid rgba(255,255,255,.07);
  padding: 28px 0;
  text-align: center;
+}
+.site-footer-socials {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 12px;
+ margin-bottom: 16px;
+}
+.site-footer-icon {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ width: 34px;
+ height: 34px;
+ border-radius: 50%;
+ background: rgba(255,255,255,.04);
+ border: 1px solid rgba(255,255,255,.10);
+ color: var(--tx);
+ transition: background var(--ease), border-color var(--ease), color var(--ease), transform var(--ease);
+}
+.site-footer-icon svg { display: block; overflow: hidden; border-radius: 50%; }
+.site-footer-icon:hover {
+ background: rgba(34,160,99,.08);
+ border-color: rgba(34,160,99,.5);
+ color: #27b872;
+ transform: translateY(-2px);
+}
+body.light .site-footer-icon {
+ background: rgba(255,255,255,.55);
+ border-color: rgba(0,0,0,.07);
+ color: var(--tx);
+}
+body.light .site-footer-icon:hover {
+ border-color: rgba(25,106,71,.2);
+ color: var(--a2);
 }
 .site-footer-text {
  margin: 0;
