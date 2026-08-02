@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Custom pencil cursor — follows the mouse and wobbles like it's
+ * Custom arrow cursor — follows the mouse and wobbles like it's
  * writing. Only active on devices with a fine pointer (desktop mice);
  * touch devices keep the default behaviour untouched.
  */
@@ -54,14 +54,8 @@ const CustomCursor = () => {
 
   return (
     <div className="custom-cursor" ref={cursorRef} aria-hidden="true">
-      <svg className="custom-cursor-pencil" viewBox="0 0 40 40" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
-        <g transform="rotate(45 20 20)">
-          <path d="M17 6h6l1.5 3-4.5 4.5-4.5-4.5z" fill="#e8b64a" stroke="#20301f" strokeWidth="1.1" strokeLinejoin="round"/>
-          <rect x="15.5" y="13" width="9" height="16" fill="#f0f5ee" stroke="#20301f" strokeWidth="1.1"/>
-          <line x1="15.5" y1="17.4" x2="24.5" y2="17.4" stroke="#20301f" strokeWidth="1"/>
-          <path d="M15.5 29h9l-4.5 7z" fill="#c9a876" stroke="#20301f" strokeWidth="1.1" strokeLinejoin="round"/>
-          <path d="M18.6 32.6l1.4 2.3 1.4-2.3z" fill="#3a3a3a"/>
-        </g>
+      <svg className="custom-cursor-arrow" viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 2.4 20.5 12l-6.9 1.4-3.7 6.3z" fill="#f0f5ee" stroke="#20301f" strokeWidth="1.4" strokeLinejoin="round"/>
       </svg>
     </div>
   );
