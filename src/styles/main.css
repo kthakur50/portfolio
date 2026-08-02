@@ -1777,20 +1777,20 @@ body.light .win3d-face .wt-cube-single {
 }
 
 /* flat mode face positions */
-.win3d-front  { transform: translateZ(clamp(80px, 7vw, 114px)); }
-.win3d-back   { transform: rotateY(180deg) translateZ(clamp(80px, 7vw, 114px)); }
-.win3d-right  { transform: rotateY(90deg)  translateZ(clamp(80px, 7vw, 114px)); }
-.win3d-left   { transform: rotateY(-90deg) translateZ(clamp(80px, 7vw, 114px)); }
-.win3d-top    { transform: rotateX(90deg)  translateZ(clamp(80px, 7vw, 114px)); }
-.win3d-bottom { transform: rotateX(-90deg) translateZ(clamp(80px, 7vw, 114px)); }
+.win3d-front  { transform: translateZ(clamp(102px, 9vw, 142px)); }
+.win3d-back   { transform: rotateY(180deg) translateZ(clamp(102px, 9vw, 142px)); }
+.win3d-right  { transform: rotateY(90deg)  translateZ(clamp(102px, 9vw, 142px)); }
+.win3d-left   { transform: rotateY(-90deg) translateZ(clamp(102px, 9vw, 142px)); }
+.win3d-top    { transform: rotateX(90deg)  translateZ(clamp(102px, 9vw, 142px)); }
+.win3d-bottom { transform: rotateX(-90deg) translateZ(clamp(102px, 9vw, 142px)); }
 
 /* 3d mode face positions (now matching flat grid size) */
-.win3d-scene.mode-3d .win3d-front  { transform: translateZ(clamp(80px, 7vw, 114px)); }
-.win3d-scene.mode-3d .win3d-back   { transform: rotateY(180deg) translateZ(clamp(80px, 7vw, 114px)); }
-.win3d-scene.mode-3d .win3d-right  { transform: rotateY(90deg)  translateZ(clamp(80px, 7vw, 114px)); }
-.win3d-scene.mode-3d .win3d-left   { transform: rotateY(-90deg) translateZ(clamp(80px, 7vw, 114px)); }
-.win3d-scene.mode-3d .win3d-top    { transform: rotateX(90deg)  translateZ(clamp(80px, 7vw, 114px)); }
-.win3d-scene.mode-3d .win3d-bottom { transform: rotateX(-90deg) translateZ(clamp(80px, 7vw, 114px)); }
+.win3d-scene.mode-3d .win3d-front  { transform: translateZ(clamp(102px, 9vw, 142px)); }
+.win3d-scene.mode-3d .win3d-back   { transform: rotateY(180deg) translateZ(clamp(102px, 9vw, 142px)); }
+.win3d-scene.mode-3d .win3d-right  { transform: rotateY(90deg)  translateZ(clamp(102px, 9vw, 142px)); }
+.win3d-scene.mode-3d .win3d-left   { transform: rotateY(-90deg) translateZ(clamp(102px, 9vw, 142px)); }
+.win3d-scene.mode-3d .win3d-top    { transform: rotateX(90deg)  translateZ(clamp(102px, 9vw, 142px)); }
+.win3d-scene.mode-3d .win3d-bottom { transform: rotateX(-90deg) translateZ(clamp(102px, 9vw, 142px)); }
 
 /* only the front face stays sharp — every other face is blurred for depth */
 .win3d-scene.mode-3d .win3d-back,
