@@ -498,7 +498,7 @@ body.light .tube-bar {
  font-display: swap;
 }
 .hero-name {
- font-size: clamp(1.1rem, 2.2vw, 2.4rem);
+ font-size: clamp(1.5rem, 2.9vw, 3.2rem);
  font-weight: 600;
  line-height: .9;
  letter-spacing: .02em;
@@ -575,7 +575,7 @@ body.light .hero-name .ac-plain {
  gap: 14px;
  padding: 7px 0;
  font-size: .82rem;
- font-weight: 600;
+ font-weight: 400;
  color: var(--mu);
  transition: color .35s ease;
  white-space: nowrap;
@@ -653,7 +653,7 @@ body.light .hero-name .ac-plain {
 body.light .hero-info-time { color: var(--mu); }
 body.light .hero-info-time em { color: var(--a); }
 body.light .hero-info { border-color: rgba(0,0,0,.07); background: rgba(255,255,255,.55); box-shadow: 0 1px 4px rgba(0,0,0,.05); }
-body.light .hero-info-item { color: var(--mu); font-weight: 500; }
+body.light .hero-info-item { color: var(--mu); font-weight: 400; }
 body.light .hero-info-item:hover { color: var(--tx); }
 body.light .hero-info-item svg { border-color: rgba(58,94,74,.25); }
 body.light .hero-info-item a:hover { color: var(--tx); }
@@ -1984,13 +1984,13 @@ body.light .skill-tailwind-css svg {
 
 /* ── LARGE DESKTOP (≤ 1400px) ──────────────────────────────── */
 @media (max-width: 1400px) {
-  .hero-name { font-size: clamp(1.2rem, 2.6vw, 2.9rem); }
+  .hero-name { font-size: clamp(1.6rem, 3.4vw, 3.7rem); }
   .masonry-list { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* ── MEDIUM DESKTOP / LARGE TABLET LANDSCAPE (≤ 1200px) ────── */
 @media (max-width: 1200px) {
-  .hero-name { font-size: clamp(1.1rem, 2.2vw, 2.5rem); }
+  .hero-name { font-size: clamp(1.5rem, 2.9vw, 3.3rem); }
   .masonry-list { grid-template-columns: repeat(3, 1fr); }
 }
 
@@ -2016,7 +2016,7 @@ body.light .skill-tailwind-css svg {
   .hero-right { order: 2; flex: none; width: 100%; display: flex; justify-content: center; align-self: center; margin: clamp(30px, 5vw, 46px) 0 clamp(20px, 3.5vw, 34px); padding-right: 0; }
 
   /* Hero name: single line, sized to fit width */
-  .hero-name { font-size: clamp(1.3rem, 3.4vw, 2.6rem); font-weight: 600; white-space: nowrap; line-height: .9; letter-spacing: .02em; margin-bottom: clamp(11px, 1.7vw, 17px); }
+  .hero-name { font-size: clamp(1.7rem, 4.4vw, 3.4rem); font-weight: 600; white-space: nowrap; line-height: .9; letter-spacing: .02em; margin-bottom: clamp(11px, 1.7vw, 17px); }
   .hero-name .ac { font-weight: 600; }
 
   /* Role row */
@@ -2121,7 +2121,7 @@ body.light .skill-tailwind-css svg {
 
   /* Name: single line, sized to fit width */
   .hero-name {
-    font-size: clamp(1.15rem, 3.6vw, 2.2rem);
+    font-size: clamp(1.55rem, 4.6vw, 2.9rem);
     font-weight: 600;
     line-height: .9;
     letter-spacing: .02em;
@@ -2433,7 +2433,7 @@ body.light .skill-tailwind-css svg {
 
   /* Name */
   .hero-name {
-    font-size: clamp(0.95rem, 3.8vw, 1.5rem);
+    font-size: clamp(1.3rem, 5vw, 2rem);
     line-height: .95;
     letter-spacing: .02em;
     margin-top: clamp(4px, 1vw, 8px);
@@ -2511,7 +2511,7 @@ body.light .skill-tailwind-css svg {
 
   #home { padding: calc(var(--nav) + 22px) 0 48px; }
   .hero-inner { flex-direction: column; align-items: center; gap: 22px; margin-top: -24px; }
-  .hero-name { font-size: clamp(0.85rem, 4.6vw, 1.2rem); margin-top: 6px; margin-bottom: 11px; white-space: nowrap; }
+  .hero-name { font-size: clamp(1.15rem, 5.8vw, 1.6rem); margin-top: 6px; margin-bottom: 11px; white-space: nowrap; }
   .hero-avail { font-size: .64rem; margin-bottom: 14px; }
   .hero-info { padding: 14px 13px; margin-bottom: 11px; }
   .hero-info-grid { flex-direction: row; gap: 18px; }
@@ -2564,7 +2564,7 @@ body.light .skill-tailwind-css svg {
   .nav-logo .logo-k { font-size: .66rem; }
   .nav-sep-line { display: none; }
 
-  .hero-name { font-size: clamp(0.78rem, 4.4vw, 1.05rem); margin-top: 5px; margin-bottom: 11px; white-space: nowrap; }
+  .hero-name { font-size: clamp(1.05rem, 5.6vw, 1.4rem); margin-top: 5px; margin-bottom: 11px; white-space: nowrap; }
 
 
 
