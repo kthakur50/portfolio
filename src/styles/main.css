@@ -683,13 +683,15 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   flex-shrink: 0;
   width: 24px;
   height: 24px;
+  box-sizing: border-box;
   border-radius: var(--rad);
+  border: 1px solid rgba(255,255,255,.12);
   background: transparent;
   color: var(--tx);
 }
 .btn-o-ico svg { display: block; }
 body.light .btn-o { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.04); box-shadow: none; }
-body.light .btn-o-ico { background: transparent; }
+body.light .btn-o-ico { background: transparent; border-color: rgba(0,0,0,.12); }
 .btn-o:hover { border-color: rgba(34,160,99,.5); color: var(--a2); background: rgba(34,160,99,.08); box-shadow: none; }
 .btn-o:hover .btn-o-ico { background: rgba(34,160,99,.18); }
 body.light .btn-o:hover { border-color: rgba(25,106,71,.3); background: rgba(25,106,71,.06); }
