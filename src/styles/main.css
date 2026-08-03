@@ -498,13 +498,13 @@ body.light .tube-bar {
  font-display: swap;
 }
 .hero-name {
- font-size: clamp(1.3rem, 2.6vw, 2.8rem);
+ font-size: clamp(1.1rem, 2.2vw, 2.4rem);
  font-weight: 600;
  line-height: .9;
  letter-spacing: .02em;
  color: #f0f8f4;
  margin-top: -12px;
- margin-bottom: 28px;
+ margin-bottom: 14px;
  white-space: nowrap;
  font-family: 'Geist Pixel', 'Inter', 'Arimo', -apple-system, sans-serif;
  transform: none;
@@ -544,7 +544,7 @@ body.light .hero-name .ac-plain {
   width: 100%;
   border: 1px solid rgba(255,255,255,.10);
   border-radius: var(--rad);
-  padding: 20px 14px 20px 24px;
+  padding: 24px 18px 24px 28px;
   box-sizing: border-box;
   background: rgba(255,255,255,.025);
 }
@@ -574,19 +574,18 @@ body.light .hero-name .ac-plain {
  align-items: center;
  gap: 14px;
  padding: 7px 0;
- font-size: .73rem;
- font-weight: 500;
- color: #9ab8ab;
- font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+ font-size: .82rem;
+ font-weight: 600;
+ color: var(--mu);
  transition: color .35s ease;
  white-space: nowrap;
- height: 34px;
+ height: 36px;
 }
 .hero-info-item:hover { color: var(--tx); }
 .hero-info-item svg {
  flex-shrink: 0;
  opacity: 1;
- border: 1px solid rgba(154,184,171,.25);
+ border: 1px solid rgba(154,184,171,.4);
  border-radius: var(--rad);
  padding: 3px;
  width: 20px;
@@ -596,7 +595,7 @@ body.light .hero-name .ac-plain {
 .hero-info-item a { color: inherit; transition: color var(--ease); }
 .hero-info-item a:hover { color: #ffffff; }
 .hero-info-item a[href*="github"]:hover { color: var(--a2); }
-.hero-info-time { color: #9ab8ab; display: flex; align-items: center; gap: 4px; }
+.hero-info-time { color: var(--mu); display: flex; align-items: center; gap: 4px; }
 .hero-info-time em { font-style: normal; color: var(--a2); font-size: .62rem; }
 .typing-text { display: inline-flex; align-items: center; }
 .typing-cursor {
@@ -651,10 +650,10 @@ body.light .hero-name .ac-plain {
  55% { opacity: 1; }
  100% { transform: rotateX(0deg); opacity: 1; }
 }
-body.light .hero-info-time { color: #3a5e4a; }
+body.light .hero-info-time { color: var(--mu); }
 body.light .hero-info-time em { color: var(--a); }
 body.light .hero-info { border-color: rgba(0,0,0,.07); background: rgba(255,255,255,.55); box-shadow: 0 1px 4px rgba(0,0,0,.05); }
-body.light .hero-info-item { color: #3a5e4a; font-weight: 500; }
+body.light .hero-info-item { color: var(--mu); font-weight: 500; }
 body.light .hero-info-item:hover { color: var(--tx); }
 body.light .hero-info-item svg { border-color: rgba(58,94,74,.25); }
 body.light .hero-info-item a:hover { color: var(--tx); }
@@ -667,7 +666,7 @@ body.light .btn-o { border-color: rgba(0,0,0,.07); background: rgba(255,255,255,
 body.light .btn-o:hover { border-color: rgba(25,106,71,.3); background: rgba(25,106,71,.06); }
 .arr { display: inline-block; transition: transform var(--ease); will-change: transform; }
 .btn-o:hover .arr { transform: translateX(4px); }
-.hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 8px 14px; font-size: .68rem; }
+.hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 10px 16px; font-size: .76rem; }
 
 #about, #skills, #experience, #projects, #education, #contact {
  border-top: 1px solid rgba(255,255,255,0.07);
@@ -1985,13 +1984,13 @@ body.light .skill-tailwind-css svg {
 
 /* ── LARGE DESKTOP (≤ 1400px) ──────────────────────────────── */
 @media (max-width: 1400px) {
-  .hero-name { font-size: clamp(1.5rem, 3.4vw, 3.8rem); }
+  .hero-name { font-size: clamp(1.2rem, 2.6vw, 2.9rem); }
   .masonry-list { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* ── MEDIUM DESKTOP / LARGE TABLET LANDSCAPE (≤ 1200px) ────── */
 @media (max-width: 1200px) {
-  .hero-name { font-size: clamp(1.3rem, 2.8vw, 3.2rem); }
+  .hero-name { font-size: clamp(1.1rem, 2.2vw, 2.5rem); }
   .masonry-list { grid-template-columns: repeat(3, 1fr); }
 }
 
@@ -2017,7 +2016,7 @@ body.light .skill-tailwind-css svg {
   .hero-right { order: 2; flex: none; width: 100%; display: flex; justify-content: center; align-self: center; margin: clamp(30px, 5vw, 46px) 0 clamp(20px, 3.5vw, 34px); padding-right: 0; }
 
   /* Hero name: single line, sized to fit width */
-  .hero-name { font-size: clamp(1.6rem, 4.2vw, 3.2rem); font-weight: 600; white-space: nowrap; line-height: .9; letter-spacing: .02em; margin-bottom: clamp(26px, 3.2vw, 38px); }
+  .hero-name { font-size: clamp(1.3rem, 3.4vw, 2.6rem); font-weight: 600; white-space: nowrap; line-height: .9; letter-spacing: .02em; margin-bottom: clamp(11px, 1.7vw, 17px); }
   .hero-name .ac { font-weight: 600; }
 
   /* Role row */
@@ -2122,12 +2121,12 @@ body.light .skill-tailwind-css svg {
 
   /* Name: single line, sized to fit width */
   .hero-name {
-    font-size: clamp(1.5rem, 4.6vw, 2.8rem);
+    font-size: clamp(1.15rem, 3.6vw, 2.2rem);
     font-weight: 600;
     line-height: .9;
     letter-spacing: .02em;
     white-space: nowrap;
-    margin-bottom: clamp(24px, 3.4vw, 34px);
+    margin-bottom: clamp(15px, 2.5vw, 21px);
   }
   .hero-name .ac { font-weight: 600; }
   /* Info: full width, bigger horizontally */
@@ -2434,11 +2433,11 @@ body.light .skill-tailwind-css svg {
 
   /* Name */
   .hero-name {
-    font-size: clamp(1.15rem, 4.6vw, 1.8rem);
+    font-size: clamp(0.95rem, 3.8vw, 1.5rem);
     line-height: .95;
     letter-spacing: .02em;
     margin-top: clamp(4px, 1vw, 8px);
-    margin-bottom: clamp(11px, 2.6vw, 17px);
+    margin-bottom: clamp(9px, 1.8vw, 12px);
     white-space: nowrap;
   }
   /* Role */
@@ -2450,12 +2449,12 @@ body.light .skill-tailwind-css svg {
   .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(11px, 2.6vw, 16px); }
   .hero-info-col:first-child { padding-right: 0; border-right: none; padding-bottom: 0; border-bottom: none; }
   .hero-info-col:last-child { padding-left: 0; padding-top: 0; }
-  .hero-info-item { font-size: clamp(.6rem, 1.75vw, .68rem); height: auto; min-height: clamp(30px, 5.4vw, 35px); gap: clamp(4px, 1vw, 7px); white-space: nowrap; line-height: 1.35; padding: clamp(4px, .9vw, 6px) 0; overflow: visible; }
+  .hero-info-item { font-size: clamp(.68rem, 1.9vw, .78rem); height: auto; min-height: clamp(30px, 5.4vw, 35px); gap: clamp(4px, 1vw, 7px); white-space: nowrap; line-height: 1.35; padding: clamp(4px, .9vw, 6px) 0; overflow: visible; }
   .hero-info-item svg { width: clamp(12px, 2.2vw, 15px); height: clamp(12px, 2.2vw, 15px); flex-shrink: 0; }
   /* Buttons */
   .hero-btns { flex-wrap: wrap; gap: clamp(4px, 1.5vw, 7px); margin-top: clamp(2px, 1vw, 5px); }
   .hero-btns .btn-o {
-    font-size: clamp(.54rem, 1.8vw, .66rem);
+    font-size: clamp(.62rem, 2vw, .74rem);
     padding: clamp(4px, 1.3vw, 7px) clamp(6px, 2.2vw, 11px);
     flex: 1;
     min-width: 0;
@@ -2512,17 +2511,17 @@ body.light .skill-tailwind-css svg {
 
   #home { padding: calc(var(--nav) + 22px) 0 48px; }
   .hero-inner { flex-direction: column; align-items: center; gap: 22px; margin-top: -24px; }
-  .hero-name { font-size: clamp(1.05rem, 5.6vw, 1.55rem); margin-top: 6px; margin-bottom: 13px; white-space: nowrap; }
+  .hero-name { font-size: clamp(0.85rem, 4.6vw, 1.2rem); margin-top: 6px; margin-bottom: 11px; white-space: nowrap; }
   .hero-avail { font-size: .64rem; margin-bottom: 14px; }
   .hero-info { padding: 14px 13px; margin-bottom: 11px; }
   .hero-info-grid { flex-direction: row; gap: 18px; }
   .hero-info-col { gap: 12px; }
   .hero-info-col:first-child { padding-right: 0; }
   .hero-info-col:last-child { padding-left: 0; }
-  .hero-info-item { font-size: .64rem; height: auto; min-height: 32px; gap: 5px; padding: 4px 0; line-height: 1.3; white-space: nowrap; overflow: visible; }
+  .hero-info-item { font-size: .7rem; height: auto; min-height: 32px; gap: 5px; padding: 4px 0; line-height: 1.3; white-space: nowrap; overflow: visible; }
   .hero-info-item svg { width: 13px; height: 13px; }
   .hero-btns { margin-top: 3px; }
-  .hero-btns .btn-o { font-size: .62rem; padding: 6px 9px; }
+  .hero-btns .btn-o { font-size: .68rem; padding: 7px 10px; }
   .contact-links { gap: 5px; }
   .contact-links a { font-size: .62rem; padding: 6px 5px; gap: 3px; }
   .contact-links a svg { width: 12px; height: 12px; }
@@ -2565,16 +2564,16 @@ body.light .skill-tailwind-css svg {
   .nav-logo .logo-k { font-size: .66rem; }
   .nav-sep-line { display: none; }
 
-  .hero-name { font-size: clamp(0.95rem, 5.4vw, 1.35rem); margin-top: 5px; margin-bottom: 12px; white-space: nowrap; }
+  .hero-name { font-size: clamp(0.78rem, 4.4vw, 1.05rem); margin-top: 5px; margin-bottom: 11px; white-space: nowrap; }
 
 
 
-  .hero-info { padding: 12px 11px; }
+  .hero-info { padding: 12px 11px; margin-bottom: 11px; }
   .hero-info-grid { gap: 16px; }
   .hero-info-col { gap: 11px; }
   .hero-info-col:first-child { padding-right: 0; }
   .hero-info-col:last-child { padding-left: 0; }
-  .hero-info-item { font-size: .58rem; height: auto; min-height: 28px; gap: 4px; padding: 4px 0; line-height: 1.25; white-space: nowrap; overflow: visible; }
+  .hero-info-item { font-size: .64rem; height: auto; min-height: 28px; gap: 4px; padding: 4px 0; line-height: 1.25; white-space: nowrap; overflow: visible; }
   .hero-info-item svg { width: 11px; height: 11px; }
 
   .contact-links { gap: 4px; }
