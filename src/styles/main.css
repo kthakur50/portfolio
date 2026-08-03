@@ -2243,13 +2243,14 @@ body.light .skill-tailwind-css svg {
   body.light .nav-sep-line-mob { background: rgba(0,0,0,.16); }
   .nav-mob {
     position: fixed;
-    top: 12px;
+    top: calc(var(--nav) + 10px);
     left: auto;
     right: 12px;
     bottom: 12px;
     height: auto;
     max-height: none;
     overflow-y: auto;
+    overflow-x: hidden;
     width: min(72vw, 320px);
     background: rgba(15, 15, 15, 0.98);
     backdrop-filter: blur(28px) saturate(160%);
@@ -2364,18 +2365,14 @@ body.light .skill-tailwind-css svg {
     height: 40px;
     min-width: 40px;
     border-radius: 13px;
-    box-shadow: 0 6px 16px rgba(0,0,0,.28);
-    transition: transform .25s cubic-bezier(.34,1.5,.64,1);
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: none;
+    transition: transform .25s cubic-bezier(.34,1.5,.64,1), border-color var(--ease), background var(--ease);
   }
-  .nav-mob a:hover .nm-icon { transform: scale(1.08) rotate(-4deg); }
-  .nm-icon svg { width: 18px; height: 18px; color: #fff; }
-  .nm-home    .nm-icon { background: linear-gradient(135deg, #6366f1, #4f46e5); }
-  .nm-about   .nm-icon { background: linear-gradient(135deg, #a855f7, #7c3aed); }
-  .nm-skills  .nm-icon { background: linear-gradient(135deg, #38bdf8, #0284c7); }
-  .nm-experience .nm-icon { background: linear-gradient(135deg, #fbbf24, #d97706); }
-  .nm-projects .nm-icon { background: linear-gradient(135deg, #f472b6, #db2777); }
-  .nm-education .nm-icon { background: linear-gradient(135deg, #34d399, #059669); }
-  .nm-contact .nm-icon { background: linear-gradient(135deg, #fb923c, #ea580c); }
+  body.light .nm-icon { border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.02); }
+  .nav-mob a:hover .nm-icon { transform: scale(1.08) rotate(-4deg); border-color: rgba(34,160,99,.5); background: rgba(34,160,99,.08); }
+  .nm-icon svg { width: 18px; height: 18px; color: var(--tx); }
 
   .nav-mob-label {
     font-size: .74rem;
