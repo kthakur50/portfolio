@@ -666,8 +666,8 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   gap: 8px;
   padding: 7px 16px 7px 7px;
   border-radius: var(--rad);
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.045);
   color: var(--tx);
   font-size: .76rem;
   font-weight: 700;
@@ -688,7 +688,7 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   color: var(--tx);
 }
 .btn-o-ico svg { display: block; }
-body.light .btn-o { border-color: rgba(0,0,0,.10); background: rgba(0,0,0,.08); box-shadow: none; }
+body.light .btn-o { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.04); box-shadow: none; }
 body.light .btn-o-ico { background: transparent; }
 .btn-o:hover { border-color: rgba(34,160,99,.5); color: var(--a2); background: rgba(34,160,99,.08); box-shadow: none; }
 .btn-o:hover .btn-o-ico { background: rgba(34,160,99,.18); }
