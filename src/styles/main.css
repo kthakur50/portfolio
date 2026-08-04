@@ -824,8 +824,8 @@ body.light #about { background: transparent; }
 }
 @media (min-width: 1025px) {
   .hero-block { max-width: clamp(560px, 62vw, 760px); }
-  #home .wrap { max-width: 1180px; }
-  .hero-name { font-size: clamp(3.3rem, 4.4vw, 5.9rem); }
+  #home .wrap { max-width: var(--wrap-max); }
+  .hero-name { font-size: clamp(3.3rem, 4.4vw, 5rem); }
   .hero-avail { font-size: .88rem; margin-bottom: 15px; }
   .hero-info { padding: 22px 18px 22px 26px; margin-bottom: 16px; }
   .hero-info-grid { gap: 8px; }
