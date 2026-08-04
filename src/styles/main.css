@@ -673,22 +673,8 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   font-weight: 700;
   letter-spacing: -.005em;
   position: relative;
-  overflow: hidden;
-  isolation: isolate;
   cursor: pointer;
-  transition: color .35s ease, border-color .35s ease, transform .3s cubic-bezier(.25,.46,.45,.94);
-  will-change: transform;
-  transform: scale(1);
-}
-.btn-o::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--a2);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .4s cubic-bezier(.65,0,.35,1);
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
 }
 .btn-o-ico {
   display: inline-flex;
@@ -702,31 +688,32 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   border: none;
   background: transparent;
   color: var(--tx);
-  transition: transform .35s ease;
 }
 .btn-o-ico svg { display: block; }
 body.light .btn-o { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.04); box-shadow: none; }
 body.light .btn-o-ico { background: transparent; border: none; }
 .btn-o:hover {
-  border-color: transparent;
-  color: #06150e;
-  transform: scale(1.02);
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.16);
+  color: var(--tx);
 }
-.btn-o:hover::before { transform: scaleX(1); }
-.btn-o:hover .btn-o-ico { transform: scale(1.1); }
+body.light .btn-o:hover {
+  background: rgba(0,0,0,.08);
+  border-color: rgba(0,0,0,.14);
+  color: var(--tx);
+}
 .btn-o:active {
-  transform: scale(.97);
-  transition-duration: .12s;
+  background: rgba(255,255,255,.14);
+}
+body.light .btn-o:active {
+  background: rgba(0,0,0,.12);
 }
 .btn-o:focus-visible {
   outline: 2px solid var(--a2);
   outline-offset: 3px;
 }
-body.light .btn-o:hover {
-  color: #06150e;
-}
-.arr { display: inline-block; transition: transform .3s ease; will-change: transform; }
-.btn-o:hover .arr { transform: translateX(4px); }
+.arr { display: inline-block; transition: transform .2s ease; }
+.btn-o:hover .arr { transform: translateX(3px); }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 8px 16px 8px 7px; font-size: .76rem; }
 
 #about, #skills, #experience, #projects, #education, #contact {
