@@ -672,7 +672,7 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   font-size: .76rem;
   font-weight: 700;
   letter-spacing: -.005em;
-  transition: color .3s ease, border-color .3s ease, background-color .3s ease, transform .3s cubic-bezier(.25,.46,.45,.94);
+  transition: color .3s ease, border-color .3s ease, background-color .3s ease, transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s ease;
   will-change: transform;
   transform: translateZ(0);
 }
@@ -685,16 +685,24 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   height: 24px;
   box-sizing: border-box;
   border-radius: var(--rad);
-  border: 1px solid rgba(255,255,255,.12);
+  border: none;
   background: transparent;
   color: var(--tx);
+  transition: transform .35s cubic-bezier(.25,.46,.45,.94);
 }
 .btn-o-ico svg { display: block; }
 body.light .btn-o { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.04); box-shadow: none; }
-body.light .btn-o-ico { background: transparent; border-color: rgba(0,0,0,.12); }
-.btn-o:hover { border-color: rgba(34,160,99,.5); color: var(--a2); background: rgba(34,160,99,.08); box-shadow: none; }
-.btn-o:hover .btn-o-ico { background: rgba(34,160,99,.18); }
-body.light .btn-o:hover { border-color: rgba(25,106,71,.3); background: rgba(25,106,71,.06); }
+body.light .btn-o-ico { background: transparent; border: none; }
+.btn-o:hover {
+  border-color: rgba(34,160,99,.5);
+  color: var(--a2);
+  background: rgba(34,160,99,.08);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(34,160,99,.22);
+}
+.btn-o:hover .btn-o-ico { transform: scale(1.15) rotate(-6deg); }
+.btn-o:active { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(34,160,99,.18); }
+body.light .btn-o:hover { border-color: rgba(25,106,71,.3); background: rgba(25,106,71,.06); box-shadow: 0 8px 20px rgba(25,106,71,.14); }
 .arr { display: inline-block; transition: transform var(--ease); will-change: transform; }
 .btn-o:hover .arr { transform: translateX(4px); }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 8px 16px 8px 7px; font-size: .76rem; }
