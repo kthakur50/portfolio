@@ -843,14 +843,15 @@ body.light #about { background: transparent; }
   width: 100%;
 }
 @media (min-width: 1025px) {
-  .hero-block { max-width: clamp(500px, 58vw, 680px); }
-  :root { --wrap-max: 1100px; }
-  .hero-name { font-size: clamp(2.75rem, 3.7vw, 4.9rem); }
-  .hero-info { padding: 22px 18px 22px 26px; }
-  .hero-info-item { font-size: .82rem; height: 33px; gap: 10px; }
-  .hero-info-item svg { width: 18px; height: 18px; padding: 3px; }
-  .hero-btns .btn-o { font-size: .78rem; padding: 8px 22px 8px 9px; }
-  .btn-o-ico { width: 22px; height: 22px; }
+  .hero-block { max-width: clamp(560px, 62vw, 760px); }
+  #home .wrap { max-width: 1180px; }
+  .hero-name { font-size: clamp(3.3rem, 4.4vw, 5.9rem); }
+  .hero-avail { font-size: .88rem; margin-bottom: 15px; }
+  .hero-info { padding: 26px 22px 26px 30px; }
+  .hero-info-item { font-size: .94rem; height: 38px; gap: 13px; }
+  .hero-info-item svg { width: 21px; height: 21px; padding: 4px; }
+  .hero-btns .btn-o { font-size: .9rem; padding: 10px 26px 10px 11px; }
+  .btn-o-ico { width: 26px; height: 26px; }
 }
 .hero-avail {
  display: flex;
@@ -1753,8 +1754,8 @@ body.light .skill-card--tl {
  align-self: center;
 }
 @media (min-width: 1025px) {
-  .hero-right { align-self: flex-start; margin-top: calc(0.9 * clamp(2.6rem, 3.6vw, 4.7rem) + 2px); }
-  .win3d-scene { transform: scale(1.02); }
+  .hero-right { align-self: flex-start; margin-top: calc(0.9 * clamp(3.1rem, 4.3vw, 5.6rem) + 2px); }
+  .win3d-scene { transform: scale(1.18); }
 }
 /* ── WIN3D SCENE ─────────────────────────────────────────────── */
 .win3d-scene {
@@ -2090,7 +2091,7 @@ body.light .skill-tailwind-css svg {
   .hero-right { order: 2; flex: none; width: 100%; display: flex; justify-content: center; align-self: center; margin: clamp(30px, 5vw, 46px) 0 clamp(20px, 3.5vw, 34px); padding-right: 0; }
 
   /* Hero name: single line, sized to fit width */
-  .hero-name { font-size: clamp(1.7rem, 4.4vw, 3.4rem); font-weight: 600; white-space: nowrap; line-height: .9; letter-spacing: .02em; margin-bottom: clamp(11px, 1.7vw, 17px); }
+  .hero-name { font-size: clamp(2.05rem, 5.3vw, 4.1rem); font-weight: 600; white-space: nowrap; line-height: .9; letter-spacing: .02em; margin-bottom: clamp(11px, 1.7vw, 17px); }
   .hero-name .ac { font-weight: 600; }
 
   /* Role row */
@@ -2195,7 +2196,7 @@ body.light .skill-tailwind-css svg {
 
   /* Name: single line, sized to fit width */
   .hero-name {
-    font-size: clamp(1.55rem, 4.6vw, 2.9rem);
+    font-size: clamp(1.85rem, 5.5vw, 3.5rem);
     font-weight: 600;
     line-height: .9;
     letter-spacing: .02em;
@@ -2507,7 +2508,7 @@ body.light .skill-tailwind-css svg {
 
   /* Name */
   .hero-name {
-    font-size: clamp(1.3rem, 5vw, 2rem);
+    font-size: clamp(1.55rem, 6vw, 2.4rem);
     line-height: .95;
     letter-spacing: .02em;
     margin-top: clamp(4px, 1vw, 8px);
@@ -2585,7 +2586,7 @@ body.light .skill-tailwind-css svg {
 
   #home { padding: calc(var(--nav) + 22px) 0 48px; }
   .hero-inner { flex-direction: column; align-items: center; gap: 22px; margin-top: -24px; }
-  .hero-name { font-size: clamp(1.15rem, 5.8vw, 1.6rem); margin-top: 6px; margin-bottom: 11px; white-space: nowrap; }
+  .hero-name { font-size: clamp(1.4rem, 7vw, 1.95rem); margin-top: 6px; margin-bottom: 11px; white-space: nowrap; }
   .hero-avail { font-size: .64rem; margin-bottom: 14px; }
   .hero-info { padding: 14px 13px; margin-bottom: 11px; }
   .hero-info-grid { flex-direction: row; gap: 18px; }
@@ -2638,7 +2639,7 @@ body.light .skill-tailwind-css svg {
   .nav-logo .logo-k { font-size: .66rem; }
   .nav-sep-line { display: none; }
 
-  .hero-name { font-size: clamp(1.05rem, 5.6vw, 1.4rem); margin-top: 5px; margin-bottom: 11px; white-space: nowrap; }
+  .hero-name { font-size: clamp(1.25rem, 6.7vw, 1.7rem); margin-top: 5px; margin-bottom: 11px; white-space: nowrap; }
 
 
 
