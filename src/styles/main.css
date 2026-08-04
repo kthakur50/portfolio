@@ -12,7 +12,7 @@
  --mu: #b0cfc0;
  --di: #2e4038;
  --pad: clamp(20px,5vw,64px);
- --wrap-max: 1280px;
+ --wrap-max: 1100px;
  --nav: 56px;
  --rad: 7px;
  --ease: .32s cubic-bezier(.25,.46,.45,.94);
@@ -846,7 +846,7 @@ body.light #about { background: transparent; }
 }
 @media (min-width: 1025px) {
   .hero-block { max-width: 640px; }
-  :root { --wrap-max: 1240px; }
+  :root { --wrap-max: 1100px; }
   .hero-name { font-size: clamp(2.6rem, 3.6vw, 4.7rem); }
   .hero-info { padding: 27px 23px 27px 31px; }
   .hero-info-item { font-size: .92rem; height: 39px; gap: 13px; }
