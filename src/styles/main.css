@@ -672,9 +672,34 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   font-size: .76rem;
   font-weight: 700;
   letter-spacing: -.005em;
-  transition: color .3s ease, border-color .3s ease, background-color .3s ease, transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s ease;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color .35s ease, border-color .35s ease, transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .35s ease;
   will-change: transform;
   transform: translateZ(0);
+}
+.btn-o::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--a2);
+  transform: translateX(-102%);
+  transition: transform .45s cubic-bezier(.65,0,.35,1);
+}
+.btn-o::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(115deg, transparent, rgba(255,255,255,.35), transparent);
+  transform: skewX(-20deg);
+  opacity: 0;
+  transition: opacity .2s ease;
 }
 .btn-o-ico {
   display: inline-flex;
@@ -688,21 +713,25 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   border: none;
   background: transparent;
   color: var(--tx);
-  transition: transform .35s cubic-bezier(.25,.46,.45,.94);
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1);
 }
 .btn-o-ico svg { display: block; }
 body.light .btn-o { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.04); box-shadow: none; }
 body.light .btn-o-ico { background: transparent; border: none; }
 .btn-o:hover {
-  border-color: rgba(34,160,99,.5);
-  color: var(--a2);
-  background: rgba(34,160,99,.08);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(34,160,99,.22);
+  border-color: var(--a2);
+  color: #06150e;
+  box-shadow: 0 10px 24px rgba(34,160,99,.28);
 }
-.btn-o:hover .btn-o-ico { transform: scale(1.15) rotate(-6deg); }
-.btn-o:active { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(34,160,99,.18); }
-body.light .btn-o:hover { border-color: rgba(25,106,71,.3); background: rgba(25,106,71,.06); box-shadow: 0 8px 20px rgba(25,106,71,.14); }
+.btn-o:hover::before { transform: translateX(0); }
+.btn-o:hover::after { opacity: 1; animation: btnShine .9s ease forwards; }
+@keyframes btnShine {
+  from { left: -60%; }
+  to   { left: 130%; }
+}
+.btn-o:hover .btn-o-ico { transform: scale(1.15) rotate(360deg); }
+.btn-o:active { transform: scale(.97); box-shadow: 0 4px 10px rgba(34,160,99,.2); }
+body.light .btn-o:hover { color: #06150e; box-shadow: 0 10px 24px rgba(25,106,71,.22); }
 .arr { display: inline-block; transition: transform var(--ease); will-change: transform; }
 .btn-o:hover .arr { transform: translateX(4px); }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 8px 16px 8px 7px; font-size: .76rem; }
