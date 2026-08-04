@@ -846,9 +846,9 @@ body.light #about { background: transparent; }
   .hero-block { max-width: clamp(500px, 58vw, 680px); }
   :root { --wrap-max: 1100px; }
   .hero-name { font-size: clamp(2.75rem, 3.7vw, 4.9rem); }
-  .hero-info { padding: 25px 21px 25px 29px; }
-  .hero-info-item { font-size: .89rem; height: 37px; gap: 12px; }
-  .hero-info-item svg { width: 20px; height: 20px; padding: 3px; }
+  .hero-info { padding: 22px 18px 22px 26px; }
+  .hero-info-item { font-size: .82rem; height: 33px; gap: 10px; }
+  .hero-info-item svg { width: 18px; height: 18px; padding: 3px; }
   .hero-btns .btn-o { font-size: .78rem; padding: 8px 22px 8px 9px; }
   .btn-o-ico { width: 22px; height: 22px; }
 }
@@ -1605,12 +1605,12 @@ body.light .skill-one-card .skill-card--tl {
 .skill-card {
  position: relative;
  border-radius: var(--rad);
- padding: 18px 20px;
+ padding: 14px 20px;
  cursor: default;
  display: flex;
  flex-direction: column;
  align-items: flex-start;
- gap: 18px;
+ gap: 13px;
  overflow: visible;
  opacity: 1;
  background: rgba(255,255,255,.04);
@@ -1651,7 +1651,7 @@ body.light .skill-card {
  box-shadow: none !important;
  transform: translateY(-2px);
 }
-.skill-card .skill-chip svg { width: 31px; height: 31px; min-width: 31px; padding: 8px; border: 1px solid rgba(127,127,127,.25); border-radius: var(--rad); background: rgba(127,127,127,.08); filter: brightness(1.15) saturate(1.25); }
+.skill-card .skill-chip svg { width: 27px; height: 27px; min-width: 27px; padding: 6px; border: 1px solid rgba(127,127,127,.25); border-radius: var(--rad); background: rgba(127,127,127,.08); filter: brightness(1.15) saturate(1.25); }
 .skill-card--fe {
  border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
  box-shadow: none;
