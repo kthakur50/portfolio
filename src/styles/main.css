@@ -675,18 +675,21 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  transition: color .35s ease, border-color .35s ease, transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .35s ease;
+  cursor: pointer;
+  transition: color .4s cubic-bezier(.25,.46,.45,.94), border-color .4s ease, transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s cubic-bezier(.22,1,.36,1), background .4s ease;
   will-change: transform;
-  transform: translateZ(0);
+  transform: translateY(0) translateZ(0) scale(1);
 }
 .btn-o::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: var(--a2);
-  transform: translateX(-102%);
-  transition: transform .45s cubic-bezier(.65,0,.35,1);
+  background: linear-gradient(135deg, #2ecf82, var(--a2) 55%, var(--a3));
+  background-size: 180% 180%;
+  background-position: 0% 50%;
+  clip-path: circle(0% at 12% 50%);
+  transition: clip-path .55s cubic-bezier(.22,1,.36,1), background-position 1.2s ease;
 }
 .btn-o::after {
   content: '';
@@ -696,7 +699,7 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   width: 40%;
   height: 100%;
   z-index: -1;
-  background: linear-gradient(115deg, transparent, rgba(255,255,255,.35), transparent);
+  background: linear-gradient(115deg, transparent, rgba(255,255,255,.4), transparent);
   transform: skewX(-20deg);
   opacity: 0;
   transition: opacity .2s ease;
@@ -713,27 +716,45 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   border: none;
   background: transparent;
   color: var(--tx);
-  transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+  transition: transform .5s cubic-bezier(.34,1.56,.64,1);
 }
 .btn-o-ico svg { display: block; }
 body.light .btn-o { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.04); box-shadow: none; }
 body.light .btn-o-ico { background: transparent; border: none; }
 .btn-o:hover {
-  border-color: var(--a2);
+  border-color: transparent;
   color: #06150e;
-  box-shadow: 0 10px 24px rgba(34,160,99,.28);
+  transform: translateY(-3px) translateZ(0) scale(1.015);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.35) inset,
+    0 14px 28px -10px rgba(34,160,99,.55),
+    0 4px 12px rgba(0,0,0,.28);
 }
-.btn-o:hover::before { transform: translateX(0); }
-.btn-o:hover::after { opacity: 1; animation: btnShine .9s ease forwards; }
+.btn-o:hover::before { clip-path: circle(150% at 12% 50%); background-position: 100% 50%; }
+.btn-o:hover::after { opacity: 1; animation: btnShine 1s ease forwards; }
 @keyframes btnShine {
   from { left: -60%; }
   to   { left: 130%; }
 }
-.btn-o:hover .btn-o-ico { transform: scale(1.15) rotate(360deg); }
-.btn-o:active { transform: scale(.97); box-shadow: 0 4px 10px rgba(34,160,99,.2); }
-body.light .btn-o:hover { color: #06150e; box-shadow: 0 10px 24px rgba(25,106,71,.22); }
-.arr { display: inline-block; transition: transform var(--ease); will-change: transform; }
-.btn-o:hover .arr { transform: translateX(4px); }
+.btn-o:hover .btn-o-ico { transform: scale(1.12) rotate(-8deg); }
+.btn-o:active {
+  transform: translateY(-1px) scale(.97);
+  box-shadow: 0 4px 10px rgba(34,160,99,.25);
+  transition-duration: .12s;
+}
+.btn-o:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(34,160,99,.35), 0 0 0 1px var(--a2);
+}
+body.light .btn-o:hover {
+  color: #06150e;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.4) inset,
+    0 14px 28px -10px rgba(25,106,71,.35),
+    0 4px 12px rgba(0,0,0,.1);
+}
+.arr { display: inline-block; transition: transform .4s cubic-bezier(.34,1.56,.64,1); will-change: transform; }
+.btn-o:hover .arr { transform: translateX(5px); }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 8px 16px 8px 7px; font-size: .76rem; }
 
 #about, #skills, #experience, #projects, #education, #contact {
