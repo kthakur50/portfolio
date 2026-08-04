@@ -676,9 +676,11 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   overflow: hidden;
   isolation: isolate;
   cursor: pointer;
-  transition: color .4s cubic-bezier(.25,.46,.45,.94), border-color .4s ease, transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s cubic-bezier(.22,1,.36,1), background .4s ease;
+  transition: color .4s cubic-bezier(.25,.46,.45,.94), border-color .4s ease, transform .35s cubic-bezier(.34,1.56,.64,1), outline-color .3s ease, outline-offset .35s cubic-bezier(.34,1.56,.64,1), background .4s ease;
   will-change: transform;
-  transform: translateY(0) translateZ(0) scale(1);
+  outline: 2px solid transparent;
+  outline-offset: 0px;
+  transform: scale(1);
 }
 .btn-o::before {
   content: '';
@@ -724,11 +726,9 @@ body.light .btn-o-ico { background: transparent; border: none; }
 .btn-o:hover {
   border-color: transparent;
   color: #06150e;
-  transform: translateY(-3px) translateZ(0) scale(1.015);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.35) inset,
-    0 14px 28px -10px rgba(34,160,99,.55),
-    0 4px 12px rgba(0,0,0,.28);
+  transform: scale(1.035);
+  outline: 2px solid var(--a2);
+  outline-offset: 5px;
 }
 .btn-o:hover::before { clip-path: circle(150% at 12% 50%); background-position: 100% 50%; }
 .btn-o:hover::after { opacity: 1; animation: btnShine 1s ease forwards; }
@@ -738,20 +738,16 @@ body.light .btn-o-ico { background: transparent; border: none; }
 }
 .btn-o:hover .btn-o-ico { transform: scale(1.12) rotate(-8deg); }
 .btn-o:active {
-  transform: translateY(-1px) scale(.97);
-  box-shadow: 0 4px 10px rgba(34,160,99,.25);
+  transform: scale(.97);
+  outline-offset: 2px;
   transition-duration: .12s;
 }
 .btn-o:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(34,160,99,.35), 0 0 0 1px var(--a2);
+  outline: 2px dashed var(--a2);
+  outline-offset: 5px;
 }
 body.light .btn-o:hover {
   color: #06150e;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.4) inset,
-    0 14px 28px -10px rgba(25,106,71,.35),
-    0 4px 12px rgba(0,0,0,.1);
 }
 .arr { display: inline-block; transition: transform .4s cubic-bezier(.34,1.56,.64,1); will-change: transform; }
 .btn-o:hover .arr { transform: translateX(5px); }
