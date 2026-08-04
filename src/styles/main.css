@@ -2640,18 +2640,6 @@ body.light .skill-tailwind-css svg {
   .skill-chip { cursor: pointer; }
 }
 
-/* ── SNOWFALL EFFECT ─────────────────────────────────────────── */
-/* Click-through canvas of drifting snowflakes over the whole page. */
-.snowfall {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 9999;
-}
-
 /* ── FOOTER ──────────────────────────────────────────────────── */
 .site-footer {
  border-top: 1px solid rgba(255,255,255,.07);
