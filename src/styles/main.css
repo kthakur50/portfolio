@@ -688,6 +688,7 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   border: none;
   background: transparent;
   color: var(--tx);
+  transition: transform .2s ease;
 }
 .btn-o-ico svg { display: block; }
 body.light .btn-o { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.04); box-shadow: none; }
@@ -702,6 +703,7 @@ body.light .btn-o:hover {
   border-color: rgba(0,0,0,.14);
   color: var(--tx);
 }
+.btn-o:hover .btn-o-ico { transform: translateX(-2px) scale(1.08); }
 .btn-o:active {
   background: rgba(255,255,255,.14);
 }
