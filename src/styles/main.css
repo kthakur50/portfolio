@@ -845,12 +845,14 @@ body.light #about { background: transparent; }
   width: 100%;
 }
 @media (min-width: 1025px) {
-  .hero-block { max-width: 620px; }
-  :root { --wrap-max: 1220px; }
-  .hero-name { font-size: clamp(2.4rem, 3.4vw, 4.4rem); }
-  .hero-info { padding: 24px 20px 24px 28px; }
-  .hero-info-item { font-size: .86rem; height: 36px; gap: 12px; }
-  .hero-info-item svg { width: 19px; height: 19px; padding: 3px; }
+  .hero-block { max-width: 660px; }
+  :root { --wrap-max: 1260px; }
+  .hero-name { font-size: clamp(2.8rem, 3.8vw, 5rem); }
+  .hero-info { padding: 30px 26px 30px 34px; }
+  .hero-info-item { font-size: .98rem; height: 42px; gap: 15px; }
+  .hero-info-item svg { width: 23px; height: 23px; padding: 4px; }
+  .hero-btns .btn-o { font-size: .88rem; padding: 10px 20px 10px 9px; }
+  .btn-o-ico { width: 27px; height: 27px; }
 }
 .hero-avail {
  display: flex;
@@ -1753,7 +1755,7 @@ body.light .skill-card--tl {
  align-self: center;
 }
 @media (min-width: 1025px) {
-  .hero-right { align-self: flex-start; margin-top: calc(0.9 * clamp(1.9rem, 3.9vw, 4.2rem) + 146px - 0.5 * clamp(160px, 14vw, 228px) + 24px - 40px); }
+  .hero-right { align-self: center; margin-top: 0; }
   .win3d-scene { transform: scale(1.0); }
 }
 /* ── WIN3D SCENE ─────────────────────────────────────────────── */
