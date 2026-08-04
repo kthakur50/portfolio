@@ -814,8 +814,8 @@ body.light #about { background: transparent; }
   width: 100%;
 }
 @media (min-width: 1025px) {
-  .hero-block { max-width: 500px; }
-  :root { --wrap-max: 1120px; }
+  .hero-block { max-width: 560px; }
+  :root { --wrap-max: 1160px; }
   .hero-name { font-size: clamp(2.4rem, 3.4vw, 4.4rem); }
   .hero-info { padding: 26px 20px 26px 30px; }
   .hero-info-item { font-size: .95rem; height: 40px; gap: 14px; }
