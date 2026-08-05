@@ -542,7 +542,7 @@ body.light .hero-name .ac-plain {
 .hero-info {
   margin-bottom: 14px;
   width: 100%;
-  border: 1px dashed rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.10);
   border-radius: var(--rad);
   padding: 30px 16px 30px 24px;
   box-sizing: border-box;
@@ -729,11 +729,11 @@ body.light .btn-o:hover .btn-o-ico { color: var(--a); }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 8px 16px 8px 7px; font-size: .76rem; }
 
 #about, #skills, #experience, #projects, #education, #contact {
- border-top: 1px dashed rgba(255,255,255,0.14);
+ border-top: 1px solid rgba(255,255,255,0.14);
 }
 body.light #about, body.light #skills, body.light #experience,
 body.light #projects, body.light #education, body.light #contact {
- border-top: 1px dashed rgba(0,0,0,0.16);
+ border-top: 1px solid rgba(0,0,0,0.16);
 }
 body.light #skills, body.light #contact {
  background: transparent;
@@ -1090,7 +1090,7 @@ body.light .exp-item:hover .exp-card {
 .exp-divider {
  width: 100%;
  height: 0;
- border-top: 1px dashed var(--br);
+ border-top: 1px solid var(--br);
  margin: 14px 0;
  opacity: .7;
 }
