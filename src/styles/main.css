@@ -542,7 +542,7 @@ body.light .hero-name .ac-plain {
 .hero-info {
   margin-bottom: 14px;
   width: 100%;
-  border: 1px solid rgba(255,255,255,.10);
+  border: 1px dotted rgba(255,255,255,.10);
   border-radius: var(--rad);
   padding: 20px 16px 20px 24px;
   box-sizing: border-box;
@@ -729,11 +729,11 @@ body.light .btn-o:hover .btn-o-ico { color: var(--a); }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 8px 16px 8px 7px; font-size: .76rem; }
 
 #about, #skills, #experience, #projects, #education, #contact {
- border-top: 1px solid rgba(255,255,255,0.07);
+ border-top: 1px dotted rgba(255,255,255,0.14);
 }
 body.light #about, body.light #skills, body.light #experience,
 body.light #projects, body.light #education, body.light #contact {
- border-top: 1px solid rgba(0,0,0,0.08);
+ border-top: 1px dotted rgba(0,0,0,0.16);
 }
 body.light #skills, body.light #contact {
  background: transparent;
@@ -988,7 +988,7 @@ body.light .exp-item:hover .exp-node {
 .exp-card {
  flex: 1;
  background: rgba(255,255,255,.04);
- border: 1px solid rgba(255,255,255,.10);
+ border: 1px dotted rgba(255,255,255,.10);
  border-radius: var(--rad);
  padding: 18px 22px;
  min-width: 0;
@@ -1085,10 +1085,10 @@ body.light .exp-item:hover .exp-card {
 .exp-loc svg { width: 10px; height: 10px; flex-shrink: 0; }
 .exp-divider {
  width: 100%;
- height: 1px;
- background: var(--br);
+ height: 0;
+ border-top: 1px dotted var(--br);
  margin: 14px 0;
- opacity: .5;
+ opacity: .7;
 }
 
 .exp-desc {
@@ -1140,7 +1140,7 @@ body.light #projects { background: transparent; }
  border-radius: var(--rad);
  overflow: hidden;
  background: var(--card-bg);
- border: 1px solid rgba(255,255,255,.10);
+ border: 1px dotted rgba(255,255,255,.10);
  box-shadow: var(--card-shadow);
  transition: box-shadow .45s cubic-bezier(.25,.46,.45,.94),
  transform .45s cubic-bezier(.25,.46,.45,.94),
@@ -1273,7 +1273,7 @@ body.light .edu-item:hover .edu-node {
  align-items: flex-start;
  gap: 16px;
  background: rgba(255,255,255,.04);
- border: 1px solid rgba(255,255,255,.10);
+ border: 1px dotted rgba(255,255,255,.10);
  border-radius: var(--rad);
  padding: 18px 22px;
  min-height: 58px;
@@ -1475,7 +1475,7 @@ body.light .contact-social { border-color: rgba(138,170,152,.25); background: rg
 }
 body.light .contact-social:hover { border-color: rgba(25,106,71,.3); background: rgba(25,106,71,.06); }
 
-footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: transparent; }
+footer { padding: 20px var(--pad); border-top: 1px dotted var(--br); background: transparent; }
 body.light footer { background: #ffffff; }
 
 .skill-marquee-wrap {
@@ -1611,7 +1611,7 @@ body.light .skill-one-card .skill-card--tl {
  overflow: visible;
  opacity: 1;
  background: rgba(255,255,255,.04);
- border: 1px solid rgba(255,255,255,.10);
+ border: 1px dotted rgba(255,255,255,.10);
  box-shadow: none;
 
 }
