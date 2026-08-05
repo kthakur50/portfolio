@@ -920,41 +920,17 @@ body.light #experience { background: transparent; }
  display: flex;
  flex-direction: column;
  gap: 0;
+ width: 100%;
  position: relative;
- padding-left: 54px;
 }
 .exp-list::before { display: none; }
-.exp-item::before {
- content: '';
- position: absolute;
- left: -29px;
- top: 54px;
- bottom: 40px;
- width: 1.5px;
- background: linear-gradient(to bottom, rgba(255,255,255,.18), rgba(255,255,255,0));
- opacity: 1;
- transition: background var(--ease);
-}
-body.light .exp-item::before {
- background: linear-gradient(to bottom, rgba(0,0,0,.14), rgba(0,0,0,0));
- opacity: 1;
-}
-.exp-item:hover::before {
- background: linear-gradient(to bottom, rgba(34,160,99,.5), rgba(34,160,99,0));
-}
-body.light .exp-item:hover::before {
- background: linear-gradient(to bottom, rgba(25,106,71,.4), rgba(25,106,71,0));
-}
-.exp-item:last-child::before { bottom: 0; }
 .exp-item {
  position: relative;
  padding-bottom: 40px;
 }
 .exp-item:last-child { padding-bottom: 0; }
 .exp-node {
- position: absolute;
- left: -46px;
- top: 18px;
+ position: relative;
  width: 34px;
  height: 34px;
  border-radius: var(--rad);
@@ -986,7 +962,10 @@ body.light .exp-item:hover .exp-node {
 }
 .exp-node svg { width: 100%; height: 100%; display: block; stroke: currentColor; }
 .exp-card {
- flex: 1;
+ position: relative;
+ display: flex;
+ align-items: flex-start;
+ gap: 16px;
  background: rgba(255,255,255,.04);
  border: 1px dashed rgba(255,255,255,.10);
  border-radius: var(--rad);
@@ -998,6 +977,31 @@ body.light .exp-item:hover .exp-node {
  will-change: transform;
  backface-visibility: hidden;
  -webkit-backface-visibility: hidden;
+}
+.exp-card::before {
+ content: '';
+ position: absolute;
+ left: 39px;
+ top: 52px;
+ bottom: 18px;
+ width: 1.5px;
+ background: linear-gradient(to bottom, rgba(255,255,255,.18), rgba(255,255,255,0));
+ opacity: 1;
+ transition: background var(--ease);
+}
+body.light .exp-card::before {
+ background: linear-gradient(to bottom, rgba(0,0,0,.14), rgba(0,0,0,0));
+}
+.exp-item:hover .exp-card::before {
+ background: linear-gradient(to bottom, rgba(34,160,99,.5), rgba(34,160,99,0));
+}
+body.light .exp-item:hover .exp-card::before {
+ background: linear-gradient(to bottom, rgba(25,106,71,.4), rgba(25,106,71,0));
+}
+.exp-item:last-child .exp-card::before { display: none; }
+.exp-card-body {
+ flex: 1;
+ min-width: 0;
 }
 .exp-item:hover .exp-card {
  background: rgba(34,160,99,.08);
@@ -2120,7 +2124,6 @@ body.light .skill-tailwind-css svg {
   .masonry-list { grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
   /* Experience & Education */
-  .exp-list { padding-left: 52px; }
   .edu-card-body { display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
   .edu-deg-title { order: 1; }
@@ -2241,10 +2244,9 @@ body.light .skill-tailwind-css svg {
   .skill-marquee-wrap { margin-top: 20px; }
 
   /* Experience */
-  .exp-list { padding-left: 44px; }
-  .exp-node { left: -42px; width: 30px; height: 30px; top: 16px; }
-  .exp-item::before { left: -27px; top: 46px; }
+  .exp-node { width: 30px; height: 30px; padding: 5px; }
   .exp-card { padding: 15px 17px; min-height: 56px; }
+  .exp-card::before { left: 32px; top: 45px; bottom: 15px; }
   .exp-role { font-size: .92rem; }
   .exp-co { font-size: .74rem; }
   .exp-desc { font-size: .8rem; line-height: 1.82; }
@@ -2545,6 +2547,7 @@ body.light .skill-tailwind-css svg {
 
   /* Experience: timeline sizing now matches tablet (inherited from 768px rules) */
   .exp-card { padding: 13px 14px; min-height: 50px; }
+  .exp-card::before { left: 29px; top: 43px; bottom: 13px; }
   .exp-divider { margin: 10px 0; }
 
   /* Projects: keep same 2-col structure as tablet, scaled to fit */
