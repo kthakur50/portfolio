@@ -544,7 +544,7 @@ body.light .hero-name .ac-plain {
   width: 100%;
   border: 1px dotted rgba(255,255,255,.10);
   border-radius: var(--rad);
-  padding: 20px 16px 20px 24px;
+  padding: 30px 16px 30px 24px;
   box-sizing: border-box;
   background: rgba(255,255,255,.025);
 }
@@ -839,7 +839,7 @@ body.light #about { background: transparent; }
   #home .wrap { max-width: var(--wrap-max); }
   .hero-name { font-size: clamp(3.6rem, 4.8vw, 5.4rem); }
   .hero-avail { font-size: .88rem; margin-bottom: 15px; }
-  .hero-info { padding: 22px 18px 22px 26px; margin-bottom: 16px; }
+  .hero-info { padding: 32px 18px 32px 26px; margin-bottom: 16px; }
   .hero-info-grid { gap: 8px; }
   .hero-info-col { gap: 12px; }
   .hero-info-col:first-child { padding-right: 28px; }
@@ -988,7 +988,7 @@ body.light .exp-item:hover .exp-node {
 .exp-card {
  flex: 1;
  background: rgba(255,255,255,.04);
- border: 1px dotted rgba(255,255,255,.10);
+ border: 1px dotted rgba(34,160,99,.45);
  border-radius: var(--rad);
  padding: 18px 22px;
  min-width: 0;
@@ -1007,7 +1007,7 @@ body.light .exp-item:hover .exp-node {
 }
 body.light .exp-card {
  background: rgba(255,255,255,.55);
- border-color: rgba(0,0,0,.07);
+ border-color: rgba(19,102,70,.4);
  box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 body.light .exp-item:hover .exp-card {
@@ -1140,7 +1140,7 @@ body.light #projects { background: transparent; }
  border-radius: var(--rad);
  overflow: hidden;
  background: var(--card-bg);
- border: 1px dotted rgba(255,255,255,.10);
+ border: 1px dotted rgba(34,160,99,.45);
  box-shadow: var(--card-shadow);
  transition: box-shadow .45s cubic-bezier(.25,.46,.45,.94),
  transform .45s cubic-bezier(.25,.46,.45,.94),
@@ -1152,7 +1152,7 @@ body.light #projects { background: transparent; }
  display: flex;
  flex-direction: column;
 }
-body.light .masonry-item-inner { border-color: rgba(0,0,0,.07); }
+body.light .masonry-item-inner { border-color: rgba(19,102,70,.4); }
 .masonry-item:hover .masonry-item-inner {
  transform: translateY(-2px) translateZ(0);
  box-shadow: none;
@@ -1273,7 +1273,7 @@ body.light .edu-item:hover .edu-node {
  align-items: flex-start;
  gap: 16px;
  background: rgba(255,255,255,.04);
- border: 1px dotted rgba(255,255,255,.10);
+ border: 1px dotted rgba(34,160,99,.45);
  border-radius: var(--rad);
  padding: 18px 22px;
  min-height: 58px;
@@ -1315,7 +1315,7 @@ body.light .edu-item:hover .edu-card::before {
 }
 body.light .edu-card {
  background: rgba(255,255,255,.55);
- border-color: rgba(0,0,0,.07);
+ border-color: rgba(19,102,70,.4);
  box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 body.light .edu-item:hover .edu-card {
@@ -1572,15 +1572,15 @@ body.light .skill-one-card {
  border-right: 1px dotted rgba(255,255,255,.08) !important;
 }
 .skill-one-card .skill-card--fe {
- border-color: rgba(255,255,255,.10) !important;
+ border-color: rgba(34,160,99,.45) !important;
  background: rgba(255,255,255,.04) !important;
 }
 .skill-one-card .skill-card--be {
- border-color: rgba(255,255,255,.10) !important;
+ border-color: rgba(34,160,99,.45) !important;
  background: rgba(255,255,255,.04) !important;
 }
 .skill-one-card .skill-card--tl {
- border-color: rgba(255,255,255,.10) !important;
+ border-color: rgba(34,160,99,.45) !important;
  background: rgba(255,255,255,.04) !important;
 }
 body.light .skill-one-card .skill-group {
@@ -1611,7 +1611,7 @@ body.light .skill-one-card .skill-card--tl {
  overflow: visible;
  opacity: 1;
  background: rgba(255,255,255,.04);
- border: 1px dotted rgba(255,255,255,.10);
+ border: 1px dotted rgba(34,160,99,.45);
  box-shadow: none;
 
 }
@@ -1630,7 +1630,7 @@ body.light .skill-one-card .skill-card--tl {
 }
 body.light .skill-card {
  background: rgba(255,255,255,.55);
- border: 1px dotted rgba(0,0,0,.07);
+ border: 1px dotted rgba(19,102,70,.4);
  box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card .skill-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; overflow: hidden; border-radius: calc(var(--rad) - 2px); padding: 2px; margin: -2px; }
@@ -1650,33 +1650,33 @@ body.light .skill-card {
 }
 .skill-card .skill-chip svg { width: 27px; height: 27px; min-width: 27px; padding: 6px; border: 1px solid rgba(127,127,127,.25); border-radius: var(--rad); background: rgba(127,127,127,.08); filter: brightness(1.15) saturate(1.25); }
 .skill-card--fe {
- border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
+ border-color: rgba(34,160,99,.45); background: rgba(255,255,255,.04);
  box-shadow: none;
 }
 body.light .skill-card--fe {
  background: rgba(255,255,255,.55);
- border-color: rgba(0,0,0,.07);
+ border-color: rgba(19,102,70,.4);
  box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card--fe .skill-cat { color: #4ade80; }
 
 .skill-card--be {
- border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
+ border-color: rgba(34,160,99,.45); background: rgba(255,255,255,.04);
  box-shadow: none;
 }
 body.light .skill-card--be {
  background: rgba(255,255,255,.55);
- border-color: rgba(0,0,0,.07); box-shadow: 0 1px 4px rgba(0,0,0,.05);
+ border-color: rgba(19,102,70,.4); box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card--be .skill-cat { color: #4ade80; }
 
 .skill-card--tl {
- border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
+ border-color: rgba(34,160,99,.45); background: rgba(255,255,255,.04);
  box-shadow: none;
 }
 body.light .skill-card--tl {
  background: rgba(255,255,255,.55);
- border-color: rgba(0,0,0,.07); box-shadow: 0 1px 4px rgba(0,0,0,.05);
+ border-color: rgba(19,102,70,.4); box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card--tl .skill-cat { color: #4ade80; }
 .skill-card::before {
@@ -2095,7 +2095,7 @@ body.light .skill-tailwind-css svg {
   /* Info box: full width, more compact vertically */
   .hero-block { min-width: 0; width: 100%; }
   .hero-avail { font-size: clamp(.78rem, 1.5vw, .96rem); margin-bottom: clamp(13px, 1.7vw, 17px); }
-  .hero-info { width: 100%; padding: clamp(23px, 3.2vw, 32px) clamp(20px, 3vw, 32px); margin-bottom: clamp(11px, 1.7vw, 17px); }
+  .hero-info { width: 100%; padding: clamp(31px, 4.2vw, 42px) clamp(20px, 3vw, 32px); margin-bottom: clamp(11px, 1.7vw, 17px); }
   .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(10px, 2vw, 14px); }
   .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(14px, 2.2vw, 20px); }
   .hero-info-col:first-child { padding-right: clamp(6px, 1.2vw, 14px); border-right: none; padding-bottom: 0; border-bottom: none; }
@@ -2203,7 +2203,7 @@ body.light .skill-tailwind-css svg {
   /* Info: full width, bigger horizontally */
   .hero-block { min-width: 0; width: 100%; }
   .hero-avail { font-size: clamp(.86rem, 2vw, 1rem); margin-bottom: clamp(15px, 2.5vw, 21px); line-height: 1.5; letter-spacing: .01em; }
-  .hero-info { width: 100%; padding: clamp(28px, 3.8vw, 38px) clamp(20px, 3.2vw, 30px); margin-bottom: clamp(15px, 2.5vw, 21px); }
+  .hero-info { width: 100%; padding: clamp(36px, 4.8vw, 48px) clamp(20px, 3.2vw, 30px); margin-bottom: clamp(15px, 2.5vw, 21px); }
   .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(9px, 2vw, 13px); }
   .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(16px, 2.6vw, 22px); }
   .hero-info-col:first-child { padding-right: clamp(7px, 1.3vw, 14px); border-right: none; padding-bottom: 0; border-bottom: none; }
@@ -2515,7 +2515,7 @@ body.light .skill-tailwind-css svg {
   /* Info box */
   .hero-block { min-width: 0; width: 100%; }
   .hero-avail { font-size: clamp(.5rem, 1.3vw, .62rem); margin-bottom: clamp(9px, 2vw, 13px); }
-  .hero-info { padding: clamp(16px, 3.4vw, 22px) clamp(12px, 3vw, 17px); margin-bottom: clamp(9px, 1.8vw, 12px); }
+  .hero-info { padding: clamp(24px, 4.4vw, 30px) clamp(12px, 3vw, 17px); margin-bottom: clamp(9px, 1.8vw, 12px); }
   .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(20px, 5vw, 26px); }
   .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(11px, 2.6vw, 16px); }
   .hero-info-col:first-child { padding-right: 0; border-right: none; padding-bottom: 0; border-bottom: none; }
@@ -2584,7 +2584,7 @@ body.light .skill-tailwind-css svg {
   .hero-inner { flex-direction: column; align-items: center; gap: 22px; margin-top: -24px; }
   .hero-name { font-size: clamp(1.4rem, 7vw, 1.95rem); margin-top: 6px; margin-bottom: 11px; white-space: nowrap; }
   .hero-avail { font-size: .64rem; margin-bottom: 14px; }
-  .hero-info { padding: 14px 13px; margin-bottom: 11px; }
+  .hero-info { padding: 22px 13px; margin-bottom: 11px; }
   .hero-info-grid { flex-direction: row; gap: 18px; }
   .hero-info-col { gap: 12px; }
   .hero-info-col:first-child { padding-right: 0; }
@@ -2639,7 +2639,7 @@ body.light .skill-tailwind-css svg {
 
 
 
-  .hero-info { padding: 12px 11px; margin-bottom: 11px; }
+  .hero-info { padding: 20px 11px; margin-bottom: 11px; }
   .hero-info-grid { gap: 16px; }
   .hero-info-col { gap: 11px; }
   .hero-info-col:first-child { padding-right: 0; }
