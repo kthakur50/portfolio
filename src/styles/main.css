@@ -837,17 +837,18 @@ body.light #about { background: transparent; }
 @media (min-width: 1025px) {
   .hero-block { max-width: clamp(560px, 62vw, 760px); }
   #home .wrap { max-width: var(--wrap-max); }
-  .hero-name { font-size: clamp(3.6rem, 4.8vw, 5.4rem); }
-  .hero-avail { font-size: .88rem; margin-bottom: 15px; }
-  .hero-info { padding: 22px 18px 22px 26px; margin-bottom: 16px; }
-  .hero-info-grid { gap: 8px; }
-  .hero-info-col { gap: 12px; }
-  .hero-info-col:first-child { padding-right: 28px; }
-  .hero-info-col:last-child { padding-left: 28px; }
-  .hero-info-item { font-size: .78rem; height: auto; min-height: 30px; gap: 9px; padding: 3px 0; }
-  .hero-info-item svg { width: 16px; height: 16px; padding: 3px; }
-  .hero-btns { gap: 8px; }
-  .hero-btns .btn-o { font-size: .76rem; padding: 7px 16px 7px 7px; gap: 8px; }
+  .hero-name { font-size: clamp(4rem, 5.3vw, 5.9rem); }
+  .hero-avail { font-size: .98rem; margin-bottom: 17px; }
+  .hero-info { padding: 27px 22px 27px 30px; margin-bottom: 19px; }
+  .hero-info-grid { gap: 9px; }
+  .hero-info-col { gap: 15px; }
+  .hero-info-col:first-child { padding-right: 32px; }
+  .hero-info-col:last-child { padding-left: 32px; }
+  .hero-info-item { font-size: .92rem; height: auto; min-height: 36px; gap: 12px; padding: 4px 0; }
+  .hero-info-item svg { width: 19px; height: 19px; padding: 4px; }
+  .hero-btns { gap: 10px; }
+  .hero-btns .btn-o { font-size: .9rem; padding: 12px 26px 12px 12px; gap: 10px; }
+  .btn-o-ico { width: 27px; height: 27px; }
 }
 .hero-avail {
  display: flex;
