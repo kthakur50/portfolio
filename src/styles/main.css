@@ -542,7 +542,7 @@ body.light .hero-name .ac-plain {
 .hero-info {
   margin-bottom: 14px;
   width: 100%;
-  border: 1px dotted rgba(255,255,255,.10);
+  border: 1px dashed rgba(255,255,255,.10);
   border-radius: var(--rad);
   padding: 30px 16px 30px 24px;
   box-sizing: border-box;
@@ -729,11 +729,11 @@ body.light .btn-o:hover .btn-o-ico { color: var(--a); }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 8px 16px 8px 7px; font-size: .76rem; }
 
 #about, #skills, #experience, #projects, #education, #contact {
- border-top: 1px dotted rgba(255,255,255,0.14);
+ border-top: 1px dashed rgba(255,255,255,0.14);
 }
 body.light #about, body.light #skills, body.light #experience,
 body.light #projects, body.light #education, body.light #contact {
- border-top: 1px dotted rgba(0,0,0,0.16);
+ border-top: 1px dashed rgba(0,0,0,0.16);
 }
 body.light #skills, body.light #contact {
  background: transparent;
@@ -812,7 +812,7 @@ body.light .sc-tw svg {
   height: auto;
   min-height: 76px;
   border-radius: var(--rad);
-  border: 1.5px dotted rgba(127,127,127,.22);
+  border: 1.5px dashed rgba(127,127,127,.22);
   background: rgba(127,127,127,.07);
   color: var(--tx);
   cursor: default;
@@ -988,7 +988,7 @@ body.light .exp-item:hover .exp-node {
 .exp-card {
  flex: 1;
  background: rgba(255,255,255,.04);
- border: 1px dotted rgba(34,160,99,.45);
+ border: 1px dashed rgba(255,255,255,.10);
  border-radius: var(--rad);
  padding: 18px 22px;
  min-width: 0;
@@ -1007,7 +1007,7 @@ body.light .exp-item:hover .exp-node {
 }
 body.light .exp-card {
  background: rgba(255,255,255,.55);
- border-color: rgba(19,102,70,.4);
+ border-color: rgba(0,0,0,.07);
  box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 body.light .exp-item:hover .exp-card {
@@ -1086,7 +1086,7 @@ body.light .exp-item:hover .exp-card {
 .exp-divider {
  width: 100%;
  height: 0;
- border-top: 1px dotted var(--br);
+ border-top: 1px dashed var(--br);
  margin: 14px 0;
  opacity: .7;
 }
@@ -1140,7 +1140,7 @@ body.light #projects { background: transparent; }
  border-radius: var(--rad);
  overflow: hidden;
  background: var(--card-bg);
- border: 1px dotted rgba(34,160,99,.45);
+ border: 1px dashed rgba(255,255,255,.10);
  box-shadow: var(--card-shadow);
  transition: box-shadow .45s cubic-bezier(.25,.46,.45,.94),
  transform .45s cubic-bezier(.25,.46,.45,.94),
@@ -1152,7 +1152,7 @@ body.light #projects { background: transparent; }
  display: flex;
  flex-direction: column;
 }
-body.light .masonry-item-inner { border-color: rgba(19,102,70,.4); }
+body.light .masonry-item-inner { border-color: rgba(0,0,0,.07); }
 .masonry-item:hover .masonry-item-inner {
  transform: translateY(-2px) translateZ(0);
  box-shadow: none;
@@ -1273,7 +1273,7 @@ body.light .edu-item:hover .edu-node {
  align-items: flex-start;
  gap: 16px;
  background: rgba(255,255,255,.04);
- border: 1px dotted rgba(34,160,99,.45);
+ border: 1px dashed rgba(255,255,255,.10);
  border-radius: var(--rad);
  padding: 18px 22px;
  min-height: 58px;
@@ -1315,7 +1315,7 @@ body.light .edu-item:hover .edu-card::before {
 }
 body.light .edu-card {
  background: rgba(255,255,255,.55);
- border-color: rgba(19,102,70,.4);
+ border-color: rgba(0,0,0,.07);
  box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 body.light .edu-item:hover .edu-card {
@@ -1475,7 +1475,7 @@ body.light .contact-social { border-color: rgba(138,170,152,.25); background: rg
 }
 body.light .contact-social:hover { border-color: rgba(25,106,71,.3); background: rgba(25,106,71,.06); }
 
-footer { padding: 20px var(--pad); border-top: 1px dotted var(--br); background: transparent; }
+footer { padding: 20px var(--pad); border-top: 1px dashed var(--br); background: transparent; }
 body.light footer { background: #ffffff; }
 
 .skill-marquee-wrap {
@@ -1559,7 +1559,7 @@ body.light .skill-one-card {
 }
 .skill-one-card .skill-group {
  background: rgba(255,255,255,.03) !important;
- border: 1px dotted rgba(255,255,255,.08) !important;
+ border: 1px dashed rgba(255,255,255,.08) !important;
  border-radius: var(--rad) !important;
  box-shadow: none !important;
  flex: unset !important;
@@ -1569,18 +1569,18 @@ body.light .skill-one-card {
  transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, box-shadow .3s ease;
 }
 .skill-one-card .skill-group:last-child {
- border-right: 1px dotted rgba(255,255,255,.08) !important;
+ border-right: 1px dashed rgba(255,255,255,.08) !important;
 }
 .skill-one-card .skill-card--fe {
- border-color: rgba(34,160,99,.45) !important;
+ border-color: rgba(255,255,255,.10) !important;
  background: rgba(255,255,255,.04) !important;
 }
 .skill-one-card .skill-card--be {
- border-color: rgba(34,160,99,.45) !important;
+ border-color: rgba(255,255,255,.10) !important;
  background: rgba(255,255,255,.04) !important;
 }
 .skill-one-card .skill-card--tl {
- border-color: rgba(34,160,99,.45) !important;
+ border-color: rgba(255,255,255,.10) !important;
  background: rgba(255,255,255,.04) !important;
 }
 body.light .skill-one-card .skill-group {
@@ -1611,7 +1611,7 @@ body.light .skill-one-card .skill-card--tl {
  overflow: visible;
  opacity: 1;
  background: rgba(255,255,255,.04);
- border: 1px dotted rgba(34,160,99,.45);
+ border: 1px dashed rgba(255,255,255,.10);
  box-shadow: none;
 
 }
@@ -1630,7 +1630,7 @@ body.light .skill-one-card .skill-card--tl {
 }
 body.light .skill-card {
  background: rgba(255,255,255,.55);
- border: 1px dotted rgba(19,102,70,.4);
+ border: 1px dashed rgba(0,0,0,.07);
  box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card .skill-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; overflow: hidden; border-radius: calc(var(--rad) - 2px); padding: 2px; margin: -2px; }
@@ -1650,33 +1650,33 @@ body.light .skill-card {
 }
 .skill-card .skill-chip svg { width: 27px; height: 27px; min-width: 27px; padding: 6px; border: 1px solid rgba(127,127,127,.25); border-radius: var(--rad); background: rgba(127,127,127,.08); filter: brightness(1.15) saturate(1.25); }
 .skill-card--fe {
- border-color: rgba(34,160,99,.45); background: rgba(255,255,255,.04);
+ border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
  box-shadow: none;
 }
 body.light .skill-card--fe {
  background: rgba(255,255,255,.55);
- border-color: rgba(19,102,70,.4);
+ border-color: rgba(0,0,0,.07);
  box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card--fe .skill-cat { color: #4ade80; }
 
 .skill-card--be {
- border-color: rgba(34,160,99,.45); background: rgba(255,255,255,.04);
+ border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
  box-shadow: none;
 }
 body.light .skill-card--be {
  background: rgba(255,255,255,.55);
- border-color: rgba(19,102,70,.4); box-shadow: 0 1px 4px rgba(0,0,0,.05);
+ border-color: rgba(0,0,0,.07); box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card--be .skill-cat { color: #4ade80; }
 
 .skill-card--tl {
- border-color: rgba(34,160,99,.45); background: rgba(255,255,255,.04);
+ border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
  box-shadow: none;
 }
 body.light .skill-card--tl {
  background: rgba(255,255,255,.55);
- border-color: rgba(19,102,70,.4); box-shadow: 0 1px 4px rgba(0,0,0,.05);
+ border-color: rgba(0,0,0,.07); box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card--tl .skill-cat { color: #4ade80; }
 .skill-card::before {
@@ -2677,7 +2677,7 @@ body.light .skill-tailwind-css svg {
 
 /* ── FOOTER ──────────────────────────────────────────────────── */
 .site-footer {
- border-top: 1px dotted rgba(255,255,255,.07);
+ border-top: 1px dashed rgba(255,255,255,.07);
  padding: 22px 0;
  text-align: center;
 }
