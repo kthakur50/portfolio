@@ -812,7 +812,7 @@ body.light .sc-tw svg {
   height: auto;
   min-height: 76px;
   border-radius: var(--rad);
-  border: 1.5px solid rgba(127,127,127,.22);
+  border: 1.5px dotted rgba(127,127,127,.22);
   background: rgba(127,127,127,.07);
   color: var(--tx);
   cursor: default;
@@ -1559,7 +1559,7 @@ body.light .skill-one-card {
 }
 .skill-one-card .skill-group {
  background: rgba(255,255,255,.03) !important;
- border: 1px solid rgba(255,255,255,.08) !important;
+ border: 1px dotted rgba(255,255,255,.08) !important;
  border-radius: var(--rad) !important;
  box-shadow: none !important;
  flex: unset !important;
@@ -1569,7 +1569,7 @@ body.light .skill-one-card {
  transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, box-shadow .3s ease;
 }
 .skill-one-card .skill-group:last-child {
- border-right: 1px solid rgba(255,255,255,.08) !important;
+ border-right: 1px dotted rgba(255,255,255,.08) !important;
 }
 .skill-one-card .skill-card--fe {
  border-color: rgba(255,255,255,.10) !important;
@@ -1630,7 +1630,7 @@ body.light .skill-one-card .skill-card--tl {
 }
 body.light .skill-card {
  background: rgba(255,255,255,.55);
- border: 1px solid rgba(0,0,0,.07);
+ border: 1px dotted rgba(0,0,0,.07);
  box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 .skill-card .skill-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; overflow: hidden; border-radius: calc(var(--rad) - 2px); padding: 2px; margin: -2px; }
@@ -2677,7 +2677,7 @@ body.light .skill-tailwind-css svg {
 
 /* ── FOOTER ──────────────────────────────────────────────────── */
 .site-footer {
- border-top: 1px solid rgba(255,255,255,.07);
+ border-top: 1px dotted rgba(255,255,255,.07);
  padding: 22px 0;
  text-align: center;
 }
