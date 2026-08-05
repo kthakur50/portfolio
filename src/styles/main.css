@@ -576,7 +576,7 @@ body.light .hero-name .ac-plain {
  padding: 6px 0;
  font-size: .78rem;
  font-weight: 400;
- color: var(--mu);
+ color: rgba(232, 245, 239, .82);
  transition: color .35s ease;
  white-space: nowrap;
  height: 32px;
@@ -595,7 +595,7 @@ body.light .hero-name .ac-plain {
 .hero-info-item a { color: inherit; transition: color var(--ease); }
 .hero-info-item a:hover { color: #ffffff; }
 .hero-info-item a[href*="github"]:hover { color: var(--a2); }
-.hero-info-time { color: var(--mu); display: flex; align-items: center; gap: 4px; }
+.hero-info-time { color: rgba(232, 245, 239, .82); display: flex; align-items: center; gap: 4px; }
 .hero-info-time em { font-style: normal; color: var(--a2); font-size: .62rem; }
 .typing-text { display: inline-flex; align-items: center; }
 .typing-cursor {
