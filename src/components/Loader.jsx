@@ -19,7 +19,7 @@ const Loader = () => {
   return (
     <div className={`loader${hidden ? ' loader-hide' : ''}`} aria-hidden="true">
       <div className="loader-mark">
-        <span className="loader-kt">KT</span>
+        <span className="loader-kt">kt<em>.</em></span>
         <span className="loader-dots">
           <span></span><span></span><span></span>
         </span>

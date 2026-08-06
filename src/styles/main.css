@@ -549,6 +549,20 @@ body.light .hero-name .ac-pixel-dot {
 body.light .hero-name .ac-plain {
  color: var(--tx);
 }
+.hero-role {
+ font-size: clamp(.95rem, 1.6vw, 1.25rem);
+ font-weight: 500;
+ letter-spacing: .01em;
+ color: var(--a2);
+ margin-bottom: 20px;
+ font-family: 'SF Mono', 'Fira Code', monospace;
+ min-height: 1.4em;
+ display: flex;
+ align-items: center;
+}
+body.light .hero-role { color: var(--a); }
+.hero-role .typing-cursor { color: var(--a2); }
+body.light .hero-role .typing-cursor { color: var(--a); }
 .hero-info {
   margin-bottom: 14px;
   width: 100%;
@@ -937,7 +951,7 @@ body.light #experience { background: transparent; }
 .exp-item::before {
  content: '';
  position: absolute;
- left: -29px;
+ left: -37px;
  top: 54px;
  bottom: 40px;
  width: 1.5px;
@@ -963,7 +977,7 @@ body.light .exp-item:hover::before {
 .exp-item:last-child { padding-bottom: 0; }
 .exp-node {
  position: absolute;
- left: -46px;
+ left: -54px;
  top: 18px;
  width: clamp(30px, 4.8vw, 34px);
  height: clamp(30px, 4.8vw, 34px);
@@ -1249,7 +1263,7 @@ body.light #education { background: transparent; }
 .edu-item::before {
  content: '';
  position: absolute;
- left: -29px;
+ left: -37px;
  top: 54px;
  bottom: 24px;
  width: 1.5px;
@@ -1266,10 +1280,10 @@ body.light .edu-item::before {
 body.light .edu-item:hover::before {
  background: linear-gradient(to bottom, rgba(25,106,71,.4), rgba(25,106,71,0));
 }
-.edu-item:last-child::before { display: none; }
+.edu-item:last-child::before { bottom: 0; }
 .edu-node {
  position: absolute;
- left: -46px;
+ left: -54px;
  top: 18px;
  width: clamp(30px, 4.8vw, 34px);
  height: clamp(30px, 4.8vw, 34px);
@@ -2098,6 +2112,7 @@ body.light .skill-tailwind-css svg {
   .hero-name .ac { font-weight: 600; }
 
   /* Role row */
+  .hero-role { font-size: clamp(.9rem, 2vw, 1.15rem); margin-bottom: clamp(14px, 2vw, 20px); }
 
   /* Info box: full width, more compact vertically */
   .hero-block { min-width: 0; width: 100%; }
@@ -2128,7 +2143,11 @@ body.light .skill-tailwind-css svg {
 
   /* Experience & Education */
   .exp-list { padding-left: 52px; }
+  .exp-node { left: -52px; }
+  .exp-item::before { left: -35px; }
   .edu-list { padding-left: 52px; }
+  .edu-node { left: -52px; }
+  .edu-item::before { left: -35px; }
   .edu-card { display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
   .edu-deg-title { order: 1; }
@@ -2209,6 +2228,7 @@ body.light .skill-tailwind-css svg {
     margin-bottom: clamp(15px, 2.5vw, 21px);
   }
   .hero-name .ac { font-weight: 600; }
+  .hero-role { font-size: clamp(.86rem, 2.1vw, 1.05rem); margin-bottom: clamp(15px, 2.5vw, 21px); }
   /* Info: full width, bigger horizontally */
   .hero-block { min-width: 0; width: 100%; }
   .hero-avail { font-size: clamp(.86rem, 2vw, 1rem); margin-bottom: clamp(15px, 2.5vw, 21px); line-height: 1.5; letter-spacing: .01em; }
@@ -2251,7 +2271,7 @@ body.light .skill-tailwind-css svg {
 
   /* Experience */
   .exp-list { padding-left: 44px; }
-  .exp-node { left: -42px; top: 16px; }
+  .exp-node { left: -44px; top: 16px; }
   .exp-item::before { left: -27px; top: 46px; }
   .exp-card { padding: 15px 17px; min-height: 56px; }
   .exp-role { font-size: .92rem; }
@@ -2269,7 +2289,7 @@ body.light .skill-tailwind-css svg {
 
   /* Education */
   .edu-list { padding-left: 44px; }
-  .edu-node { left: -42px; top: 16px; }
+  .edu-node { left: -44px; top: 16px; }
   .edu-item::before { left: -27px; top: 46px; }
   .edu-card { padding: 15px 17px; min-height: 54px; display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
@@ -2525,6 +2545,7 @@ body.light .skill-tailwind-css svg {
     white-space: nowrap;
   }
   /* Role */
+  .hero-role { font-size: clamp(.72rem, 2.4vw, .88rem); margin-bottom: clamp(9px, 1.8vw, 13px); }
   /* Info box */
   .hero-block { min-width: 0; width: 100%; }
   .hero-avail { font-size: clamp(.5rem, 1.3vw, .62rem); margin-bottom: clamp(9px, 2vw, 13px); }
@@ -2771,14 +2792,18 @@ body.is-loading { overflow: hidden; }
 .loader-kt {
  font-family: 'Geist Pixel', 'Inter', 'Arimo', -apple-system, sans-serif;
  font-size: clamp(2.2rem, 6vw, 3.4rem);
- font-weight: 700;
- letter-spacing: .04em;
+ font-weight: 900;
+ letter-spacing: .02em;
  color: var(--tx);
  line-height: 1;
 }
+.loader-kt em {
+ font-style: normal;
+ color: var(--a2);
+}
 .loader-dots {
  display: inline-flex;
- align-items: flex-end;
+ align-items: center;
  gap: 6px;
  padding-bottom: clamp(.35rem, 1vw, .55rem);
 }
@@ -2787,12 +2812,14 @@ body.is-loading { overflow: hidden; }
  height: 8px;
  border-radius: 50%;
  background: var(--a2);
- animation: loaderDotBounce 1s ease-in-out infinite;
+ opacity: .25;
+ animation: loaderDotDot 1.2s ease-in-out infinite;
 }
 .loader-dots span:nth-child(1) { animation-delay: 0s; }
-.loader-dots span:nth-child(2) { animation-delay: .15s; }
-.loader-dots span:nth-child(3) { animation-delay: .3s; }
-@keyframes loaderDotBounce {
- 0%, 60%, 100% { transform: translateY(0); opacity: .4; }
- 30% { transform: translateY(-7px); opacity: 1; }
+.loader-dots span:nth-child(2) { animation-delay: .2s; }
+.loader-dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes loaderDotDot {
+ 0%, 100% { opacity: .25; transform: scale(.75); }
+ 20% { opacity: 1; transform: scale(1.1); }
+ 40% { opacity: .25; transform: scale(.75); }
 }
