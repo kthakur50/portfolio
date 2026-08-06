@@ -550,17 +550,17 @@ body.light .hero-name .ac-plain {
  color: var(--tx);
 }
 .hero-role {
- font-size: clamp(.95rem, 1.6vw, 1.25rem);
+ font-size: clamp(.82rem, 1.35vw, 1.05rem);
  font-weight: 500;
  letter-spacing: .01em;
- color: var(--a2);
+ color: #d8ddd9;
  margin-bottom: 20px;
  font-family: 'SF Mono', 'Fira Code', monospace;
  min-height: 1.4em;
  display: flex;
  align-items: center;
 }
-body.light .hero-role { color: var(--a); }
+body.light .hero-role { color: #4a5850; }
 .hero-role .typing-cursor { color: var(--a2); }
 body.light .hero-role .typing-cursor { color: var(--a); }
 .hero-info {
@@ -2112,7 +2112,7 @@ body.light .skill-tailwind-css svg {
   .hero-name .ac { font-weight: 600; }
 
   /* Role row */
-  .hero-role { font-size: clamp(.9rem, 2vw, 1.15rem); margin-bottom: clamp(14px, 2vw, 20px); }
+  .hero-role { font-size: clamp(.78rem, 1.7vw, .98rem); margin-bottom: clamp(14px, 2vw, 20px); }
 
   /* Info box: full width, more compact vertically */
   .hero-block { min-width: 0; width: 100%; }
@@ -2228,7 +2228,7 @@ body.light .skill-tailwind-css svg {
     margin-bottom: clamp(15px, 2.5vw, 21px);
   }
   .hero-name .ac { font-weight: 600; }
-  .hero-role { font-size: clamp(.86rem, 2.1vw, 1.05rem); margin-bottom: clamp(15px, 2.5vw, 21px); }
+  .hero-role { font-size: clamp(.74rem, 1.8vw, .9rem); margin-bottom: clamp(15px, 2.5vw, 21px); }
   /* Info: full width, bigger horizontally */
   .hero-block { min-width: 0; width: 100%; }
   .hero-avail { font-size: clamp(.86rem, 2vw, 1rem); margin-bottom: clamp(15px, 2.5vw, 21px); line-height: 1.5; letter-spacing: .01em; }
@@ -2545,7 +2545,7 @@ body.light .skill-tailwind-css svg {
     white-space: nowrap;
   }
   /* Role */
-  .hero-role { font-size: clamp(.72rem, 2.4vw, .88rem); margin-bottom: clamp(9px, 1.8vw, 13px); }
+  .hero-role { font-size: clamp(.62rem, 2vw, .76rem); margin-bottom: clamp(9px, 1.8vw, 13px); }
   /* Info box */
   .hero-block { min-width: 0; width: 100%; }
   .hero-avail { font-size: clamp(.5rem, 1.3vw, .62rem); margin-bottom: clamp(9px, 2vw, 13px); }

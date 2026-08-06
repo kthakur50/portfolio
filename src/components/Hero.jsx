@@ -16,7 +16,7 @@ const Hero = () => (
           </h1>
 
           <div className="hero-role">
-            <TypingText texts={["Fullstack Developer", "AI Solution Engineer", "Problem Solver"]} />
+            <TypingText texts={["Fullstack Developer", "AI Solution Engineer"]} />
           </div>
 
           {/* wrapper so avail, info-box, buttons are all same width */}
