@@ -14,7 +14,7 @@ const Hero = () => (
           </h1>
 
           <div className="hero-role">
-            Fullstack Developer / AI Solution Engineer
+            <span className="hero-role-flip">Fullstack Developer / AI Solution Engineer</span>
           </div>
 
           {/* wrapper so avail, info-box, buttons are all same width */}
