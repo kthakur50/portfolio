@@ -94,10 +94,13 @@ body.light .sec-hd h2 em { text-shadow: none; }
 .wrap { max-width: var(--wrap-max); margin: 0 auto; padding: 0 var(--pad); width: 100%; }
 section { padding: 110px 0; }
 .sec-hd {
- display: flex;
+ display: grid;
+ grid-template-columns: auto 1fr;
+ grid-template-rows: auto auto;
  width: 100%;
  align-items: center;
- gap: 16px;
+ column-gap: 16px;
+ row-gap: 12px;
  margin-bottom: 40px;
  padding-bottom: 6px;
  position: relative;
@@ -106,11 +109,12 @@ section { padding: 110px 0; }
 .sec-hd::before { display: none; }
 .sec-hd::after {
  content: '';
- flex: 1 1 auto;
+ grid-column: 1 / -1;
+ grid-row: 2;
+ width: 100%;
  height: 1px;
  background: var(--br);
  opacity: .3;
- margin-left: 6px;
 }
 .sec-hd h2 {
  font-size: clamp(1.5rem, 3vw, 1.9rem);
