@@ -2094,7 +2094,7 @@ body.light .skill-tailwind-css svg {
   .hero-right { order: 2; flex: none; width: 100%; display: flex; justify-content: center; align-self: center; margin: clamp(30px, 5vw, 46px) 0 clamp(20px, 3.5vw, 34px); padding-right: 0; }
 
   /* Hero name: single line, sized to fit width */
-  .hero-name { font-size: clamp(2.05rem, 5.3vw, 4.1rem); font-weight: 600; white-space: nowrap; line-height: .9; letter-spacing: .02em; margin-bottom: clamp(11px, 1.7vw, 17px); }
+  .hero-name { font-size: clamp(2.15rem, 5.7vw, 4.3rem); font-weight: 600; white-space: nowrap; line-height: .9; letter-spacing: .02em; margin-bottom: clamp(11px, 1.7vw, 17px); }
   .hero-name .ac { font-weight: 600; }
 
   /* Role row */
@@ -2102,13 +2102,13 @@ body.light .skill-tailwind-css svg {
   /* Info box: full width, more compact vertically */
   .hero-block { min-width: 0; width: 100%; }
   .hero-avail { font-size: clamp(.78rem, 1.5vw, .96rem); margin-bottom: clamp(13px, 1.7vw, 17px); }
-  .hero-info { width: 100%; padding: clamp(31px, 4.2vw, 42px) clamp(20px, 3vw, 32px); margin-bottom: clamp(11px, 1.7vw, 17px); }
+  .hero-info { width: 100%; padding: clamp(34px, 4.6vw, 46px) clamp(22px, 3.3vw, 35px); margin-bottom: clamp(11px, 1.7vw, 17px); }
   .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(10px, 2vw, 14px); }
   .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(14px, 2.2vw, 20px); }
   .hero-info-col:first-child { padding-right: clamp(6px, 1.2vw, 14px); border-right: none; padding-bottom: 0; border-bottom: none; }
   .hero-info-col:last-child { padding-left: clamp(6px, 1.2vw, 14px); padding-top: 0; }
-  .hero-info-item { font-size: clamp(.82rem, 1.5vw, 1rem); height: clamp(31px, 4.3vw, 40px); gap: clamp(8px, 1.2vw, 13px); white-space: nowrap; padding: clamp(3px, .6vw, 5px) 0; }
-  .hero-info-item svg { width: clamp(16px, 2.4vw, 22px); height: clamp(16px, 2.4vw, 22px); }
+  .hero-info-item { font-size: clamp(.86rem, 1.6vw, 1.05rem); height: clamp(33px, 4.6vw, 43px); gap: clamp(8px, 1.2vw, 13px); white-space: nowrap; padding: clamp(3px, .6vw, 5px) 0; }
+  .hero-info-item svg { width: clamp(17px, 2.5vw, 23px); height: clamp(17px, 2.5vw, 23px); }
 
   /* Buttons: same full width as info box */
   .hero-btns { flex-wrap: nowrap; gap: clamp(8px, 1.2vw, 12px); order: unset; margin-top: 0; width: 100%; }
@@ -2135,7 +2135,8 @@ body.light .skill-tailwind-css svg {
   .edu-inst { order: 2; }
   .edu-yr { order: 3; margin-left: 0; margin-top: 8px; text-align: left; align-self: flex-start; }
 
-  /* Footer: centered row */
+  /* Footer: social icons above the copyright text */
+  .site-footer-row { flex-direction: column-reverse; gap: 12px; }
 }
 
 /* ── TABLET PORTRAIT (≤ 768px) ──────────────────────────────── */
@@ -2200,7 +2201,7 @@ body.light .skill-tailwind-css svg {
 
   /* Name: single line, sized to fit width */
   .hero-name {
-    font-size: clamp(1.85rem, 5.5vw, 3.5rem);
+    font-size: clamp(1.95rem, 5.9vw, 3.7rem);
     font-weight: 600;
     line-height: .9;
     letter-spacing: .02em;
@@ -2211,20 +2212,20 @@ body.light .skill-tailwind-css svg {
   /* Info: full width, bigger horizontally */
   .hero-block { min-width: 0; width: 100%; }
   .hero-avail { font-size: clamp(.86rem, 2vw, 1rem); margin-bottom: clamp(15px, 2.5vw, 21px); line-height: 1.5; letter-spacing: .01em; }
-  .hero-info { width: 100%; padding: clamp(36px, 4.8vw, 48px) clamp(20px, 3.2vw, 30px); margin-bottom: clamp(15px, 2.5vw, 21px); }
+  .hero-info { width: 100%; padding: clamp(40px, 5.2vw, 52px) clamp(22px, 3.5vw, 33px); margin-bottom: clamp(15px, 2.5vw, 21px); }
   .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(9px, 2vw, 13px); }
   .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(16px, 2.6vw, 22px); }
   .hero-info-col:first-child { padding-right: clamp(7px, 1.3vw, 14px); border-right: none; padding-bottom: 0; border-bottom: none; }
   .hero-info-col:last-child { padding-left: clamp(7px, 1.3vw, 14px); padding-top: 0; }
   .hero-info-item {
-    font-size: clamp(.86rem, 2vw, 1.02rem);
-    height: clamp(33px, 4.8vw, 40px);
+    font-size: clamp(.9rem, 2.1vw, 1.08rem);
+    height: clamp(35px, 5.1vw, 43px);
     gap: clamp(10px, 1.6vw, 15px);
     white-space: nowrap;
     padding: clamp(3px, .7vw, 6px) 0;
     line-height: 1.4;
   }
-  .hero-info-item svg { width: clamp(16px, 2.6vw, 22px); height: clamp(16px, 2.6vw, 22px); }
+  .hero-info-item svg { width: clamp(17px, 2.7vw, 23px); height: clamp(17px, 2.7vw, 23px); }
   /* Buttons: same full width as info box */
   .hero-btns { flex-wrap: nowrap; gap: clamp(9px, 1.6vw, 13px); margin-top: 0; width: 100%; }
   .hero-btns .btn-o {
