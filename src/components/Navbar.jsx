@@ -1,4 +1,81 @@
-const Navbar = () => (
+import { useEffect, useRef, useState } from 'react';
+import Dock from './Dock';
+
+const navSections = [
+  {
+    id: 'home', label: 'Home',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+  },
+  {
+    id: 'about', label: 'About',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+  },
+  {
+    id: 'skills', label: 'Skills',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 16 22 12 18 8"/><polyline points="6 8 2 12 6 16"/><line x1="14.5" y1="4" x2="9.5" y2="20"/></svg>
+  },
+  {
+    id: 'experience', label: 'Experience',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+  },
+  {
+    id: 'projects', label: 'Projects',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+  },
+  {
+    id: 'education', label: 'Education',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+  },
+  {
+    id: 'contact', label: 'Contact',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+  },
+];
+
+const Navbar = () => {
+  const [dockOpen, setDockOpen] = useState(false);
+  const dockWrapRef = useRef(null);
+  const hamRef = useRef(null);
+
+  useEffect(() => {
+    if (!dockOpen) return;
+
+    const onKey = e => { if (e.key === 'Escape') setDockOpen(false); };
+    const onClick = e => {
+      if (dockWrapRef.current?.contains(e.target)) return;
+      if (hamRef.current?.contains(e.target)) return;
+      setDockOpen(false);
+    };
+    const onResize = () => { if (window.innerWidth > 1024) setDockOpen(false); };
+
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('click', onClick);
+    window.addEventListener('resize', onResize, { passive: true });
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('click', onClick);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [dockOpen]);
+
+  const goTo = id => {
+    setDockOpen(false);
+    const el = document.getElementById(id);
+    if (!el) return;
+    const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav')) || 62;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - navH, behavior: 'smooth' });
+    document.querySelectorAll('.nav-desk-links a').forEach(l =>
+      l.classList.toggle('active', l.getAttribute('href') === '#' + id)
+    );
+  };
+
+  const dockItems = navSections.map(s => ({
+    icon: s.icon,
+    label: s.label,
+    onClick: () => goTo(s.id),
+  }));
+
+  return (
   <>
   <nav className="nav" id="nav">
     <div className="nav-inner">
@@ -78,52 +155,26 @@ const Navbar = () => (
           </svg>
         </button>
         <span className="nav-sep-line nav-sep-line-mob"></span>
-        <button className="nav-ham" id="ham" aria-label="Menu">
+        <button
+          ref={hamRef}
+          className={`nav-ham${dockOpen ? ' open' : ''}`}
+          aria-label="Menu"
+          aria-expanded={dockOpen}
+          onClick={e => { e.stopPropagation(); setDockOpen(o => !o); }}
+        >
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </nav>
 
-  <div className="nav-mob" id="navMob">
-    <div className="nav-mob-head">
-      <span className="nav-mob-title">Menu</span>
-      <button className="nav-mob-close" id="navMobClose" aria-label="Close menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+  {dockOpen && (
+    <div className="nav-dock-wrap" ref={dockWrapRef}>
+      <Dock items={dockItems} panelHeight={64} baseItemSize={46} magnification={64} distance={140} />
     </div>
-    <div className="nav-mob-grid">
-      <a href="#home" aria-label="Home" className="nm-home">
-        <span className="nm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
-        <span className="nav-mob-label">Home</span>
-      </a>
-      <a href="#about" aria-label="About" className="nm-about">
-        <span className="nm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-        <span className="nav-mob-label">About</span>
-      </a>
-      <a href="#skills" aria-label="Skills" className="nm-skills">
-        <span className="nm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 16 22 12 18 8"/><polyline points="6 8 2 12 6 16"/><line x1="14.5" y1="4" x2="9.5" y2="20"/></svg></span>
-        <span className="nav-mob-label">Skills</span>
-      </a>
-      <a href="#experience" aria-label="Experience" className="nm-experience">
-        <span className="nm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg></span>
-        <span className="nav-mob-label">Experience</span>
-      </a>
-      <a href="#projects" aria-label="Projects" className="nm-projects">
-        <span className="nm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg></span>
-        <span className="nav-mob-label">Projects</span>
-      </a>
-      <a href="#education" aria-label="Education" className="nm-education">
-        <span className="nm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
-        <span className="nav-mob-label">Education</span>
-      </a>
-      <a href="#contact" aria-label="Contact" className="nm-contact nm-span2">
-        <span className="nm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
-        <span className="nav-mob-label">Contact</span>
-      </a>
-    </div>
-  </div>
+  )}
   </>
-);
+  );
+};
 
 export default Navbar;
