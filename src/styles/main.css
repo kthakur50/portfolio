@@ -558,6 +558,7 @@ body.light .hero-name .ac-plain {
  font-weight: 500;
  letter-spacing: .01em;
  color: rgba(216,221,217,.55);
+ margin-top: 10px;
  margin-bottom: 20px;
  font-family: 'SF Mono', 'Fira Code', monospace;
  min-height: 1.4em;
