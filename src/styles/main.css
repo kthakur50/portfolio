@@ -378,16 +378,16 @@ body.light .nav-ham:hover { color: var(--a); opacity: 1; }
 .nav-ham.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-ham.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 100%; }
 .nav-mob {
- display: grid; grid-template-columns: repeat(4, 1fr); position: fixed;
+ display: flex; flex-direction: column; position: fixed;
  top: var(--nav); right: 12px; left: auto;
- width: 216px;
+ width: 190px;
  background: rgba(18,22,18,0.92);
  backdrop-filter: blur(28px) saturate(160%);
  -webkit-backdrop-filter: blur(28px) saturate(160%);
  border: 1px solid rgba(255,255,255,.10);
  border-radius: var(--rad);
- padding: 12px;
- gap: 14px; z-index: 999;
+ padding: 8px;
+ gap: 2px; z-index: 999;
  opacity: 0;
  transform: translateY(-8px) scale(0.96);
  pointer-events: none;
@@ -406,8 +406,16 @@ body.light .nav-mob {
  transform: translateY(0) scale(1);
  pointer-events: auto;
 }
-.nav-mob a { position: relative; display: flex; align-items: center; justify-content: center; padding: 12px; border-radius: var(--rad); color: var(--mu); outline: none; -webkit-tap-highlight-color: transparent; transition: color .15s ease, opacity .25s ease, transform .25s ease; opacity: 0; transform: translateX(-6px); }
-.nav-mob a svg { width: 20px; height: 20px; }
+.nav-mob-head { display: none; }
+.nav-mob-grid { display: flex; flex-direction: column; gap: 2px; }
+.nav-mob a {
+ position: relative; display: flex; align-items: center; justify-content: flex-start;
+ padding: 8px; border-radius: 10px; color: var(--mu); outline: none;
+ text-decoration: none;
+ -webkit-tap-highlight-color: transparent;
+ transition: color .15s ease, opacity .25s ease, transform .25s ease, background .18s ease;
+ opacity: 0; transform: translateX(-6px);
+}
 .nav-mob.open a { opacity: 1; transform: translateX(0); }
 .nav-mob.open a:nth-child(1) { transition-delay: .03s; }
 .nav-mob.open a:nth-child(2) { transition-delay: .06s; }
@@ -416,9 +424,34 @@ body.light .nav-mob {
 .nav-mob.open a:nth-child(5) { transition-delay: .15s; }
 .nav-mob.open a:nth-child(6) { transition-delay: .18s; }
 .nav-mob.open a:nth-child(7) { transition-delay: .21s; }
-.nav-mob a:hover { color: var(--tx); }
+.nav-mob a:hover, .nav-mob a:focus-visible { color: var(--tx); background: rgba(255,255,255,.07); }
+body.light .nav-mob a:hover, body.light .nav-mob a:focus-visible { background: rgba(0,0,0,.05); }
 .nav-mob a.active { color: var(--a2); }
 .nav-mob a::after { display: none; }
+.nm-icon {
+ display: flex; align-items: center; justify-content: center;
+ width: 28px; height: 28px; min-width: 28px;
+ border-radius: 8px;
+ flex-shrink: 0;
+}
+.nm-icon svg { width: 16px; height: 16px; }
+.nav-mob-label {
+ font-size: .78rem;
+ font-weight: 600;
+ letter-spacing: .01em;
+ white-space: nowrap;
+ max-width: 0;
+ margin-left: 0;
+ opacity: 0;
+ overflow: hidden;
+ transition: max-width .28s ease, margin-left .28s ease, opacity .18s ease;
+}
+.nav-mob a:hover .nav-mob-label,
+.nav-mob a:focus-visible .nav-mob-label {
+ max-width: 140px;
+ margin-left: 10px;
+ opacity: 1;
+}
 #home {
  --htc: 225,250,238;
  min-height: calc(100svh - var(--nav));
@@ -827,6 +860,15 @@ body.light #about { background: transparent; }
  display: flex;
  flex-direction: column;
  gap: 0;
+ padding: 28px 30px;
+ border: 1px solid rgba(255,255,255,.10);
+ border-radius: var(--rad);
+ background: rgba(255,255,255,.03);
+ transition: border-color .25s ease, background .25s ease;
+}
+body.light .about-bio {
+ border: 1px solid rgba(0,0,0,.09);
+ background: rgba(0,0,0,.015);
 }
 .hero-block {
   display: flex;
@@ -2227,6 +2269,7 @@ body.light .skill-tailwind-css svg {
   .win3d-scene { transform: scale(.84); }
 
   /* About */
+  .about-bio { padding: 20px 18px; }
   .about-para { font-size: .85rem; line-height: 1.95; }
 
   /* Skills — one fluid scale for every phone size (no more jumps between breakpoints) */
@@ -2448,6 +2491,10 @@ body.light .skill-tailwind-css svg {
     font-weight: 600;
     letter-spacing: .01em;
     white-space: nowrap;
+    max-width: none;
+    margin-left: 0;
+    opacity: 1;
+    overflow: visible;
   }
 }
 
