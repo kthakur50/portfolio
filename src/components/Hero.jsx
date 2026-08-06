@@ -19,7 +19,6 @@ const Hero = () => (
               texts={[
                 'Fullstack Developer',
                 'AI Solution Engineer',
-                'Problem Solver',
               ]}
             />
           </div>
