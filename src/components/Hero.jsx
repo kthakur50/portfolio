@@ -22,19 +22,19 @@ const Hero = () => (
               <div className="hero-info-grid">
                 <div className="hero-info-col">
                   <div className="hero-info-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tx)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="4" width="20" height="13" rx="2"/><path d="M1 20h22"/>
                     </svg>
                     <FlipText texts={["GenAI Engineer", "Fullstack Developer"]} />
                   </div>
                   <div className="hero-info-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tx)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F5A623" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
                     </svg>
                     Junior Engineer @RMSI
                   </div>
                   <div className="hero-info-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tx)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4285F4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                     </svg>
                     <a href="mailto:kthakur0578@gmail.com">kthakur0578@gmail.com</a>
@@ -42,7 +42,7 @@ const Hero = () => (
                 </div>
                 <div className="hero-info-col">
                   <div className="hero-info-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tx)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                     </svg>
                     <span className="hero-info-time">
@@ -50,13 +50,13 @@ const Hero = () => (
                     </span>
                   </div>
                   <div className="hero-info-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tx)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EA4335" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
                     </svg>
                     Noida, India
                   </div>
                   <div className="hero-info-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--tx)" stroke="none">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#1DA1F2" stroke="none">
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                     </svg>
                     <a href="https://x.com/kaushalt18" target="_blank" rel="noopener">x.com/kaushalt18</a>
