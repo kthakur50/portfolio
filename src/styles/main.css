@@ -334,12 +334,11 @@ body.light .nav-tip::after { border-bottom-color: #000; }
  position: relative;
  color: var(--tx);
  opacity: .85;
- transition: color .3s var(--ease-curve, cubic-bezier(.25,.46,.45,.94)), opacity .3s ease, background .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+ transition: color .3s var(--ease-curve, cubic-bezier(.25,.46,.45,.94)), opacity .3s ease;
 }
-.nav-toggle:hover { color: var(--a2); opacity: 1; background: var(--ag); transform: scale(1.08); box-shadow: 0 0 0 1px rgba(34,160,99,.25); }
-.nav-toggle:active { transform: scale(.92); }
+.nav-toggle:hover { color: var(--a2); opacity: 1; background: transparent; }
 body.light .nav-toggle { color: var(--tx); opacity: .8; }
-body.light .nav-toggle:hover { color: var(--a); opacity: 1; background: rgba(19,102,70,.08); box-shadow: 0 0 0 1px rgba(19,102,70,.2); }
+body.light .nav-toggle:hover { color: var(--a); opacity: 1; background: transparent; }
 .nav-toggle svg {
  width: 17px; height: 17px; pointer-events: none;
  position: absolute; top: 50%; left: 50%;
@@ -361,7 +360,7 @@ body.nav-mob-locked { overflow: hidden; }
  background: transparent; padding: 8px; cursor: pointer; color: var(--tx);
  opacity: .85;
  border: none;
- transition: color .15s ease, opacity .3s ease, background .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+ transition: color .15s ease, opacity .3s ease;
 }
 .nav-ham span {
  display: block; border-radius: 3px; background: currentColor;
@@ -370,10 +369,9 @@ body.nav-mob-locked { overflow: hidden; }
 .nav-ham span:nth-child(1) { height: 2px; width: 100%; }
 .nav-ham span:nth-child(2) { height: 2px; width: 65%; }
 .nav-ham span:nth-child(3) { height: 2px; width: 85%; }
-.nav-ham:hover { color: var(--a2); opacity: 1; background: var(--ag); transform: scale(1.08); box-shadow: 0 0 0 1px rgba(34,160,99,.25); }
-.nav-ham:active { transform: scale(.92); }
+.nav-ham:hover { color: var(--a2); opacity: 1; background: transparent; }
 body.light .nav-ham { color: var(--tx); opacity: .8; }
-body.light .nav-ham:hover { color: var(--a); opacity: 1; background: rgba(19,102,70,.08); box-shadow: 0 0 0 1px rgba(19,102,70,.2); }
+body.light .nav-ham:hover { color: var(--a); opacity: 1; }
 .nav-ham:hover span:nth-child(2) { width: 100%; }
 .nav-ham:hover span:nth-child(3) { width: 100%; }
 .nav-ham.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 100%; }
@@ -663,10 +661,6 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
 
 .hero-btns { display: flex; gap: 8px; flex-wrap: nowrap; align-items: center; width: 100%; }
 .btn-o {
-  --btn-c: var(--a2);
-  --btn-c-soft: rgba(34,160,99,.35);
-  --btn-fill-1: rgba(46,207,130,.28);
-  --btn-fill-2: rgba(34,160,99,.16);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -682,33 +676,19 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   overflow: hidden;
   isolation: isolate;
   cursor: pointer;
-  transition: color .3s ease, border-color .3s ease, transform .35s cubic-bezier(.25,.46,.45,.94), box-shadow .35s ease;
+  transition: color .3s ease, border-color .3s ease;
 }
 .btn-o::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, var(--btn-fill-1), var(--btn-fill-2));
+  background: linear-gradient(180deg, rgba(46,207,130,.28), rgba(34,160,99,.16));
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transform: translateY(100%);
   transition: transform .45s cubic-bezier(.65,0,.35,1);
 }
-.btn-o::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 35%;
-  height: 100%;
-  background: linear-gradient(115deg, transparent, rgba(255,255,255,.4), transparent);
-  transform: skewX(-18deg);
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  transition: left .65s cubic-bezier(.25,.46,.45,.94);
-}
-.btn-o:hover::after { left: 125%; }
 .btn-o-ico {
   display: inline-flex;
   align-items: center;
@@ -727,63 +707,25 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
 body.light .btn-o { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.04); box-shadow: none; }
 body.light .btn-o-ico { background: transparent; border: none; }
 .btn-o:hover {
-  border-color: var(--btn-c-soft);
-  color: var(--btn-c);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px -12px var(--btn-c-soft), 0 0 0 1px var(--btn-c-soft) inset;
+  border-color: rgba(34,160,99,.45);
+  color: var(--a2);
 }
 body.light .btn-o:hover {
   color: var(--a);
 }
 .btn-o:hover::before { transform: translateY(0); }
-.btn-o:hover .btn-o-ico { transform: rotate(-10deg) scale(1.12); color: var(--btn-c); }
+.btn-o:hover .btn-o-ico { transform: rotate(-10deg) scale(1.12); color: var(--a2); }
 body.light .btn-o:hover .btn-o-ico { color: var(--a); }
 .btn-o:active {
-  transform: translateY(-2px) scale(.97);
+  transform: scale(.97);
   transition-duration: .12s;
 }
 .btn-o:focus-visible {
-  outline: 2px solid var(--btn-c);
+  outline: 2px solid var(--a2);
   outline-offset: 3px;
 }
 .arr { display: inline-block; transition: transform .4s cubic-bezier(.34,1.56,.64,1); }
 .btn-o:hover .arr { transform: translateX(6px) scale(1.1); }
-
-/* Per-button "brand accurate" hover — each CTA lights up in its own colour
-   instead of every button sharing the same generic accent. */
-.btn-o--gh {
-  --btn-c: #e7e7e7;
-  --btn-c-soft: rgba(255,255,255,.28);
-  --btn-fill-1: rgba(255,255,255,.20);
-  --btn-fill-2: rgba(255,255,255,.06);
-}
-body.light .btn-o--gh:hover { color: #1a1a1a; }
-body.light .btn-o--gh:hover .btn-o-ico { color: #1a1a1a; }
-
-.btn-o--li {
-  --btn-c: #4d9fe8;
-  --btn-c-soft: rgba(10,102,194,.4);
-  --btn-fill-1: rgba(10,102,194,.32);
-  --btn-fill-2: rgba(10,102,194,.14);
-}
-body.light .btn-o--li:hover { color: #0A66C2; }
-body.light .btn-o--li:hover .btn-o-ico { color: #0A66C2; }
-
-.btn-o--rs {
-  --btn-c: var(--a2);
-  --btn-c-soft: rgba(34,160,99,.4);
-  --btn-fill-1: rgba(46,207,130,.3);
-  --btn-fill-2: rgba(34,160,99,.16);
-}
-
-.btn-o--em {
-  --btn-c: #f0a94e;
-  --btn-c-soft: rgba(240,169,78,.38);
-  --btn-fill-1: rgba(240,169,78,.28);
-  --btn-fill-2: rgba(217,138,30,.14);
-}
-body.light .btn-o--em:hover { color: #b9700a; }
-body.light .btn-o--em:hover .btn-o-ico { color: #b9700a; }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 8px 16px 8px 7px; font-size: .76rem; }
 
 #about, #skills, #experience, #projects, #education, #contact {
@@ -1314,7 +1256,7 @@ body.light .edu-item::before {
 body.light .edu-item:hover::before {
  background: linear-gradient(to bottom, rgba(25,106,71,.4), rgba(25,106,71,0));
 }
-.edu-item:last-child::before { bottom: 0; }
+.edu-item:last-child::before { display: none; }
 .edu-node {
  position: absolute;
  left: -46px;
