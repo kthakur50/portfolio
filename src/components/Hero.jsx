@@ -1,5 +1,4 @@
 import HeroCube from './HeroCube';
-import FlipText from './FlipText';
 
 const Hero = () => (
   <section id="home">
@@ -15,12 +14,7 @@ const Hero = () => (
           </h1>
 
           <div className="hero-role">
-            <FlipText
-              texts={[
-                'Fullstack Developer',
-                'AI Solution Engineer',
-              ]}
-            />
+            Fullstack Developer / AI Solution Engineer
           </div>
 
           {/* wrapper so avail, info-box, buttons are all same width */}
