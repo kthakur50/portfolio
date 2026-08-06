@@ -95,8 +95,8 @@ body.light .sec-hd h2 em { text-shadow: none; }
 section { padding: 110px 0; }
 .sec-hd {
  display: grid;
- grid-template-columns: auto 1fr;
- grid-template-rows: auto auto;
+ grid-template-columns: auto auto 1fr;
+ grid-template-rows: auto;
  width: 100%;
  align-items: center;
  column-gap: 16px;
@@ -109,9 +109,9 @@ section { padding: 110px 0; }
 .sec-hd::before { display: none; }
 .sec-hd::after {
  content: '';
- grid-column: 1 / -1;
- grid-row: 2;
- width: min(220px, 60%);
+ grid-column: 3;
+ grid-row: 1;
+ width: min(220px, 100%);
  height: 1px;
  background: linear-gradient(to right, var(--br) 0%, var(--br) 15%, transparent 100%);
  opacity: .6;
@@ -2223,6 +2223,8 @@ body.light .skill-tailwind-css svg {
     padding: 0 clamp(12px, 2.5vw, 20px);
     border-radius: 999px;
     max-width: calc(100% - 2 * var(--pad));
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
   }
   .nav-logo .logo-k { font-size: clamp(.78rem, 2vw, .92rem); }
   .nav-right { gap: 10px; }
@@ -2556,6 +2558,8 @@ body.light .skill-tailwind-css svg {
     padding: 0 14px;
     border-radius: 14px;
     max-width: calc(100% - 2 * var(--pad));
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
   }
   .nav-logo .logo-k { font-size: .8rem; }
   .nav-logo { margin-left: 6px; }
@@ -2660,7 +2664,7 @@ body.light .skill-tailwind-css svg {
   .site-footer-social { gap: 8px; }
   .site-footer-social a svg { width: 13px; height: 13px; }
 
-  .nav-inner { height: 44px; padding: 0 10px; border-radius: 999px; }
+  .nav-inner { height: 44px; padding: 0 10px; border-radius: 999px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
   .nav-logo .logo-k { font-size: .72rem; }
 
   #home { padding: calc(var(--nav) + 22px) 0 48px; }
@@ -2714,7 +2718,7 @@ body.light .skill-tailwind-css svg {
   .site-footer-social a svg { width: 12px; height: 12px; }
 
 
-  .nav-inner { height: 44px; padding: 0 8px; border-radius: 999px; }
+  .nav-inner { height: 44px; padding: 0 8px; border-radius: 999px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
   .nav-logo .logo-k { font-size: .66rem; }
   .nav-sep-line { display: none; }
 
