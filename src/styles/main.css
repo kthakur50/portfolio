@@ -568,22 +568,6 @@ body.light .hero-name .ac-plain {
 body.light .hero-role { color: rgba(74,88,80,.6); }
 .hero-role .typing-cursor { color: var(--a2); }
 body.light .hero-role .typing-cursor { color: var(--a); }
-
-/* Flip animation on the hero role text, looping forever on the same text */
-.hero-role-flip {
- display: inline-block;
- transform-style: preserve-3d;
- backface-visibility: hidden;
- transform-origin: center;
- animation: heroRoleFlip 4.5s cubic-bezier(.5, 0, .15, 1) infinite;
-}
-@keyframes heroRoleFlip {
- 0%, 78%   { transform: rotateX(0deg); opacity: 1; }
- 86%       { transform: rotateX(-100deg); opacity: 0; }
- 87%       { transform: rotateX(90deg); }
- 95%       { transform: rotateX(0deg); opacity: 1; }
- 100%      { transform: rotateX(0deg); opacity: 1; }
-}
 .hero-info {
   margin-bottom: 14px;
   width: 100%;
