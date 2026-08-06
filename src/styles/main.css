@@ -326,6 +326,14 @@ body.light .nav-tip::after { border-bottom-color: #000; }
  visibility: visible;
  transform: translateX(-50%) translateY(0);
 }
+.nav-ham:hover .nav-tip,
+.nav-ham:focus-visible .nav-tip {
+ opacity: 1;
+ visibility: visible;
+ transform: translateY(0);
+}
+.nav-ham .nav-tip { left: auto; right: -4px; transform: translateX(0) translateY(4px); }
+.nav-ham .nav-tip::after { left: auto; right: 14px; transform: none; }
 .nav-toggle {
  width: 36px; height: 36px; border-radius: var(--rad);
  background: transparent;
@@ -356,6 +364,7 @@ body.light .i-moon { opacity: 0; transform: translate(-50%,-50%) rotate(90deg) s
    which shifted its height and vertical centering mid-animation. */
 body.nav-mob-locked { overflow: hidden; }
 .nav-ham {
+ position: relative;
  display: flex; flex-direction: column; justify-content: center; gap: 5px;
  width: 36px; height: 36px; border-radius: var(--rad);
  background: transparent; padding: 8px; cursor: pointer; color: var(--tx);
