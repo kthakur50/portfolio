@@ -616,6 +616,32 @@ body.light .hero-role .typing-cursor { color: var(--a); }
  height: 18px;
  box-sizing: content-box;
 }
+.status-dot-ico {
+ flex-shrink: 0;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ border: 1px solid rgba(34,160,99,.4);
+ border-radius: var(--rad);
+ padding: 3px;
+ width: 18px;
+ height: 18px;
+ box-sizing: content-box;
+}
+.status-dot {
+ width: 8px;
+ height: 8px;
+ border-radius: 50%;
+ background: #27b872;
+ box-shadow: 0 0 0 0 rgba(39,184,114,.55);
+ animation: statusDotPulse 1.8s ease-out infinite;
+}
+@keyframes statusDotPulse {
+ 0%   { box-shadow: 0 0 0 0 rgba(39,184,114,.55); }
+ 70%  { box-shadow: 0 0 0 6px rgba(39,184,114,0); }
+ 100% { box-shadow: 0 0 0 0 rgba(39,184,114,0); }
+}
+body.light .status-dot-ico { border-color: rgba(25,106,71,.3); }
 .hero-info-item a { color: inherit; transition: color var(--ease); }
 .hero-info-item a:hover { color: #ffffff; }
 .hero-info-item a[href*="github"]:hover { color: var(--a2); }
