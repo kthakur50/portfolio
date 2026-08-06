@@ -22,13 +22,13 @@ const Hero = () => (
               <div className="hero-info-grid">
                 <div className="hero-info-col">
                   <div className="hero-info-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--a2)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tx)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="4" width="20" height="13" rx="2"/><path d="M1 20h22"/>
                     </svg>
                     <FlipText texts={["GenAI Engineer", "Fullstack Developer"]} />
                   </div>
                   <div className="hero-info-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F5A623" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tx)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
                     </svg>
                     Junior Engineer @RMSI
@@ -42,7 +42,7 @@ const Hero = () => (
                 </div>
                 <div className="hero-info-col">
                   <div className="hero-info-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tx)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                     </svg>
                     <span className="hero-info-time">
