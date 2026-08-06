@@ -106,11 +106,10 @@ section { padding: 110px 0; }
 .sec-hd::before { display: none; }
 .sec-hd::after {
  content: '';
- flex: 0 0 auto;
- width: clamp(60px, 8vw, 120px);
+ flex: 1 1 auto;
  height: 1px;
- background: linear-gradient(to right, var(--br) 60%, rgba(255,255,255,0) 100%);
- opacity: .55;
+ background: var(--br);
+ opacity: .3;
  margin-left: 6px;
 }
 .sec-hd h2 {
@@ -762,11 +761,11 @@ body.light .btn-o:hover .btn-o-ico { color: var(--a); }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 8px 16px 8px 7px; font-size: .76rem; }
 
 #about, #skills, #experience, #projects, #education, #contact {
- border-top: 1px solid rgba(255,255,255,0.14);
+ border-top: 1px solid rgba(255,255,255,0.07);
 }
 body.light #about, body.light #skills, body.light #experience,
 body.light #projects, body.light #education, body.light #contact {
- border-top: 1px solid rgba(0,0,0,0.16);
+ border-top: 1px solid rgba(0,0,0,0.08);
 }
 body.light #skills, body.light #contact {
  background: transparent;
