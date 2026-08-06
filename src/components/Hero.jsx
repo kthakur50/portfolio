@@ -16,7 +16,7 @@ const Hero = () => (
           </h1>
 
           <div className="hero-role">
-            <TypingText texts={["Fullstack Developer", "AI Solution Engineer"]} />
+            <TypingText texts={["Web + GenAI Engineer, India"]} />
           </div>
 
           {/* wrapper so avail, info-box, buttons are all same width */}
@@ -29,7 +29,7 @@ const Hero = () => (
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tx)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="4" width="20" height="13" rx="2"/><path d="M1 20h22"/>
                     </svg>
-                    <FlipText texts={["GenAI Engineer", "Fullstack Developer"]} />
+                    <FlipText texts={["Fullstack Developer", "AI Solution Engineer"]} />
                   </div>
                   <div className="hero-info-item">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tx)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
