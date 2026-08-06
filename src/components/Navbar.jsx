@@ -57,6 +57,7 @@ const Navbar = () => (
         <span className="nav-sep-line"></span>
         <button className="nav-ham" id="hamDesk" aria-label="Menu">
           <span></span><span></span><span></span>
+          <span className="nav-tip">Kaushal Thakur</span>
         </button>
       </div>
 
