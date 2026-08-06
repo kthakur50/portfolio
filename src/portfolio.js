@@ -23,7 +23,7 @@ function initTheme() {
 
 function initNav() {
   const sections = ['home','about','skills','experience','projects','education','contact'];
-  const links    = document.querySelectorAll('.nav-desk-links a, .nav-mob a');
+  const links    = document.querySelectorAll('.nav-search-list a, .nav-mob a');
   if (!links.length) return;
 
   const sectionEls = sections.map(id => document.getElementById(id)).filter(Boolean);
@@ -68,7 +68,7 @@ function initScroll() {
     a.addEventListener('click', e => {
       e.preventDefault();
       const id = a.getAttribute('href').slice(1);
-      document.querySelectorAll('.nav-desk-links a, .nav-mob a').forEach(l =>
+      document.querySelectorAll('.nav-search-list a, .nav-mob a').forEach(l =>
         l.classList.toggle('active', l.getAttribute('href') === '#' + id)
       );
       scrollToSection(id);
@@ -146,26 +146,49 @@ function initHam() {
     }, { passive: true });
   }
 
-  const hamDesk = document.getElementById('hamDesk');
-  const links   = document.getElementById('navDeskLinks');
-  if (hamDesk && links) {
-    const closeDesk = () => {
-      if (!links.classList.contains('open')) return;
-      links.classList.remove('open');
-      hamDesk.classList.remove('open');
+  const searchWrap  = document.getElementById('navSearchWrap');
+  const searchBtn   = document.getElementById('navSearchBtn');
+  const searchPanel = document.getElementById('navSearchPanel');
+  const searchInput = document.getElementById('navSearchInput');
+  const searchItems = document.querySelectorAll('.nav-search-item');
+  const searchEmpty = document.getElementById('navSearchEmpty');
+
+  if (searchWrap && searchBtn && searchPanel && searchInput) {
+    const openSearch = () => {
+      searchWrap.classList.add('open');
+      searchBtn.setAttribute('aria-expanded', 'true');
+      requestAnimationFrame(() => searchInput.focus());
     };
-    hamDesk.addEventListener('click', e => {
+    const closeSearch = () => {
+      if (!searchWrap.classList.contains('open')) return;
+      searchWrap.classList.remove('open');
+      searchBtn.setAttribute('aria-expanded', 'false');
+      searchInput.value = '';
+      searchItems.forEach(a => a.classList.remove('is-hidden'));
+      if (searchEmpty) searchEmpty.classList.remove('show');
+    };
+    searchBtn.addEventListener('click', e => {
       e.stopPropagation();
-      const open = links.classList.toggle('open');
-      hamDesk.classList.toggle('open', open);
+      searchWrap.classList.contains('open') ? closeSearch() : openSearch();
     });
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim().toLowerCase();
+      let visible = 0;
+      searchItems.forEach(a => {
+        const match = a.dataset.label.includes(q);
+        a.classList.toggle('is-hidden', !match);
+        if (match) visible++;
+      });
+      if (searchEmpty) searchEmpty.classList.toggle('show', visible === 0);
+    });
+    searchItems.forEach(a => a.addEventListener('click', closeSearch));
     document.addEventListener('click', e => {
-      if (!links.classList.contains('open')) return;
-      if (links.contains(e.target) || hamDesk.contains(e.target)) return;
-      closeDesk();
+      if (!searchWrap.classList.contains('open')) return;
+      if (searchWrap.contains(e.target)) return;
+      closeSearch();
     });
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeDesk();
+      if (e.key === 'Escape') closeSearch();
     });
   }
 }
