@@ -1,5 +1,6 @@
 import HeroCube from './HeroCube';
 import FlipText from './FlipText';
+import TypingText from './TypingText';
 
 const Hero = () => (
   <section id="home">
@@ -14,6 +15,9 @@ const Hero = () => (
             <span className="ac-plain">Kaushal</span> <span className="ac">Thakur</span><span className="ac-pixel-dot">.</span>
           </h1>
 
+          <div className="hero-role">
+            <TypingText texts={["Fullstack Developer", "AI Solution Engineer", "Problem Solver"]} />
+          </div>
 
           {/* wrapper so avail, info-box, buttons are all same width */}
           <div className="hero-block">
