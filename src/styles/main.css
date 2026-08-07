@@ -792,7 +792,6 @@ body.light .btn-o:hover .btn-o-ico { color: var(--a); }
   content: none;
 }
 .hero-btns .btn-o:hover {
-  border-color: rgba(34,160,99,.5);
   color: var(--a2);
   transform: translateY(-2px);
 }
