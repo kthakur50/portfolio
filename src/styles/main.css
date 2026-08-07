@@ -795,9 +795,7 @@ body.light .btn-o:hover .btn-o-ico { color: var(--a); }
   border-color: rgba(34,160,99,.5);
   color: var(--a2);
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px -10px rgba(34,160,99,.45);
 }
-body.light .hero-btns .btn-o:hover { box-shadow: 0 8px 18px -10px rgba(25,106,71,.3); }
 .hero-btns .btn-o:hover .btn-o-ico { color: var(--a2); transform: scale(1.08); }
 .hero-btns .btn-o:hover .arr { transform: translateX(5px); }
 .hero-btns .btn-o:active { transform: translateY(0) scale(.98); }
