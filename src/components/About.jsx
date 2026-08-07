@@ -23,31 +23,6 @@ const About = () => (
           something <strong>faster, smarter, and easier to use</strong>.
         </p>
       </div>
-
-      <div className="about-focus sr" style={{ transitionDelay: '.08s' }}>
-        <div className="about-focus-hd">
-          <span className="about-focus-dot" aria-hidden="true" />
-          <span className="about-focus-label">Currently exploring</span>
-        </div>
-        <div className="about-focus-grid">
-          <div className="about-focus-card">
-            <span className="about-focus-card-index">01</span>
-            <span className="about-focus-card-name">Agentic AI</span>
-          </div>
-          <div className="about-focus-card">
-            <span className="about-focus-card-index">02</span>
-            <span className="about-focus-card-name">RAG Pipelines</span>
-          </div>
-          <div className="about-focus-card">
-            <span className="about-focus-card-index">03</span>
-            <span className="about-focus-card-name">3D Web (Three.js)</span>
-          </div>
-          <div className="about-focus-card">
-            <span className="about-focus-card-index">04</span>
-            <span className="about-focus-card-name">MCP Servers</span>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 );

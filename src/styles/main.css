@@ -757,7 +757,7 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   border: none;
   background: transparent;
   color: var(--tx);
-  transition: color .3s ease;
+  transition: color .3s ease, transform .35s cubic-bezier(.34,1.56,.64,1);
 }
 .btn-o-ico svg { display: block; }
 body.light .btn-o { background: rgba(0,0,0,.07); }
@@ -771,7 +771,7 @@ body.light .btn-o:hover {
   background: rgba(0,0,0,.09);
 }
 .btn-o:hover::before { transform: translateY(0); }
-.btn-o:hover .btn-o-ico { color: var(--a2); }
+.btn-o:hover .btn-o-ico { color: var(--a2); transform: rotate(-12deg) scale(1.08); }
 body.light .btn-o:hover .btn-o-ico { color: var(--a); }
 .btn-o:active {
   background: rgba(255,255,255,.06);
@@ -988,78 +988,6 @@ body.light .hero-avail-line::after {
 .about-para em.hl-active,
 .about-para strong.hl-active {
   color: var(--a2);
-}
-.about-focus {
- margin-top: 30px;
-}
-.about-focus-hd {
- display: flex;
- align-items: center;
- gap: 8px;
- margin-bottom: 14px;
-}
-.about-focus-dot {
- width: 6px;
- height: 6px;
- border-radius: 50%;
- background: var(--a2);
- box-shadow: 0 0 0 3px rgba(34,160,99,.18);
- flex-shrink: 0;
-}
-.about-focus-label {
- font-size: .68rem;
- font-weight: 700;
- letter-spacing: .12em;
- text-transform: uppercase;
- color: var(--mu);
-}
-.about-focus-grid {
- display: grid;
- grid-template-columns: repeat(2, 1fr);
- gap: 10px;
-}
-.about-focus-card {
- position: relative;
- display: flex;
- align-items: baseline;
- gap: 10px;
- padding: 14px 16px;
- border-radius: 10px;
- border: 1px solid rgba(127,127,127,.16);
- background: var(--card-bg);
- overflow: hidden;
- transition: border-color .25s ease, transform .25s ease, background .25s ease;
-}
-.about-focus-card::before {
- content: '';
- position: absolute;
- inset: 0;
- background: linear-gradient(135deg, rgba(34,160,99,.1), transparent 60%);
- opacity: 0;
- transition: opacity .25s ease;
-}
-.about-focus-card:hover {
- border-color: rgba(34,160,99,.45);
- transform: translateY(-2px);
-}
-.about-focus-card:hover::before { opacity: 1; }
-.about-focus-card-index {
- position: relative;
- font-size: .68rem;
- font-weight: 700;
- font-variant-numeric: tabular-nums;
- color: rgba(34,160,99,.55);
- letter-spacing: .02em;
-}
-.about-focus-card-name {
- position: relative;
- font-size: .85rem;
- font-weight: 600;
- color: var(--tx);
- letter-spacing: -.005em;
-}
-@media (max-width: 560px) {
- .about-focus-grid { grid-template-columns: 1fr; }
 }
 #experience { background: transparent; }
 body.light #experience { background: transparent; }
