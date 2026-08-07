@@ -171,14 +171,6 @@ body.light .sec-hd-icon { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,
  background: transparent;
  display: flex; align-items: center; justify-content: center;
  padding: 8px 0;
- transform: translateY(0) translateZ(0);
- transition: transform .4s cubic-bezier(.4,0,.2,1);
- perspective: 800px;
- will-change: transform;
- backface-visibility: hidden;
-}
-.nav.scrolled {
- transform: translateY(8px) translateZ(0);
 }
 .nav-inner {
  width: 100%;
@@ -195,11 +187,14 @@ body.light .sec-hd-icon { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,
  border-radius: 999px;
  padding: 0 20px;
  box-shadow: none;
- transition: background .3s ease, border-color .3s ease;
+ transform: translateY(0) translateZ(0);
+ transition: background .3s ease, border-color .3s ease, transform .4s cubic-bezier(.4,0,.2,1);
+ will-change: transform;
 }
 .nav.scrolled .nav-inner {
  background: rgba(255,255,255,.08);
  box-shadow: none;
+ transform: translateY(8px) translateZ(0);
 }
 body.light .nav-inner {
  background: rgba(0,0,0,.04);
@@ -679,7 +674,7 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   gap: 8px;
   padding: 7px 16px 7px 7px;
   border-radius: var(--rad);
-  border: none;
+  border: 1px solid rgba(255,255,255,.14);
   background: rgba(255,255,255,.09);
   color: var(--tx);
   font-size: .76rem;
@@ -689,7 +684,7 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   overflow: hidden;
   isolation: isolate;
   cursor: pointer;
-  transition: color .3s ease, background .25s ease;
+  transition: color .3s ease, background .25s ease, border-color .25s ease;
 }
 .btn-o::before {
   content: '';
@@ -717,15 +712,17 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   transition: color .3s ease, transform .35s cubic-bezier(.34,1.56,.64,1);
 }
 .btn-o-ico svg { display: block; }
-body.light .btn-o { background: rgba(0,0,0,.07); }
+body.light .btn-o { background: rgba(0,0,0,.07); border-color: rgba(0,0,0,.14); }
 body.light .btn-o-ico { background: transparent; border: none; }
 .btn-o:hover {
   color: var(--a2);
   background: rgba(255,255,255,.12);
+  border-color: rgba(34,160,99,.4);
 }
 body.light .btn-o:hover {
   color: var(--a);
   background: rgba(0,0,0,.09);
+  border-color: rgba(19,102,70,.4);
 }
 .btn-o:hover::before { transform: translateY(0); }
 .btn-o:hover .btn-o-ico { color: var(--a2); transform: rotate(-12deg) scale(1.08); }
@@ -2082,7 +2079,7 @@ body.light .skill-tailwind-css svg {
 
   /* ── Navbar: icons open inline inside the navbar, tablet portrait ── */
   .nav { padding: 8px 0; }
-  .nav.scrolled { transform: translateY(8px) translateZ(0) !important; }
+  .nav.scrolled .nav-inner { transform: translateY(8px) translateZ(0) !important; }
   .nav-inner {
     height: 44px;
     padding: 0 clamp(12px, 2.5vw, 20px);
