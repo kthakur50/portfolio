@@ -47,6 +47,15 @@ const About = () => (
           <span className="about-stat-label">&amp; GIS Focus</span>
         </div>
       </div>
+      <div className="about-focus sr" style={{ transitionDelay: '.11s' }}>
+        <span className="about-focus-label">Currently exploring</span>
+        <div className="about-focus-tags">
+          <span className="about-focus-tag">Agentic AI</span>
+          <span className="about-focus-tag">RAG Pipelines</span>
+          <span className="about-focus-tag">3D Web (Three.js)</span>
+          <span className="about-focus-tag">MCP Servers</span>
+        </div>
+      </div>
     </div>
   </section>
 );
