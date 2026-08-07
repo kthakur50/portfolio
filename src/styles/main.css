@@ -684,7 +684,8 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   overflow: hidden;
   isolation: isolate;
   cursor: pointer;
-  transition: color .3s ease, background .25s ease, border-color .25s ease;
+  box-shadow: 0 1px 0 rgba(255,255,255,.1) inset, 0 2px 0 rgba(0,0,0,.3), 0 5px 10px rgba(0,0,0,.18);
+  transition: color .3s ease, background .25s ease, border-color .25s ease, box-shadow .2s ease, transform .2s ease;
 }
 .btn-o::before {
   content: '';
@@ -712,27 +713,33 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   transition: color .3s ease, transform .35s cubic-bezier(.34,1.56,.64,1);
 }
 .btn-o-ico svg { display: block; }
-body.light .btn-o { background: rgba(0,0,0,.07); border-color: rgba(0,0,0,.14); }
+body.light .btn-o { background: rgba(0,0,0,.07); border-color: rgba(0,0,0,.14); box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 2px 0 rgba(0,0,0,.08), 0 5px 10px rgba(0,0,0,.07); }
 body.light .btn-o-ico { background: transparent; border: none; }
 .btn-o:hover {
   color: var(--a2);
   background: rgba(255,255,255,.12);
   border-color: rgba(34,160,99,.4);
+  box-shadow: 0 1px 0 rgba(255,255,255,.12) inset, 0 3px 0 rgba(0,0,0,.32), 0 8px 16px rgba(0,0,0,.22);
+  transform: translateY(-1px);
 }
 body.light .btn-o:hover {
   color: var(--a);
   background: rgba(0,0,0,.09);
   border-color: rgba(19,102,70,.4);
+  box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 3px 0 rgba(0,0,0,.1), 0 8px 16px rgba(0,0,0,.1);
 }
 .btn-o:hover::before { transform: translateY(0); }
 .btn-o:hover .btn-o-ico { color: var(--a2); transform: rotate(-12deg) scale(1.08); }
 body.light .btn-o:hover .btn-o-ico { color: var(--a); }
 .btn-o:active {
   background: rgba(255,255,255,.06);
+  box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 0 0 rgba(0,0,0,.3), 0 1px 3px rgba(0,0,0,.2);
+  transform: translateY(1px);
   transition-duration: .1s;
 }
 body.light .btn-o:active {
   background: rgba(0,0,0,.05);
+  box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 0 0 rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.08);
 }
 .btn-o:focus-visible {
   outline: 2px solid var(--a2);
