@@ -1465,7 +1465,8 @@ body.light .edu-inst { color: var(--a); }
  color: var(--a2);
 }
 .c-lead {
- font-size: .93rem;
+ font-size: .86rem;
+ text-align: left;
  color: var(--mu);
  line-height: 1.75;
  margin: 0;
