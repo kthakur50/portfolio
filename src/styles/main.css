@@ -1044,6 +1044,41 @@ body.light .about-stat-ico { color: var(--a); border-color: rgba(25,106,71,.25);
  color: var(--mu);
  letter-spacing: .01em;
 }
+.about-focus {
+ display: flex;
+ flex-direction: column;
+ gap: 12px;
+ margin-top: 22px;
+}
+.about-focus-label {
+ font-size: .68rem;
+ font-weight: 700;
+ letter-spacing: .12em;
+ text-transform: uppercase;
+ color: var(--mu);
+}
+.about-focus-tags {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px;
+}
+.about-focus-tag {
+ padding: 7px 14px;
+ border-radius: 999px;
+ border: 1.5px dashed rgba(127,127,127,.28);
+ background: rgba(127,127,127,.07);
+ color: var(--tx);
+ font-size: .78rem;
+ font-weight: 500;
+ letter-spacing: -.005em;
+ transition: border-color .25s ease, background .25s ease, color .25s ease;
+}
+.about-focus-tag:hover {
+ border-color: rgba(34,160,99,.5);
+ background: rgba(34,160,99,.1);
+ color: var(--a2);
+}
+body.light .about-focus-tag:hover { color: var(--a); }
 #experience { background: transparent; }
 body.light #experience { background: transparent; }
 .exp-list {
