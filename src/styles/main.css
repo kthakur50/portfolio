@@ -1483,6 +1483,14 @@ body.light .edu-inst { color: var(--a); }
  padding: 14px 18px 14px 12px;
  font-size: .86rem;
 }
+.btn-o--block::before { content: none; }
+.btn-o--block:hover {
+ border-color: rgba(255,255,255,.16);
+ color: var(--tx);
+}
+body.light .btn-o--block:hover { color: var(--tx); }
+.btn-o--block:hover .btn-o-ico { color: var(--tx); }
+body.light .btn-o--block:hover .btn-o-ico { color: var(--tx); }
 
 footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: transparent; }
 body.light footer { background: #ffffff; }
