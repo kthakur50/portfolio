@@ -2004,14 +2004,14 @@ body.light .skill-tailwind-css svg {
   .nav-inner {
     height: 44px;
     padding: 0 clamp(12px, 2vw, 20px);
-    background: rgba(20,24,22,.4);
+    background: rgba(20,24,22,.92);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
     border: 1px solid rgba(255,255,255,.08);
   }
-  .nav.scrolled .nav-inner { background: rgba(20,24,22,.55); }
-  body.light .nav-inner { background: rgba(255,255,255,.45); border: 1px solid rgba(0,0,0,.08); }
-  body.light .nav.scrolled .nav-inner { background: rgba(255,255,255,.55); }
+  .nav.scrolled .nav-inner { background: rgba(20,24,22,.96); }
+  body.light .nav-inner { background: rgba(255,255,255,.92); border: 1px solid rgba(0,0,0,.08); }
+  body.light .nav.scrolled .nav-inner { background: rgba(255,255,255,.96); }
   .nav-logo .logo-k { font-size: clamp(.78rem, 1.5vw, .95rem); }
   /* Icons open inline within the navbar itself, kept small */
   .nav-desk-links a { padding: 7px 9px; }
@@ -2267,7 +2267,7 @@ body.light .skill-tailwind-css svg {
     overflow-y: auto;
     overflow-x: hidden;
     width: min(72vw, 320px);
-    background: rgba(20,24,22,.4);
+    background: rgba(20,24,22,.92);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
     border: 1px solid rgba(255,255,255,.08);
@@ -2296,7 +2296,7 @@ body.light .skill-tailwind-css svg {
     z-index: -1;
   }
   body.light .nav-mob {
-    background: rgba(255,255,255,.45);
+    background: rgba(255,255,255,.92);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
     border-color: rgba(0,0,0,.08);
