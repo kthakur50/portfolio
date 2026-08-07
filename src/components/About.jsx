@@ -24,36 +24,28 @@ const About = () => (
         </p>
       </div>
 
-      <div className="about-stats sr" style={{ transitionDelay: '.08s' }}>
-        <div className="about-stat">
-          <span className="about-stat-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </span>
-          <span className="about-stat-num">1+</span>
-          <span className="about-stat-label">Years Experience</span>
+      <div className="about-focus sr" style={{ transitionDelay: '.08s' }}>
+        <div className="about-focus-hd">
+          <span className="about-focus-dot" aria-hidden="true" />
+          <span className="about-focus-label">Currently exploring</span>
         </div>
-        <div className="about-stat">
-          <span className="about-stat-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
-          </span>
-          <span className="about-stat-num">10+</span>
-          <span className="about-stat-label">Projects Shipped</span>
-        </div>
-        <div className="about-stat">
-          <span className="about-stat-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 2v10l7.07 7.07"/></svg>
-          </span>
-          <span className="about-stat-num">GenAI</span>
-          <span className="about-stat-label">&amp; GIS Focus</span>
-        </div>
-      </div>
-      <div className="about-focus sr" style={{ transitionDelay: '.11s' }}>
-        <span className="about-focus-label">Currently exploring</span>
-        <div className="about-focus-tags">
-          <span className="about-focus-tag">Agentic AI</span>
-          <span className="about-focus-tag">RAG Pipelines</span>
-          <span className="about-focus-tag">3D Web (Three.js)</span>
-          <span className="about-focus-tag">MCP Servers</span>
+        <div className="about-focus-grid">
+          <div className="about-focus-card">
+            <span className="about-focus-card-index">01</span>
+            <span className="about-focus-card-name">Agentic AI</span>
+          </div>
+          <div className="about-focus-card">
+            <span className="about-focus-card-index">02</span>
+            <span className="about-focus-card-name">RAG Pipelines</span>
+          </div>
+          <div className="about-focus-card">
+            <span className="about-focus-card-index">03</span>
+            <span className="about-focus-card-name">3D Web (Three.js)</span>
+          </div>
+          <div className="about-focus-card">
+            <span className="about-focus-card-index">04</span>
+            <span className="about-focus-card-name">MCP Servers</span>
+          </div>
         </div>
       </div>
     </div>
