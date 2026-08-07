@@ -723,8 +723,13 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   padding: 7px 16px 7px 7px;
   border-radius: var(--rad);
   border: none;
-  background: rgba(255,255,255,.05);
-  box-shadow: 0 1px 0 rgba(255,255,255,.14) inset, 0 -3px 6px rgba(0,0,0,.22) inset, 0 7px 16px rgba(0,0,0,.38), 0 2px 4px rgba(0,0,0,.4);
+  background: linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.02));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.2),
+    inset 0 -1px 0 rgba(0,0,0,.4),
+    0 1px 2px rgba(0,0,0,.3),
+    0 4px 10px rgba(0,0,0,.35),
+    0 10px 22px rgba(0,0,0,.22);
   color: var(--tx);
   font-size: .76rem;
   font-weight: 700;
@@ -733,7 +738,7 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   overflow: hidden;
   isolation: isolate;
   cursor: pointer;
-  transition: color .3s ease, box-shadow .25s ease, transform .2s ease;
+  transition: color .3s ease, box-shadow .25s ease, background .25s ease;
 }
 .btn-o::before {
   content: '';
@@ -758,27 +763,56 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   border: none;
   background: transparent;
   color: var(--tx);
-  transition: transform .5s cubic-bezier(.34,1.56,.64,1), color .3s ease;
+  transition: color .3s ease;
 }
 .btn-o-ico svg { display: block; }
-body.light .btn-o { background: rgba(0,0,0,.045); box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 -2px 5px rgba(0,0,0,.05) inset, 0 5px 12px rgba(0,0,0,.14), 0 2px 4px rgba(0,0,0,.1); }
+body.light .btn-o {
+  background: linear-gradient(180deg, #ffffff, rgba(255,255,255,.7));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    inset 0 -1px 0 rgba(0,0,0,.08),
+    0 1px 2px rgba(0,0,0,.06),
+    0 3px 8px rgba(0,0,0,.08),
+    0 8px 18px rgba(0,0,0,.07);
+}
 body.light .btn-o-ico { background: transparent; border: none; }
 .btn-o:hover {
   color: var(--a2);
-  transform: translateY(-2px);
-  box-shadow: 0 1px 0 rgba(255,255,255,.16) inset, 0 -3px 6px rgba(0,0,0,.24) inset, 0 14px 26px rgba(0,0,0,.42), 0 4px 8px rgba(0,0,0,.4);
+  background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.03));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.24),
+    inset 0 -1px 0 rgba(0,0,0,.45),
+    0 2px 4px rgba(0,0,0,.32),
+    0 6px 14px rgba(0,0,0,.4),
+    0 14px 30px rgba(0,0,0,.26);
 }
 body.light .btn-o:hover {
   color: var(--a);
-  box-shadow: 0 1px 0 rgba(255,255,255,1) inset, 0 -2px 5px rgba(0,0,0,.06) inset, 0 10px 20px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.1);
+  background: linear-gradient(180deg, #ffffff, rgba(255,255,255,.8));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(0,0,0,.1),
+    0 2px 4px rgba(0,0,0,.08),
+    0 5px 12px rgba(0,0,0,.1),
+    0 12px 24px rgba(0,0,0,.09);
 }
 .btn-o:hover::before { transform: translateY(0); }
-.btn-o:hover .btn-o-ico { transform: rotate(-10deg) scale(1.12); color: var(--a2); }
+.btn-o:hover .btn-o-ico { color: var(--a2); }
 body.light .btn-o:hover .btn-o-ico { color: var(--a); }
 .btn-o:active {
-  transform: translateY(2px) scale(.97);
-  box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 -1px 3px rgba(0,0,0,.2) inset, 0 2px 5px rgba(0,0,0,.3);
-  transition-duration: .12s;
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,.5),
+    inset 0 -1px 0 rgba(255,255,255,.06),
+    0 1px 2px rgba(0,0,0,.25);
+  background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(255,255,255,.02));
+  transition-duration: .1s;
+}
+body.light .btn-o:active {
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,.12),
+    inset 0 -1px 0 rgba(255,255,255,.6),
+    0 1px 2px rgba(0,0,0,.05);
+  background: linear-gradient(180deg, rgba(0,0,0,.03), #ffffff);
 }
 .btn-o:focus-visible {
   outline: 2px solid var(--a2);
@@ -802,7 +836,6 @@ body.light .hero-btns .btn-o:hover { color: var(--a); }
 .hero-btns .btn-o:hover .btn-o-ico { color: var(--a2); }
 body.light .hero-btns .btn-o:hover .btn-o-ico { color: var(--a); }
 .hero-btns .btn-o:hover .arr { transform: translateX(5px); }
-.hero-btns .btn-o:active { transform: scale(.98); }
 
 #about, #skills, #experience, #projects, #education, #contact {
  border-top: 1px solid rgba(255,255,255,0.07);
