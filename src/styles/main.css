@@ -722,8 +722,9 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   gap: 8px;
   padding: 7px 16px 7px 7px;
   border-radius: var(--rad);
-  border: 1px solid rgba(255,255,255,.08);
+  border: none;
   background: rgba(255,255,255,.045);
+  box-shadow: 0 1px 0 rgba(255,255,255,.07) inset, 0 4px 10px rgba(0,0,0,.28), 0 1px 2px rgba(0,0,0,.3);
   color: var(--tx);
   font-size: .76rem;
   font-weight: 700;
@@ -732,7 +733,7 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   overflow: hidden;
   isolation: isolate;
   cursor: pointer;
-  transition: color .3s ease, border-color .3s ease;
+  transition: color .3s ease, box-shadow .25s ease, transform .2s ease;
 }
 .btn-o::before {
   content: '';
@@ -760,20 +761,23 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
   transition: transform .5s cubic-bezier(.34,1.56,.64,1), color .3s ease;
 }
 .btn-o-ico svg { display: block; }
-body.light .btn-o { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,.04); box-shadow: none; }
+body.light .btn-o { background: rgba(0,0,0,.04); box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 3px 8px rgba(0,0,0,.09), 0 1px 2px rgba(0,0,0,.07); }
 body.light .btn-o-ico { background: transparent; border: none; }
 .btn-o:hover {
-  border-color: rgba(34,160,99,.45);
   color: var(--a2);
+  transform: translateY(-1px);
+  box-shadow: 0 1px 0 rgba(255,255,255,.09) inset, 0 8px 18px rgba(0,0,0,.32), 0 2px 5px rgba(0,0,0,.35);
 }
 body.light .btn-o:hover {
   color: var(--a);
+  box-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 6px 14px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.08);
 }
 .btn-o:hover::before { transform: translateY(0); }
 .btn-o:hover .btn-o-ico { transform: rotate(-10deg) scale(1.12); color: var(--a2); }
 body.light .btn-o:hover .btn-o-ico { color: var(--a); }
 .btn-o:active {
-  transform: scale(.97);
+  transform: translateY(1px) scale(.98);
+  box-shadow: 0 1px 0 rgba(255,255,255,.05) inset, 0 2px 6px rgba(0,0,0,.25);
   transition-duration: .12s;
 }
 .btn-o:focus-visible {
@@ -786,14 +790,13 @@ body.light .btn-o:hover .btn-o-ico { color: var(--a); }
 
 /* ── Hero buttons: clean, simple hover (no fill) ── */
 .hero-btns .btn-o {
-  transition: color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  transition: color .25s ease, box-shadow .25s ease, transform .25s ease;
 }
 .hero-btns .btn-o::before {
   content: none;
 }
 .hero-btns .btn-o:hover {
   color: var(--a2);
-  border-color: rgba(34,160,99,.45);
 }
 body.light .hero-btns .btn-o:hover { color: var(--a); }
 .hero-btns .btn-o:hover .btn-o-ico { color: var(--a2); }
@@ -1488,7 +1491,6 @@ body.light .edu-inst { color: var(--a); }
 }
 .btn-o--block::before { content: none; }
 .btn-o--block:hover {
- border-color: rgba(34,160,99,.45);
  color: var(--a2);
 }
 body.light .btn-o--block:hover { color: var(--a); }
