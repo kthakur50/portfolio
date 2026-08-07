@@ -13,11 +13,6 @@ const Contact = () => {
 
         <div className="c-panel sr" style={{ transitionDelay: '.05s' }}>
           <div className="c-text">
-            <span className="c-eyebrow">
-              <span className="status-dot-ico"><span className="status-dot"></span></span>
-              Available for new opportunities
-            </span>
-
             <h3 className="c-heading">Let's build something<br /><em>great</em> together.</h3>
 
             <p className="c-lead">
