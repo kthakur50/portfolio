@@ -23,6 +23,21 @@ const About = () => (
           something <strong>faster, smarter, and easier to use</strong>.
         </p>
       </div>
+
+      <div className="about-stats sr" style={{ transitionDelay: '.08s' }}>
+        <div className="about-stat">
+          <span className="about-stat-num">1+</span>
+          <span className="about-stat-label">Years Experience</span>
+        </div>
+        <div className="about-stat">
+          <span className="about-stat-num">10+</span>
+          <span className="about-stat-label">Projects Shipped</span>
+        </div>
+        <div className="about-stat">
+          <span className="about-stat-num">GenAI</span>
+          <span className="about-stat-label">& GIS Focus</span>
+        </div>
+      </div>
     </div>
   </section>
 );
