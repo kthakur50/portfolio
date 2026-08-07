@@ -784,16 +784,13 @@ body.light .btn-o:hover .btn-o-ico { color: var(--a); }
 .btn-o:hover .arr { transform: translateX(6px) scale(1.1); }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 8px 16px 8px 7px; font-size: .76rem; }
 
-/* ── Hero buttons: clean, simple hover ── */
+/* ── Hero buttons: clean, simple hover (no fill) ── */
 .hero-btns .btn-o {
   transition: color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease;
 }
 .hero-btns .btn-o::before {
-  background: linear-gradient(180deg, rgba(46,207,130,.24), rgba(34,160,99,.14));
-  transform: translateY(100%);
-  transition: transform .35s ease;
+  content: none;
 }
-.hero-btns .btn-o:hover::before { transform: translateY(0); }
 .hero-btns .btn-o:hover {
   border-color: rgba(34,160,99,.5);
   color: var(--a2);
@@ -1434,15 +1431,20 @@ body.light .edu-item:hover .edu-card {
  line-height: 1.65;
 }
 body.light .edu-inst { color: var(--a); }
-/* ── Contact: clean centered layout ──────────────────────────── */
+/* ── Contact: left text, right actions ───────────────────────── */
 .c-panel {
+ display: grid;
+ grid-template-columns: 1.15fr .85fr;
+ gap: clamp(32px, 6vw, 64px);
+ align-items: center;
+ width: 100%;
+}
+.c-text {
  display: flex;
  flex-direction: column;
- align-items: center;
- text-align: center;
- gap: 20px;
- max-width: 620px;
- margin: 0 auto;
+ align-items: flex-start;
+ text-align: left;
+ gap: 16px;
 }
 .c-eyebrow {
  display: inline-flex;
@@ -1454,10 +1456,10 @@ body.light .edu-inst { color: var(--a); }
  color: var(--mu);
 }
 .c-heading {
- font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+ font-size: clamp(1.7rem, 3.4vw, 2.4rem);
  font-weight: 800;
  letter-spacing: -.03em;
- line-height: 1.16;
+ line-height: 1.18;
  color: var(--tx);
  margin: 0;
 }
@@ -1466,92 +1468,24 @@ body.light .edu-inst { color: var(--a); }
  color: var(--a2);
 }
 .c-lead {
- font-size: .94rem;
+ font-size: .93rem;
  color: var(--mu);
  line-height: 1.75;
  margin: 0;
- max-width: 44ch;
+ max-width: 46ch;
 }
-.c-cta-row {
+.c-actions {
  display: flex;
  flex-direction: column;
- align-items: center;
- gap: 14px;
- margin-top: 6px;
-}
-.c-cta-btn {
- display: inline-flex;
- align-items: center;
- gap: 9px;
- padding: 14px 30px;
- border-radius: var(--rad);
- background: linear-gradient(135deg, var(--a2), var(--a3));
- color: #06170f;
- font-size: .9rem;
- font-weight: 700;
- letter-spacing: -.005em;
- box-shadow: 0 12px 26px -12px rgba(34,160,99,.55);
- transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease, filter .3s ease;
-}
-.c-cta-btn:hover {
- transform: translateY(-3px);
- box-shadow: 0 16px 32px -12px rgba(34,160,99,.65);
- filter: brightness(1.08);
-}
-.c-cta-btn:active { transform: translateY(-1px) scale(.98); }
-.c-copy-inline {
- display: inline-flex;
- align-items: center;
- gap: 8px;
- background: transparent;
- color: var(--mu);
- font-family: 'SF Mono', 'Fira Code', monospace;
- font-size: .8rem;
- letter-spacing: -.005em;
- cursor: pointer;
- transition: color .3s ease;
-}
-.c-copy-inline:hover { color: var(--a2); }
-.c-copy-ico {
- display: inline-flex;
- align-items: center;
- justify-content: center;
- flex-shrink: 0;
- width: 20px;
- height: 20px;
- border-radius: 5px;
- background: rgba(34,160,99,.12);
- color: var(--a2);
-}
-.c-copy-ico svg { display: block; }
-
-.c-social-row {
- display: flex;
- align-items: center;
  gap: 10px;
- margin-top: 10px;
+ width: 100%;
 }
-.c-social-btn {
- display: inline-flex;
- align-items: center;
- gap: 8px;
- padding: 10px 16px;
- border-radius: 999px;
- border: 1px solid rgba(255,255,255,.09);
- background: rgba(255,255,255,.025);
- color: var(--mu);
- font-size: .78rem;
- font-weight: 600;
- transition: color .3s ease, border-color .3s ease, background-color .3s ease, transform .3s cubic-bezier(.25,.46,.45,.94);
+.btn-o--block {
+ width: 100%;
+ justify-content: flex-start;
+ padding: 14px 18px 14px 12px;
+ font-size: .86rem;
 }
-body.light .c-social-btn { border-color: rgba(0,0,0,.09); background: rgba(0,0,0,.02); }
-.c-social-btn:hover {
- color: var(--a2);
- border-color: rgba(34,160,99,.45);
- background: rgba(34,160,99,.08);
- transform: translateY(-2px);
-}
-body.light .c-social-btn:hover { border-color: rgba(25,106,71,.3); background: rgba(25,106,71,.06); }
 
 footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: transparent; }
 body.light footer { background: #ffffff; }
@@ -2367,16 +2301,18 @@ body.light .skill-tailwind-css svg {
   .edu-yr { font-size: .58rem; white-space: nowrap; order: 3; margin-left: 0; margin-top: 8px; text-align: left; align-self: flex-start; }
 
   /* Contact */
-  .c-panel { gap: 18px; max-width: 100%; }
+  .c-panel { grid-template-columns: 1fr; gap: 26px; }
+  .c-text { align-items: flex-start; }
   .c-heading { font-size: clamp(1.5rem, 4.5vw, 1.9rem); }
   .c-lead { max-width: 100%; }
-  .c-cta-btn { padding: 13px 26px; font-size: .86rem; }
+  .btn-o--block { font-size: .82rem; padding: 13px 16px 13px 10px; }
 
   /* Footer */
 }
 
 /* ── TABLET (landscape/portrait, 769–1024px): compact contact row + smaller cube ── */
 @media (min-width: 769px) and (max-width: 1024px) {
+  .c-panel { grid-template-columns: 1.1fr .9fr; gap: 36px; }
   .c-heading { font-size: clamp(1.6rem, 3.6vw, 2rem); }
   .c-lead { max-width: 60ch; }
 
@@ -2666,9 +2602,7 @@ body.light .skill-tailwind-css svg {
   .hero-btns .btn-o { font-size: .68rem; padding: 7px 10px; }
 
   .c-eyebrow { font-size: .66rem; }
-  .c-copy-inline { font-size: .74rem; }
-  .c-cta-btn { padding: 12px 22px; font-size: .82rem; }
-  .c-social-btn { padding: 9px 14px; font-size: .74rem; }
+  .btn-o--block { font-size: .78rem; padding: 12px 14px 12px 9px; }
 
   /* Projects: single column below 430px — 2-col makes the card graphics illegible */
   .masonry-list { grid-template-columns: 1fr; gap: 12px; }
@@ -2719,8 +2653,7 @@ body.light .skill-tailwind-css svg {
 
   .c-heading { font-size: clamp(1.35rem, 6.5vw, 1.6rem); }
   .c-lead { font-size: .85rem; }
-  .c-cta-btn { padding: 11px 20px; font-size: .78rem; }
-  .c-social-btn { padding: 8px 12px; font-size: .7rem; }
+  .btn-o--block { font-size: .74rem; padding: 11px 12px 11px 8px; }
 
   .skill-one-card { gap: 8px; }
   .skill-one-card .skill-group { padding: 12px 10px 12px !important; }
