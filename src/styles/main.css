@@ -387,7 +387,6 @@ body.light .nav-mob {
  transform: translateY(0) scale(1);
  pointer-events: auto;
 }
-.nav-mob-head { display: none; }
 .nav-mob-grid { display: flex; flex-direction: column; gap: 2px; }
 .nav-mob a {
  position: relative; display: flex; align-items: center; justify-content: flex-start;
@@ -553,22 +552,6 @@ body.light .hero-name .ac-pixel-dot {
 body.light .hero-name .ac-plain {
  color: var(--tx);
 }
-.hero-role {
- font-size: clamp(.82rem, 1.25vw, 1.02rem);
- font-weight: 500;
- letter-spacing: .01em;
- color: rgba(216,221,217,.55);
- margin-top: 10px;
- margin-bottom: 20px;
- font-family: 'SF Mono', 'Fira Code', monospace;
- min-height: 1.4em;
- display: flex;
- align-items: center;
- perspective: 500px;
-}
-body.light .hero-role { color: rgba(74,88,80,.6); }
-.hero-role .typing-cursor { color: var(--a2); }
-body.light .hero-role .typing-cursor { color: var(--a); }
 .hero-info {
   margin-bottom: 14px;
   width: 100%;
@@ -622,32 +605,6 @@ body.light .hero-role .typing-cursor { color: var(--a); }
  height: 20px;
  box-sizing: content-box;
 }
-.status-dot-ico {
- flex-shrink: 0;
- display: inline-flex;
- align-items: center;
- justify-content: center;
- border: 1px solid rgba(34,160,99,.4);
- border-radius: var(--rad);
- padding: 3px;
- width: 18px;
- height: 18px;
- box-sizing: content-box;
-}
-.status-dot {
- width: 8px;
- height: 8px;
- border-radius: 50%;
- background: #27b872;
- box-shadow: 0 0 0 0 rgba(39,184,114,.55);
- animation: statusDotPulse 1.8s ease-out infinite;
-}
-@keyframes statusDotPulse {
- 0%   { box-shadow: 0 0 0 0 rgba(39,184,114,.55); }
- 70%  { box-shadow: 0 0 0 6px rgba(39,184,114,0); }
- 100% { box-shadow: 0 0 0 0 rgba(39,184,114,0); }
-}
-body.light .status-dot-ico { border-color: rgba(25,106,71,.3); }
 .hero-info-item a { color: inherit; transition: color var(--ease); }
 .hero-info-item a:hover { color: #ffffff; }
 .hero-info-item a[href*="github"]:hover { color: var(--a2); }
@@ -913,7 +870,6 @@ body.light #about { background: transparent; }
   .hero-block { max-width: clamp(560px, 62vw, 760px); }
   #home .wrap { max-width: var(--wrap-max); }
   .hero-name { font-size: clamp(3.85rem, 5.1vw, 5.7rem); }
-  .hero-avail { font-size: .88rem; margin-bottom: 15px; }
   .hero-info { padding: 32px 18px 32px 26px; margin-bottom: 16px; }
   .hero-info-grid { gap: 8px; }
   .hero-info-col { gap: 12px; }
@@ -923,46 +879,6 @@ body.light #about { background: transparent; }
   .hero-info-item svg { width: 16px; height: 16px; padding: 3px; }
   .hero-btns { gap: 8px; }
   .hero-btns .btn-o { font-size: .82rem; padding: 8px 18px 8px 8px; gap: 8px; }
-}
-.hero-avail {
- display: flex;
- align-items: center;
- justify-content: space-between;
- gap: 8px;
- margin-bottom: 12px;
- font-size: .72rem;
- font-weight: 600;
- color: #9ab8ab;
- letter-spacing: .04em;
- width: 100%;
-}
-.hero-avail-line {
- flex: 1;
- height: 1px;
- background: linear-gradient(to right, rgba(138,170,152,.25), transparent);
- border-radius: 1px;
- position: relative;
- overflow: hidden;
- -webkit-mask-image: linear-gradient(to right, #000 0%, #000 85%, transparent 100%);
- mask-image: linear-gradient(to right, #000 0%, #000 85%, transparent 100%);
-}
-.hero-avail-line::after {
- content: '';
- position: absolute;
- top: 0;
- left: -40%;
- width: 40%;
- height: 100%;
- background: linear-gradient(to right, transparent, rgba(255,255,255,.22), transparent);
- animation: availLineShimmer 1.6s ease-in-out infinite;
-}
-body.light .hero-avail-line::after {
- background: linear-gradient(to right, transparent, rgba(23,48,32,.15), transparent);
-}
-@keyframes availLineShimmer {
- 0%   { left: -40%; opacity: 1; }
- 68%  { opacity: 1; }
- 100% { left: 100%; opacity: 0; }
 }
 .about-para {
  font-size: .94rem; font-weight: 450;
@@ -1446,15 +1362,6 @@ body.light .edu-inst { color: var(--a); }
  align-items: flex-start;
  text-align: left;
  gap: 16px;
-}
-.c-eyebrow {
- display: inline-flex;
- align-items: center;
- gap: 10px;
- font-size: .72rem;
- font-weight: 600;
- letter-spacing: .01em;
- color: var(--mu);
 }
 .c-heading {
  font-size: clamp(1.15rem, 2.3vw, 1.6rem);
@@ -2122,11 +2029,9 @@ body.light .skill-tailwind-css svg {
   .hero-name .ac { font-weight: 600; }
 
   /* Role row */
-  .hero-role { font-size: clamp(.72rem, 1.5vw, .9rem); margin-bottom: clamp(14px, 2vw, 20px); }
 
   /* Info box: full width, more compact vertically */
   .hero-block { min-width: 0; width: 100%; }
-  .hero-avail { font-size: clamp(.88rem, 1.7vw, 1.08rem); margin-bottom: clamp(14px, 1.8vw, 18px); }
   .hero-info { width: 100%; padding: clamp(38px, 5vw, 50px) clamp(24px, 3.6vw, 38px); margin-bottom: clamp(12px, 1.8vw, 18px); }
   .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(10px, 2vw, 14px); }
   .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(15px, 2.4vw, 22px); }
@@ -2240,10 +2145,8 @@ body.light .skill-tailwind-css svg {
     margin-bottom: clamp(17px, 2.8vw, 23px);
   }
   .hero-name .ac { font-weight: 600; }
-  .hero-role { font-size: clamp(.68rem, 1.7vw, .84rem); margin-bottom: clamp(17px, 2.8vw, 23px); }
   /* Info: full width, bigger horizontally */
   .hero-block { min-width: 0; width: 100%; }
-  .hero-avail { font-size: clamp(.96rem, 2.3vw, 1.12rem); margin-bottom: clamp(17px, 2.8vw, 23px); line-height: 1.5; letter-spacing: .01em; }
   .hero-info { width: 100%; padding: clamp(44px, 5.8vw, 58px) clamp(24px, 3.9vw, 37px); margin-bottom: clamp(17px, 2.8vw, 23px); }
   .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(9px, 2vw, 13px); }
   .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(18px, 2.9vw, 25px); }
@@ -2531,10 +2434,8 @@ body.light .skill-tailwind-css svg {
     white-space: nowrap;
   }
   /* Role */
-  .hero-role { font-size: clamp(.54rem, 1.7vw, .64rem); margin-bottom: clamp(9px, 1.8vw, 13px); }
   /* Info box */
   .hero-block { min-width: 0; width: 100%; }
-  .hero-avail { font-size: clamp(.5rem, 1.3vw, .62rem); margin-bottom: clamp(9px, 2vw, 13px); }
   .hero-info { padding: clamp(24px, 4.4vw, 30px) clamp(12px, 3vw, 17px); margin-bottom: clamp(9px, 1.8vw, 12px); }
   .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(20px, 5vw, 26px); }
   .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(11px, 2.6vw, 16px); }
@@ -2599,7 +2500,6 @@ body.light .skill-tailwind-css svg {
   #home { padding: calc(var(--nav) + 22px) 0 48px; }
   .hero-inner { flex-direction: column; align-items: center; gap: 22px; margin-top: -24px; }
   .hero-name { font-size: clamp(1.85rem, 9vw, 2.5rem); margin-top: 6px; margin-bottom: 11px; white-space: nowrap; }
-  .hero-avail { font-size: .64rem; margin-bottom: 14px; }
   .hero-info { padding: 22px 13px; margin-bottom: 11px; }
   .hero-info-grid { flex-direction: row; gap: 18px; }
   .hero-info-col { gap: 12px; }
@@ -2610,7 +2510,6 @@ body.light .skill-tailwind-css svg {
   .hero-btns { margin-top: 3px; }
   .hero-btns .btn-o { font-size: .74rem; padding: 8px 11px; }
 
-  .c-eyebrow { font-size: .66rem; }
   .btn-o--block { font-size: .78rem; padding: 12px 14px 12px 9px; }
 
   /* Projects: single column below 430px — 2-col makes the card graphics illegible */
