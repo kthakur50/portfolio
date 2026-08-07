@@ -1,5 +1,4 @@
 import HeroCube from './HeroCube';
-import FlipText from './FlipText';
 
 const Hero = () => (
   <section id="home">
@@ -13,14 +12,6 @@ const Hero = () => (
           <h1 className="hero-name">
             <span className="ac-plain">Kaushal</span> <span className="ac">Thakur</span><span className="ac-pixel-dot">.</span>
           </h1>
-
-          <div className="hero-role">
-            <FlipText
-              texts={['Fullstack Developer / AI Solution Engineer', 'Fullstack Developer / AI Solution Engineer']}
-              interval={3200}
-              flipDuration={650}
-            />
-          </div>
 
           {/* wrapper so avail, info-box, buttons are all same width */}
           <div className="hero-block">
