@@ -676,7 +676,7 @@ body.light .hero-info-item a[href*="github"]:hover { color: var(--a); }
 .btn-o {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   padding: 7px 16px 7px 7px;
   border-radius: var(--rad);
   border: none;
@@ -2001,6 +2001,14 @@ body.light .skill-tailwind-css svg {
   /* Navbar: sizing only — show/hide behaviour for the hamburger card
      lives in the single "TABLET: floating hamburger card" block below,
      so it isn't duplicated/fought over across two rule sets. */
+  /* Fix: `.nav` uses `perspective` for its sticky-scroll GPU hint, but on
+     mobile/tablet browsers this isolates the compositing layer and breaks
+     `backdrop-filter` blur on `.nav-inner` (blur renders as flat tint only).
+     Not needed for any visible effect here, so drop it for ≤1024px only. */
+  .nav { perspective: none; backface-visibility: visible; }
+
+  .arr { margin-left: -3px; }
+
   .nav-inner {
     height: 44px;
     padding: 0 clamp(12px, 2vw, 20px);
