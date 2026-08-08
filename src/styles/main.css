@@ -2273,15 +2273,15 @@ body.light .skill-tailwind-css svg {
   body.light .nav-sep-line-mob { background: rgba(0,0,0,.16); }
   .nav-mob {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    width: min(70vw, 300px);
-    height: min(70vw, 300px);
+    top: calc(var(--nav) + 10px);
+    left: auto;
+    right: calc(-1 * min(58vw, 240px) - 40px);
+    bottom: 12px;
+    height: auto;
+    max-height: none;
     overflow-y: auto;
     overflow-x: hidden;
+    width: min(58vw, 240px);
     background: rgba(20,24,22,.92);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
@@ -2290,11 +2290,12 @@ body.light .skill-tailwind-css svg {
     padding: 12px;
     display: flex !important;
     flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-    opacity: 0;
+    gap: 12px;
+    opacity: 1;
     pointer-events: none;
-    transition: opacity .2s cubic-bezier(.4,0,.2,1);
+    transform: none;
+    transform-origin: initial;
+    transition: right .4s cubic-bezier(.32,1,.4,1);
     z-index: 998;
     box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.25);
   }
@@ -2316,7 +2317,7 @@ body.light .skill-tailwind-css svg {
     border-color: rgba(0,0,0,.08);
     box-shadow: 0 20px 60px rgba(0,0,0,.14), 0 4px 16px rgba(0,0,0,.08);
   }
-  .nav-mob.open { pointer-events: auto; opacity: 1; }
+  .nav-mob.open { pointer-events: auto; right: 12px; transform: none; }
 
   .nav-mob-grid {
     display: grid;
@@ -2365,7 +2366,9 @@ body.light .skill-tailwind-css svg {
     width: 42px;
     height: 42px;
     min-width: 42px;
-    border-radius: 13px;
+    min-height: 42px;
+    flex-shrink: 0;
+    border-radius: 12px;
     background: rgba(255,255,255,.04);
     border: 1px solid rgba(255,255,255,.12);
     box-shadow: none;
