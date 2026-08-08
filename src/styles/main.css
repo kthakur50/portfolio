@@ -2017,12 +2017,18 @@ body.light .skill-tailwind-css svg {
   .nav { transform: none; margin-top: 0; transition: margin-top .4s cubic-bezier(.4,0,.2,1); will-change: auto; }
   .nav.scrolled { transform: none; margin-top: 8px; }
 
-  .arr { margin-left: -3px; }
+  .arr {
+    margin-left: -3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
 
   .nav-inner {
     height: 44px;
     padding: 0 clamp(12px, 2vw, 20px);
-    background: rgba(255,255,255,.025);
+    background: rgba(20,20,22,.8);
     backdrop-filter: blur(32px) saturate(160%);
     -webkit-backdrop-filter: blur(32px) saturate(160%);
     border: 1px solid rgba(255,255,255,.10);
@@ -2030,9 +2036,9 @@ body.light .skill-tailwind-css svg {
     box-shadow: none;
     transition: background .3s ease, border-color .3s ease;
   }
-  .nav.scrolled .nav-inner { background: rgba(255,255,255,.025); box-shadow: none; }
-  body.light .nav-inner { background: rgba(255,255,255,.55); border: 1px solid rgba(0,0,0,.07); box-shadow: none; }
-  body.light .nav.scrolled .nav-inner { background: rgba(255,255,255,.55); box-shadow: none; }
+  .nav.scrolled .nav-inner { background: rgba(20,20,22,.8); box-shadow: none; }
+  body.light .nav-inner { background: rgba(255,255,255,.8); border: 1px solid rgba(0,0,0,.07); box-shadow: none; }
+  body.light .nav.scrolled .nav-inner { background: rgba(255,255,255,.8); box-shadow: none; }
   .nav-logo .logo-k { font-size: clamp(.78rem, 1.5vw, .95rem); }
   /* Icons open inline within the navbar itself, kept small */
   .nav-desk-links a { padding: 7px 9px; }
@@ -2287,8 +2293,8 @@ body.light .skill-tailwind-css svg {
     max-height: none;
     overflow-y: auto;
     overflow-x: hidden;
-    width: min(58vw, 210px);
-    background: rgba(255,255,255,.025);
+    width: min(70vw, 240px);
+    background: rgba(20,20,22,.8);
     backdrop-filter: blur(60px) saturate(160%);
     -webkit-backdrop-filter: blur(60px) saturate(160%);
     border: 1px solid rgba(255,255,255,.10);
@@ -2318,7 +2324,7 @@ body.light .skill-tailwind-css svg {
     z-index: -1;
   }
   body.light .nav-mob {
-    background: rgba(255,255,255,.55);
+    background: rgba(255,255,255,.8);
     backdrop-filter: blur(60px) saturate(160%);
     -webkit-backdrop-filter: blur(60px) saturate(160%);
     border-color: rgba(0,0,0,.07);
@@ -2330,12 +2336,11 @@ body.light .skill-tailwind-css svg {
     pointer-events: auto;
   }
   .nav-mob-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
     width: 100%;
+    place-items: stretch;
     margin: 0;
   }
   .nav-mob a {
@@ -2345,7 +2350,7 @@ body.light .skill-tailwind-css svg {
     align-items: center;
     justify-content: center;
     aspect-ratio: 1 / 1;
-    width: 78px;
+    width: 100%;
     gap: 6px;
     padding: 8px;
     border-radius: 16px;
@@ -2373,7 +2378,7 @@ body.light .skill-tailwind-css svg {
   body.light .nav-mob a:hover { border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.04); }
   .nav-mob a.active .nm-icon { box-shadow: 0 0 0 2px rgba(255,255,255,.5) inset, 0 6px 16px rgba(0,0,0,.3); }
 
-  .nm-span2 { width: 78px; }
+  .nm-span2 { grid-column: span 2; width: 100%; }
   .nm-span2 .nav-mob-label { font-size: .68rem; }
 
   .nm-icon {
