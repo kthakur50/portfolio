@@ -2334,20 +2334,21 @@ body.light .skill-tailwind-css svg {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 14px;
     width: 100%;
     margin: 0;
   }
   .nav-mob a {
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    gap: 12px;
-    padding: 9px;
-    border-radius: 14px;
+    aspect-ratio: 1 / 1;
+    width: 78px;
+    gap: 6px;
+    padding: 8px;
+    border-radius: 16px;
     color: var(--tx);
     text-decoration: none;
     background: rgba(255,255,255,.03);
@@ -2372,19 +2373,19 @@ body.light .skill-tailwind-css svg {
   body.light .nav-mob a:hover { border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.04); }
   .nav-mob a.active .nm-icon { box-shadow: 0 0 0 2px rgba(255,255,255,.5) inset, 0 6px 16px rgba(0,0,0,.3); }
 
-  .nm-span2 { width: 100%; }
-  .nm-span2 .nav-mob-label { font-size: .88rem; }
+  .nm-span2 { width: 78px; }
+  .nm-span2 .nav-mob-label { font-size: .68rem; }
 
   .nm-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    min-height: 40px;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
     flex-shrink: 0;
-    border-radius: 11px;
+    border-radius: 9px;
     background: rgba(255,255,255,.04);
     border: 1px solid rgba(255,255,255,.12);
     box-shadow: none;
@@ -2392,10 +2393,10 @@ body.light .skill-tailwind-css svg {
   }
   body.light .nm-icon { border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.02); }
   .nav-mob a:hover .nm-icon { transform: scale(1.08) rotate(-4deg); border-color: rgba(34,160,99,.5); background: rgba(34,160,99,.08); }
-  .nm-icon svg { width: 19px; height: 19px; color: var(--tx); }
+  .nm-icon svg { width: 15px; height: 15px; color: var(--tx); }
 
   .nav-mob-label {
-    font-size: .86rem;
+    font-size: .68rem;
     font-weight: 600;
     letter-spacing: .01em;
     white-space: nowrap;
