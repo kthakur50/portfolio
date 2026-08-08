@@ -2417,7 +2417,7 @@ body.light .skill-tailwind-css svg {
   /* ── Hero: same row layout as desktop — text left, cube right ── */
   .tube-light { top: 0; width: clamp(220px, 66vw, 340px); height: clamp(78px, 19vw, 108px); }
   #home {
-    padding: clamp(30px, 6vw, 44px) 0 clamp(20px, 4vw, 36px);
+    padding: clamp(22px, 4.5vw, 34px) 0 clamp(20px, 4vw, 36px);
     min-height: calc(100svh - var(--nav));
     align-items: center;
   }
@@ -2425,7 +2425,7 @@ body.light .skill-tailwind-css svg {
     flex-direction: column;
     align-items: center;
     gap: clamp(14px, 3vw, 24px);
-    margin-top: clamp(-58px, -11vw, -36px);
+    margin-top: clamp(-74px, -13.5vw, -48px);
   }
   .hero-left { flex: 1; width: 100%; order: 1; min-width: 0; display: flex; flex-direction: column; }
   .hero-right {
@@ -2452,7 +2452,7 @@ body.light .skill-tailwind-css svg {
   /* Info box */
   .hero-block { min-width: 0; width: 100%; }
   .hero-info { padding: clamp(24px, 4.4vw, 30px) clamp(12px, 3vw, 17px); margin-bottom: clamp(9px, 1.8vw, 12px); }
-  .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(20px, 5vw, 26px); }
+  .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(28px, 7vw, 38px); }
   .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(11px, 2.6vw, 16px); }
   .hero-info-col:first-child { padding-right: 0; border-right: none; padding-bottom: 0; border-bottom: none; }
   .hero-info-col:last-child { padding-left: 0; padding-top: 0; }
@@ -2512,11 +2512,11 @@ body.light .skill-tailwind-css svg {
   .nav-inner { height: 44px; padding: 0 10px; border-radius: 999px; backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); }
   .nav-logo .logo-k { font-size: .72rem; }
 
-  #home { padding: calc(var(--nav) + 14px) 0 40px; }
-  .hero-inner { flex-direction: column; align-items: center; gap: 22px; margin-top: -38px; }
+  #home { padding: calc(var(--nav) + 4px) 0 40px; }
+  .hero-inner { flex-direction: column; align-items: center; gap: 22px; margin-top: -52px; }
   .hero-name { font-size: clamp(1.85rem, 9vw, 2.5rem); margin-top: 6px; margin-bottom: 11px; white-space: nowrap; }
   .hero-info { padding: 22px 13px; margin-bottom: 11px; }
-  .hero-info-grid { flex-direction: row; gap: 18px; }
+  .hero-info-grid { flex-direction: row; gap: 26px; }
   .hero-info-col { gap: 12px; }
   .hero-info-col:first-child { padding-right: 0; }
   .hero-info-col:last-child { padding-left: 0; }
