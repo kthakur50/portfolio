@@ -258,19 +258,9 @@ body.light .nav-sep-line { background: rgba(0,0,0,.15); }
  opacity .25s cubic-bezier(.25,1,.5,1),
  transform .3s cubic-bezier(.34,1.5,.64,1);
 }
-.nav-desk-links a svg { width: 18px; height: 18px; transform-origin: center; }
+.nav-desk-links a svg { width: 18px; height: 18px; transition: transform .22s cubic-bezier(.34,1.5,.64,1); }
 .nav-desk-links a:hover svg,
-.nav-desk-links a:focus-visible svg {
- animation: navIconPop .55s cubic-bezier(.34,1.56,.64,1);
- filter: drop-shadow(0 3px 7px rgba(34,160,99,.55));
-}
-@keyframes navIconPop {
- 0%   { transform: translateY(0) scale(1) rotate(0deg); }
- 30%  { transform: translateY(-5px) scale(1.22) rotate(-10deg); }
- 55%  { transform: translateY(0) scale(1.05) rotate(8deg); }
- 78%  { transform: translateY(-2px) scale(1.1) rotate(-3deg); }
- 100% { transform: translateY(-2px) scale(1.1) rotate(0deg); }
-}
+.nav-desk-links a:focus-visible svg { transform: translateY(-2px) scale(1.12); }
 .nav-desk-links.open a:nth-child(1) { transition-delay: 0s, .03s, .03s; }
 .nav-desk-links.open a:nth-child(2) { transition-delay: 0s, .07s, .07s; }
 .nav-desk-links.open a:nth-child(3) { transition-delay: 0s, .11s, .11s; }
@@ -312,13 +302,7 @@ body.light .nav-desk-links a.active { color: var(--a); }
  overflow: hidden;
  transition: max-width .28s ease, margin-left .28s ease, opacity .18s ease;
 }
-.nav-desk-links a:hover .nav-tip,
-.nav-desk-links a:focus-visible .nav-tip {
- max-width: 140px;
- margin-left: 8px;
- opacity: 1;
- color: var(--tx);
-}
+/* Name tooltip no longer reveals on hover — icons animate on their own. */
 .nav-toggle {
  width: 36px; height: 36px; border-radius: var(--rad);
  background: transparent;
@@ -2239,7 +2223,7 @@ body.light .skill-tailwind-css svg {
   .tag { font-size: .62rem; }
 
   /* Projects */
-  .masonry-list { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .masonry-list { grid-template-columns: 1fr; gap: 14px; }
   .masonry-title { font-size: .9rem; }
   .masonry-desc { font-size: .74rem; }
 
@@ -2547,7 +2531,7 @@ body.light .skill-tailwind-css svg {
   .exp-divider { margin: 10px 0; }
 
   /* Projects: keep same 2-col structure as tablet, scaled to fit */
-  .masonry-list { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .masonry-list { grid-template-columns: 1fr; gap: 12px; }
   .masonry-body { padding: 11px 10px; }
   .masonry-title { font-size: .78rem; margin: 5px 0 5px; }
   .masonry-desc { font-size: .66rem; line-height: 1.55; }
@@ -2594,7 +2578,7 @@ body.light .skill-tailwind-css svg {
   .btn-o--block { font-size: .78rem; padding: 8px 14px 8px 9px; }
 
   /* Projects: 2-col on phone */
-  .masonry-list { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .masonry-list { grid-template-columns: 1fr; gap: 12px; }
   .masonry-body { padding: 11px 10px; }
   .masonry-title { font-size: .78rem; margin: 5px 0 5px; }
   .masonry-desc { font-size: .68rem; line-height: 1.55; }
