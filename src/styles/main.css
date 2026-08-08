@@ -2275,13 +2275,13 @@ body.light .skill-tailwind-css svg {
     position: fixed;
     top: calc(var(--nav) + 10px);
     left: auto;
-    right: calc(-1 * min(72vw, 320px) - 40px);
+    right: calc(-1 * min(58vw, 240px) - 40px);
     bottom: 12px;
     height: auto;
     max-height: none;
     overflow-y: auto;
     overflow-x: hidden;
-    width: min(72vw, 320px);
+    width: min(58vw, 240px);
     background: rgba(20,24,22,.55);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
