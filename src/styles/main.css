@@ -599,8 +599,8 @@ body.light .hero-name .ac-plain {
  flex-shrink: 0;
  opacity: 1;
  border: 1px solid rgba(154,184,171,.55);
- border-radius: var(--rad);
- padding: 3px;
+ border-radius: 28%;
+ padding: 5px;
  width: 20px;
  height: 20px;
  box-sizing: content-box;
@@ -742,8 +742,10 @@ body.light .btn-o:active {
   outline-offset: 3px;
 }
 .arr { display: inline-block; transition: transform .4s cubic-bezier(.34,1.56,.64,1); }
+.hero-btns .arr { display: inline-flex; align-items: center; justify-content: center; }
+.hero-btns .arr svg { display: block; }
 .btn-o:hover .arr { transform: translateX(6px) scale(1.1); }
-.hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 11px 19px 11px 10px; font-size: .94rem; }
+.hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 11px 16px; font-size: .94rem; }
 
 /* ── Hero buttons: clean, simple hover (no fill) ── */
 .hero-btns .btn-o {
@@ -878,7 +880,7 @@ body.light #about { background: transparent; }
   .hero-info-item { font-size: .78rem; height: auto; min-height: 30px; gap: 9px; padding: 3px 0; }
   .hero-info-item svg { width: 16px; height: 16px; padding: 3px; }
   .hero-btns { gap: 8px; }
-  .hero-btns .btn-o { font-size: .82rem; padding: 8px 18px 8px 8px; gap: 8px; }
+  .hero-btns .btn-o { font-size: .82rem; padding: 8px 14px; gap: 8px; }
 }
 .about-para {
  font-size: .94rem; font-weight: 450;
@@ -2280,13 +2282,13 @@ body.light .skill-tailwind-css svg {
     bottom: 12px;
     margin: 0;
     left: auto;
-    right: calc(-1 * min(72vw, 300px) - 40px);
+    right: 12px;
     height: auto;
     max-height: none;
     overflow-y: auto;
     overflow-x: hidden;
-    width: min(72vw, 300px);
-    background: rgba(20,24,22,.9);
+    width: min(62vw, 260px);
+    background: rgba(255,255,255,.045);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
     border: 1px solid rgba(255,255,255,.08);
@@ -2297,13 +2299,14 @@ body.light .skill-tailwind-css svg {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    opacity: 1;
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
     pointer-events: none;
-    transform: none;
-    transform-origin: initial;
-    transition: right .4s cubic-bezier(.32,1,.4,1);
+    transform-origin: top right;
+    transition: opacity .2s cubic-bezier(.4,0,.2,1),
+      transform .22s cubic-bezier(.34,1.3,.64,1);
     z-index: 998;
-    box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.25);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2);
   }
   .nav-mob::before {
     content: '';
@@ -2317,19 +2320,17 @@ body.light .skill-tailwind-css svg {
     z-index: -1;
   }
   body.light .nav-mob {
-    background: rgba(255,255,255,.9);
+    background: rgba(0,0,0,.04);
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
     border-color: rgba(0,0,0,.08);
-    box-shadow: 0 20px 60px rgba(0,0,0,.14), 0 4px 16px rgba(0,0,0,.08);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
   }
-  .nav-mob.open { pointer-events: auto; right: 12px; }
-
-  /* Drop animation matching desktop exactly: applied to the inner grid
-     (a child of `.nav-mob`) rather than `.nav-mob` itself, because WebKit
-     fails to render `backdrop-filter` blur on an element that also has a
-     `transform` — this keeps the blur working while reproducing the same
-     scale+translateY pop as desktop. */
+  .nav-mob.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
   .nav-mob-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
