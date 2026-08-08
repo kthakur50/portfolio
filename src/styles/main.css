@@ -2322,11 +2322,7 @@ body.light .skill-tailwind-css svg {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
-    transform: translateY(-8px) scale(.96);
-    transform-origin: top center;
-    transition: transform .22s cubic-bezier(.34,1.3,.64,1);
   }
-  .nav-mob.open .nav-mob-grid { transform: translateY(0) scale(1); }
   .nav-mob a {
     position: relative;
     display: flex;
