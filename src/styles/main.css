@@ -2022,17 +2022,17 @@ body.light .skill-tailwind-css svg {
   .nav-inner {
     height: 44px;
     padding: 0 clamp(12px, 2vw, 20px);
-    background: rgba(255,255,255,.045);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    background: var(--bg);
+    backdrop-filter: blur(32px) saturate(160%);
+    -webkit-backdrop-filter: blur(32px) saturate(160%);
     border: 1px solid rgba(255,255,255,.08);
     border-radius: 999px;
     box-shadow: none;
     transition: background .3s ease, border-color .3s ease;
   }
-  .nav.scrolled .nav-inner { background: rgba(255,255,255,.08); box-shadow: none; }
-  body.light .nav-inner { background: rgba(0,0,0,.04); border: 1px solid rgba(0,0,0,.08); box-shadow: none; }
-  body.light .nav.scrolled .nav-inner { background: rgba(0,0,0,.07); box-shadow: none; }
+  .nav.scrolled .nav-inner { background: var(--bg); box-shadow: none; }
+  body.light .nav-inner { background: var(--bg); border: 1px solid rgba(0,0,0,.08); box-shadow: none; }
+  body.light .nav.scrolled .nav-inner { background: var(--bg); box-shadow: none; }
   .nav-logo .logo-k { font-size: clamp(.78rem, 1.5vw, .95rem); }
   /* Icons open inline within the navbar itself, kept small */
   .nav-desk-links a { padding: 7px 9px; }
@@ -2288,9 +2288,9 @@ body.light .skill-tailwind-css svg {
     overflow-y: auto;
     overflow-x: hidden;
     width: min(62vw, 260px);
-    background: rgba(255,255,255,.045);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    background: var(--bg);
+    backdrop-filter: blur(32px) saturate(160%);
+    -webkit-backdrop-filter: blur(32px) saturate(160%);
     border: 1px solid rgba(255,255,255,.08);
     border-radius: 22px;
     padding: 16px;
@@ -2320,9 +2320,9 @@ body.light .skill-tailwind-css svg {
     z-index: -1;
   }
   body.light .nav-mob {
-    background: rgba(0,0,0,.04);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    background: var(--bg);
+    backdrop-filter: blur(32px) saturate(160%);
+    -webkit-backdrop-filter: blur(32px) saturate(160%);
     border-color: rgba(0,0,0,.08);
     box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
   }
