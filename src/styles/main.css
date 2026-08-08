@@ -2007,6 +2007,14 @@ body.light .skill-tailwind-css svg {
      Not needed for any visible effect here, so drop it for ≤1024px only. */
   .nav { perspective: none; backface-visibility: visible; }
 
+  /* Fix: WebKit/Safari also fails to render `backdrop-filter` blur on a
+     descendant when the element (or an ancestor) itself has a `transform`.
+     `.nav` uses `transform: translateY()` for its scroll nudge — swap that
+     for a `margin-top` nudge on mobile/tablet so `.nav-inner`'s blur can
+     render, since it's a direct child. */
+  .nav { transform: none; margin-top: 0; transition: margin-top .4s cubic-bezier(.4,0,.2,1); will-change: auto; }
+  .nav.scrolled { transform: none; margin-top: 8px; }
+
   .arr { margin-left: -3px; }
 
   .nav-inner {
@@ -2090,7 +2098,6 @@ body.light .skill-tailwind-css svg {
 
   /* ── Navbar: icons open inline inside the navbar, tablet portrait ── */
   .nav { padding: 8px 0; }
-  .nav.scrolled { transform: translateY(8px) translateZ(0) !important; }
   .nav-inner {
     height: 44px;
     padding: 0 clamp(12px, 2.5vw, 20px);
@@ -2268,7 +2275,7 @@ body.light .skill-tailwind-css svg {
     position: fixed;
     top: calc(var(--nav) + 10px);
     left: auto;
-    right: 12px;
+    right: calc(-1 * min(72vw, 320px) - 40px);
     bottom: 12px;
     height: auto;
     max-height: none;
@@ -2286,9 +2293,9 @@ body.light .skill-tailwind-css svg {
     gap: 16px;
     opacity: 1;
     pointer-events: none;
-    transform: translateX(calc(100% + 24px));
-    transform-origin: center right;
-    transition: transform .4s cubic-bezier(.32,1,.4,1);
+    transform: none;
+    transform-origin: initial;
+    transition: right .4s cubic-bezier(.32,1,.4,1);
     z-index: 998;
     box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.25);
   }
@@ -2310,7 +2317,7 @@ body.light .skill-tailwind-css svg {
     border-color: rgba(0,0,0,.08);
     box-shadow: 0 20px 60px rgba(0,0,0,.14), 0 4px 16px rgba(0,0,0,.08);
   }
-  .nav-mob.open { pointer-events: auto; transform: translateX(0); }
+  .nav-mob.open { pointer-events: auto; right: 12px; transform: none; }
 
   .nav-mob-grid {
     display: grid;
