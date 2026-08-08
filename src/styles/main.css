@@ -1685,6 +1685,11 @@ body.light .skill-card--tl {
   .hero-right { align-self: flex-start; margin-top: calc(0.9 * clamp(3.1rem, 4.3vw, 5.6rem) + 42px); }
   .win3d-scene { transform: scale(1.05); }
 }
+/* Tablet LANDSCAPE (iPad Air/Pro etc. land in the 1025–1366px band, above
+   the ≤1024px portrait-tablet rule, so they need their own cube bump). */
+@media (min-width: 1025px) and (max-width: 1366px) and (orientation: landscape) {
+  .win3d-scene { transform: scale(1.7); }
+}
 /* ── WIN3D SCENE ─────────────────────────────────────────────── */
 .win3d-scene {
  display: flex;
@@ -2116,8 +2121,8 @@ body.light .skill-tailwind-css svg {
     padding: 0 clamp(12px, 2.5vw, 20px);
     border-radius: 999px;
     max-width: calc(100% - 2 * var(--pad));
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(32px) saturate(160%);
+    -webkit-backdrop-filter: blur(32px) saturate(160%);
   }
   .nav-logo .logo-k { font-size: clamp(.78rem, 2vw, .92rem); }
   .nav-right { gap: 10px; }
@@ -2297,12 +2302,12 @@ body.light .skill-tailwind-css svg {
     overflow-y: auto;
     overflow-x: hidden;
     width: min(74vw, 260px);
-    background: rgba(20,20,22,.8);
+    background: rgba(20,20,22,.88);
     backdrop-filter: blur(60px) saturate(160%);
     -webkit-backdrop-filter: blur(60px) saturate(160%);
     border: 1px solid rgba(255,255,255,.10);
     border-radius: 20px;
-    padding: 10px;
+    padding: 18px 10px;
     display: flex !important;
     flex-direction: column;
     align-items: center;
@@ -2327,7 +2332,7 @@ body.light .skill-tailwind-css svg {
     z-index: -1;
   }
   body.light .nav-mob {
-    background: rgba(255,255,255,.8);
+    background: rgba(255,255,255,.88);
     backdrop-filter: blur(60px) saturate(160%);
     -webkit-backdrop-filter: blur(60px) saturate(160%);
     border-color: rgba(0,0,0,.07);
@@ -2447,8 +2452,8 @@ body.light .skill-tailwind-css svg {
     padding: 0 14px;
     border-radius: 999px;
     max-width: calc(100% - 2 * var(--pad));
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(32px) saturate(160%);
+    -webkit-backdrop-filter: blur(32px) saturate(160%);
   }
   .nav-logo .logo-k { font-size: .8rem; }
   .nav-logo { margin-left: 6px; }
@@ -2548,7 +2553,7 @@ body.light .skill-tailwind-css svg {
   .site-footer-social { gap: 8px; }
   .site-footer-social a svg { width: 13px; height: 13px; }
 
-  .nav-inner { height: 44px; padding: 0 10px; border-radius: 999px; backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); }
+  .nav-inner { height: 44px; padding: 0 10px; border-radius: 999px; backdrop-filter: blur(32px) saturate(160%); -webkit-backdrop-filter: blur(32px) saturate(160%); }
   .nav-logo .logo-k { font-size: .72rem; }
 
   #home { padding: calc(var(--nav) + 4px) 0 40px; }
@@ -2597,7 +2602,7 @@ body.light .skill-tailwind-css svg {
   .site-footer-social a svg { width: 12px; height: 12px; }
 
 
-  .nav-inner { height: 44px; padding: 0 8px; border-radius: 999px; backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); }
+  .nav-inner { height: 44px; padding: 0 8px; border-radius: 999px; backdrop-filter: blur(32px) saturate(160%); -webkit-backdrop-filter: blur(32px) saturate(160%); }
   .nav-logo .logo-k { font-size: .66rem; }
   .nav-sep-line { display: none; }
 
