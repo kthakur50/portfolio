@@ -2273,29 +2273,28 @@ body.light .skill-tailwind-css svg {
   body.light .nav-sep-line-mob { background: rgba(0,0,0,.16); }
   .nav-mob {
     position: fixed;
-    top: calc(var(--nav) + 10px);
-    left: auto;
-    right: calc(-1 * min(58vw, 240px) - 40px);
-    bottom: 12px;
-    height: auto;
-    max-height: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: min(70vw, 300px);
+    height: min(70vw, 300px);
     overflow-y: auto;
     overflow-x: hidden;
-    width: min(58vw, 240px);
-    background: rgba(20,24,22,.75);
-    backdrop-filter: blur(80px) saturate(160%);
-    -webkit-backdrop-filter: blur(80px) saturate(160%);
+    background: rgba(20,24,22,.92);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
     border: 1px solid rgba(255,255,255,.08);
     border-radius: 22px;
     padding: 12px;
     display: flex !important;
     flex-direction: column;
-    gap: 12px;
-    opacity: 1;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0;
     pointer-events: none;
-    transform: none;
-    transform-origin: initial;
-    transition: right .4s cubic-bezier(.32,1,.4,1);
+    transition: opacity .3s ease;
     z-index: 998;
     box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.25);
   }
@@ -2311,13 +2310,13 @@ body.light .skill-tailwind-css svg {
     z-index: -1;
   }
   body.light .nav-mob {
-    background: rgba(255,255,255,.8);
-    backdrop-filter: blur(80px) saturate(160%);
-    -webkit-backdrop-filter: blur(80px) saturate(160%);
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
     border-color: rgba(0,0,0,.08);
     box-shadow: 0 20px 60px rgba(0,0,0,.14), 0 4px 16px rgba(0,0,0,.08);
   }
-  .nav-mob.open { pointer-events: auto; right: 12px; transform: none; }
+  .nav-mob.open { pointer-events: auto; opacity: 1; }
 
   .nav-mob-grid {
     display: grid;
@@ -2363,10 +2362,10 @@ body.light .skill-tailwind-css svg {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
-    min-width: 34px;
-    border-radius: 11px;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 13px;
     background: rgba(255,255,255,.04);
     border: 1px solid rgba(255,255,255,.12);
     box-shadow: none;
@@ -2374,7 +2373,7 @@ body.light .skill-tailwind-css svg {
   }
   body.light .nm-icon { border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.02); }
   .nav-mob a:hover .nm-icon { transform: scale(1.08) rotate(-4deg); border-color: rgba(34,160,99,.5); background: rgba(34,160,99,.08); }
-  .nm-icon svg { width: 16px; height: 16px; color: var(--tx); }
+  .nm-icon svg { width: 20px; height: 20px; color: var(--tx); }
 
   .nav-mob-label {
     font-size: .82rem;
