@@ -1685,11 +1685,7 @@ body.light .skill-card--tl {
   .hero-right { align-self: flex-start; margin-top: calc(0.9 * clamp(3.1rem, 4.3vw, 5.6rem) + 42px); }
   .win3d-scene { transform: scale(1.05); }
 }
-/* Tablet LANDSCAPE (iPad Air/Pro etc. land in the 1025–1366px band, above
-   the ≤1024px portrait-tablet rule, so they need their own cube bump). */
-@media (min-width: 1025px) and (max-width: 1366px) and (orientation: landscape) {
-  .win3d-scene { transform: scale(1.7); }
-}
+
 /* ── WIN3D SCENE ─────────────────────────────────────────────── */
 .win3d-scene {
  display: flex;
@@ -2301,6 +2297,8 @@ body.light .skill-tailwind-css svg {
     max-height: none;
     overflow-y: auto;
     overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     width: min(74vw, 260px);
     background: rgba(20,20,22,.88);
     backdrop-filter: blur(60px) saturate(160%);
@@ -2320,6 +2318,7 @@ body.light .skill-tailwind-css svg {
     z-index: 998;
     box-shadow: 0 8px 32px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2);
   }
+  .nav-mob::-webkit-scrollbar { display: none; }
   .nav-mob::before {
     content: '';
     position: absolute;
@@ -2405,12 +2404,12 @@ body.light .skill-tailwind-css svg {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-    min-height: 38px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
     flex-shrink: 0;
-    border-radius: 11px;
+    border-radius: 10px;
     background: rgba(255,255,255,.04);
     border: 1px solid rgba(255,255,255,.12);
     box-shadow: none;
@@ -2418,7 +2417,7 @@ body.light .skill-tailwind-css svg {
   }
   body.light .nm-icon { border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.02); }
   .nav-mob a:hover .nm-icon { transform: scale(1.08) rotate(-4deg); border-color: rgba(34,160,99,.5); background: rgba(34,160,99,.08); }
-  .nm-icon svg { width: 19px; height: 19px; color: var(--tx); }
+  .nm-icon svg { width: 16px; height: 16px; color: var(--tx); }
 
   .nav-mob-label {
     font-size: .78rem;
