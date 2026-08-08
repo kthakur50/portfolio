@@ -2286,11 +2286,11 @@ body.light .skill-tailwind-css svg {
     backdrop-filter: blur(20px) saturate(160%);
     -webkit-backdrop-filter: blur(20px) saturate(160%);
     border: 1px solid rgba(255,255,255,.08);
-    border-radius: 26px;
-    padding: 18px;
+    border-radius: 22px;
+    padding: 12px;
     display: flex !important;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     opacity: 1;
     pointer-events: none;
     transform: none;
@@ -2321,18 +2321,18 @@ body.light .skill-tailwind-css svg {
 
   .nav-mob-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
   .nav-mob a {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 18px 8px;
-    border-radius: 18px;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 9px 12px;
+    border-radius: 14px;
     color: var(--tx);
     text-decoration: none;
     background: rgba(255,255,255,.03);
@@ -2356,17 +2356,17 @@ body.light .skill-tailwind-css svg {
   body.light .nav-mob a:hover { border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.04); }
   .nav-mob a.active .nm-icon { box-shadow: 0 0 0 2px rgba(255,255,255,.5) inset, 0 6px 16px rgba(0,0,0,.3); }
 
-  .nm-span2 { grid-column: 1 / -1; flex-direction: row; justify-content: flex-start; padding: 12px 16px; gap: 14px; }
-  .nm-span2 .nav-mob-label { font-size: .92rem; }
+  .nm-span2 { grid-column: 1 / -1; flex-direction: row; justify-content: flex-start; padding: 9px 12px; gap: 12px; }
+  .nm-span2 .nav-mob-label { font-size: .82rem; }
 
   .nm-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    border-radius: 13px;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 11px;
     background: rgba(255,255,255,.04);
     border: 1px solid rgba(255,255,255,.12);
     box-shadow: none;
@@ -2374,10 +2374,10 @@ body.light .skill-tailwind-css svg {
   }
   body.light .nm-icon { border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.02); }
   .nav-mob a:hover .nm-icon { transform: scale(1.08) rotate(-4deg); border-color: rgba(34,160,99,.5); background: rgba(34,160,99,.08); }
-  .nm-icon svg { width: 18px; height: 18px; color: var(--tx); }
+  .nm-icon svg { width: 16px; height: 16px; color: var(--tx); }
 
   .nav-mob-label {
-    font-size: .74rem;
+    font-size: .82rem;
     font-weight: 600;
     letter-spacing: .01em;
     white-space: nowrap;
