@@ -2283,8 +2283,8 @@ body.light .skill-tailwind-css svg {
     overflow-x: hidden;
     width: min(58vw, 240px);
     background: rgba(20,24,22,.75);
-    backdrop-filter: blur(40px) saturate(160%);
-    -webkit-backdrop-filter: blur(40px) saturate(160%);
+    backdrop-filter: blur(80px) saturate(160%);
+    -webkit-backdrop-filter: blur(80px) saturate(160%);
     border: 1px solid rgba(255,255,255,.08);
     border-radius: 22px;
     padding: 12px;
@@ -2312,8 +2312,8 @@ body.light .skill-tailwind-css svg {
   }
   body.light .nav-mob {
     background: rgba(255,255,255,.8);
-    backdrop-filter: blur(40px) saturate(160%);
-    -webkit-backdrop-filter: blur(40px) saturate(160%);
+    backdrop-filter: blur(80px) saturate(160%);
+    -webkit-backdrop-filter: blur(80px) saturate(160%);
     border-color: rgba(0,0,0,.08);
     box-shadow: 0 20px 60px rgba(0,0,0,.14), 0 4px 16px rgba(0,0,0,.08);
   }
