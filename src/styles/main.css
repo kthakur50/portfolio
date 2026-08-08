@@ -2279,25 +2279,25 @@ body.light .skill-tailwind-css svg {
   .nav-mob {
     position: fixed;
     top: calc(var(--nav) + 12px);
-    bottom: 12px;
+    bottom: auto;
     margin: 0;
     left: auto;
     right: 12px;
     height: auto;
-    max-height: none;
+    max-height: calc(100dvh - var(--nav) - 24px);
     overflow-y: auto;
     overflow-x: hidden;
-    width: min(62vw, 260px);
+    width: min(58vw, 210px);
     background: var(--bg);
     backdrop-filter: blur(32px) saturate(160%);
     -webkit-backdrop-filter: blur(32px) saturate(160%);
     border: 1px solid rgba(255,255,255,.08);
-    border-radius: 22px;
-    padding: 16px;
+    border-radius: 20px;
+    padding: 10px;
     display: flex !important;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: flex-start;
     gap: 12px;
     opacity: 0;
     transform: translateY(-8px) scale(0.96) translateZ(0);
@@ -2335,36 +2335,34 @@ body.light .skill-tailwind-css svg {
     pointer-events: auto;
   }
   .nav-mob-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     width: 100%;
-    place-items: stretch;
-    margin: auto 0;
+    margin: 0;
   }
   .nav-mob a {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    aspect-ratio: 1 / 1;
+    justify-content: flex-start;
     width: 100%;
-    gap: 8px;
-    padding: 12px;
-    border-radius: 16px;
+    gap: 12px;
+    padding: 9px;
+    border-radius: 14px;
     color: var(--tx);
     text-decoration: none;
     background: rgba(255,255,255,.03);
     border: 1px solid rgba(255,255,255,.07);
     opacity: 0;
-    transform: scale(.85) translateY(10px);
+    transform: scale(.92) translateX(10px);
     will-change: transform, opacity;
     transition: background .25s ease, border-color .25s ease, transform .18s cubic-bezier(.34,1.5,.64,1),
       opacity .3s cubic-bezier(.25,1,.5,1);
   }
   body.light .nav-mob a { background: rgba(0,0,0,.02); border-color: rgba(0,0,0,.06); }
-  .nav-mob.open a { opacity: 1; transform: scale(1) translateY(0); }
+  .nav-mob.open a { opacity: 1; transform: scale(1) translateX(0); }
   .nav-mob.open a:nth-child(1) { transition-delay: .06s; }
   .nav-mob.open a:nth-child(2) { transition-delay: .1s; }
   .nav-mob.open a:nth-child(3) { transition-delay: .14s; }
@@ -2372,24 +2370,24 @@ body.light .skill-tailwind-css svg {
   .nav-mob.open a:nth-child(5) { transition-delay: .22s; }
   .nav-mob.open a:nth-child(6) { transition-delay: .26s; }
   .nav-mob.open a:nth-child(7) { transition-delay: .3s; }
-  .nav-mob a:active { transform: scale(.95); }
+  .nav-mob a:active { transform: scale(.97); }
   .nav-mob a:hover { border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.06); }
   body.light .nav-mob a:hover { border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.04); }
   .nav-mob a.active .nm-icon { box-shadow: 0 0 0 2px rgba(255,255,255,.5) inset, 0 6px 16px rgba(0,0,0,.3); }
 
-  .nm-span2 { grid-column: span 1; justify-self: center; width: 100%; }
+  .nm-span2 { width: 100%; }
   .nm-span2 .nav-mob-label { font-size: .88rem; }
 
   .nm-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 52px;
-    height: 52px;
-    min-width: 52px;
-    min-height: 52px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     flex-shrink: 0;
-    border-radius: 14px;
+    border-radius: 11px;
     background: rgba(255,255,255,.04);
     border: 1px solid rgba(255,255,255,.12);
     box-shadow: none;
@@ -2397,10 +2395,10 @@ body.light .skill-tailwind-css svg {
   }
   body.light .nm-icon { border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.02); }
   .nav-mob a:hover .nm-icon { transform: scale(1.08) rotate(-4deg); border-color: rgba(34,160,99,.5); background: rgba(34,160,99,.08); }
-  .nm-icon svg { width: 24px; height: 24px; color: var(--tx); }
+  .nm-icon svg { width: 19px; height: 19px; color: var(--tx); }
 
   .nav-mob-label {
-    font-size: .88rem;
+    font-size: .86rem;
     font-weight: 600;
     letter-spacing: .01em;
     white-space: nowrap;
