@@ -2254,7 +2254,8 @@ body.light .skill-tailwind-css svg {
   .c-heading { font-size: clamp(1.05rem, 2.4vw, 1.35rem); }
   .c-lead { max-width: 60ch; }
 
-  .win3d-scene { transform: scale(1.4); }
+  .win3d-scene { transform: scale(1.6); }
+  .hero-right { margin-top: clamp(48px, 6vw, 64px); }
 }
 
 /* ── TABLET: use the same floating hamburger card as phone ─────── */
