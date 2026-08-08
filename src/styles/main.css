@@ -2022,7 +2022,10 @@ body.light .skill-tailwind-css svg {
     align-items: center;
     justify-content: center;
     line-height: 1;
+    transform: translateY(-1.5px);
   }
+  .btn-o:hover .arr { transform: translateY(-1.5px) translateX(6px) scale(1.1); }
+  .hero-btns .btn-o:hover .arr { transform: translateY(-1.5px) translateX(5px); }
 
   .nav-inner {
     height: 44px;
