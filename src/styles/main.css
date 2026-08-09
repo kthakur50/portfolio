@@ -1229,9 +1229,10 @@ body.light .masonry-link:hover {
 .masonry-link .arr {
  display: inline-block;
  line-height: 1;
+ transform: translateY(0);
  transition: transform .3s cubic-bezier(.25,.46,.45,.94);
 }
-.masonry-link:hover .arr { transform: translateX(4px); }
+.masonry-link:hover .arr { transform: translateY(0) translateX(4px); }
 #education { background: transparent; }
 body.light #education { background: transparent; }
 .edu-list {
@@ -2097,6 +2098,10 @@ body.light .skill-tailwind-css svg {
   .hero-btns .btn-o { font-size: clamp(.86rem, 1.5vw, 1.02rem); padding: clamp(11px, 1.4vw, 15px) clamp(15px, 1.8vw, 22px); flex: 1; }
   .btn-o--block { padding-top: clamp(11px, 1.4vw, 15px); padding-bottom: clamp(11px, 1.4vw, 15px); }
 
+  /* Contact: buttons stacked full-width, one below the other */
+  .c-actions { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
+  .c-actions .btn-o--block { width: 100%; }
+
   /* Cube: same style/size as desktop */
 
 
@@ -2281,13 +2286,13 @@ body.light .skill-tailwind-css svg {
   /* Footer */
 }
 
-/* ── TABLET (landscape/portrait, 769–1024px): compact contact row + smaller cube ── */
-@media (min-width: 769px) and (max-width: 1024px) {
+/* ── TABLET (landscape/portrait, 768–1024px): compact contact row + bigger cube ── */
+@media (min-width: 768px) and (max-width: 1024px) {
   .c-panel { gap: 36px; }
   .c-heading { font-size: clamp(1.05rem, 2.4vw, 1.35rem); }
   .c-lead { max-width: 100%; }
 
-  .win3d-scene { --cube-size: 250px; --cube-tz: 125px; }
+  .win3d-scene { --cube-size: 290px; --cube-tz: 145px; transform: none; }
   .hero-right { margin-top: clamp(84px, 9vw, 104px); }
 }
 
