@@ -32,7 +32,7 @@ const Hero = () => (
                     1+ Year Experience
                   </div>
                   <div className="hero-info-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22a063" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4285F4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                     </svg>
                     <a href="mailto:kthakur0578@gmail.com">kthakur0578@gmail.com</a>
@@ -48,7 +48,7 @@ const Hero = () => (
                     </span>
                   </div>
                   <div className="hero-info-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0d5836" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EA4335" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
                     </svg>
                     Noida, India
@@ -75,7 +75,7 @@ const Hero = () => (
               <a href="https://linkedin.com/in/kaushalt18" target="_blank" rel="noopener" className="btn-o">
                 <span className="btn-o-ico">
                   <svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="24" height="24" rx="4" fill="#136646"/>
+                    <rect width="24" height="24" rx="4" fill="#0A66C2"/>
                     <path fill="#fff" d="M7.116 9.5H4.41v9.586h2.706V9.5zM5.763 8.34c.945 0 1.534-.62 1.534-1.396-.017-.793-.589-1.395-1.516-1.395-.928 0-1.534.602-1.534 1.395 0 .776.589 1.396 1.499 1.396h.017zM19.59 19.086h-.001V13.59c0-2.94-1.572-4.309-3.668-4.309-1.692 0-2.45.93-2.873 1.583v-1.364h-2.706c.036.762 0 9.586 0 9.586h2.706v-5.354c0-.287.02-.573.107-.778.235-.573.768-1.167 1.665-1.167 1.176 0 1.664.882 1.664 2.175v5.124h2.706z"/>
                   </svg>
                 </span>
