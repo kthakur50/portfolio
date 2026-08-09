@@ -494,9 +494,9 @@ body.light .tube-bar {
    rgba(255,255,255,.55) 94%,
    rgba(255,255,255,0) 100%);
  box-shadow:
-   0 0 14px 4px rgba(34,160,99,.35),
-   0 0 34px 14px rgba(34,160,99,.20),
-   0 0 78px 32px rgba(34,160,99,.10);
+   0 0 14px 4px rgba(200,220,255,.55),
+   0 0 34px 14px rgba(200,220,255,.32),
+   0 0 78px 32px rgba(200,220,255,.15);
 }
 #home .wrap { position: relative; z-index: 2; width: 100%; }
 .hero-inner { display: flex; flex-direction: row; align-items: center; width: 100%; position: relative; gap: clamp(40px, 7vw, 80px); }
@@ -782,36 +782,36 @@ body.light #skills, body.light #contact {
  background: rgba(34,160,99,.07);
 }
 
-.sc-html    { --cc: 39,184,114; }
-.sc-css     { --cc: 13,88,54; }
-.sc-tw      { --cc: 34,160,99; }
-.sc-react   { --cc: 74,222,128; }
-.sc-redux   { --cc: 19,102,70; }
+.sc-html    { --cc: 228,77,38; }
+.sc-css     { --cc: 21,114,182; }
+.sc-tw      { --cc: 6,182,212; }
+.sc-react   { --cc: 97,218,251; }
+.sc-redux   { --cc: 118,74,188; }
 .sc-next    { --cc: 255,255,255; }
 body.light .sc-next    { --cc: 20,20,20; }
 body.light .sc-github  { --cc: 30,30,30; }
 body.light .sc-vercel  { --cc: 20,20,20; }
 body.light .sc-express { --cc: 60,60,60; }
-.sc-js      { --cc: 34,160,99; }
-.sc-ts      { --cc: 13,88,54; }
+.sc-js      { --cc: 240,219,79; }
+.sc-ts      { --cc: 49,120,198; }
 
 .sc-node    { --cc: 51,153,51; }
-.sc-express { --cc: 34,160,99; }
+.sc-express { --cc: 180,180,180; }
 .sc-api     { --cc: 133,234,45; }
-.sc-fastapi { --cc: 13,88,54; }
+.sc-fastapi { --cc: 0,150,136; }
 .sc-mongo   { --cc: 67,153,52; }
-.sc-pg      { --cc: 19,102,70; }
-.sc-python  { --cc: 19,102,70; }
-.sc-redis   { --cc: 39,184,114; }
+.sc-pg      { --cc: 51,103,145; }
+.sc-python  { --cc: 55,118,171; }
+.sc-redis   { --cc: 216,44,32; }
 
-.sc-git     { --cc: 34,160,99; }
+.sc-git     { --cc: 243,79,41; }
 .sc-github  { --cc: 255,255,255; }
-.sc-vscode  { --cc: 19,102,70; }
-.sc-netlify { --cc: 39,184,114; }
+.sc-vscode  { --cc: 0,122,204; }
+.sc-netlify { --cc: 0,199,183; }
 .sc-vercel  { --cc: 255,255,255; }
-.sc-docker  { --cc: 34,160,99; }
-.sc-k8s     { --cc: 19,102,70; }
-.sc-postman { --cc: 39,184,114; }
+.sc-docker  { --cc: 36,150,237; }
+.sc-k8s     { --cc: 50,108,229; }
+.sc-postman { --cc: 255,108,55; }
 .skill-chip[class*="sc-"] {
  border-color: rgba(var(--cc), .35);
  box-shadow: none;
