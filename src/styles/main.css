@@ -2104,7 +2104,7 @@ body.light .skill-tailwind-css svg {
 
   /* Projects: 2 columns */
   .masonry-list { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .masonry-img { aspect-ratio: 21/9; }
+  .masonry-img { aspect-ratio: 21/13; }
   .masonry-body { padding: 10px 10px; }
   .masonry-cat { font-size: .5rem; }
   .masonry-title { font-size: .78rem; margin: 4px 0 5px; }
