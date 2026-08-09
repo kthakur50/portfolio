@@ -9,11 +9,14 @@ function initTheme() {
     }
     const root = document.documentElement;
     root.classList.add('theme-transition');
+    // force a reflow so the transition class is registered before the
+    // theme class flips — prevents the occasional instant "snap" glitch
+    void root.offsetHeight;
     document.body.classList.toggle('light');
     clearTimeout(themeTransitionTimer);
     themeTransitionTimer = setTimeout(() => {
       root.classList.remove('theme-transition');
-    }, 500);
+    }, 320);
   };
 
   ['themeBtn', 'themeBtnM'].forEach(id => {
