@@ -38,7 +38,8 @@ body.light {
 }
 
 /* ── THEME TOGGLE: forced, synchronized crossfade ──────────────
-   Applied briefly (via JS) on the <html> element while switching
+   Fallback (browsers without View Transitions support, e.g. Firefox):
+   applied briefly via JS on the <html> element while switching
    light/dark so every element animates color/background/border
    together at one duration, instead of some snapping instantly
    because their own transition rule doesn't list color props. */
@@ -57,6 +58,30 @@ html.theme-transition *::after {
  html.theme-transition *::before,
  html.theme-transition *::after {
   transition: none !important;
+ }
+}
+
+/* ── THEME TOGGLE: native View Transitions crossfade ────────────
+   In browsers that support it (Chrome/Edge, Safari 18+), the whole
+   page is captured as a single before/after snapshot and GPU-cross-
+   faded — one soft, buttery animation instead of every element
+   animating its own colors individually. Much smoother, especially
+   on pages with lots of elements. */
+::view-transition-group(root) {
+ animation-duration: .5s;
+ animation-timing-function: cubic-bezier(.4,0,.2,1);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+ animation-duration: .5s;
+ animation-timing-function: cubic-bezier(.4,0,.2,1);
+ mix-blend-mode: normal;
+}
+@media (prefers-reduced-motion: reduce) {
+ ::view-transition-group(root),
+ ::view-transition-old(root),
+ ::view-transition-new(root) {
+  animation: none !important;
  }
 }
 html {
