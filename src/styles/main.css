@@ -1210,6 +1210,13 @@ body.light .masonry-item:hover .masonry-item-inner {
  background: transparent;
  box-shadow: none;
 }
+.masonry-link::before {
+ content: none;
+}
+body.light .masonry-link,
+body.light .masonry-link:hover {
+ background: transparent;
+}
 .masonry-item:hover .masonry-link { opacity: 1; }
 .masonry-link .arr { transition: transform .35s cubic-bezier(.25,.46,.45,.94); display: inline-block; }
 .masonry-item:hover .masonry-link .arr { transform: translateX(3px); }
