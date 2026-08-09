@@ -2,17 +2,32 @@ function initTheme() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let themeTransitionTimer = null;
 
+  const applyTheme = () => {
+    document.body.classList.toggle('light');
+  };
+
   const toggleTheme = () => {
     if (prefersReducedMotion) {
-      document.body.classList.toggle('light');
+      applyTheme();
       return;
     }
+
+    // Preferred path: native View Transitions — the browser cross-fades
+    // a single before/after snapshot on the GPU, so the whole page changes
+    // together as one soft animation instead of every element animating
+    // its own colors. Much smoother than the CSS fallback below.
+    if (document.startViewTransition) {
+      document.startViewTransition(applyTheme);
+      return;
+    }
+
+    // Fallback for browsers without View Transitions support (e.g. Firefox)
     const root = document.documentElement;
     root.classList.add('theme-transition');
     // force a reflow so the transition class is registered before the
     // theme class flips — prevents the occasional instant "snap" glitch
     void root.offsetHeight;
-    document.body.classList.toggle('light');
+    applyTheme();
     clearTimeout(themeTransitionTimer);
     themeTransitionTimer = setTimeout(() => {
       root.classList.remove('theme-transition');
