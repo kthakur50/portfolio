@@ -2423,10 +2423,10 @@ body.light .skill-tailwind-css svg {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    min-height: 32px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     flex-shrink: 0;
     border-radius: 10px;
     background: rgba(255,255,255,.04);
@@ -2436,7 +2436,7 @@ body.light .skill-tailwind-css svg {
   }
   body.light .nm-icon { border-color: rgba(0,0,0,.12); background: rgba(0,0,0,.02); }
   .nav-mob a:hover .nm-icon { transform: scale(1.08) rotate(-4deg); border-color: rgba(34,160,99,.5); background: rgba(34,160,99,.08); }
-  .nm-icon svg { width: 16px; height: 16px; color: var(--tx); }
+  .nm-icon svg { width: 22px; height: 22px; color: var(--tx); }
 
   .nav-mob-label {
     font-size: .78rem;
@@ -2455,8 +2455,8 @@ body.light .skill-tailwind-css svg {
   .nav-mob { width: min(66vw, 224px); }
   .nav-mob-grid { gap: 8px; }
   .nav-mob a { padding: 6px; border-radius: 13px; gap: 5px; }
-  .nm-icon { width: 27px; height: 27px; min-width: 27px; min-height: 27px; border-radius: 8px; }
-  .nm-icon svg { width: 14px; height: 14px; }
+  .nm-icon { width: 34px; height: 34px; min-width: 34px; min-height: 34px; border-radius: 9px; }
+  .nm-icon svg { width: 19px; height: 19px; }
   .nav-mob-label { font-size: .68rem; }
   .nm-span2 .nav-mob-label { font-size: .72rem; }
 }
