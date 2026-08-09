@@ -1227,19 +1227,12 @@ body.light .masonry-link:hover {
 }
 .masonry-item:hover .masonry-link { opacity: 1; }
 .masonry-link .arr {
- display: inline-flex;
- align-items: center;
- justify-content: center;
- align-self: center;
+ display: inline-block;
  line-height: 1;
+ transform: translateY(-1.5px);
  transition: transform .3s cubic-bezier(.25,.46,.45,.94);
 }
-.masonry-link .arr svg {
- display: block;
- width: 14px;
- height: 14px;
-}
-.masonry-link:hover .arr { transform: translateX(6px); }
+.masonry-link:hover .arr { transform: translateY(-1.5px) translateX(4px); }
 #education { background: transparent; }
 body.light #education { background: transparent; }
 .edu-list {
@@ -1422,7 +1415,7 @@ body.light .edu-inst { color: var(--a); }
 .btn-o--block {
  width: auto;
  justify-content: center;
- padding: 10px 18px;
+ padding: 11px 18px;
  font-size: .86rem;
  gap: 8px;
 }
@@ -2103,6 +2096,7 @@ body.light .skill-tailwind-css svg {
   /* Buttons: same full width as info box */
   .hero-btns { flex-wrap: nowrap; gap: clamp(8px, 1.2vw, 12px); order: unset; margin-top: 0; width: 100%; }
   .hero-btns .btn-o { font-size: clamp(.86rem, 1.5vw, 1.02rem); padding: clamp(11px, 1.4vw, 15px) clamp(15px, 1.8vw, 22px); flex: 1; }
+  .btn-o--block { padding-top: clamp(11px, 1.4vw, 15px); padding-bottom: clamp(11px, 1.4vw, 15px); }
 
   /* Cube: same style/size as desktop */
 
@@ -2283,7 +2277,7 @@ body.light .skill-tailwind-css svg {
   .c-text { align-items: flex-start; }
   .c-heading { font-size: clamp(1rem, 3vw, 1.3rem); }
   .c-lead { max-width: 100%; }
-  .btn-o--block { font-size: .82rem; padding: 9px 16px 9px 10px; }
+  .btn-o--block { font-size: .82rem; padding: clamp(13px, 1.8vw, 16px) 16px clamp(13px, 1.8vw, 16px) 10px; }
 
   /* Footer */
 }
@@ -2668,7 +2662,7 @@ body.light .skill-tailwind-css svg {
 
   .c-heading { font-size: clamp(.92rem, 4.4vw, 1.1rem); }
   .c-lead { font-size: .85rem; }
-  .btn-o--block { font-size: .74rem; padding: 7px 12px 7px 8px; }
+  .btn-o--block { font-size: .74rem; padding: 8px 12px 8px 8px; }
 
   .skill-one-card { gap: 8px; }
   .skill-one-card .skill-group { padding: 12px 10px 12px !important; }
