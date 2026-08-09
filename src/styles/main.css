@@ -1252,12 +1252,12 @@ body.light .masonry-link:hover {
 }
 .masonry-item:hover .masonry-link { opacity: 1; }
 .masonry-link .arr {
- display: inline-block;
+ display: inline-flex;
+ align-items: center;
  line-height: 1;
- transform: translateY(1px);
  transition: transform .3s cubic-bezier(.25,.46,.45,.94);
 }
-.masonry-link:hover .arr { transform: translateY(1px) translateX(4px); }
+.masonry-link:hover .arr { transform: translateX(4px); }
 #education { background: transparent; }
 body.light #education { background: transparent; }
 .edu-list {
@@ -2078,10 +2078,10 @@ body.light .skill-tailwind-css svg {
 
   .masonry-link .arr {
     margin-left: 0;
-    display: inline-block;
-    transform: translateY(1px);
+    display: inline-flex;
+    align-items: center;
   }
-  .masonry-link:hover .arr { transform: translateY(1px) translateX(4px); }
+  .masonry-link:hover .arr { transform: translateX(4px); }
 
   .nav-inner {
     height: 44px;
