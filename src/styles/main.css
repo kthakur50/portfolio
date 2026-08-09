@@ -1415,7 +1415,7 @@ body.light .edu-inst { color: var(--a); }
 .btn-o--block {
  width: auto;
  justify-content: center;
- padding: 11px 16px;
+ padding: 11px 22px;
  font-size: .94rem;
  gap: 5px;
 }
