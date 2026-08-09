@@ -1408,16 +1408,16 @@ body.light .edu-inst { color: var(--a); }
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
- justify-content: center;
+ justify-content: flex-start;
  gap: 10px;
  width: 100%;
 }
 .btn-o--block {
  width: auto;
  justify-content: center;
- padding: 11px 18px;
- font-size: .86rem;
- gap: 8px;
+ padding: 11px 16px;
+ font-size: .94rem;
+ gap: 5px;
 }
 .btn-o--block::before { content: none; }
 .btn-o--block:hover {
