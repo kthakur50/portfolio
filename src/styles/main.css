@@ -1361,10 +1361,10 @@ body.light .edu-item:hover .edu-card {
 body.light .edu-inst { color: var(--a); }
 /* ── Contact: left text, right actions ───────────────────────── */
 .c-panel {
- display: grid;
- grid-template-columns: 1.15fr .85fr;
- gap: clamp(32px, 6vw, 64px);
- align-items: center;
+ display: flex;
+ flex-direction: column;
+ gap: clamp(24px, 4vw, 32px);
+ align-items: flex-start;
  width: 100%;
 }
 .c-text {
@@ -1373,6 +1373,7 @@ body.light .edu-inst { color: var(--a); }
  align-items: flex-start;
  text-align: left;
  gap: 16px;
+ width: 100%;
 }
 .c-heading {
  font-size: clamp(1.15rem, 2.3vw, 1.6rem);
@@ -1392,16 +1393,17 @@ body.light .edu-inst { color: var(--a); }
  color: var(--mu);
  line-height: 1.75;
  margin: 0;
- max-width: 46ch;
+ max-width: 100%;
 }
 .c-actions {
  display: flex;
- flex-direction: column;
+ flex-direction: row;
+ flex-wrap: wrap;
  gap: 10px;
  width: 100%;
 }
 .btn-o--block {
- width: 100%;
+ width: auto;
  justify-content: center;
  padding: 10px 18px;
  font-size: .86rem;
@@ -2262,7 +2264,7 @@ body.light .skill-tailwind-css svg {
   .edu-yr { font-size: .58rem; white-space: nowrap; order: 3; margin-left: 0; margin-top: 8px; text-align: left; align-self: flex-start; }
 
   /* Contact */
-  .c-panel { grid-template-columns: 1fr; gap: 26px; }
+  .c-panel { gap: 26px; }
   .c-text { align-items: flex-start; }
   .c-heading { font-size: clamp(1rem, 3vw, 1.3rem); }
   .c-lead { max-width: 100%; }
@@ -2273,9 +2275,9 @@ body.light .skill-tailwind-css svg {
 
 /* ── TABLET (landscape/portrait, 769–1024px): compact contact row + smaller cube ── */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .c-panel { grid-template-columns: 1.1fr .9fr; gap: 36px; }
+  .c-panel { gap: 36px; }
   .c-heading { font-size: clamp(1.05rem, 2.4vw, 1.35rem); }
-  .c-lead { max-width: 60ch; }
+  .c-lead { max-width: 100%; }
 
   .win3d-scene { transform: scale(2.4); }
   .hero-right { margin-top: clamp(84px, 9vw, 104px); }
