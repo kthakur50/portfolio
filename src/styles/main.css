@@ -648,59 +648,6 @@ body.light .hero-name .ac-plain {
 .hero-info-item a[href*="github"]:hover { color: var(--a2); }
 .hero-info-time { color: rgba(232, 245, 239, .82); display: flex; align-items: center; gap: 4px; }
 .hero-info-time em { font-style: normal; color: var(--a2); font-size: .62rem; }
-.typing-text { display: inline-flex; align-items: center; }
-.typing-cursor {
- display: inline-block;
- margin-left: 1px;
- color: var(--a2);
- animation: typingBlink 1s step-end infinite;
-}
-@keyframes typingBlink {
- 0%, 50% { opacity: 1; }
- 51%, 100% { opacity: 0; }
-}
-
-/* Flip text (split-flap, bottom -> top flip) */
-.flip-text {
- position: relative;
- display: inline-block;
- overflow: hidden;
- white-space: nowrap;
- vertical-align: bottom;
- line-height: 1.35;
- perspective: 500px;
-}
-.flip-text-measure {
- visibility: hidden;
- white-space: nowrap;
- display: inline-block;
-}
-.flip-text-card {
- position: absolute;
- left: 0;
- top: 0;
- display: inline-block;
- white-space: nowrap;
- transform-style: preserve-3d;
- backface-visibility: hidden;
- transform-origin: bottom center;
- will-change: transform, opacity;
-}
-.is-flipping-out {
- animation: flipOutUp var(--flip-dur, 650ms) cubic-bezier(.5, 0, .15, 1) forwards;
-}
-.is-flipping-in {
- animation: flipInUp var(--flip-dur, 650ms) cubic-bezier(.5, 0, .15, 1) forwards;
-}
-@keyframes flipOutUp {
- 0% { transform: rotateX(0deg); opacity: 1; }
- 100% { transform: rotateX(100deg); opacity: 0; }
-}
-@keyframes flipInUp {
- 0% { transform: rotateX(-90deg); opacity: 0; }
- 55% { opacity: 1; }
- 100% { transform: rotateX(0deg); opacity: 1; }
-}
 body.light .hero-info-time { color: var(--mu); }
 body.light .hero-info-time em { color: var(--a); }
 body.light .hero-info { border-color: rgba(0,0,0,.07); background: rgba(255,255,255,.55); box-shadow: 0 1px 4px rgba(0,0,0,.05); }
@@ -2043,8 +1990,8 @@ body.light .wt.wt-cube-single .wt-name {
 
 /* React & Tailwind icons are light cyan and wash out on the pale
    light-mode tile background — darken/boost them for visibility. */
-body.light .skill-react-js svg,
-body.light .skill-tailwind-css svg {
+body.light .sc-react svg,
+body.light .sc-tw svg {
  filter: brightness(.62) saturate(1.7) contrast(1.15) drop-shadow(0 2px 8px rgba(0,0,0,.3));
 }
 
@@ -2156,10 +2103,6 @@ body.light .skill-tailwind-css svg {
   /* Contact: buttons stacked full-width, one below the other */
   .c-actions { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
   .c-actions .btn-o--block { width: 100%; }
-
-  /* Cube: same style/size as desktop */
-
-
 
   /* Skills: 3 columns always */
   .skill-one-card { grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -2543,8 +2486,6 @@ body.light .skill-tailwind-css svg {
   .site-footer { padding: 16px 0; }
   .site-footer-row { gap: 10px; }
   .site-footer-text { font-size: .62rem; }
-  .site-footer-social { gap: 10px; }
-  .site-footer-social a svg { width: 14px; height: 14px; }
 
   /* ── Navbar: compact pill — logo + theme + hamburger ── */
   .nav { padding: 5px 0; }
@@ -2651,8 +2592,6 @@ body.light .skill-tailwind-css svg {
 
   .site-footer-row { gap: 8px; }
   .site-footer-text { font-size: .58rem; }
-  .site-footer-social { gap: 8px; }
-  .site-footer-social a svg { width: 13px; height: 13px; }
 
   .nav-inner { height: 44px; padding: 0 10px; border-radius: 999px; backdrop-filter: blur(32px) saturate(160%); -webkit-backdrop-filter: blur(32px) saturate(160%); }
   .nav-logo .logo-k { font-size: .72rem; }
@@ -2699,8 +2638,6 @@ body.light .skill-tailwind-css svg {
 
   .site-footer-row { gap: 6px; }
   .site-footer-text { font-size: .54rem; }
-  .site-footer-social { gap: 6px; }
-  .site-footer-social a svg { width: 12px; height: 12px; }
 
 
   .nav-inner { height: 44px; padding: 0 8px; border-radius: 999px; backdrop-filter: blur(32px) saturate(160%); -webkit-backdrop-filter: blur(32px) saturate(160%); }
@@ -2738,8 +2675,7 @@ body.light .skill-tailwind-css svg {
 
 /* ── TOUCH DEVICES: minimum tap targets ─────────────────────── */
 @media (hover: none) and (pointer: coarse) {
-  .btn-o:not(.btn-o-sm) { min-height: 44px; }
-  .btn-o-sm { min-height: 38px; }
+  .btn-o { min-height: 44px; }
   .nav-toggle, .nav-ham { min-height: 36px; min-width: 36px; }
   .nav-desk-links a { min-height: 36px; display: flex; align-items: center; }
   .masonry-link { min-height: 36px; display: inline-flex; align-items: center; }
@@ -2782,25 +2718,4 @@ body.light .site-footer-text {
 body.light .site-footer-name {
  color: var(--a);
 }
-.site-footer-social {
- display: flex;
- align-items: center;
- gap: 16px;
- flex-shrink: 0;
-}
-.site-footer-social a {
- display: flex;
- align-items: center;
- justify-content: center;
- color: rgba(255,255,255,.55);
- border: none;
- background: none;
- transition: color .3s ease, transform .3s ease;
-}
-.site-footer-social a:hover {
- color: var(--a2);
- transform: translateY(-2px);
-}
-body.light .site-footer-social a { color: var(--mu); }
-body.light .site-footer-social a:hover { color: var(--a); }
 
