@@ -17,7 +17,7 @@ const Contact = () => {
 
             <p className="c-lead">
               Open to freelance work, collaborations, and full-time roles in web development
-              and GenAI engineering. Reach out anytime — I usually reply within a day.
+              and GenAI engineering. Reach out anytime.
             </p>
           </div>
 
