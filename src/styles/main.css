@@ -1229,10 +1229,10 @@ body.light .masonry-link:hover {
 .masonry-link .arr {
  display: inline-block;
  line-height: 1;
- transform: translateY(0);
+ transform: translateY(1px);
  transition: transform .3s cubic-bezier(.25,.46,.45,.94);
 }
-.masonry-link:hover .arr { transform: translateY(0) translateX(4px); }
+.masonry-link:hover .arr { transform: translateY(1px) translateX(4px); }
 #education { background: transparent; }
 body.light #education { background: transparent; }
 .edu-list {
