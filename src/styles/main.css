@@ -46,8 +46,8 @@ html.theme-transition,
 html.theme-transition *,
 html.theme-transition *::before,
 html.theme-transition *::after {
- transition-property: background-color, background, border-color, color, fill, stroke, box-shadow !important;
- transition-duration: .4s !important;
+ transition-property: background-color, border-color, color, fill, stroke !important;
+ transition-duration: .3s !important;
  transition-timing-function: cubic-bezier(.4,0,.2,1) !important;
  transition-delay: 0s !important;
 }
@@ -1229,10 +1229,9 @@ body.light .masonry-link:hover {
 .masonry-link .arr {
  display: inline-block;
  line-height: 1;
- transform: translateY(-1.5px);
  transition: transform .3s cubic-bezier(.25,.46,.45,.94);
 }
-.masonry-link:hover .arr { transform: translateY(-1.5px) translateX(4px); }
+.masonry-link:hover .arr { transform: translateX(4px); }
 #education { background: transparent; }
 body.light #education { background: transparent; }
 .edu-list {
