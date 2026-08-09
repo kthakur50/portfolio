@@ -2051,6 +2051,13 @@ body.light .skill-tailwind-css svg {
   .btn-o:hover .arr { transform: translateY(-1.5px) translateX(4px); }
   .hero-btns .btn-o:hover .arr { transform: translateY(-1.5px) translateX(4px); }
 
+  .masonry-link .arr {
+    margin-left: 0;
+    display: inline-block;
+    transform: translateY(1px);
+  }
+  .masonry-link:hover .arr { transform: translateY(1px) translateX(4px); }
+
   .nav-inner {
     height: 44px;
     padding: 0 clamp(12px, 2vw, 20px);
