@@ -739,10 +739,10 @@ body.light .btn-o:active {
   outline: 2px solid var(--a2);
   outline-offset: 3px;
 }
-.arr { display: inline-block; transition: transform .4s cubic-bezier(.34,1.56,.64,1); transform: translateY(-1.5px); }
+.arr { display: inline-block; transition: transform .3s cubic-bezier(.25,.46,.45,.94); transform: translateY(-1.5px); }
 .hero-btns .arr { display: inline-flex; align-items: center; justify-content: center; }
 .hero-btns .arr svg { display: block; }
-.btn-o:hover .arr { transform: translateY(-1.5px) translateX(6px) scale(1.1); }
+.btn-o:hover .arr { transform: translateY(-1.5px) translateX(4px); }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 11px 16px; font-size: .94rem; }
 
 /* ── Hero buttons: clean, simple hover (no fill) ── */
@@ -758,7 +758,7 @@ body.light .btn-o:active {
 body.light .hero-btns .btn-o:hover { color: var(--a); }
 .hero-btns .btn-o:hover .btn-o-ico { color: var(--a2); }
 body.light .hero-btns .btn-o:hover .btn-o-ico { color: var(--a); }
-.hero-btns .btn-o:hover .arr { transform: translateY(-1.5px) translateX(5px); }
+.hero-btns .btn-o:hover .arr { transform: translateY(-1.5px) translateX(4px); }
 
 #about, #skills, #experience, #projects, #education, #contact {
  border-top: 1px solid rgba(255,255,255,0.07);
@@ -2037,27 +2037,24 @@ body.light .skill-tailwind-css svg {
     line-height: 1;
     transform: translateY(-1.5px);
   }
-  .btn-o:hover .arr { transform: translateY(-1.5px) translateX(6px) scale(1.1); }
-  .hero-btns .btn-o:hover .arr { transform: translateY(-1.5px) translateX(5px); }
+  .btn-o:hover .arr { transform: translateY(-1.5px) translateX(4px); }
+  .hero-btns .btn-o:hover .arr { transform: translateY(-1.5px) translateX(4px); }
 
   .nav-inner {
     height: 44px;
     padding: 0 clamp(12px, 2vw, 20px);
-    background: rgba(255,255,255,.72);
+    background: rgba(20,20,22,.72);
     backdrop-filter: blur(32px) saturate(160%);
     -webkit-backdrop-filter: blur(32px) saturate(160%);
-    border: 1px solid rgba(0,0,0,.08);
+    border: 1px solid rgba(255,255,255,.08);
     border-radius: 999px;
     box-shadow: none;
     transition: background .3s ease, border-color .3s ease;
   }
-  .nav.scrolled .nav-inner { background: rgba(255,255,255,.88); box-shadow: none; }
-  body.light .nav-inner { background: rgba(255,255,255,.72); border: 1px solid rgba(0,0,0,.07); box-shadow: none; }
+  .nav.scrolled .nav-inner { background: rgba(20,20,22,.88); box-shadow: none; }
+  body.light .nav-inner { background: rgba(255,255,255,.72); border: 1px solid rgba(0,0,0,.08); box-shadow: none; }
   body.light .nav.scrolled .nav-inner { background: rgba(255,255,255,.88); box-shadow: none; }
-  .nav-logo .logo-k { font-size: clamp(.78rem, 1.5vw, .95rem); color: #24382c; }
-  .nav-toggle { color: #24382c; opacity: .8; }
-  .nav-ham { color: #24382c; opacity: .8; }
-  .nav-sep-line { background: rgba(0,0,0,.14); }
+  .nav-logo .logo-k { font-size: clamp(.78rem, 1.5vw, .95rem); }
   /* Icons open inline within the navbar itself, kept small */
   .nav-desk-links a { padding: 7px 9px; }
   .nav-desk-links a svg { width: 16px; height: 16px; }
@@ -2098,8 +2095,8 @@ body.light .skill-tailwind-css svg {
   .skill-card .skill-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
   .skill-chip { width: auto; height: auto; min-height: 76px; padding: 6px 4px; }
 
-  /* Projects: 3 columns, smaller cards */
-  .masonry-list { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  /* Projects: 2 columns */
+  .masonry-list { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .masonry-img { aspect-ratio: 21/9; }
   .masonry-body { padding: 10px 10px; }
   .masonry-cat { font-size: .5rem; }
