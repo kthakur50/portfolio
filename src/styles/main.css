@@ -48,7 +48,7 @@ html.theme-transition *,
 html.theme-transition *::before,
 html.theme-transition *::after {
  transition-property: background-color, border-color, color, fill, stroke !important;
- transition-duration: .3s !important;
+ transition-duration: .22s !important;
  transition-timing-function: cubic-bezier(.4,0,.2,1) !important;
  transition-delay: 0s !important;
 }
@@ -68,12 +68,12 @@ html.theme-transition *::after {
    animating its own colors individually. Much smoother, especially
    on pages with lots of elements. */
 ::view-transition-group(root) {
- animation-duration: .5s;
+ animation-duration: .35s;
  animation-timing-function: cubic-bezier(.4,0,.2,1);
 }
 ::view-transition-old(root),
 ::view-transition-new(root) {
- animation-duration: .5s;
+ animation-duration: .35s;
  animation-timing-function: cubic-bezier(.4,0,.2,1);
  mix-blend-mode: normal;
 }
@@ -83,6 +83,21 @@ html.theme-transition *::after {
  ::view-transition-new(root) {
   animation: none !important;
  }
+}
+
+/* While the native View Transition snapshot is cross-fading, every
+   element's own background/border/color transition (from the `*`
+   rule above) must be silenced. Otherwise both animations run at
+   once — the GPU crossfade AND hundreds of individual color
+   transitions — which is exactly what causes the slow, glitchy,
+   "double" feeling. JS adds this class right before calling
+   startViewTransition() and removes it once the snapshot swap
+   finishes. */
+html.vt-swap,
+html.vt-swap *,
+html.vt-swap *::before,
+html.vt-swap *::after {
+ transition: none !important;
 }
 html {
  scroll-behavior: smooth;
