@@ -2084,13 +2084,13 @@ body.light .skill-tailwind-css svg {
 
   /* Info box: full width, more compact vertically */
   .hero-block { min-width: 0; width: 100%; }
-  .hero-info { width: 100%; padding: clamp(12px, 1.6vw, 17px) clamp(11px, 1.7vw, 18px); margin-bottom: clamp(10px, 1.4vw, 14px); }
-  .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(10px, 2vw, 14px); }
-  .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(9px, 1.6vw, 15px); }
-  .hero-info-col:first-child { padding-right: clamp(6px, 1.2vw, 14px); border-right: none; padding-bottom: 0; border-bottom: none; }
-  .hero-info-col:last-child { padding-left: clamp(6px, 1.2vw, 14px); padding-top: 0; }
-  .hero-info-item { font-size: clamp(.72rem, 1.3vw, .87rem); height: clamp(19px, 2.8vw, 27px); gap: clamp(6px, 1vw, 10px); white-space: nowrap; padding: clamp(1px, .3vw, 2px) 0; }
-  .hero-info-item svg { width: clamp(15px, 2.2vw, 20px); height: clamp(15px, 2.2vw, 20px); }
+  .hero-info { width: 100%; padding: clamp(9px, 1.3vw, 13px) clamp(9px, 1.4vw, 14px); margin-bottom: clamp(8px, 1.1vw, 11px); }
+  .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(8px, 1.6vw, 11px); }
+  .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(7px, 1.3vw, 12px); }
+  .hero-info-col:first-child { padding-right: clamp(5px, 1vw, 11px); border-right: none; padding-bottom: 0; border-bottom: none; }
+  .hero-info-col:last-child { padding-left: clamp(5px, 1vw, 11px); padding-top: 0; }
+  .hero-info-item { font-size: clamp(.66rem, 1.15vw, .8rem); height: clamp(16px, 2.4vw, 23px); gap: clamp(5px, .9vw, 8px); white-space: nowrap; padding: clamp(1px, .25vw, 2px) 0; }
+  .hero-info-item svg { width: clamp(13px, 1.9vw, 17px); height: clamp(13px, 1.9vw, 17px); }
 
   /* Buttons: same full width as info box */
   .hero-btns { flex-wrap: nowrap; gap: clamp(8px, 1.2vw, 12px); order: unset; margin-top: 0; width: 100%; }
