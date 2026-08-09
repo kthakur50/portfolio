@@ -2089,8 +2089,15 @@ body.light .skill-tailwind-css svg {
   .skill-card .skill-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
   .skill-chip { width: auto; height: auto; min-height: 76px; padding: 6px 4px; }
 
-  /* Projects: 3 columns */
-  .masonry-list { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  /* Projects: 3 columns, smaller cards */
+  .masonry-list { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .masonry-img { aspect-ratio: 21/9; }
+  .masonry-body { padding: 10px 10px; }
+  .masonry-cat { font-size: .5rem; }
+  .masonry-title { font-size: .78rem; margin: 4px 0 5px; }
+  .masonry-desc { font-size: .66rem; line-height: 1.55; }
+  .masonry-tags { margin-top: 6px; gap: 4px; }
+  .masonry-link { margin-top: 6px; font-size: .7rem; }
 
   /* Experience & Education */
   .exp-list { padding-left: 52px; }
@@ -2263,7 +2270,7 @@ body.light .skill-tailwind-css svg {
   .c-heading { font-size: clamp(1.05rem, 2.4vw, 1.35rem); }
   .c-lead { max-width: 60ch; }
 
-  .win3d-scene { transform: scale(2.25); }
+  .win3d-scene { transform: scale(2.4); }
   .hero-right { margin-top: clamp(84px, 9vw, 104px); }
 }
 
