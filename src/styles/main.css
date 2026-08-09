@@ -1220,6 +1220,11 @@ body.light .masonry-item:hover .masonry-item-inner {
 body.light .masonry-link:hover {
  color: var(--a);
 }
+.masonry-link:focus-visible {
+ outline: 2px solid var(--a2);
+ outline-offset: 3px;
+ border-radius: 4px;
+}
 .masonry-item:hover .masonry-link { opacity: 1; }
 .masonry-link .arr {
  display: inline-flex;
@@ -1228,6 +1233,11 @@ body.light .masonry-link:hover {
  align-self: center;
  line-height: 1;
  transition: transform .3s cubic-bezier(.25,.46,.45,.94);
+}
+.masonry-link .arr svg {
+ display: block;
+ width: 14px;
+ height: 14px;
 }
 .masonry-link:hover .arr { transform: translateX(6px); }
 #education { background: transparent; }
@@ -1405,6 +1415,7 @@ body.light .edu-inst { color: var(--a); }
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
+ justify-content: center;
  gap: 10px;
  width: 100%;
 }
