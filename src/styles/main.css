@@ -1198,32 +1198,24 @@ body.light .masonry-item:hover .masonry-item-inner {
 .masonry-link {
  margin-top: 9px;
  align-self: flex-start;
- transition: gap .35s cubic-bezier(.25,.46,.45,.94), opacity .35s ease, color .2s ease;
+ transition: gap .35s cubic-bezier(.25,.46,.45,.94), opacity .35s ease, color .3s ease, background .25s ease;
  opacity: .85;
- padding: 0 6px 0 0;
- border: none;
- background: transparent;
- border-radius: 0;
 }
 .masonry-link:hover {
- border: none;
- background: transparent;
- box-shadow: none;
  color: var(--a2);
 }
 body.light .masonry-link:hover {
  color: var(--a);
 }
-.masonry-link::before {
- content: none;
-}
-body.light .masonry-link,
-body.light .masonry-link:hover {
- background: transparent;
-}
 .masonry-item:hover .masonry-link { opacity: 1; }
-.masonry-link .arr { transition: transform .35s cubic-bezier(.25,.46,.45,.94); display: inline-block; transform: translateY(-1.5px); }
-.masonry-item:hover .masonry-link .arr { transform: translateY(-1.5px) translateX(2px); }
+.masonry-link .arr {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ line-height: 1;
+ transition: transform .35s cubic-bezier(.25,.46,.45,.94);
+}
+.masonry-link:hover .arr { transform: translateX(4px); }
 #education { background: transparent; }
 body.light #education { background: transparent; }
 .edu-list {
@@ -2246,7 +2238,7 @@ body.light .skill-tailwind-css svg {
   .tag { font-size: .62rem; }
 
   /* Projects */
-  .masonry-list { grid-template-columns: 1fr; gap: 14px; }
+  .masonry-list { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .masonry-title { font-size: .9rem; }
   .masonry-desc { font-size: .74rem; }
 
