@@ -17,7 +17,15 @@ function initTheme() {
     // together as one soft animation instead of every element animating
     // its own colors. Much smoother than the CSS fallback below.
     if (document.startViewTransition) {
-      document.startViewTransition(applyTheme);
+      const root = document.documentElement;
+      // Silence every element's own color/background transition while the
+      // native snapshot crossfade plays — running both at once is what
+      // made the switch feel slow and glitchy.
+      root.classList.add('vt-swap');
+      const transition = document.startViewTransition(applyTheme);
+      transition.finished
+        .catch(() => {})
+        .finally(() => root.classList.remove('vt-swap'));
       return;
     }
 
@@ -31,7 +39,7 @@ function initTheme() {
     clearTimeout(themeTransitionTimer);
     themeTransitionTimer = setTimeout(() => {
       root.classList.remove('theme-transition');
-    }, 320);
+    }, 260);
   };
 
   ['themeBtn', 'themeBtnM'].forEach(id => {
