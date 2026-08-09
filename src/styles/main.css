@@ -1198,7 +1198,7 @@ body.light .masonry-item:hover .masonry-item-inner {
 .masonry-link {
  margin-top: 9px;
  align-self: flex-start;
- transition: gap .35s cubic-bezier(.25,.46,.45,.94), opacity .35s ease, all .35s cubic-bezier(.25,.46,.45,.94);
+ transition: gap .35s cubic-bezier(.25,.46,.45,.94), opacity .35s ease, color .2s ease;
  opacity: .85;
  padding: 0;
  border: none;
@@ -1209,6 +1209,10 @@ body.light .masonry-item:hover .masonry-item-inner {
  border: none;
  background: transparent;
  box-shadow: none;
+ color: var(--a2);
+}
+body.light .masonry-link:hover {
+ color: var(--a);
 }
 .masonry-link::before {
  content: none;
