@@ -1213,8 +1213,8 @@ body.light .masonry-link:hover {
  border-radius: 4px;
 }
 .masonry-item:hover .masonry-link { opacity: 1; }
-.masonry-link .arr { display: inline-flex; align-items: center; justify-content: center; }
-.masonry-link:hover .arr { transform: translateY(-1.5px) translateX(4px); }
+.masonry-link .arr { display: inline-flex; align-items: center; justify-content: center; line-height: 1; transform: none; }
+.masonry-link:hover .arr { transform: translateX(4px); }
 #education { background: transparent; }
 body.light #education { background: transparent; }
 .edu-list {
