@@ -2307,14 +2307,14 @@ body.light .sc-tw svg {
   .c-heading { font-size: clamp(1.05rem, 2.4vw, 1.35rem); }
   .c-lead { max-width: 100%; }
 
-  .win3d-scene { --cube-size: clamp(270px, 34vw, 330px); --cube-tz: clamp(135px, 17vw, 165px); transform: none; }
+  .win3d-scene { --cube-size: clamp(240px, 28vw, 300px); --cube-tz: clamp(120px, 14vw, 150px); transform: none; }
   .hero-right { margin-top: clamp(72px, 9vw, 104px); }
 
-  .hero-info { padding: clamp(20px, 3.2vw, 26px) clamp(13px, 2vw, 16px) clamp(20px, 3.2vw, 26px) clamp(17px, 2.6vw, 22px); margin-bottom: 11px; }
-  .hero-info-col:first-child { padding-right: clamp(14px, 2.2vw, 20px); }
-  .hero-info-col:last-child { padding-left: clamp(14px, 2.2vw, 20px); }
-  .hero-info-item { font-size: clamp(.74rem, 1.6vw, .82rem); gap: clamp(8px, 1.4vw, 11px); height: clamp(30px, 4.2vw, 33px); }
-  .hero-info-item svg { width: clamp(14px, 2vw, 17px); height: clamp(14px, 2vw, 17px); padding: 4px; }
+  .hero-info { padding: clamp(26px, 3.6vw, 32px) clamp(16px, 2.4vw, 20px) clamp(26px, 3.6vw, 32px) clamp(20px, 3vw, 26px); margin-bottom: 13px; }
+  .hero-info-col:first-child { padding-right: clamp(16px, 2.4vw, 22px); }
+  .hero-info-col:last-child { padding-left: clamp(16px, 2.4vw, 22px); }
+  .hero-info-item { font-size: clamp(.78rem, 1.7vw, .88rem); gap: clamp(9px, 1.6vw, 12px); height: clamp(32px, 4.6vw, 36px); }
+  .hero-info-item svg { width: clamp(16px, 2.2vw, 19px); height: clamp(16px, 2.2vw, 19px); padding: 4px; }
 }
 
 /* ── TABLET: use the same floating hamburger card as phone ─────── */
