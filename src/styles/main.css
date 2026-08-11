@@ -2274,10 +2274,10 @@ body.light .sc-tw svg {
   .c-heading { font-size: clamp(1.05rem, 2.4vw, 1.35rem); }
   .c-lead { max-width: 100%; }
 
-  .win3d-scene { transform: scale(1.15); }
+  .win3d-scene { transform: scale(1.05); }
   .hero-right { margin-top: clamp(72px, 9vw, 104px); }
 
-  .hero-info { padding: clamp(30px, 4.2vw, 36px) clamp(19px, 2.8vw, 24px) clamp(30px, 4.2vw, 36px) clamp(24px, 3.4vw, 29px); margin-bottom: 15px; }
+  .hero-info { padding: clamp(30px, 4.2vw, 36px) clamp(19px, 2.8vw, 24px) clamp(30px, 4.2vw, 36px) clamp(24px, 3.4vw, 29px); margin: 14px 0 22px; }
   .hero-info-col:first-child { padding-right: clamp(20px, 2.8vw, 26px); }
   .hero-info-col:last-child { padding-left: clamp(20px, 2.8vw, 26px); }
   .hero-info-item { font-size: clamp(.86rem, 1.9vw, .94rem); gap: clamp(11px, 1.9vw, 14px); height: clamp(35px, 5vw, 39px); }
