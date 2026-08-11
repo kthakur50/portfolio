@@ -727,8 +727,6 @@ body.light .btn-o:active {
   outline-offset: 3px;
 }
 .arr { display: inline-block; transition: transform .3s cubic-bezier(.25,.46,.45,.94); transform: translateY(-1.5px); }
-.hero-btns .arr { display: inline-flex; align-items: center; justify-content: center; }
-.hero-btns .arr svg { display: block; }
 .btn-o:hover .arr { transform: translateY(-1.5px) translateX(4px); }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 11px 16px; font-size: .94rem; }
 
