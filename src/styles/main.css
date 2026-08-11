@@ -2511,7 +2511,7 @@ body.light .sc-tw svg {
     flex-direction: column;
     align-items: center;
     gap: clamp(14px, 3vw, 24px);
-    margin-top: clamp(-74px, -13.5vw, -48px);
+    margin-top: clamp(-46px, -8.5vw, -26px);
   }
   .hero-left { flex: 1; width: 100%; order: 1; min-width: 0; display: flex; flex-direction: column; }
   .hero-right {
@@ -2597,7 +2597,7 @@ body.light .sc-tw svg {
   .nav-logo .logo-k { font-size: .72rem; }
 
   #home { padding: calc(var(--nav) + 4px) 0 40px; }
-  .hero-inner { flex-direction: column; align-items: center; gap: 22px; margin-top: -52px; }
+  .hero-inner { flex-direction: column; align-items: center; gap: 22px; margin-top: -28px; }
   .hero-name { font-size: clamp(1.85rem, 9vw, 2.5rem); margin-top: 6px; margin-bottom: 11px; white-space: nowrap; }
   .hero-info { padding: 22px 13px; margin-bottom: 11px; }
   .hero-info-grid { flex-direction: row; gap: 26px; }
