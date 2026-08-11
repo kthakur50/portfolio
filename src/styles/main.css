@@ -2290,8 +2290,14 @@ body.light .sc-tw svg {
   .c-heading { font-size: clamp(1.05rem, 2.4vw, 1.35rem); }
   .c-lead { max-width: 100%; }
 
-  .win3d-scene { --cube-size: 290px; --cube-tz: 145px; transform: none; }
+  .win3d-scene { --cube-size: 330px; --cube-tz: 165px; transform: none; }
   .hero-right { margin-top: clamp(84px, 9vw, 104px); }
+
+  .hero-info { padding: 26px 16px 26px 22px; margin-bottom: 11px; }
+  .hero-info-col:first-child { padding-right: 20px; }
+  .hero-info-col:last-child { padding-left: 20px; }
+  .hero-info-item { font-size: .82rem; gap: 11px; height: 33px; }
+  .hero-info-item svg { width: 17px; height: 17px; padding: 4px; }
 }
 
 /* ── TABLET: use the same floating hamburger card as phone ─────── */
