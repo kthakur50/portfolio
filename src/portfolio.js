@@ -275,7 +275,7 @@ function initMasonry() {
           <div class="masonry-title">${p.title}</div>
           <div class="masonry-desc">${p.desc}</div>
           <div class="masonry-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-          <a href="${p.link}" class="masonry-link">View Project <span class="arr"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+          <a href="${p.link}" class="masonry-link">View Project <span class="arr">→</span></a>
         </div>
       </div>`;
     container.appendChild(el);
