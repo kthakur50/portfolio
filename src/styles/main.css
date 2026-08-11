@@ -2307,7 +2307,7 @@ body.light .sc-tw svg {
   .c-heading { font-size: clamp(1.05rem, 2.4vw, 1.35rem); }
   .c-lead { max-width: 100%; }
 
-  .win3d-scene { --cube-size: clamp(200px, 22vw, 250px); --cube-tz: clamp(100px, 11vw, 125px); transform: none; }
+  .win3d-scene { --cube-size: clamp(160px, 17vw, 200px); --cube-tz: clamp(80px, 8.5vw, 100px); transform: none; }
   .hero-right { margin-top: clamp(72px, 9vw, 104px); }
 
   .hero-info { padding: clamp(30px, 4.2vw, 36px) clamp(19px, 2.8vw, 24px) clamp(30px, 4.2vw, 36px) clamp(24px, 3.4vw, 29px); margin-bottom: 15px; }
