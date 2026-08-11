@@ -1185,7 +1185,7 @@ body.light .masonry-item:hover .masonry-item-inner {
 .masonry-link {
  display: inline-flex;
  align-items: center;
- gap: 5px;
+ gap: 8px;
  margin-top: 9px;
  align-self: flex-start;
  padding: 0;
@@ -1217,15 +1217,37 @@ body.light .masonry-link:hover {
  display: inline-flex;
  align-items: center;
  justify-content: center;
+ flex-shrink: 0;
+ width: 24px;
+ height: 24px;
+ box-sizing: border-box;
+ border-radius: 50%;
+ border: 1px solid rgba(255,255,255,.16);
+ background: rgba(255,255,255,.03);
+ color: var(--tx);
  line-height: 1;
- transition: transform .3s cubic-bezier(.25,.46,.45,.94);
+ transition: background .3s ease, border-color .3s ease, color .3s ease, transform .3s cubic-bezier(.25,.46,.45,.94);
 }
 .masonry-link .arr svg {
  display: block;
- width: 13px;
- height: 13px;
+ width: 12px;
+ height: 12px;
 }
-.masonry-link:hover .arr { transform: translateX(4px); }
+.masonry-link:hover .arr {
+ background: var(--a2);
+ border-color: var(--a2);
+ color: #06140d;
+ transform: translateX(3px);
+}
+body.light .masonry-link .arr {
+ border-color: rgba(0,0,0,.14);
+ background: rgba(0,0,0,.02);
+}
+body.light .masonry-link:hover .arr {
+ background: var(--a);
+ border-color: var(--a);
+ color: #ffffff;
+}
 #education { background: transparent; }
 body.light #education { background: transparent; }
 .edu-list {
@@ -2046,12 +2068,7 @@ body.light .sc-tw svg {
   .btn-o:hover .arr { transform: translateY(-1.5px) translateX(4px); }
   .hero-btns .btn-o:hover .arr { transform: translateY(-1.5px) translateX(4px); }
 
-  .masonry-link .arr {
-    margin-left: 0;
-    display: inline-flex;
-    align-items: center;
-  }
-  .masonry-link:hover .arr { transform: translateX(4px); }
+  .masonry-link .arr { margin-left: 0; }
 
   .nav-inner {
     height: 44px;
