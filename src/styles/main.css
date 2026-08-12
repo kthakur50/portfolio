@@ -730,10 +730,7 @@ body.light .btn-o:active {
 .btn-o:hover .arr { transform: translateY(-1.5px) translateX(4px); }
 .hero-btns .btn-o { flex: 1 1 0; justify-content: center; min-width: 0; white-space: nowrap; padding: 11px 16px; font-size: .94rem; }
 
-/* ── Hero buttons: clean, simple hover (no fill) ── */
-.hero-btns .btn-o {
-  transition: color .25s ease, box-shadow .25s ease, transform .25s ease;
-}
+/* ── Hero buttons: no fill overlay (same reduced style as contact buttons) ── */
 .hero-btns .btn-o::before {
   content: none;
 }
