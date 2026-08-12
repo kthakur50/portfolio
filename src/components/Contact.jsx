@@ -13,6 +13,11 @@ const Contact = () => {
 
         <div className="c-panel sr" style={{ transitionDelay: '.05s' }}>
           <div className="c-text">
+            <div className="c-status">
+              <span className="c-status-dot" aria-hidden="true"></span>
+              Available for new projects
+            </div>
+
             <h3 className="c-heading">Got an idea? <em>Let's talk.</em></h3>
 
             <p className="c-lead">
