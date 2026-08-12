@@ -262,6 +262,9 @@ function initMasonry() {
     },
   ];
 
+  const canTilt = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   projects.forEach((p, i) => {
     const el = document.createElement('div');
     el.className = 'masonry-item sr';
@@ -283,6 +286,32 @@ function initMasonry() {
     const linkEl = el.querySelector('.masonry-link');
     if (linkEl && (!p.link || p.link === '#')) {
       linkEl.addEventListener('click', e => e.preventDefault());
+    }
+
+    // 3D tilt + spotlight glow that tracks the cursor — desktop-only,
+    // disabled for touch devices and prefers-reduced-motion.
+    if (canTilt) {
+      const inner = el.querySelector('.masonry-item-inner');
+      let raf = null;
+      const onMove = (e) => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          const rect = inner.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width;
+          const y = (e.clientY - rect.top) / rect.height;
+          inner.style.setProperty('--rx', ((0.5 - y) * 7).toFixed(2) + 'deg');
+          inner.style.setProperty('--ry', ((x - 0.5) * 7).toFixed(2) + 'deg');
+          inner.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+          inner.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+          raf = null;
+        });
+      };
+      const onLeave = () => {
+        inner.style.setProperty('--rx', '0deg');
+        inner.style.setProperty('--ry', '0deg');
+      };
+      inner.addEventListener('mousemove', onMove);
+      inner.addEventListener('mouseleave', onLeave);
     }
   });
 
