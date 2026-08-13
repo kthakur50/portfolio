@@ -754,16 +754,6 @@ body.light #skills, body.light #contact {
 }
 #contact .wrap { margin: 0 auto; max-width: var(--wrap-max); }
 
-.skill-cat { font-size: .6rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--a2); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.skill-cat::after { content: ''; flex: 1; height: 1px; background: var(--br); }
-.skill-strip { display: flex; flex-wrap: wrap; gap: 7px; }
-
-.skill-chip:hover {
- transform: translateY(-2px);
- border-color: rgba(34,160,99,.45);
- background: rgba(34,160,99,.07);
-}
-
 .sc-html    { --cc: 228,77,38; }
 .sc-css     { --cc: 21,114,182; }
 .sc-tw      { --cc: 6,182,212; }
@@ -794,17 +784,6 @@ body.light .sc-express { --cc: 60,60,60; }
 .sc-docker  { --cc: 36,150,237; }
 .sc-k8s     { --cc: 50,108,229; }
 .sc-postman { --cc: 255,108,55; }
-.skill-chip[class*="sc-"] {
- border-color: rgba(var(--cc), .35);
- box-shadow: none;
- background: linear-gradient(145deg, rgba(var(--cc),.10) 0%, rgba(var(--cc),.03) 100%);
- transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
-}
-.skill-chip[class*="sc-"]:hover {
- transform: translateY(-2px);
- border-color: rgba(var(--cc), .5);
- background: linear-gradient(145deg, rgba(var(--cc),.13) 0%, rgba(var(--cc),.04) 100%);
-}
 body.light .sc-next svg,
 body.light .sc-github svg,
 body.light .sc-vercel svg,
@@ -813,27 +792,6 @@ body.light .sc-react svg,
 body.light .sc-tw svg {
  filter: brightness(.62) saturate(1.7) contrast(1.15);
 }
-.skill-chip svg { width: 27px; height: 27px; display: block; max-width: none; flex-shrink: 0; transform: none; min-width: 27px; box-sizing: content-box; padding: 7px; border: 1px solid rgba(127,127,127,.25); border-radius: var(--rad); background: rgba(127,127,127,.08); filter: brightness(1.15) saturate(1.25); }
-.skill-chip span { font-size: .64rem; font-weight: 600; letter-spacing: .02em; text-transform: none; color: inherit; opacity: .96; white-space: nowrap; overflow: visible; text-overflow: clip; max-width: 100%; text-align: center; display: block; line-height: 1.25; padding: 0 2px 1px; }
-.skill-chip {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  padding: 6px 4px;
-  width: 100%;
-  height: auto;
-  min-height: 76px;
-  border-radius: var(--rad);
-  border: 1.5px dashed rgba(127,127,127,.22);
-  background: rgba(127,127,127,.07);
-  color: var(--tx);
-  cursor: default;
-  transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
-  flex-shrink: 0;
-}
-
 #about { background: transparent; }
 body.light #about { background: transparent; }
 
@@ -1622,201 +1580,134 @@ body.light .skill-marquee-wrap::after  { background: linear-gradient(-90deg, rgb
 }
 .mq-chip svg { flex-shrink: 0; display: block; width: 23px; height: 23px; filter: brightness(1.15) saturate(1.25); }
 
-.skill-one-card {
- display: grid;
- grid-template-columns: repeat(3, 1fr);
- gap: 16px;
- background: transparent;
- border: none;
- border-radius: 0;
- overflow: visible;
- position: relative;
+/* ── SKILLS: category tabs ─────────────────────────────────── */
+.sk-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
-body.light .skill-one-card {
- background: transparent;
- border: none;
+.sk-tabs::-webkit-scrollbar { display: none; }
+.sk-tab {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--br);
+  background: rgba(127,127,127,.05);
+  color: var(--mu);
+  font-family: inherit;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .25s ease, border-color .25s ease, background .25s ease, transform .2s ease, box-shadow .25s ease;
 }
-.skill-one-card .skill-group {
- background: rgba(255,255,255,.03) !important;
- border: 1px dashed rgba(255,255,255,.08) !important;
- border-radius: var(--rad) !important;
- box-shadow: none !important;
- flex: unset !important;
- padding: 24px 20px 20px !important;
- position: relative;
- overflow: hidden;
- transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, box-shadow .3s ease;
+.sk-tab:hover {
+  color: var(--tx);
+  border-color: rgba(34,160,99,.4);
+  transform: translateY(-1px);
 }
-.skill-one-card .skill-group:last-child {
- border-right: 1px dashed rgba(255,255,255,.08) !important;
+.sk-tab-count {
+  font-size: .62rem;
+  font-weight: 800;
+  line-height: 1;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: rgba(127,127,127,.14);
+  color: inherit;
 }
-.skill-one-card .skill-card--fe {
- border-color: rgba(255,255,255,.10) !important;
- background: rgba(255,255,255,.04) !important;
+.sk-tab.is-active {
+  color: #04140c;
+  border-color: var(--a2);
+  background: linear-gradient(135deg, var(--a2), var(--a3));
+  box-shadow: 0 4px 16px rgba(34,160,99,.28);
 }
-.skill-one-card .skill-card--be {
- border-color: rgba(255,255,255,.10) !important;
- background: rgba(255,255,255,.04) !important;
-}
-.skill-one-card .skill-card--tl {
- border-color: rgba(255,255,255,.10) !important;
- background: rgba(255,255,255,.04) !important;
-}
-body.light .skill-one-card .skill-group {
- background: rgba(255,255,255,.85) !important;
- border-color: rgba(0,0,0,.08) !important;
-}
-body.light .skill-one-card .skill-card--fe {
- background: rgba(255,255,255,.55) !important;
- border-color: rgba(0,0,0,.07) !important;
-}
-body.light .skill-one-card .skill-card--be {
- background: rgba(255,255,255,.55) !important;
- border-color: rgba(0,0,0,.07) !important;
-}
-body.light .skill-one-card .skill-card--tl {
- background: rgba(255,255,255,.55) !important;
- border-color: rgba(0,0,0,.07) !important;
-}
-.skill-card {
- position: relative;
- border-radius: var(--rad);
- padding: 14px 20px;
- cursor: default;
- display: flex;
- flex-direction: column;
- align-items: flex-start;
- gap: 13px;
- overflow: visible;
- opacity: 1;
- background: rgba(255,255,255,.04);
- border: 1px dashed rgba(255,255,255,.10);
- box-shadow: none;
+.sk-tab.is-active .sk-tab-count { background: rgba(0,0,0,.2); color: #04140c; }
+body.light .sk-tab { background: rgba(0,0,0,.03); border-color: rgba(0,0,0,.1); }
+body.light .sk-tab-count { background: rgba(0,0,0,.08); }
 
+/* ── SKILLS: grid ───────────────────────────────────────────── */
+.sk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(122px, 1fr));
+  gap: 12px;
 }
-.skill-card .skill-cat {
- font-size: .6rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
- color: var(--a2); display: flex; align-items: center; gap: 10px; margin-bottom: 0;
- width: 100%;
+.sk-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 10px 16px;
+  border-radius: var(--rad);
+  border: 1px dashed rgba(127,127,127,.22);
+  background: rgba(127,127,127,.045);
+  overflow: hidden;
+  cursor: default;
+  animation: skCardIn .5s cubic-bezier(.22,1,.36,1) both;
+  transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease, box-shadow .3s ease;
 }
-.skill-card .skill-cat::after { content: ''; flex: 1; height: 1px; background: var(--br); display: block; }
-.skill-card .skill-strip {
- width: 100%;
- display: flex;
- flex-direction: row;
- flex-wrap: wrap;
- gap: 7px;
+.sk-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 90% 70% at 50% -10%, rgba(var(--cc, 34 160 99),.16) 0%, transparent 70%);
+  transition: opacity .3s ease;
 }
-body.light .skill-card {
- background: rgba(255,255,255,.55);
- border: 1px dashed rgba(0,0,0,.07);
- box-shadow: 0 1px 4px rgba(0,0,0,.05);
+.sk-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--cc, 34 160 99), .5);
+  background: rgba(127,127,127,.07);
+  box-shadow: 0 10px 24px -12px rgba(var(--cc, 34 160 99), .5);
 }
-.skill-card .skill-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; overflow: hidden; border-radius: calc(var(--rad) - 2px); padding: 2px; margin: -2px; }
-.skill-card .skill-chip {
- background: transparent !important;
- border: none !important;
- box-shadow: none !important;
- backdrop-filter: none !important;
- -webkit-backdrop-filter: none !important;
- transition: transform .25s ease, opacity .25s ease;
+.sk-card:hover::before { opacity: 1; }
+.sk-card-icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: calc(var(--rad) - 1px);
+  background: rgba(127,127,127,.08);
+  border: 1px solid rgba(127,127,127,.18);
+  transition: border-color .3s ease, background .3s ease;
 }
-.skill-card .skill-chip:hover {
- background: transparent !important;
- border: none !important;
- box-shadow: none !important;
- transform: translateY(-2px);
+.sk-card-icon svg { display: block; filter: brightness(1.15) saturate(1.25); }
+.sk-card:hover .sk-card-icon {
+  border-color: rgba(var(--cc, 34 160 99), .4);
+  background: rgba(var(--cc, 34 160 99), .1);
 }
-.skill-card .skill-chip svg { width: 27px; height: 27px; min-width: 27px; padding: 6px; border: 1px solid rgba(127,127,127,.25); border-radius: var(--rad); background: rgba(127,127,127,.08); filter: brightness(1.15) saturate(1.25); }
-.skill-card--fe {
- border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
- box-shadow: none;
+.sk-card-name {
+  position: relative;
+  z-index: 1;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: var(--tx);
+  text-align: center;
+  line-height: 1.25;
 }
-body.light .skill-card--fe {
- background: rgba(255,255,255,.55);
- border-color: rgba(0,0,0,.07);
- box-shadow: 0 1px 4px rgba(0,0,0,.05);
+body.light .sk-card { background: rgba(255,255,255,.55); border-color: rgba(0,0,0,.09); }
+body.light .sk-card:hover { background: rgba(255,255,255,.8); }
+body.light .sk-card-icon { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.1); }
+@keyframes skCardIn {
+  from { opacity: 0; transform: translateY(14px) scale(.94); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
-.skill-card--fe .skill-cat { color: #4ade80; }
-
-.skill-card--be {
- border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
- box-shadow: none;
-}
-body.light .skill-card--be {
- background: rgba(255,255,255,.55);
- border-color: rgba(0,0,0,.07); box-shadow: 0 1px 4px rgba(0,0,0,.05);
-}
-.skill-card--be .skill-cat { color: #4ade80; }
-
-.skill-card--tl {
- border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.04);
- box-shadow: none;
-}
-body.light .skill-card--tl {
- background: rgba(255,255,255,.55);
- border-color: rgba(0,0,0,.07); box-shadow: 0 1px 4px rgba(0,0,0,.05);
-}
-.skill-card--tl .skill-cat { color: #4ade80; }
-.skill-card::before {
- content: '';
- position: absolute;
- top: -2px;
- left: 50%;
- transform: translateX(-50%);
- width: 64%;
- height: 4px;
- border-radius: 50%;
- opacity: 0;
- pointer-events: none;
- z-index: 10;
- clip-path: inset(-200px -200px -200px -200px);
- background: linear-gradient(90deg, transparent, rgba(var(--tc),1) 30%, rgba(var(--tc),1) 50%, rgba(var(--tc),1) 70%, transparent);
- box-shadow: 0 0 6px 2px rgba(var(--tc),.45), 0 0 16px 6px rgba(var(--tc),.20), 0 0 38px 14px rgba(var(--tc),.09);
-}
-.skill-card::after {
- content: '';
- position: absolute;
- top: 0; left: 50%;
- transform: translateX(-50%);
- width: 78%;
- height: 70%;
- opacity: 0;
- pointer-events: none;
- z-index: 9;
- border-radius: var(--rad);
- background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(var(--tc),.06) 0%, transparent 75%);
-}
-.skill-card--fe { --tc: 56,189,248; }
-.skill-card--be { --tc: 56,189,248; }
-.skill-card--tl { --tc: 56,189,248; }
-.skill-card.sk-glow::before {
- animation: tubeFlicker 9s ease-in-out infinite;
- opacity: 1;
-}
-.skill-card.sk-glow::after {
- opacity: 1;
-}
-@keyframes tubeFlicker {
- 0%, 100% { opacity: 1; }
- 4%       { opacity: .93; }
- 5%       { opacity: 1; }
- 22%      { opacity: 1; }
- 22.5%    { opacity: .55; }
- 23%      { opacity: .9; }
- 23.6%    { opacity: .7; }
- 24.2%    { opacity: 1; }
- 47%      { opacity: 1; }
- 47.4%    { opacity: .85; }
- 48%      { opacity: 1; }
- 68%      { opacity: 1; }
- 68.6%    { opacity: .4; }
- 69%      { opacity: .95; }
- 69.5%    { opacity: .65; }
- 70.2%    { opacity: 1; }
- 88%      { opacity: 1; }
- 88.4%    { opacity: .8; }
- 89%      { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .sk-card { animation: none; }
 }
 .hero-right {
  flex: 1;
@@ -2234,9 +2125,7 @@ body.light .sc-tw svg {
   .c-actions .btn-o--block { width: 100%; }
 
   /* Skills: 3 columns always */
-  .skill-one-card { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .skill-card .skill-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
-  .skill-chip { width: auto; height: auto; min-height: 76px; padding: 6px 4px; }
+  .sk-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
 
   /* Projects: 2 columns */
   .masonry-list { grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -2367,12 +2256,11 @@ body.light .sc-tw svg {
   .about-para { font-size: .85rem; line-height: 1.95; }
 
   /* Skills — one fluid scale for every phone size (no more jumps between breakpoints) */
-  .skill-one-card { grid-template-columns: 1fr; gap: clamp(8px, 3px + 1.47vw, 14px); }
-  .skill-one-card .skill-group { padding: clamp(10px, 1px + 2.45vw, 20px) clamp(6px, 1px + 1.96vw, 16px) clamp(8px, 1px + 2.35vw, 18px) !important; }
-  .skill-card .skill-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(5px, 1px + 0.78vw, 7px); }
-  .skill-chip { width: auto; height: auto; min-height: clamp(56px, 42px + 3.92vw, 72px); border-radius: var(--rad); gap: clamp(5px, 3px + 0.39vw, 6px); padding: clamp(6px, 3px + 0.6vw, 8px) 4px; }
-  .skill-chip svg { width: clamp(17px, 8px + 2.45vw, 27px); height: clamp(17px, 8px + 2.45vw, 27px); min-width: clamp(17px, 8px + 2.45vw, 27px); padding: clamp(3px, 1px + 0.6vw, 6px); border-radius: var(--rad); }
-  .skill-chip span { font-size: clamp(.58rem, .46rem + 0.63vw, .64rem); }
+  .sk-grid { grid-template-columns: repeat(3, 1fr); gap: clamp(6px, 3px + 1.2vw, 10px); }
+  .sk-card { padding: clamp(12px, 6px + 2vw, 18px) clamp(4px, 2px + 0.8vw, 8px) clamp(10px, 5px + 1.6vw, 14px); gap: clamp(6px, 4px + 0.6vw, 8px); }
+  .sk-card-icon { width: clamp(32px, 24px + 3.2vw, 42px); height: clamp(32px, 24px + 3.2vw, 42px); }
+  .sk-card-name { font-size: clamp(.58rem, .46rem + 0.63vw, .68rem); }
+  .sk-tab { font-size: .66rem; padding: 8px 15px; }
   .skill-marquee-wrap { margin-top: 20px; }
 
   /* Experience */
@@ -2754,11 +2642,10 @@ body.light .sc-tw svg {
   .masonry-tags { gap: 4px; margin-top: 6px; }
   .masonry-cat { font-size: .6rem; }
 
-  .skill-one-card { gap: 10px; }
-  .skill-one-card .skill-group { padding: 14px 12px 14px !important; }
-  .skill-card { gap: 12px; }
-  .skill-card .skill-strip { gap: 6px; }
-  .skill-chip span { max-width: 100%; font-size: .6rem; line-height: 1.2; }
+  .sk-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .sk-card { padding: 14px 6px 12px; gap: 6px; }
+  .sk-card-icon { width: 34px; height: 34px; }
+  .sk-card-name { font-size: .6rem; line-height: 1.2; }
   .skill-marquee-wrap { margin-top: 18px; padding: 4px 0; }
   .skill-marquee-wrap::before, .skill-marquee-wrap::after { width: 36px; }
   .mq-chip { height: 42px; min-height: 42px; padding: 0 14px; gap: 7px; font-size: .72rem; }
@@ -2795,13 +2682,11 @@ body.light .sc-tw svg {
   .c-lead { font-size: .85rem; }
   .btn-o--block { font-size: .74rem; padding: 8px 12px 8px 8px; }
 
-  .skill-one-card { gap: 8px; }
-  .skill-one-card .skill-group { padding: 12px 10px 12px !important; }
-  .skill-card { gap: 10px; padding: 14px 12px; }
-  .skill-card .skill-strip { gap: 5px; }
-  .skill-chip { min-height: 62px !important; height: auto !important; padding: 6px 3px !important; gap: 5px !important; }
-  .skill-chip svg { width: 18px !important; height: 18px !important; min-width: 18px !important; padding: 5px !important; }
-  .skill-chip span { max-width: 100%; font-size: .56rem; line-height: 1.15; }
+  .sk-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .sk-card { padding: 12px 4px 10px; gap: 5px; }
+  .sk-card-icon { width: 30px; height: 30px; }
+  .sk-card-name { font-size: .56rem; line-height: 1.15; }
+  .sk-tab { font-size: .62rem; padding: 7px 12px; }
   .skill-marquee-wrap { margin-top: 14px; }
   .skill-marquee-wrap::before, .skill-marquee-wrap::after { width: 24px; }
   .mq-chip { height: 38px; min-height: 38px; padding: 0 12px; gap: 6px; font-size: .66rem; }
@@ -2815,7 +2700,7 @@ body.light .sc-tw svg {
   .nav-desk-links a { min-height: 36px; display: flex; align-items: center; }
   .masonry-link { min-height: 36px; display: inline-flex; align-items: center; }
   .mq-chip { min-height: 36px; }
-  .skill-chip { cursor: pointer; }
+  .sk-card { cursor: pointer; }
 }
 
 /* ── FOOTER ──────────────────────────────────────────────────── */
