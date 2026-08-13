@@ -176,14 +176,6 @@ section { padding: 110px 0; }
  color: var(--a2);
  margin-left: -8px;
 }
-#skills .sec-hd h2 em,
-#contact .sec-hd h2 em {
- color: #db382c;
-}
-body.light #skills .sec-hd h2 em,
-body.light #contact .sec-hd h2 em {
- color: #a8231a;
-}
 .sec-hd-icon {
  width: clamp(30px, 4.8vw, 34px);
  height: clamp(30px, 4.8vw, 34px);
@@ -1406,13 +1398,13 @@ body.light .c-panel {
 }
 .c-panel::before {
  width: 260px; height: 260px;
- background: radial-gradient(circle, rgba(219,56,44,.35), transparent 70%);
+ background: radial-gradient(circle, rgba(255,255,255,.16), transparent 70%);
  top: -90px; right: -60px;
  animation: cGlowFloat 9s ease-in-out infinite;
 }
 .c-panel::after {
  width: 220px; height: 220px;
- background: radial-gradient(circle, rgba(122,23,18,.32), transparent 70%);
+ background: radial-gradient(circle, rgba(120,120,120,.22), transparent 70%);
  bottom: -80px; left: -50px;
  animation: cGlowFloat 11s ease-in-out infinite reverse;
 }
