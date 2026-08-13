@@ -215,32 +215,42 @@ const IconKubernetes = () => (
 );
 
 
+import { useState } from 'react';
+
+/* ─────────────── Skill data (single source of truth) ─────────────── */
+const SKILLS = [
+  { cls: 'sc-html',    label: 'HTML5',        cat: 'Frontend', icon: <IconHTML /> },
+  { cls: 'sc-css',     label: 'CSS3',          cat: 'Frontend', icon: <IconCSS /> },
+  { cls: 'sc-tw',      label: 'Tailwind CSS',  cat: 'Frontend', icon: <IconTailwind /> },
+  { cls: 'sc-react',   label: 'React.js',      cat: 'Frontend', icon: <IconReact /> },
+  { cls: 'sc-redux',   label: 'Redux',         cat: 'Frontend', icon: <IconRedux /> },
+  { cls: 'sc-next',    label: 'Next.js',       cat: 'Frontend', icon: <IconNext /> },
+  { cls: 'sc-js',      label: 'JavaScript',    cat: 'Frontend', icon: <IconJS /> },
+  { cls: 'sc-ts',      label: 'TypeScript',    cat: 'Frontend', icon: <IconTS /> },
+  { cls: 'sc-node',    label: 'Node.js',       cat: 'Backend',  icon: <IconNode /> },
+  { cls: 'sc-express', label: 'Express.js',    cat: 'Backend',  icon: <IconExpress /> },
+  { cls: 'sc-api',     label: 'REST APIs',     cat: 'Backend',  icon: <IconRestAPI /> },
+  { cls: 'sc-fastapi', label: 'FastAPI',       cat: 'Backend',  icon: <IconFastAPI /> },
+  { cls: 'sc-mongo',   label: 'MongoDB',       cat: 'Backend',  icon: <IconMongoDB /> },
+  { cls: 'sc-pg',      label: 'PostgreSQL',    cat: 'Backend',  icon: <IconPostgres /> },
+  { cls: 'sc-python',  label: 'Python',        cat: 'Backend',  icon: <IconPython /> },
+  { cls: 'sc-redis',   label: 'Redis',         cat: 'Backend',  icon: <IconRedis /> },
+  { cls: 'sc-git',     label: 'Git',           cat: 'Tools',    icon: <IconGit /> },
+  { cls: 'sc-github',  label: 'GitHub',        cat: 'Tools',    icon: <IconGitHub /> },
+  { cls: 'sc-vscode',  label: 'VS Code',       cat: 'Tools',    icon: <IconVSCode /> },
+  { cls: 'sc-netlify', label: 'Netlify',       cat: 'Tools',    icon: <IconNetlify /> },
+  { cls: 'sc-vercel',  label: 'Vercel',        cat: 'Tools',    icon: <IconVercel /> },
+  { cls: 'sc-docker',  label: 'Docker',        cat: 'Tools',    icon: <IconDocker /> },
+  { cls: 'sc-k8s',     label: 'Kubernetes',    cat: 'Tools',    icon: <IconKubernetes /> },
+  { cls: 'sc-postman', label: 'Postman',       cat: 'Tools',    icon: <IconPostman /> },
+];
+
+const CATS = ['All', 'Frontend', 'Backend', 'Tools'];
+
 const Skills = () => {
-  /* Marquee chips */
-  const marqueeChips = [
-    { cls: 'sc-html',    label: 'HTML5',        icon: <IconHTML /> },
-    { cls: 'sc-css',     label: 'CSS3',          icon: <IconCSS /> },
-    { cls: 'sc-tw',      label: 'Tailwind CSS',  icon: <IconTailwind /> },
-    { cls: 'sc-react',   label: 'React.js',      icon: <IconReact /> },
-    { cls: 'sc-redux',   label: 'Redux',         icon: <IconRedux /> },
-    { cls: 'sc-next',    label: 'Next.js',       icon: <IconNext /> },
-    { cls: 'sc-js',      label: 'JavaScript',    icon: <IconJS /> },
-    { cls: 'sc-ts',      label: 'TypeScript',    icon: <IconTS /> },
-    { cls: 'sc-node',    label: 'Node.js',       icon: <IconNode /> },
-    { cls: 'sc-express', label: 'Express.js',    icon: <IconExpress /> },
-    { cls: 'sc-api',     label: 'REST APIs',     icon: <IconRestAPI /> },
-    { cls: 'sc-fastapi', label: 'FastAPI',       icon: <IconFastAPI /> },
-    { cls: 'sc-mongo',   label: 'MongoDB',       icon: <IconMongoDB /> },
-    { cls: 'sc-redis',   label: 'Redis',         icon: <IconRedis /> },
-    { cls: 'sc-git',     label: 'Git',           icon: <IconGit /> },
-    { cls: 'sc-github',  label: 'GitHub',        icon: <IconGitHub /> },
-    { cls: 'sc-vscode',  label: 'VS Code',       icon: <IconVSCode /> },
-    { cls: 'sc-netlify', label: 'Netlify',       icon: <IconNetlify /> },
-    { cls: 'sc-vercel',  label: 'Vercel',        icon: <IconVercel /> },
-    { cls: 'sc-docker',  label: 'Docker',        icon: <IconDocker /> },
-    { cls: 'sc-k8s',     label: 'Kubernetes',    icon: <IconKubernetes /> },
-    { cls: 'sc-postman', label: 'Postman',       icon: <IconPostman /> },
-  ];
+  const [active, setActive] = useState('All');
+
+  const filtered = active === 'All' ? SKILLS : SKILLS.filter(s => s.cat === active);
 
   return (
     <section id="skills">
@@ -252,59 +262,44 @@ const Skills = () => {
           <h2>Skills<em>.</em></h2>
         </div>
 
-        <div className="skill-one-card">
-
-          {/* ── Frontend ── */}
-          <div className="skill-group skill-card skill-card--fe sk-glow sr" style={{ transitionDelay: '.05s' }}>
-            <div className="skill-cat">Frontend</div>
-            <div className="skill-strip">
-              <div className="skill-chip sc-html"><IconHTML /><span>HTML5</span></div>
-              <div className="skill-chip sc-css"><IconCSS /><span>CSS3</span></div>
-              <div className="skill-chip sc-tw"><IconTailwind /><span>Tailwind CSS</span></div>
-              <div className="skill-chip sc-react"><IconReact /><span>React.js</span></div>
-              <div className="skill-chip sc-redux"><IconRedux /><span>Redux</span></div>
-              <div className="skill-chip sc-next"><IconNext /><span>Next.js</span></div>
-              <div className="skill-chip sc-js"><IconJS /><span>JavaScript</span></div>
-              <div className="skill-chip sc-ts"><IconTS /><span>TypeScript</span></div>
-            </div>
-          </div>
-
-          {/* ── Backend ── */}
-          <div className="skill-group skill-card skill-card--be sk-glow sr" style={{ transitionDelay: '.12s' }}>
-            <div className="skill-cat">Backend</div>
-            <div className="skill-strip">
-              <div className="skill-chip sc-node"><IconNode /><span>Node.js</span></div>
-              <div className="skill-chip sc-express"><IconExpress /><span>Express.js</span></div>
-              <div className="skill-chip sc-api"><IconRestAPI /><span>REST APIs</span></div>
-              <div className="skill-chip sc-fastapi"><IconFastAPI /><span>FastAPI</span></div>
-              <div className="skill-chip sc-mongo"><IconMongoDB /><span>MongoDB</span></div>
-              <div className="skill-chip sc-pg"><IconPostgres /><span>PostgreSQL</span></div>
-              <div className="skill-chip sc-python"><IconPython /><span>Python</span></div>
-              <div className="skill-chip sc-redis"><IconRedis /><span>Redis</span></div>
-            </div>
-          </div>
-
-          {/* ── Tools — Figma hataya ── */}
-          <div className="skill-group skill-card skill-card--tl sk-glow sr" style={{ transitionDelay: '.2s' }}>
-            <div className="skill-cat">Tools</div>
-            <div className="skill-strip">
-              <div className="skill-chip sc-git"><IconGit /><span>Git</span></div>
-              <div className="skill-chip sc-github"><IconGitHub /><span>GitHub</span></div>
-              <div className="skill-chip sc-vscode"><IconVSCode /><span>VS Code</span></div>
-              <div className="skill-chip sc-netlify"><IconNetlify /><span>Netlify</span></div>
-              <div className="skill-chip sc-vercel"><IconVercel /><span>Vercel</span></div>
-              <div className="skill-chip sc-docker"><IconDocker /><span>Docker</span></div>
-              <div className="skill-chip sc-k8s"><IconKubernetes /><span>Kubernetes</span></div>
-              <div className="skill-chip sc-postman"><IconPostman /><span>Postman</span></div>
-            </div>
-          </div>
-
+        {/* ── Category filter tabs ── */}
+        <div className="sk-tabs sr" role="tablist" aria-label="Filter skills by category">
+          {CATS.map(c => {
+            const count = c === 'All' ? SKILLS.length : SKILLS.filter(s => s.cat === c).length;
+            return (
+              <button
+                key={c}
+                type="button"
+                role="tab"
+                aria-selected={active === c}
+                className={`sk-tab${active === c ? ' is-active' : ''}`}
+                onClick={() => setActive(c)}
+              >
+                {c}
+                <span className="sk-tab-count">{count}</span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* ── Marquee — Figma removed ── */}
+        {/* ── Filtered skill grid ── */}
+        <div className="sk-grid sr">
+          {filtered.map((s, i) => (
+            <div
+              key={active + s.cls}
+              className={`sk-card ${s.cls}`}
+              style={{ animationDelay: `${Math.min(i, 16) * 0.035}s` }}
+            >
+              <div className="sk-card-icon">{s.icon}</div>
+              <span className="sk-card-name">{s.label}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Marquee ── */}
         <div className="skill-marquee-wrap">
           <div className="skill-marquee-track">
-            {[...marqueeChips, ...marqueeChips].map((c, i) => (
+            {[...SKILLS, ...SKILLS].map((c, i) => (
               <div key={i} className={`mq-chip ${c.cls}`}>
                 {c.icon}
                 {c.label}
