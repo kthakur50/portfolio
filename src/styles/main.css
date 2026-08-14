@@ -13,7 +13,7 @@
  --di: #303030;
  --pad: clamp(20px,5vw,64px);
  --wrap-max: 1100px;
- --nav: 56px;
+ --nav: 64px;
  --rad: 7px;
  --ease: .32s cubic-bezier(.25,.46,.45,.94);
  --card-shadow: 0 2px 8px rgba(0,0,0,.28);
@@ -225,10 +225,10 @@ body.light .sec-hd-icon { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,
  transform: translateY(8px) translateZ(0);
 }
 .nav-inner {
- width: 100%;
- max-width: calc(var(--wrap-max) - 2 * var(--pad));
+ width: 90%;
+ max-width: calc(var(--wrap-max) - 4 * var(--pad));
  margin: 0 auto;
- height: 44px;
+ height: 52px;
  display: grid;
  grid-template-columns: 1fr auto 1fr;
  align-items: center;
@@ -2068,7 +2068,7 @@ body.light .sc-tw svg {
   .masonry-link .arr { margin-left: 0; }
 
   .nav-inner {
-    height: 44px;
+    height: 52px;
     padding: 0 clamp(12px, 2vw, 20px);
     background: rgba(20,20,22,.72);
     backdrop-filter: blur(32px) saturate(160%);
@@ -2158,10 +2158,10 @@ body.light .sc-tw svg {
   /* ── Navbar: icons open inline inside the navbar, tablet portrait ── */
   .nav { padding: 8px 0; }
   .nav-inner {
-    height: 44px;
+    height: 52px;
     padding: 0 clamp(12px, 2.5vw, 20px);
     border-radius: 999px;
-    max-width: calc(100% - 2 * var(--pad));
+    max-width: calc(92% - 2 * var(--pad));
     backdrop-filter: blur(32px) saturate(160%);
     -webkit-backdrop-filter: blur(32px) saturate(160%);
   }
@@ -2507,7 +2507,7 @@ body.light .sc-tw svg {
   /* ── Navbar: compact pill — logo + theme + hamburger ── */
   .nav { padding: 5px 0; }
   .nav-inner {
-    height: 44px;
+    height: 50px;
     padding: 0 14px;
     border-radius: 999px;
     max-width: calc(100% - 2 * var(--pad));
@@ -2610,7 +2610,7 @@ body.light .sc-tw svg {
   .site-footer-row { gap: 8px; }
   .site-footer-text { font-size: .58rem; }
 
-  .nav-inner { height: 44px; padding: 0 10px; border-radius: 999px; backdrop-filter: blur(32px) saturate(160%); -webkit-backdrop-filter: blur(32px) saturate(160%); }
+  .nav-inner { height: 48px; padding: 0 10px; border-radius: 999px; backdrop-filter: blur(32px) saturate(160%); -webkit-backdrop-filter: blur(32px) saturate(160%); }
   .nav-logo .logo-k { font-size: .72rem; }
 
   #home { padding: calc(var(--nav) + 4px) 0 40px; }
@@ -2656,7 +2656,7 @@ body.light .sc-tw svg {
   .site-footer-text { font-size: .54rem; }
 
 
-  .nav-inner { height: 44px; padding: 0 8px; border-radius: 999px; backdrop-filter: blur(32px) saturate(160%); -webkit-backdrop-filter: blur(32px) saturate(160%); }
+  .nav-inner { height: 46px; padding: 0 8px; border-radius: 999px; backdrop-filter: blur(32px) saturate(160%); -webkit-backdrop-filter: blur(32px) saturate(160%); }
   .nav-logo .logo-k { font-size: .66rem; }
   .nav-sep-line { display: none; }
 
