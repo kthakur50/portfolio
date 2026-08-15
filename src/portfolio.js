@@ -172,28 +172,6 @@ function initHam() {
     }, { passive: true });
   }
 
-  const hamDesk = document.getElementById('hamDesk');
-  const links   = document.getElementById('navDeskLinks');
-  if (hamDesk && links) {
-    const closeDesk = () => {
-      if (!links.classList.contains('open')) return;
-      links.classList.remove('open');
-      hamDesk.classList.remove('open');
-    };
-    hamDesk.addEventListener('click', e => {
-      e.stopPropagation();
-      const open = links.classList.toggle('open');
-      hamDesk.classList.toggle('open', open);
-    });
-    document.addEventListener('click', e => {
-      if (!links.classList.contains('open')) return;
-      if (links.contains(e.target) || hamDesk.contains(e.target)) return;
-      closeDesk();
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeDesk();
-    });
-  }
 }
 
 function initSR() {
