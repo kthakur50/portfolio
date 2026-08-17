@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import './styles/main.css';
 
+import SiteBackground from './components/SiteBackground';
 import Navbar     from './components/Navbar';
 import Hero       from './components/Hero';
 import About      from './components/About';
@@ -17,6 +18,7 @@ const App = () => {
 
   return (
     <>
+      <SiteBackground />
       <Navbar />
       <main>
         <Hero />
