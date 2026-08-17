@@ -8,6 +8,7 @@ const Hero = () => (
     <div className="wrap">
 
       <div className="hero-card sr on">
+        <div className="hero-card-grain" aria-hidden="true"></div>
         <div className="hero-card-inner">
           <div className="hero-card-text">
             <h1 className="hero-name">
