@@ -113,17 +113,54 @@ html {
 }
 body {
  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
- background: #000000;
+ background-color: #030303;
  color: var(--tx);
- transition: background .45s cubic-bezier(.4,0,.2,1), color .45s cubic-bezier(.4,0,.2,1);
+ transition: background-color .45s cubic-bezier(.4,0,.2,1), color .45s cubic-bezier(.4,0,.2,1);
  -webkit-font-smoothing: antialiased;
  -moz-osx-font-smoothing: grayscale;
  text-rendering: optimizeLegibility;
  overflow-x: hidden;
 }
 body.light {
- background: #ffffff;
+ background-color: #ffffff;
+ background-image:
+   radial-gradient(ellipse 70% 55% at 12% 8%,  rgba(0,150,138,.16), transparent 62%),
+   radial-gradient(ellipse 65% 50% at 88% 28%, rgba(216,66,10,.13), transparent 60%),
+   radial-gradient(ellipse 75% 60% at 22% 78%, rgba(0,150,138,.11), transparent 62%),
+   radial-gradient(ellipse 70% 55% at 82% 92%, rgba(216,66,10,.10), transparent 62%),
+   linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+ background-repeat: no-repeat;
+ background-size: 140% 140%, 150% 140%, 150% 130%, 140% 140%, 100% 100%;
  background-attachment: fixed;
+ animation: bgWaveDrift 26s ease-in-out infinite;
+}
+@keyframes bgWaveDrift {
+ 0%   { background-position: 0% 0%,   100% 20%, 20% 100%, 100% 100%, 0 0; }
+ 50%  { background-position: 15% 10%, 85% 5%,   35% 85%,  80% 85%,  0 0; }
+ 100% { background-position: 0% 0%,   100% 20%, 20% 100%, 100% 100%, 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+ body.light { animation: none; }
+}
+
+/* ── Site-wide animated wave background (GradientWaves / React Bits) ──
+   Sits fixed behind every section, using the site's own accent colors.
+   Dark mode: primary look, full strength. Light mode: faded out and the
+   original soft radial-gradient (above) takes over instead, since the
+   dark wave shader doesn't read well on a white background. */
+.site-waves-bg {
+ position: fixed;
+ inset: 0;
+ z-index: -1;
+ pointer-events: none;
+ opacity: .7;
+ transition: opacity .45s cubic-bezier(.4,0,.2,1);
+}
+body.light .site-waves-bg {
+ opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+ .site-waves-bg { display: none; }
 }
 a { text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; padding: 0; }
@@ -236,10 +273,10 @@ body.light .sec-hd-icon { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,
  position: relative;
  isolation: isolate;
  overflow: hidden;
- background: rgba(20,20,22,.94);
+ background: #3a3936;
  backdrop-filter: blur(28px) saturate(160%);
  -webkit-backdrop-filter: blur(28px) saturate(160%);
- border: 1px solid rgba(255,255,255,.08);
+ border: 1px solid rgba(255,255,255,.09);
  border-radius: 999px;
  padding: 0 10px 0 20px;
  box-shadow: none;
@@ -251,25 +288,25 @@ body.light .sec-hd-icon { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,
  inset: 0;
  z-index: 0 !important;
  pointer-events: none;
- opacity: .45;
+ opacity: .5;
  mix-blend-mode: overlay;
  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
  grid-column: 1 / -1;
  grid-row: 1;
 }
 .nav.scrolled .nav-inner {
- background: rgba(20,20,22,.97);
+ background: #3a3936;
  box-shadow: none;
 }
 body.light .nav-inner {
- background: rgba(255,255,255,.94);
+ background: #e4e2dd;
  backdrop-filter: blur(28px) saturate(160%);
  -webkit-backdrop-filter: blur(28px) saturate(160%);
- border: 1px solid rgba(0,0,0,.08);
+ border: 1px solid rgba(0,0,0,.09);
  box-shadow: none;
 }
 body.light .nav.scrolled .nav-inner {
- background: rgba(255,255,255,.97);
+ background: #e4e2dd;
  box-shadow: none;
 }
 .nav-logo { display: flex; align-items: center; gap: 5px; transition: opacity .2s ease; flex-shrink: 0; line-height: 1; }
@@ -451,7 +488,7 @@ body.light .nav-mob a:hover, body.light .nav-mob a:focus-visible { background: r
 body.light #home {
  --htc: 225,250,238;
 }
-body.light #home { background: #ffffff; --htc: 200,225,215; }
+body.light #home { background: transparent; --htc: 200,225,215; }
 
 /* ── Subtle tubelight glow ── */
 .tube-light {
@@ -508,25 +545,19 @@ body.light .tube-bar {
  position: relative;
  width: 100%;
  border-radius: 22px;
- border: 1px solid rgba(255,255,255,.09);
- background: #3a3936;
+ border: 1px solid rgba(255,255,255,.10);
+ background: rgba(255,255,255,.04);
  overflow: hidden;
  padding: clamp(30px, 4.4vw, 52px) clamp(26px, 4.4vw, 52px);
- box-shadow: 0 30px 60px -30px rgba(0,0,0,.5);
+ box-shadow: none;
 }
 .hero-card-grain {
- position: absolute;
- inset: 0;
- z-index: 0;
- pointer-events: none;
- opacity: .5;
- mix-blend-mode: overlay;
- background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+ display: none;
 }
 body.light .hero-card {
- border-color: rgba(0,0,0,.09);
- background: #e4e2dd;
- box-shadow: 0 20px 40px -26px rgba(0,0,0,.16);
+ border-color: rgba(0,0,0,.07);
+ background: rgba(255,255,255,.55);
+ box-shadow: 0 1px 4px rgba(0,0,0,.05);
 }
 body.light .hero-card-grain { opacity: .3; }
 .hero-card-inner {
