@@ -130,11 +130,12 @@ function initScroll() {
 function initHam() {
   if (document.getElementById('ham')?._init) return;
 
-  const ham   = document.getElementById('ham');
-  const mob   = document.getElementById('navMob');
-  const input = document.getElementById('navSearchInput');
-  const grid  = document.getElementById('navMobGrid');
-  const empty = document.getElementById('navMobEmpty');
+  const ham     = document.getElementById('ham');
+  const mob     = document.getElementById('navMob');
+  const overlay = document.getElementById('navMobOverlay');
+  const input   = document.getElementById('navSearchInput');
+  const grid    = document.getElementById('navMobGrid');
+  const empty   = document.getElementById('navMobEmpty');
 
   const filterMob = () => {
     if (!input || !grid) return;
@@ -158,12 +159,14 @@ function initHam() {
       if (!mob.classList.contains('open')) return;
       mob.classList.remove('open');
       ham.classList.remove('open');
+      overlay?.classList.remove('open');
       document.body.classList.remove('nav-mob-locked');
       if (input) { input.value = ''; filterMob(); }
     };
     const openMob = () => {
       mob.classList.add('open');
       ham.classList.add('open');
+      overlay?.classList.add('open');
       document.body.classList.add('nav-mob-locked');
       if (input) setTimeout(() => input.focus(), 200);
     };
