@@ -307,6 +307,23 @@ body.light .i-moon { opacity: 0; transform: translate(-50%,-50%) rotate(90deg) s
    toolbars resize the viewport as the page scrolls behind the card,
    which shifted its height and vertical centering mid-animation. */
 body.nav-mob-locked { overflow: hidden; }
+.nav-ham {
+ width: 36px; height: 36px; border-radius: var(--rad);
+ background: transparent;
+ border: none;
+ display: flex; align-items: center; justify-content: center;
+ position: relative;
+ color: var(--tx);
+ opacity: .85;
+ cursor: pointer;
+ transition: color .3s ease, opacity .3s ease;
+}
+.nav-ham svg { width: 17px; height: 17px; pointer-events: none; }
+.nav-ham:hover { color: var(--a2); opacity: 1; }
+body.light .nav-ham { color: var(--tx); opacity: .8; }
+body.light .nav-ham:hover { color: var(--a); opacity: 1; }
+.nav-ham.open { color: var(--a2); opacity: 1; }
+body.light .nav-ham.open { color: var(--a); }
 .nav-mob {
  display: flex; flex-direction: column; position: fixed;
  top: var(--nav); right: 12px; left: auto;
@@ -339,6 +356,39 @@ body.light .nav-mob {
  pointer-events: auto;
 }
 .nav-mob-grid { display: flex; flex-direction: column; gap: 2px; }
+.nav-mob-search {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ width: 100%;
+ box-sizing: border-box;
+ padding: 6px 8px;
+ margin-bottom: 6px;
+ border-radius: 8px;
+ background: rgba(255,255,255,.05);
+ border: 1px solid rgba(255,255,255,.08);
+ color: var(--mu);
+ flex-shrink: 0;
+}
+body.light .nav-mob-search { background: rgba(0,0,0,.03); border-color: rgba(0,0,0,.07); }
+.nav-mob-search svg { width: 14px; height: 14px; flex-shrink: 0; opacity: .8; }
+.nav-mob-search input {
+ flex: 1; min-width: 0;
+ background: transparent; border: none; outline: none;
+ font-size: .8rem;
+ font-family: inherit;
+ color: var(--tx);
+}
+.nav-mob-search input::placeholder { color: var(--mu); }
+.nav-mob-empty {
+ display: none;
+ font-size: .78rem;
+ color: var(--mu);
+ text-align: center;
+ padding: 14px 4px 6px;
+ margin: 0;
+}
+.nav-mob-empty.show { display: block; }
 .nav-mob a {
  position: relative; display: flex; align-items: center; justify-content: flex-start;
  padding: 8px; border-radius: 10px; color: var(--mu); outline: none;
@@ -458,17 +508,27 @@ body.light .tube-bar {
  position: relative;
  width: 100%;
  border-radius: 22px;
- border: 1px solid rgba(255,255,255,.10);
- background: #101012;
+ border: 1px solid rgba(255,255,255,.09);
+ background: #3a3936;
  overflow: hidden;
  padding: clamp(30px, 4.4vw, 52px) clamp(26px, 4.4vw, 52px);
  box-shadow: 0 30px 60px -30px rgba(0,0,0,.5);
 }
+.hero-card-grain {
+ position: absolute;
+ inset: 0;
+ z-index: 0;
+ pointer-events: none;
+ opacity: .5;
+ mix-blend-mode: overlay;
+ background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
 body.light .hero-card {
  border-color: rgba(0,0,0,.09);
- background: #fbfbfb;
+ background: #e4e2dd;
  box-shadow: 0 20px 40px -26px rgba(0,0,0,.16);
 }
+body.light .hero-card-grain { opacity: .3; }
 .hero-card-inner {
  position: relative;
  z-index: 2;
