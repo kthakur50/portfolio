@@ -8,8 +8,6 @@ const Hero = () => (
     <div className="wrap">
 
       <div className="hero-card sr on">
-        <div className="hero-card-grid" aria-hidden="true"></div>
-
         <div className="hero-card-inner">
           <div className="hero-card-text">
             <h1 className="hero-name">
@@ -23,7 +21,6 @@ const Hero = () => (
           </div>
 
           <div className="hero-card-cube">
-            <div className="hero-card-cube-ring" aria-hidden="true"></div>
             <HeroCube />
           </div>
         </div>
