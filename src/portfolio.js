@@ -105,6 +105,10 @@ function initScroll() {
         mob.classList.remove('open');
         ham?.classList.remove('open');
         document.body.classList.remove('nav-mob-locked');
+        const searchInput = document.getElementById('navSearchInput');
+        if (searchInput) searchInput.value = '';
+        document.querySelectorAll('#navMobGrid a').forEach(x => { x.style.display = ''; });
+        document.getElementById('navMobEmpty')?.classList.remove('show');
       }
     });
   });
@@ -126,8 +130,27 @@ function initScroll() {
 function initHam() {
   if (document.getElementById('ham')?._init) return;
 
-  const ham = document.getElementById('ham');
-  const mob = document.getElementById('navMob');
+  const ham   = document.getElementById('ham');
+  const mob   = document.getElementById('navMob');
+  const input = document.getElementById('navSearchInput');
+  const grid  = document.getElementById('navMobGrid');
+  const empty = document.getElementById('navMobEmpty');
+
+  const filterMob = () => {
+    if (!input || !grid) return;
+    const q = input.value.trim().toLowerCase();
+    let visible = 0;
+    grid.querySelectorAll('a').forEach(a => {
+      const label = (a.dataset.label || a.textContent || '').toLowerCase();
+      const match = !q || label.includes(q);
+      a.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    empty?.classList.toggle('show', visible === 0);
+  };
+  input?.addEventListener('input', filterMob);
+  input?.addEventListener('click', e => e.stopPropagation());
+
   if (ham && mob) {
     ham._init = true;
 
@@ -136,11 +159,13 @@ function initHam() {
       mob.classList.remove('open');
       ham.classList.remove('open');
       document.body.classList.remove('nav-mob-locked');
+      if (input) { input.value = ''; filterMob(); }
     };
     const openMob = () => {
       mob.classList.add('open');
       ham.classList.add('open');
       document.body.classList.add('nav-mob-locked');
+      if (input) setTimeout(() => input.focus(), 200);
     };
 
     ham.addEventListener('click', e => {
