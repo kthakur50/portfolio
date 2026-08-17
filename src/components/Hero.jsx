@@ -14,7 +14,6 @@ const Hero = () => (
             <h1 className="hero-name">
               <span className="ac-plain">Kaushal</span> <span className="ac">Thakur</span>
             </h1>
-            <p className="hero-card-sub">कौशल ठाकुर<span className="hero-card-sub-comma">,</span> B.Tech CSE</p>
             <div className="hero-card-roles">
               <p>Software Engineer &amp; Full Stack Developer</p>
               <p>Junior Engineer at RMSI</p>
