@@ -214,44 +214,75 @@ const IconKubernetes = () => (
   </svg>
 );
 
+/* OpenAI — simplified official flower/spiral mark */
+const IconOpenAI = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="12" fill="#000"/>
+    <path fill="#fff" d="M20.28 10.82a4.99 4.99 0 0 0-.43-4.09 5.05 5.05 0 0 0-5.43-2.42A5.06 5.06 0 0 0 10.9 2.6a5.05 5.05 0 0 0-4.81 3.49 5 5 0 0 0-3.34 2.42 5.05 5.05 0 0 0 .62 5.91 4.99 4.99 0 0 0 .43 4.09 5.05 5.05 0 0 0 5.43 2.42 4.98 4.98 0 0 0 3.71 1.66 5.05 5.05 0 0 0 4.81-3.5 5 5 0 0 0 3.34-2.42 5.05 5.05 0 0 0-.61-5.85zm-6.68 9.36a3.74 3.74 0 0 1-2.4-.87l.12-.07 3.98-2.3a.65.65 0 0 0 .33-.57v-5.6l1.68.97.02.05v4.65a3.75 3.75 0 0 1-3.73 3.74zm-8.03-3.43a3.72 3.72 0 0 1-.45-2.5l.12.07 3.98 2.3a.65.65 0 0 0 .65 0l4.86-2.8v1.94l-.02.06-4.02 2.32a3.75 3.75 0 0 1-5.12-1.39zm-1.05-8.7a3.72 3.72 0 0 1 1.96-1.64v4.73a.64.64 0 0 0 .33.57l4.85 2.8-1.68.97-.06-.01-4.02-2.32a3.75 3.75 0 0 1-1.38-5.1zm13.8 3.22l-4.85-2.8 1.68-.97.06.01 4.02 2.32a3.74 3.74 0 0 1-.58 6.75v-4.73a.65.65 0 0 0-.33-.58zm1.67-2.52l-.12-.07-3.98-2.3a.65.65 0 0 0-.65 0l-4.86 2.8v-1.94l.02-.06 4.02-2.32a3.75 3.75 0 0 1 5.57 3.89zm-10.5 3.46l-1.68-.97-.02-.06V6.53a3.75 3.75 0 0 1 6.14-2.87l-.12.07-3.98 2.3a.65.65 0 0 0-.33.57v5.6zm.91-1.98l2.16-1.25 2.16 1.25v2.5l-2.16 1.25-2.16-1.25v-2.5z"/>
+  </svg>
+);
 
-import { useState } from 'react';
+/* LangChain — chain-link mark */
+const IconLangChain = () => (
+  <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="8" cy="8" r="5.2" fill="none" stroke="#1C3C3C" strokeWidth="2.4"/>
+    <circle cx="16" cy="16" r="5.2" fill="none" stroke="#3E6B57" strokeWidth="2.4"/>
+    <path d="M11 11l2 2" stroke="#3E6B57" strokeWidth="2.4" strokeLinecap="round"/>
+  </svg>
+);
+
+/* Hugging Face — simplified yellow face mark */
+const IconHuggingFace = () => (
+  <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="10" fill="#FFD21E"/>
+    <ellipse cx="7.4" cy="14.4" rx="1.9" ry="2.6" fill="#FF9D0B"/>
+    <ellipse cx="16.6" cy="14.4" rx="1.9" ry="2.6" fill="#FF9D0B"/>
+    <circle cx="8.3" cy="10" r="1.15" fill="#3A3A3A"/>
+    <circle cx="15.7" cy="10" r="1.15" fill="#3A3A3A"/>
+    <path d="M8 14.2c1 1.6 2.3 2.4 4 2.4s3-.8 4-2.4" fill="none" stroke="#3A3A3A" strokeWidth="1.1" strokeLinecap="round"/>
+  </svg>
+);
+
+
+
 
 /* ─────────────── Skill data (single source of truth) ─────────────── */
-const SKILLS = [
-  { cls: 'sc-html',    label: 'HTML5',        cat: 'Frontend', icon: <IconHTML /> },
-  { cls: 'sc-css',     label: 'CSS3',          cat: 'Frontend', icon: <IconCSS /> },
-  { cls: 'sc-tw',      label: 'Tailwind CSS',  cat: 'Frontend', icon: <IconTailwind /> },
-  { cls: 'sc-react',   label: 'React.js',      cat: 'Frontend', icon: <IconReact /> },
-  { cls: 'sc-redux',   label: 'Redux',         cat: 'Frontend', icon: <IconRedux /> },
-  { cls: 'sc-next',    label: 'Next.js',       cat: 'Frontend', icon: <IconNext /> },
-  { cls: 'sc-js',      label: 'JavaScript',    cat: 'Frontend', icon: <IconJS /> },
-  { cls: 'sc-ts',      label: 'TypeScript',    cat: 'Frontend', icon: <IconTS /> },
-  { cls: 'sc-node',    label: 'Node.js',       cat: 'Backend',  icon: <IconNode /> },
-  { cls: 'sc-express', label: 'Express.js',    cat: 'Backend',  icon: <IconExpress /> },
-  { cls: 'sc-api',     label: 'REST APIs',     cat: 'Backend',  icon: <IconRestAPI /> },
-  { cls: 'sc-fastapi', label: 'FastAPI',       cat: 'Backend',  icon: <IconFastAPI /> },
-  { cls: 'sc-mongo',   label: 'MongoDB',       cat: 'Backend',  icon: <IconMongoDB /> },
-  { cls: 'sc-pg',      label: 'PostgreSQL',    cat: 'Backend',  icon: <IconPostgres /> },
-  { cls: 'sc-python',  label: 'Python',        cat: 'Backend',  icon: <IconPython /> },
-  { cls: 'sc-redis',   label: 'Redis',         cat: 'Backend',  icon: <IconRedis /> },
-  { cls: 'sc-git',     label: 'Git',           cat: 'Tools',    icon: <IconGit /> },
-  { cls: 'sc-github',  label: 'GitHub',        cat: 'Tools',    icon: <IconGitHub /> },
-  { cls: 'sc-vscode',  label: 'VS Code',       cat: 'Tools',    icon: <IconVSCode /> },
-  { cls: 'sc-netlify', label: 'Netlify',       cat: 'Tools',    icon: <IconNetlify /> },
-  { cls: 'sc-vercel',  label: 'Vercel',        cat: 'Tools',    icon: <IconVercel /> },
-  { cls: 'sc-docker',  label: 'Docker',        cat: 'Tools',    icon: <IconDocker /> },
-  { cls: 'sc-k8s',     label: 'Kubernetes',    cat: 'Tools',    icon: <IconKubernetes /> },
-  { cls: 'sc-postman', label: 'Postman',       cat: 'Tools',    icon: <IconPostman /> },
+const FULLSTACK_SKILLS = [
+  { cls: 'sc-html',    label: 'HTML5',        icon: <IconHTML /> },
+  { cls: 'sc-css',     label: 'CSS3',          icon: <IconCSS /> },
+  { cls: 'sc-tw',      label: 'Tailwind CSS',  icon: <IconTailwind /> },
+  { cls: 'sc-react',   label: 'React.js',      icon: <IconReact /> },
+  { cls: 'sc-redux',   label: 'Redux',         icon: <IconRedux /> },
+  { cls: 'sc-next',    label: 'Next.js',       icon: <IconNext /> },
+  { cls: 'sc-js',      label: 'JavaScript',    icon: <IconJS /> },
+  { cls: 'sc-ts',      label: 'TypeScript',    icon: <IconTS /> },
+  { cls: 'sc-node',    label: 'Node.js',       icon: <IconNode /> },
+  { cls: 'sc-express', label: 'Express.js',    icon: <IconExpress /> },
+  { cls: 'sc-api',     label: 'REST APIs',     icon: <IconRestAPI /> },
+  { cls: 'sc-fastapi', label: 'FastAPI',       icon: <IconFastAPI /> },
+  { cls: 'sc-mongo',   label: 'MongoDB',       icon: <IconMongoDB /> },
+  { cls: 'sc-pg',      label: 'PostgreSQL',    icon: <IconPostgres /> },
+  { cls: 'sc-python',  label: 'Python',        icon: <IconPython /> },
+  { cls: 'sc-redis',   label: 'Redis',         icon: <IconRedis /> },
 ];
 
-const CATS = ['All', 'Frontend', 'Backend', 'Tools'];
+const GENAI_TOOLS_SKILLS = [
+  { cls: 'sc-openai',  label: 'OpenAI API',    icon: <IconOpenAI /> },
+  { cls: 'sc-lang',    label: 'LangChain',     icon: <IconLangChain /> },
+  { cls: 'sc-hf',      label: 'Hugging Face',  icon: <IconHuggingFace /> },
+  { cls: 'sc-git',     label: 'Git',           icon: <IconGit /> },
+  { cls: 'sc-github',  label: 'GitHub',        icon: <IconGitHub /> },
+  { cls: 'sc-vscode',  label: 'VS Code',       icon: <IconVSCode /> },
+  { cls: 'sc-netlify', label: 'Netlify',       icon: <IconNetlify /> },
+  { cls: 'sc-vercel',  label: 'Vercel',        icon: <IconVercel /> },
+  { cls: 'sc-docker',  label: 'Docker',        icon: <IconDocker /> },
+  { cls: 'sc-k8s',     label: 'Kubernetes',    icon: <IconKubernetes /> },
+  { cls: 'sc-postman', label: 'Postman',       icon: <IconPostman /> },
+];
+
+const ALL_SKILLS = [...FULLSTACK_SKILLS, ...GENAI_TOOLS_SKILLS];
 
 const Skills = () => {
-  const [active, setActive] = useState('All');
-
-  const filtered = active === 'All' ? SKILLS : SKILLS.filter(s => s.cat === active);
-
   return (
     <section id="skills">
       <div className="wrap">
@@ -262,44 +293,55 @@ const Skills = () => {
           <h2>Skills<em>.</em></h2>
         </div>
 
-        {/* ── Category filter tabs ── */}
-        <div className="sk-tabs sr" role="tablist" aria-label="Filter skills by category">
-          {CATS.map(c => {
-            const count = c === 'All' ? SKILLS.length : SKILLS.filter(s => s.cat === c).length;
-            return (
-              <button
-                key={c}
-                type="button"
-                role="tab"
-                aria-selected={active === c}
-                className={`sk-tab${active === c ? ' is-active' : ''}`}
-                onClick={() => setActive(c)}
-              >
-                {c}
-                <span className="sk-tab-count">{count}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* ── Filtered skill grid ── */}
-        <div className="sk-grid sr">
-          {filtered.map((s, i) => (
-            <div
-              key={active + s.cls}
-              className={`sk-card ${s.cls}`}
-              style={{ animationDelay: `${Math.min(i, 16) * 0.035}s` }}
-            >
-              <div className="sk-card-icon">{s.icon}</div>
-              <span className="sk-card-name">{s.label}</span>
+        {/* ── Two window-style skill grids ── */}
+        <div className="sk-windows sr">
+          <div className="sk-window">
+            <div className="sk-window-bar">
+              <div className="sk-window-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span className="sk-window-title">fullstack.dev</span>
             </div>
-          ))}
+            <div className="sk-window-grid">
+              {FULLSTACK_SKILLS.map((s, i) => (
+                <div
+                  key={s.cls}
+                  className={`sk-cell ${s.cls}`}
+                  style={{ animationDelay: `${Math.min(i, 16) * 0.035}s` }}
+                >
+                  <div className="sk-cell-icon">{s.icon}</div>
+                  <span className="sk-cell-name">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="sk-window">
+            <div className="sk-window-bar">
+              <div className="sk-window-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span className="sk-window-title">genai-tools.dev</span>
+            </div>
+            <div className="sk-window-grid">
+              {GENAI_TOOLS_SKILLS.map((s, i) => (
+                <div
+                  key={s.cls}
+                  className={`sk-cell ${s.cls}`}
+                  style={{ animationDelay: `${Math.min(i, 16) * 0.035}s` }}
+                >
+                  <div className="sk-cell-icon">{s.icon}</div>
+                  <span className="sk-cell-name">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* ── Marquee ── */}
         <div className="skill-marquee-wrap">
           <div className="skill-marquee-track">
-            {[...SKILLS, ...SKILLS].map((c, i) => (
+            {[...ALL_SKILLS, ...ALL_SKILLS].map((c, i) => (
               <div key={i} className={`mq-chip ${c.cls}`}>
                 {c.icon}
                 {c.label}
