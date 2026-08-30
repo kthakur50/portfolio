@@ -262,8 +262,8 @@ body.light .sec-hd-icon { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,
  transform: translateY(8px) translateZ(0);
 }
 .nav-inner {
- width: 90%;
- max-width: calc(var(--wrap-max) - 4 * var(--pad));
+ width: 76%;
+ max-width: calc(var(--wrap-max) - 10 * var(--pad));
  margin: 0 auto;
  height: 52px;
  display: grid;
@@ -273,7 +273,7 @@ body.light .sec-hd-icon { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,
  position: relative;
  isolation: isolate;
  overflow: hidden;
- background: #3a3936;
+ background: rgba(0,0,0,.55);
  backdrop-filter: blur(28px) saturate(160%);
  -webkit-backdrop-filter: blur(28px) saturate(160%);
  border: 1px solid rgba(255,255,255,.09);
@@ -295,23 +295,23 @@ body.light .sec-hd-icon { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,
  grid-row: 1;
 }
 .nav.scrolled .nav-inner {
- background: #3a3936;
+ background: rgba(0,0,0,.55);
  box-shadow: none;
 }
 body.light .nav-inner {
- background: #e4e2dd;
+ background: rgba(0,0,0,.55);
  backdrop-filter: blur(28px) saturate(160%);
  -webkit-backdrop-filter: blur(28px) saturate(160%);
- border: 1px solid rgba(0,0,0,.09);
+ border: 1px solid rgba(255,255,255,.09);
  box-shadow: none;
 }
 body.light .nav.scrolled .nav-inner {
- background: #e4e2dd;
+ background: rgba(0,0,0,.55);
  box-shadow: none;
 }
 .nav-logo { display: flex; align-items: center; gap: 5px; transition: opacity .2s ease; flex-shrink: 0; line-height: 1; }
 .nav-logo .logo-k { font-size: .95rem; font-weight: 900; color: var(--tx); letter-spacing: .02em; line-height: 1; display: block; }
-body.light .nav-logo .logo-k { color: #2a2a2a; }
+body.light .nav-logo .logo-k { color: #f2f2f2; }
 .nav-logo .logo-k em { font-style: normal; color: var(--a2); }
 .nav-logo:hover { opacity: .75; }
 .nav-right { display: flex; align-items: center; gap: 6px; justify-content: flex-end; }
@@ -328,7 +328,7 @@ body.light .nav-logo .logo-k { color: #2a2a2a; }
  transition: color .3s var(--ease-curve, cubic-bezier(.25,.46,.45,.94)), opacity .3s ease;
 }
 .nav-toggle:hover { color: var(--a2); opacity: 1; background: transparent; }
-body.light .nav-toggle { color: var(--tx); opacity: .8; }
+body.light .nav-toggle { color: #f2f2f2; opacity: .8; }
 body.light .nav-toggle:hover { color: var(--a); opacity: 1; background: transparent; }
 .nav-toggle svg {
  width: 17px; height: 17px; pointer-events: none;
@@ -357,7 +357,7 @@ body.nav-mob-locked { overflow: hidden; }
 }
 .nav-ham svg { width: 17px; height: 17px; pointer-events: none; }
 .nav-ham:hover { color: var(--a2); opacity: 1; }
-body.light .nav-ham { color: var(--tx); opacity: .8; }
+body.light .nav-ham { color: #f2f2f2; opacity: .8; }
 body.light .nav-ham:hover { color: var(--a); opacity: 1; }
 .nav-ham.open { color: var(--a2); opacity: 1; }
 body.light .nav-ham.open { color: var(--a); }
@@ -618,6 +618,36 @@ body.light .hero-card-grain { opacity: .3; }
  opacity: .82;
  line-height: 1.5;
 }
+.hero-role-flip {
+ position: relative;
+ display: inline-block;
+ height: 1.5em;
+ overflow: hidden;
+ perspective: 300px;
+ color: var(--mu) !important;
+ opacity: .62 !important;
+}
+.hero-role-flip span {
+ position: absolute;
+ left: 0; top: 0;
+ white-space: nowrap;
+ backface-visibility: hidden;
+ transform-origin: 50% 100%;
+ animation: roleFlip 6s ease-in-out infinite;
+}
+.hero-role-flip span:nth-child(1) { animation-delay: 0s; }
+.hero-role-flip span:nth-child(2) { animation-delay: 3s; }
+@keyframes roleFlip {
+ 0%   { opacity: 0; transform: rotateX(90deg); }
+ 8%   { opacity: 1; transform: rotateX(0deg); }
+ 45%  { opacity: 1; transform: rotateX(0deg); }
+ 53%  { opacity: 0; transform: rotateX(-90deg); }
+ 100% { opacity: 0; transform: rotateX(-90deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+ .hero-role-flip span { animation: none; position: static; opacity: 1; }
+ .hero-role-flip span:nth-child(2) { display: none; }
+}
 .hero-card-cube {
  position: relative;
  flex-shrink: 0;
@@ -697,8 +727,7 @@ body.light .hero-social-ico:hover {
  margin-top: 4px;
  margin-bottom: 10px;
  white-space: nowrap;
- font-family: 'Playfair Display', 'Georgia', serif;
- transform: none;
+ font-family: 'Geist Pixel', 'Playfair Display', 'Georgia', serif;
  transform-origin: left;
  text-align: left;
  -webkit-text-stroke: 0;
@@ -716,7 +745,7 @@ body.light .hero-name .ac {
  font-weight: 600;
 }
 .hero-name .ac-pixel-dot {
- font-family: 'Playfair Display', 'Georgia', serif;
+ font-family: 'Geist Pixel', 'Playfair Display', 'Georgia', serif;
  color: var(--a2);
  font-weight: 600;
  margin-left: .06em;
@@ -803,6 +832,7 @@ body.light .btn-o:active {
 
 #about, #skills, #experience, #projects, #education, #contact {
  border-top: 1px solid rgba(255,255,255,0.07);
+ margin-top: 28px;
 }
 body.light #about, body.light #skills, body.light #experience,
 body.light #projects, body.light #education, body.light #contact {
@@ -2075,6 +2105,7 @@ body.light .sc-tw svg {
 @media (max-width: 1024px) {
   :root { --pad: clamp(20px, 4vw, 48px); }
   section { padding: 80px 0; }
+  #about, #skills, #experience, #projects, #education, #contact { margin-top: 22px; }
 
   /* Navbar: sizing only — show/hide behaviour for the hamburger card
      lives in the single "TABLET: floating hamburger card" block below,
@@ -2180,6 +2211,7 @@ body.light .sc-tw svg {
 @media (max-width: 768px) {
   :root { --pad: clamp(16px, 4vw, 32px); }
   section { padding: 64px 0; }
+  #about, #skills, #experience, #projects, #education, #contact { margin-top: 18px; }
   .sec-hd { margin-bottom: 28px; }
   .sec-hd h2 { font-size: clamp(1.3rem, 3.5vw, 1.7rem); }
 
@@ -2503,6 +2535,7 @@ body.light .sc-tw svg {
 @media (max-width: 600px) {
   :root { --pad: 18px; }
   section { padding: 56px 0; }
+  #about, #skills, #experience, #projects, #education, #contact { margin-top: 16px; }
   .sec-hd { margin-bottom: 22px; gap: 10px; }
   .sec-hd h2 { font-size: clamp(1.25rem, 5vw, 1.5rem); }
 
@@ -2611,6 +2644,7 @@ body.light .sc-tw svg {
 @media (max-width: 430px) {
   :root { --pad: 16px; }
   section { padding: 48px 0; }
+  #about, #skills, #experience, #projects, #education, #contact { margin-top: 14px; }
   .sec-hd h2 { font-size: clamp(1.15rem, 6vw, 1.4rem); }
 
   .site-footer-row { gap: 8px; }
@@ -2656,6 +2690,7 @@ body.light .sc-tw svg {
 @media (max-width: 360px) {
   :root { --pad: 14px; }
   section { padding: 42px 0; }
+  #about, #skills, #experience, #projects, #education, #contact { margin-top: 12px; }
   .sec-hd h2 { font-size: clamp(1.1rem, 7vw, 1.3rem); }
 
   .site-footer-row { gap: 6px; }
