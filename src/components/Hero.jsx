@@ -15,11 +15,7 @@ const Hero = () => (
               <span className="ac-plain">Kaushal</span> <span className="ac">Thakur</span>
             </h1>
             <div className="hero-card-roles">
-              <p className="hero-role-flip" aria-label="Full Stack Developer, AI Developer">
-                <span>Full Stack Developer</span>
-                <span>AI Developer</span>
-              </p>
-              <p>Junior Engineer at RMSI</p>
+              <p className="hero-intro">Full Stack Developer &amp; AI Developer, building fast web apps and intelligent systems at RMSI.</p>
             </div>
           </div>
 
