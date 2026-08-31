@@ -38,6 +38,7 @@ const Hero = () => (
         <div className="hero-card-grain" aria-hidden="true"></div>
         <div className="hero-card-inner">
           <div className="hero-card-text">
+            <p className="hero-greeting">Hi, I'm</p>
             <h1 className="hero-name">
               <span className="ac-plain">Kaushal</span> <span className="ac">Thakur</span>
             </h1>
