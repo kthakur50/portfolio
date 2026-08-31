@@ -1,4 +1,31 @@
+import { useEffect, useState } from 'react';
 import HeroCube from './HeroCube';
+
+const INTRO_TEXT = 'Full Stack Developer & AI Developer, building fast web apps and intelligent systems.';
+
+const TypedIntro = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setCount(0);
+    let i = 0;
+    const timer = setInterval(() => {
+      i += 1;
+      setCount(i);
+      if (i >= INTRO_TEXT.length) clearInterval(timer);
+    }, 26);
+    return () => clearInterval(timer);
+  }, []);
+
+  const done = count >= INTRO_TEXT.length;
+
+  return (
+    <p className="hero-intro" aria-label={INTRO_TEXT}>
+      <span aria-hidden="true">{INTRO_TEXT.slice(0, count)}</span>
+      <span className={`hero-intro-cursor${done ? ' is-idle' : ''}`} aria-hidden="true"></span>
+    </p>
+  );
+};
 
 const Hero = () => (
   <section id="home">
@@ -15,7 +42,8 @@ const Hero = () => (
               <span className="ac-plain">Kaushal</span> <span className="ac">Thakur</span>
             </h1>
             <div className="hero-card-roles">
-              <p className="hero-intro">Full Stack Developer &amp; AI Developer, building fast web apps and intelligent systems at RMSI.</p>
+              <TypedIntro />
+              <p className="hero-role-sub">Junior Engineer @RMSI</p>
             </div>
           </div>
 
