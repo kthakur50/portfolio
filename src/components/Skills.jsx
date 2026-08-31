@@ -291,62 +291,43 @@ const Skills = () => {
             <svg viewBox="1 1 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: 'scale(1.15)' }}><polyline points="18 16 22 12 18 8"/><polyline points="6 8 2 12 6 16"/><line x1="14.5" y1="4" x2="9.5" y2="20"/></svg>
           </span>
           <h2>Skills<em>.</em></h2>
+          <p className="sec-hd-sub">Tools and technologies I build with.</p>
         </div>
 
-        {/* ── Two window-style skill grids ── */}
-        <div className="sk-windows sr">
-          <div className="sk-window">
-            <div className="sk-window-bar">
-              <div className="sk-window-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <span className="sk-window-title">fullstack.dev</span>
-            </div>
-            <div className="sk-window-grid">
+        {/* ── Two columns: Fullstack (left) / GenAI (right), circular chips ── */}
+        <div className="sk-columns sr">
+          <div className="sk-col">
+            <h3 className="sk-col-title">Fullstack</h3>
+            <div className="sk-chip-row">
               {FULLSTACK_SKILLS.map((s, i) => (
                 <div
                   key={s.cls}
-                  className={`sk-cell ${s.cls}`}
-                  style={{ animationDelay: `${Math.min(i, 16) * 0.035}s` }}
+                  className={`sk-chip ${s.cls}`}
+                  style={{ animationDelay: `${Math.min(i, 20) * 0.03}s` }}
+                  title={s.label}
                 >
-                  <div className="sk-cell-icon">{s.icon}</div>
-                  <span className="sk-cell-name">{s.label}</span>
+                  <div className="sk-chip-ico">{s.icon}</div>
+                  <span className="sk-chip-name">{s.label}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="sk-window">
-            <div className="sk-window-bar">
-              <div className="sk-window-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <span className="sk-window-title">genai-tools.dev</span>
-            </div>
-            <div className="sk-window-grid">
+          <div className="sk-col">
+            <h3 className="sk-col-title">GenAI</h3>
+            <div className="sk-chip-row">
               {GENAI_TOOLS_SKILLS.map((s, i) => (
                 <div
                   key={s.cls}
-                  className={`sk-cell ${s.cls}`}
-                  style={{ animationDelay: `${Math.min(i, 16) * 0.035}s` }}
+                  className={`sk-chip ${s.cls}`}
+                  style={{ animationDelay: `${Math.min(i, 20) * 0.03}s` }}
+                  title={s.label}
                 >
-                  <div className="sk-cell-icon">{s.icon}</div>
-                  <span className="sk-cell-name">{s.label}</span>
+                  <div className="sk-chip-ico">{s.icon}</div>
+                  <span className="sk-chip-name">{s.label}</span>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* ── Marquee ── */}
-        <div className="skill-marquee-wrap">
-          <div className="skill-marquee-track">
-            {[...ALL_SKILLS, ...ALL_SKILLS].map((c, i) => (
-              <div key={i} className={`mq-chip ${c.cls}`}>
-                {c.icon}
-                {c.label}
-              </div>
-            ))}
           </div>
         </div>
 
