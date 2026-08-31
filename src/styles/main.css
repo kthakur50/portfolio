@@ -217,6 +217,16 @@ section { padding: 110px 0; }
  color: var(--a2);
  margin-left: -6px;
 }
+.sec-hd-sub {
+ order: 2;
+ font-size: clamp(.82rem, 1.3vw, .94rem);
+ font-weight: 450;
+ color: var(--mu);
+ opacity: .78;
+ max-width: 480px;
+ line-height: 1.5;
+ letter-spacing: .01em;
+}
 .sec-hd-icon {
  display: none;
 }
@@ -515,7 +525,7 @@ body.light .nav-mob a:hover, body.light .nav-mob a:focus-visible { background: r
  min-height: calc(100svh - var(--nav));
  position: relative;
  display: flex; align-items: center; justify-content: center;
- padding: 112px 0 120px;
+ padding: 60px 0 140px;
  overflow: hidden;
  background: transparent;
 }
@@ -533,11 +543,11 @@ body.light #home { background: transparent; --htc: 200,225,215; }
 /* ── Subtle tubelight glow ── */
 .tube-light {
  position: absolute;
- top: 0;
+ top: clamp(-6px, -0.4vw, 4px);
  left: 50%;
  transform: translateX(-50%);
- width: clamp(210px, 28vw, 390px);
- height: clamp(75px, 10vw, 120px);
+ width: clamp(250px, 33vw, 460px);
+ height: clamp(50px, 6.5vw, 80px);
  pointer-events: none;
  z-index: 5;
  overflow: visible;
@@ -588,7 +598,7 @@ body.light .tube-bar {
  border: 1px solid rgba(255,255,255,.10);
  background: rgba(255,255,255,.04);
  overflow: hidden;
- padding: clamp(22px, 3.3vw, 39px) clamp(20px, 3.3vw, 39px);
+ padding: clamp(10px, 1.5vw, 18px) clamp(20px, 3.3vw, 39px);
  box-shadow: none;
 }
 .hero-card-grain {
@@ -608,9 +618,17 @@ body.light .hero-card-grain { opacity: .3; }
  align-items: center;
  justify-content: center;
  text-align: center;
- gap: clamp(18px, 3vw, 27px);
+ gap: clamp(7px, 1.3vw, 13px);
 }
 .hero-card-text { min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.hero-greeting {
+ font-size: clamp(.85rem, 1.6vw, 1.05rem);
+ font-weight: 500;
+ color: var(--mu);
+ opacity: .85;
+ margin-bottom: 4px;
+ letter-spacing: .01em;
+}
 .hero-card-sub {
  font-size: .96rem;
  color: var(--mu);
@@ -662,8 +680,8 @@ body.light .hero-card-grain { opacity: .3; }
 .hero-card-cube {
  position: relative;
  flex-shrink: 0;
- width: clamp(170px, 19vw, 250px);
- height: clamp(170px, 19vw, 250px);
+ width: clamp(158px, 17.2vw, 226px);
+ height: clamp(158px, 17.2vw, 226px);
  display: flex;
  align-items: center;
  justify-content: center;
@@ -680,7 +698,7 @@ body.light .hero-card-grain { opacity: .3; }
  align-self: center !important;
  justify-content: center !important;
 }
-.hero-card-cube .win3d-scene { --cube-size: clamp(78px, 9vw, 116px); --cube-tz: clamp(45px, 4.8vw, 63px); transform: none !important; gap: 0; }
+.hero-card-cube .win3d-scene { --cube-size: clamp(88px, 9.7vw, 129px); --cube-tz: clamp(50px, 5.3vw, 70px); transform: none !important; gap: 0; }
 
 /* ── SOCIAL ICON ROW ─────────────────────────────────────────── */
 .hero-social-row {
@@ -688,7 +706,7 @@ body.light .hero-card-grain { opacity: .3; }
  align-items: center;
  justify-content: center;
  gap: 14px;
- margin-top: clamp(28px, 4vw, 40px);
+ margin-top: clamp(22px, 3vw, 32px);
 }
 .hero-social-ico {
  display: inline-flex;
@@ -1585,71 +1603,6 @@ body.light .btn-o--block:hover .btn-o-ico { color: var(--a); }
 footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: transparent; }
 body.light footer { background: #ffffff; }
 
-.skill-marquee-wrap {
-  margin-top: 28px;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  padding: 6px 0;
-}
-.skill-marquee-wrap::before,
-.skill-marquee-wrap::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 120px;
-  z-index: 2;
-  pointer-events: none;
-}
-.skill-marquee-wrap::before { left: 0; background: linear-gradient(90deg, rgba(0,0,0,.8) 0%, rgba(0,0,0,.4) 55%, transparent 100%); }
-.skill-marquee-wrap::after  { right: 0; background: linear-gradient(-90deg, rgba(0,0,0,.8) 0%, rgba(0,0,0,.4) 55%, transparent 100%); }
-body.light .skill-marquee-wrap::before { background: linear-gradient(90deg, rgba(255,255,255,.9) 0%, rgba(255,255,255,.4) 55%, transparent 100%); }
-body.light .skill-marquee-wrap::after  { background: linear-gradient(-90deg, rgba(255,255,255,.9) 0%, rgba(255,255,255,.4) 55%, transparent 100%); }
-.skill-marquee-track {
-  display: flex;
-  gap: 8px;
-  width: max-content;
-  animation: marqueeScroll 32s linear infinite;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.skill-marquee-wrap:hover .skill-marquee-track { animation-play-state: paused; }
-@keyframes marqueeScroll {
-  from { transform: translateX(0) translateZ(0); }
-  to   { transform: translateX(-50%) translateZ(0); }
-}
-.mq-chip {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  padding: 0 18px;
-  width: auto;
-  height: 48px;
-  min-width: auto;
-  min-height: 48px;
-  border-radius: var(--rad);
-  border: none;
-  background: transparent;
-  color: var(--tx);
-  white-space: nowrap;
-  flex-shrink: 0;
-  font-size: .78rem;
-  font-weight: 600;
-  letter-spacing: .02em;
-  opacity: .96;
-  transition: color .25s ease, transform .25s ease, opacity .25s ease;
-}
-.mq-chip:hover {
-  color: inherit;
-  opacity: 1;
-  transform: translateY(-1px);
-}
-.mq-chip svg { flex-shrink: 0; display: block; width: 23px; height: 23px; filter: brightness(1.15) saturate(1.25); }
-
 /* ── SKILLS: category tabs ─────────────────────────────────── */
 .sk-tabs {
   display: flex;
@@ -1780,104 +1733,95 @@ body.light .sk-card { background: rgba(255,255,255,.55); border-color: rgba(0,0,
 body.light .sk-card:hover { background: rgba(255,255,255,.8); }
 body.light .sk-card-icon { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.1); }
 
-/* ── SKILL WINDOW PANELS ─────────────────────────────────────── */
-.sk-windows {
+/* ── SKILLS: two columns (Fullstack / GenAI), social-button-style chips ── */
+.sk-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 36px;
 }
-.sk-window {
-  border-radius: 14px;
-  overflow: hidden;
-  border: none;
-  background: transparent;
+.sk-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-body.light .sk-window { border: none; background: transparent; }
-.sk-window-bar {
+.sk-col-title {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
+  gap: 9px;
+  font-size: .92rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  text-transform: none;
+  color: var(--tx);
+  opacity: 1;
+  margin: 0 0 2px;
+  padding-bottom: 12px;
   border-bottom: 1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.03);
 }
-body.light .sk-window-bar { border-bottom-color: rgba(0,0,0,.07); background: rgba(0,0,0,.02); }
-.sk-window-dots { display: flex; gap: 6px; }
-.sk-window-dots span { width: 10px; height: 10px; border-radius: 50%; display: block; }
-.sk-window-dots span:nth-child(1) { background: #ff5f57; }
-.sk-window-dots span:nth-child(2) { background: #febc2e; }
-.sk-window-dots span:nth-child(3) { background: #28c840; }
-.sk-window-title {
-  margin-left: auto;
-  font-size: .72rem;
-  font-weight: 600;
-  letter-spacing: .02em;
-  color: var(--mu);
-  font-family: 'Menlo', 'Consolas', monospace;
+body.light .sk-col-title { border-bottom-color: rgba(0,0,0,.08); }
+.sk-col-title::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--a2);
+  flex-shrink: 0;
 }
-.sk-window-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px 14px;
-  padding: 26px 20px;
+.sk-col:nth-child(2) .sk-col-title::before { background: #a78bfa; }
+.sk-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
 }
-.sk-cell {
-  position: relative;
+.sk-chip {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   gap: 7px;
-  border-radius: 0;
-  border: none;
-  background: transparent;
-  overflow: visible;
+  width: 62px;
   animation: skCardIn .5s cubic-bezier(.22,1,.36,1) both;
 }
-.sk-cell::before { display: none; }
-.sk-cell:hover { transform: none; box-shadow: none; }
-.sk-cell-icon {
-  position: relative;
-  z-index: 1;
-  display: flex;
+.sk-chip-ico {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 13px;
-  background: #ffffff;
-  border: 1px solid rgba(0,0,0,.05);
-  box-shadow: 0 3px 10px rgba(0,0,0,.28), 0 1px 2px rgba(0,0,0,.16);
-  transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  border: 1px solid rgba(var(--cc), .28);
+  background: rgba(var(--cc), .08);
+  transition: background .25s ease, border-color .25s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
 }
-.sk-cell-icon svg { display: block; width: 30px; height: 30px; }
-.sk-cell:hover .sk-cell-icon {
-  transform: translateY(-5px) scale(1.06);
-  box-shadow: 0 10px 20px rgba(0,0,0,.32), 0 2px 4px rgba(0,0,0,.2);
+.sk-chip-ico svg { display: block; width: 22px; height: 22px; }
+.sk-chip:hover .sk-chip-ico {
+  border-color: rgba(var(--cc), .55);
+  background: rgba(var(--cc), .18);
+  transform: translateY(-3px);
 }
-.sk-cell-name {
-  position: relative;
-  z-index: 1;
-  font-size: .64rem;
+body.light .sk-chip-ico {
+  border-color: rgba(var(--cc), .22);
+  background: rgba(var(--cc), .06);
+}
+body.light .sk-chip:hover .sk-chip-ico {
+  border-color: rgba(var(--cc), .45);
+  background: rgba(var(--cc), .14);
+}
+.sk-chip-name {
+  font-size: .6rem;
   font-weight: 600;
-  letter-spacing: 0;
   color: var(--tx);
-  opacity: .85;
+  opacity: .75;
   text-align: center;
-  line-height: 1.25;
+  line-height: 1.2;
 }
-body.light .sk-cell-icon { border-color: rgba(0,0,0,.07); box-shadow: 0 2px 8px rgba(0,0,0,.1); }
-body.light .sk-cell:hover .sk-cell-icon { box-shadow: 0 8px 16px rgba(0,0,0,.14); }
 @media (max-width: 860px) {
-  .sk-windows { grid-template-columns: 1fr; gap: 18px; }
-  .sk-window-grid { grid-template-columns: repeat(4, 1fr); }
+  .sk-columns { grid-template-columns: 1fr; gap: 26px; }
 }
 @media (max-width: 480px) {
-  .sk-window-grid { grid-template-columns: repeat(4, 1fr); gap: 16px 8px; padding: 18px 12px; }
-  .sk-cell-icon { width: 44px; height: 44px; border-radius: 11px; }
-  .sk-cell-icon svg { width: 24px; height: 24px; }
-  .sk-cell-name { font-size: .56rem; }
-  .sk-window-title { display: none; }
+  .sk-chip { width: 54px; }
+  .sk-chip-ico { width: 40px; height: 40px; }
+  .sk-chip-ico svg { width: 19px; height: 19px; }
+  .sk-chip-name { font-size: .54rem; }
 }
 @keyframes skCardIn {
   from { opacity: 0; transform: translateY(14px) scale(.94); }
@@ -1999,9 +1943,42 @@ body.light .sk-cell:hover .sk-cell-icon { box-shadow: 0 8px 16px rgba(0,0,0,.14)
  height: 100%;
  border-radius: 12px;
 }
-.win3d-scene.mode-3d .win3d-face.win3d-face-single .wt-cube-single svg {
- width: 56px !important;
- height: 56px !important;
+.hero-card-cube .win3d-scene.mode-3d .win3d-face.win3d-face-single .wt-cube-single svg {
+ width: 48px !important;
+ height: 48px !important;
+}
+.hero-card-cube .win3d-scene.mode-3d .win3d-face.win3d-face-single .wt-name {
+ font-size: .74rem;
+ text-align: center;
+ width: 100%;
+}
+/* Front face tiles */
+.hero-card-cube .win3d-scene.mode-3d .win3d-face.win3d-front .wt svg {
+ width: 19px;
+ height: 19px;
+}
+.hero-card-cube .win3d-scene.mode-3d .win3d-face.win3d-front .wt-name {
+ font-size: .5rem;
+ font-weight: 700;
+ letter-spacing: -0.01em;
+ line-height: 1.15;
+ white-space: nowrap;
+ text-shadow: 0 1px 6px rgba(0,0,0,.85), 0 0 2px rgba(0,0,0,.6);
+}
+/* Other grid faces (back/left/right) sized up for readability */
+.hero-card-cube .win3d-scene.mode-3d .win3d-face:not(.win3d-front):not(.win3d-face-single) .wt svg {
+ width: 33px;
+ height: 33px;
+}
+.hero-card-cube .win3d-scene.mode-3d .win3d-face:not(.win3d-front):not(.win3d-face-single) .wt-name {
+ font-size: .66rem;
+}
+.hero-card-cube .wt.wt-cube-single svg {
+ width: 48px !important;
+ height: 48px !important;
+}
+.hero-card-cube .wt-name {
+ font-size: .66rem;
 }
 .win3d-scene.mode-3d .win3d-face.win3d-face-single .wt-cube-single .wt-inner {
  display: flex;
@@ -2260,8 +2237,8 @@ body.light .sc-tw svg {
   .nav-logo .logo-k { font-size: clamp(.78rem, 1.5vw, .95rem); }
 
   /* Hero: text takes full width, cube sits centered below as its own row */
-  .tube-light { top: 0; width: clamp(195px, 27vw, 345px); height: clamp(68px, 9.5vw, 105px); }
-  #home { padding: clamp(76px, 9.5vw, 112px) 0 clamp(36px, 5vw, 60px); min-height: calc(100svh - var(--nav)); align-items: center; }
+  .tube-light { top: clamp(-4px, -0.3vw, 2px); width: clamp(230px, 31vw, 400px); height: clamp(46px, 6vw, 72px); }
+  #home { padding: clamp(50px, 6vw, 76px) 0 clamp(36px, 5vw, 60px); min-height: calc(100svh - var(--nav)); align-items: center; }
   .hero-inner { flex-direction: column; align-items: center; gap: clamp(28px, 4vw, 48px); }
   .hero-left { flex: none; width: 100%; max-width: unset; order: 1; min-width: 0; }
   .hero-right { order: 2; flex: none; width: 100%; display: flex; justify-content: center; align-self: center; margin: clamp(30px, 5vw, 46px) 0 clamp(20px, 3.5vw, 34px); padding-right: 0; }
@@ -2346,9 +2323,9 @@ body.light .sc-tw svg {
   .nav-toggle svg { width: 15px; height: 15px; }
 
   /* ── Hero: text full width on top, cube centered below at the very bottom ── */
-  .tube-light { top: 0; width: clamp(172px, 37vw, 285px); height: clamp(60px, 8vw, 90px); }
+  .tube-light { top: clamp(2px, 1vw, 8px); width: clamp(200px, 42vw, 330px); height: clamp(40px, 5.5vw, 62px); }
   #home {
-    padding: clamp(90px, 14vw, 122px) 0 clamp(40px, 6vw, 64px);
+    padding: clamp(60px, 9vw, 84px) 0 clamp(40px, 6vw, 64px);
     min-height: auto;
     align-items: flex-start;
   }
@@ -2424,7 +2401,6 @@ body.light .sc-tw svg {
   .sk-card-icon { width: clamp(32px, 24px + 3.2vw, 42px); height: clamp(32px, 24px + 3.2vw, 42px); }
   .sk-card-name { font-size: clamp(.58rem, .46rem + 0.63vw, .68rem); }
   .sk-tab { font-size: .66rem; padding: 8px 15px; }
-  .skill-marquee-wrap { margin-top: 20px; }
 
   /* Experience */
   .exp-list { padding-left: 44px; }
@@ -2671,9 +2647,9 @@ body.light .sc-tw svg {
   .nav-logo { margin-left: 6px; }
 
   /* ── Hero: same row layout as desktop — text left, cube right ── */
-  .tube-light { top: 0; width: clamp(127px, 37vw, 195px); height: clamp(45px, 10vw, 62px); }
+  .tube-light { top: clamp(0px, 0.5vw, 4px); width: clamp(150px, 42vw, 225px); height: clamp(30px, 6vw, 42px); }
   #home {
-    padding: clamp(22px, 4.5vw, 34px) 0 clamp(20px, 4vw, 36px);
+    padding: clamp(14px, 3vw, 24px) 0 clamp(20px, 4vw, 36px);
     min-height: calc(100svh - var(--nav));
     align-items: center;
   }
@@ -2728,9 +2704,6 @@ body.light .sc-tw svg {
 
   /* Skills: sizing now handled by the single fluid rule set at 768px, so it scales
      smoothly and stays visually consistent down to the smallest phone. */
-  .skill-marquee-wrap::before, .skill-marquee-wrap::after { width: 60px; }
-  .mq-chip { padding: 8px 16px; font-size: .74rem; gap: 8px; }
-  .mq-chip svg { width: 18px; height: 18px; }
 
   /* Experience: timeline sizing now matches tablet (inherited from 768px rules) */
   .exp-card { padding: 13px 14px; min-height: 50px; }
@@ -2794,10 +2767,6 @@ body.light .sc-tw svg {
   .sk-card { padding: 14px 6px 12px; gap: 6px; }
   .sk-card-icon { width: 34px; height: 34px; }
   .sk-card-name { font-size: .6rem; line-height: 1.2; }
-  .skill-marquee-wrap { margin-top: 18px; padding: 4px 0; }
-  .skill-marquee-wrap::before, .skill-marquee-wrap::after { width: 36px; }
-  .mq-chip { height: 42px; min-height: 42px; padding: 0 14px; gap: 7px; font-size: .72rem; }
-  .mq-chip svg { width: 20px; height: 20px; }
 }
 
 /* ── VERY SMALL PHONE (≤ 360px) ─────────────────────────────── */
@@ -2836,10 +2805,6 @@ body.light .sc-tw svg {
   .sk-card-icon { width: 30px; height: 30px; }
   .sk-card-name { font-size: .56rem; line-height: 1.15; }
   .sk-tab { font-size: .62rem; padding: 7px 12px; }
-  .skill-marquee-wrap { margin-top: 14px; }
-  .skill-marquee-wrap::before, .skill-marquee-wrap::after { width: 24px; }
-  .mq-chip { height: 38px; min-height: 38px; padding: 0 12px; gap: 6px; font-size: .66rem; }
-  .mq-chip svg { width: 18px; height: 18px; }
 }
 
 /* ── TOUCH DEVICES: minimum tap targets ─────────────────────── */
@@ -2847,7 +2812,6 @@ body.light .sc-tw svg {
   .btn-o { min-height: 44px; }
   .nav-toggle, .nav-ham { min-height: 36px; min-width: 36px; }
   .masonry-link { min-height: 36px; display: inline-flex; align-items: center; }
-  .mq-chip { min-height: 36px; }
   .sk-card { cursor: pointer; }
 }
 
