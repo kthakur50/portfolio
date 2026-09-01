@@ -274,14 +274,15 @@ function initMasonry() {
     el.style.transitionDelay = (i * 0.07) + 's';
     el.innerHTML = `
       <div class="masonry-item-inner">
-        <div class="masonry-img">${p.svg}</div>
-        <div class="masonry-bar"></div>
+        <div class="masonry-img">
+          ${p.svg}
+        </div>
         <div class="masonry-body">
-          <div class="masonry-cat">${p.cat}</div>
+          <div class="masonry-cat"><span class="masonry-cat-dot"></span>${p.cat}</div>
           <div class="masonry-title">${p.title}</div>
           <div class="masonry-desc">${p.desc}</div>
           <div class="masonry-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-          <a href="${p.link}" class="masonry-link">View Project <span class="arr">→</span></a>
+          <a href="${p.link}" class="masonry-link">View Project</a>
         </div>
       </div>`;
     container.appendChild(el);
