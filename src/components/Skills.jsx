@@ -297,7 +297,7 @@ const Skills = () => {
         {/* ── Two columns: Fullstack (left) / GenAI (right), circular chips ── */}
         <div className="sk-columns sr">
           <div className="sk-col">
-            <h3 className="sk-col-title">Fullstack</h3>
+            <h3 className="sk-col-title">Fullstack Development</h3>
             <div className="sk-chip-row">
               {FULLSTACK_SKILLS.map((s, i) => (
                 <div
@@ -314,7 +314,7 @@ const Skills = () => {
           </div>
 
           <div className="sk-col">
-            <h3 className="sk-col-title">GenAI</h3>
+            <h3 className="sk-col-title">GenAI &amp; Tools</h3>
             <div className="sk-chip-row">
               {GENAI_TOOLS_SKILLS.map((s, i) => (
                 <div
