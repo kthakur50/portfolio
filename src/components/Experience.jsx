@@ -40,7 +40,7 @@ const Experience = () => (
                     Noida, India
                   </span>
                 </div>
-                <span className="exp-badge">Full-time</span>
+                <span className="exp-badge">Full-Time</span>
               </div>
             </div>
             <div className="exp-divider"></div>
