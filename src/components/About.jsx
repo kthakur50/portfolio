@@ -21,7 +21,7 @@ const About = () => (
           Deeply focused on the intersection of <em>modern frontend</em> and{' '}
           <em>Generative AI</em> — integrating <strong>LLMs</strong> and <strong>AI-powered features</strong>{' '}
           into real products, not just prototypes. Every project is an opportunity to make
-          something <strong>faster, smarter, and easier to use</strong>.
+          something faster, smarter, and easier to use.
         </p>
       </div>
     </div>
