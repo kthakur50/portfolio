@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
   <rect width="48" height="48" rx="10" fill="#0f0f0f"/>
-  <text x="52%" y="54%" dominant-baseline="middle" text-anchor="middle"
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
     font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif"
-    font-size="26" font-weight="800"
-    fill="#f0d8d5">K<tspan fill="#db382c">.</tspan></text>
+    font-size="20" font-weight="900" letter-spacing="0.3">
+    <tspan fill="#f2f2f2">kt</tspan><tspan fill="#22c55e" font-style="normal">.</tspan>
+  </text>
 </svg>

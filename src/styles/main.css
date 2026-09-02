@@ -182,7 +182,7 @@ section { padding: 110px 0; }
  text-align: center;
  width: 100%;
  gap: 2px;
- margin: 0 auto 40px;
+ margin: 0 auto 64px;
  padding-bottom: 0;
  position: relative;
  max-width: 100%;
@@ -1460,7 +1460,7 @@ body.light .edu-inst { color: var(--a); }
  gap: clamp(24px, 4vw, 32px);
  align-items: center;
  width: 100%;
- max-width: 640px;
+ max-width: 960px;
  margin: 0 auto;
  padding: clamp(36px, 6vw, 56px) clamp(26px, 6vw, 48px);
  border-radius: calc(var(--rad) * 2.6);
@@ -1470,6 +1470,18 @@ body.light .edu-inst { color: var(--a); }
  overflow: hidden;
  isolation: isolate;
  text-align: center;
+}
+@media (min-width: 760px) {
+ .c-panel {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 48px);
+  text-align: left;
+ }
+ .c-text { align-items: flex-start; text-align: left; }
+ .c-lead { margin: 0; text-align: left; }
+ .c-actions { width: auto; flex-shrink: 0; }
 }
 body.light .c-panel {
  border-color: rgba(0,0,0,.08);
@@ -1566,13 +1578,13 @@ body.light .c-status-dot, body.light .c-status-dot::before { background: #cc3700
 }
 .c-heading em {
  font-style: normal;
- background: linear-gradient(90deg, #ff4500, #ff8b60);
+ background: linear-gradient(90deg, #22c55e, #86efac);
  -webkit-background-clip: text;
  background-clip: text;
  color: transparent;
 }
 body.light .c-heading em {
- background: linear-gradient(90deg, #992d00, #cc3700);
+ background: linear-gradient(90deg, #16a34a, #22c55e);
  -webkit-background-clip: text;
  background-clip: text;
  color: transparent;
@@ -2331,7 +2343,7 @@ body.light .sc-tw svg {
   :root { --pad: clamp(16px, 4vw, 32px); }
   section { padding: 64px 0; }
   #about, #skills, #experience, #projects, #education, #contact { margin-top: 18px; }
-  .sec-hd { margin-bottom: 28px; }
+  .sec-hd { margin-bottom: 44px; }
   .sec-hd h2 { font-size: clamp(1.15rem, 3vw, 1.4rem); }
 
   /* ── Navbar: icons open inline inside the navbar, tablet portrait ── */
@@ -2654,7 +2666,7 @@ body.light .sc-tw svg {
   :root { --pad: 18px; }
   section { padding: 56px 0; }
   #about, #skills, #experience, #projects, #education, #contact { margin-top: 16px; }
-  .sec-hd { margin-bottom: 22px; gap: 2px; }
+  .sec-hd { margin-bottom: 36px; gap: 2px; }
   .sec-hd h2 { font-size: clamp(1.1rem, 4vw, 1.3rem); }
 
   .site-footer { padding: 16px 0; }
