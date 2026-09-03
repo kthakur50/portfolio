@@ -391,7 +391,7 @@ body.light .nav-mob-overlay { background: rgba(20,20,20,.18); }
 
 .nav-mob {
  display: flex; flex-direction: row; align-items: center; position: fixed;
- top: 50%; left: 50%; right: auto;
+ top: calc(var(--nav) + 14px); left: 50%; right: auto;
  width: max-content;
  max-width: min(92vw, 600px);
  max-height: none;
@@ -404,9 +404,9 @@ body.light .nav-mob-overlay { background: rgba(20,20,20,.18); }
  padding: 8px 10px 8px 8px;
  gap: 10px; z-index: 999;
  opacity: 0;
- transform: translate(-50%, -50%) scale(.94);
+ transform: translateX(-50%) translateY(-10px) scale(.96);
  pointer-events: none;
- transform-origin: center;
+ transform-origin: top center;
  transition: opacity .22s cubic-bezier(.4,0,.2,1),
  transform .3s cubic-bezier(.22,1.15,.5,1);
  box-shadow: 0 24px 64px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.25);
@@ -420,7 +420,7 @@ body.light .nav-mob {
 }
 .nav-mob.open {
  opacity: 1;
- transform: translate(-50%, -50%) scale(1);
+ transform: translateX(-50%) translateY(0) scale(1);
  pointer-events: auto;
 }
 .nav-mob-grid {
@@ -2382,12 +2382,12 @@ body.light .sc-tw svg {
   .hero-name .ac { font-weight: 600; }
 
   /* Card: taller so the front screen doesn't feel empty */
-  .hero-card { padding: clamp(32px, 5.5vw, 48px) clamp(20px, 3.3vw, 39px); }
-  .hero-card-inner { gap: clamp(20px, 3vw, 30px); }
-  .hero-intro { font-size: clamp(.58rem, 1.7vw, .74rem); }
-  .hero-card-cube { width: clamp(170px, 22vw, 240px); height: clamp(170px, 22vw, 240px); }
-  .hero-card-cube .win3d-scene { --cube-size: clamp(100px, 12.5vw, 140px); --cube-tz: clamp(58px, 7vw, 78px); }
-  .hero-social-row { margin-top: clamp(18px, 3vw, 26px); gap: 12px; }
+  .hero-card { padding: clamp(44px, 7vw, 64px) clamp(22px, 3.6vw, 42px); }
+  .hero-card-inner { gap: clamp(26px, 4vw, 38px); }
+  .hero-intro { font-size: clamp(.52rem, 1.5vw, .66rem); }
+  .hero-card-cube { width: clamp(200px, 26vw, 280px); height: clamp(200px, 26vw, 280px); }
+  .hero-card-cube .win3d-scene { --cube-size: clamp(118px, 15vw, 164px); --cube-tz: clamp(68px, 8.5vw, 92px); }
+  .hero-social-row { margin-top: clamp(22px, 3.5vw, 32px); gap: 12px; }
 
   /* About */
   .about-para { font-size: .85rem; line-height: 1.95; }
@@ -2463,12 +2463,12 @@ body.light .sc-tw svg {
   }
   .nav-mob {
     position: fixed;
-    top: 50%;
+    top: calc(var(--nav) + 10px);
     left: 50%;
     right: auto;
     bottom: auto;
     margin: 0;
-    max-height: min(76vh, 520px);
+    max-height: min(calc(100svh - var(--nav) - 26px), 480px);
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
@@ -2486,8 +2486,8 @@ body.light .sc-tw svg {
     justify-content: center;
     gap: 12px;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(.92);
-    transform-origin: center;
+    transform: translateX(-50%) translateY(-10px) scale(.94);
+    transform-origin: top center;
     pointer-events: none;
     transition: opacity .26s cubic-bezier(.4,0,.2,1),
       transform .32s cubic-bezier(.28,1.2,.55,1);
@@ -2515,7 +2515,7 @@ body.light .sc-tw svg {
   }
   .nav-mob.open {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateX(-50%) translateY(0) scale(1);
     pointer-events: auto;
   }
   .nav-mob-grid {
@@ -2696,11 +2696,11 @@ body.light .sc-tw svg {
     min-width: 0;
   }
   /* Cube: bigger so the front screen doesn't look empty */
-  .hero-card { padding: clamp(26px, 6vw, 40px) clamp(18px, 4vw, 28px); }
-  .hero-card-inner { gap: clamp(16px, 3.5vw, 26px); }
-  .hero-intro { font-size: clamp(.56rem, 2.4vw, .7rem); }
-  .hero-card-cube { width: clamp(150px, 30vw, 200px); height: clamp(150px, 30vw, 200px); }
-  .hero-card-cube .win3d-scene { --cube-size: clamp(88px, 17vw, 116px); --cube-tz: clamp(50px, 9.5vw, 66px); }
+  .hero-card { padding: clamp(36px, 8.5vw, 54px) clamp(20px, 5vw, 32px); }
+  .hero-card-inner { gap: clamp(22px, 5vw, 34px); }
+  .hero-intro { font-size: clamp(.48rem, 2vw, .6rem); }
+  .hero-card-cube { width: clamp(190px, 40vw, 240px); height: clamp(190px, 40vw, 240px); }
+  .hero-card-cube .win3d-scene { --cube-size: clamp(110px, 22vw, 140px); --cube-tz: clamp(64px, 13vw, 82px); }
 
 
   /* Skills: sizing now handled by the single fluid rule set at 768px, so it scales
