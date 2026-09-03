@@ -1,24 +1,6 @@
-import { useState } from 'react';
-
 const EMAIL = 'kthakur0578@gmail.com';
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [sent, setSent] = useState(false);
-
-  const handleChange = (e) => {
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio inquiry from ${form.name || 'a visitor'}`);
-    const body = encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`);
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-    setSent(true);
-    setTimeout(() => setSent(false), 2600);
-  };
-
   return (
     <section id="contact">
       <div className="wrap">
@@ -32,11 +14,6 @@ const Contact = () => {
 
         <div className="c-wrap">
           <div className="c-info sr" style={{ transitionDelay: '.04s' }}>
-            <span className="c-status">
-              <span className="c-status-dot"></span>
-              Available for freelance &amp; full-time
-            </span>
-
             <h3 className="c-heading">Let's <em>build something</em> together.</h3>
 
             <p className="c-lead">
@@ -81,32 +58,6 @@ const Contact = () => {
               </a>
             </div>
           </div>
-
-          <form className="c-form-card sr" style={{ transitionDelay: '.1s' }} onSubmit={handleSubmit}>
-            <div className="c-form-card-glow" aria-hidden="true"></div>
-            <div className="c-form-card-grid" aria-hidden="true"></div>
-
-            <div className="c-form-row">
-              <div className="c-field">
-                <input type="text" name="name" placeholder=" " required value={form.name} onChange={handleChange} />
-                <label>Your name</label>
-              </div>
-              <div className="c-field">
-                <input type="email" name="email" placeholder=" " required value={form.email} onChange={handleChange} />
-                <label>Your email</label>
-              </div>
-            </div>
-
-            <div className="c-field">
-              <textarea name="message" placeholder=" " rows="5" required value={form.message} onChange={handleChange}></textarea>
-              <label>What's on your mind?</label>
-            </div>
-
-            <button type="submit" className={`c-form-submit${sent ? ' is-sent' : ''}`}>
-              <span className="c-form-submit-text">{sent ? 'Message ready ✓' : 'Send message'}</span>
-              <span className="c-form-submit-arr" aria-hidden="true">→</span>
-            </button>
-          </form>
         </div>
       </div>
     </section>
