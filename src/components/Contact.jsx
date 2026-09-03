@@ -13,15 +13,16 @@ const Contact = () => {
         </div>
 
         <div className="c-simple sr" style={{ transitionDelay: '.05s' }}>
-          <span className="c-kicker">Get in touch</span>
           <h3 className="c-heading">Let's <em>build together.</em></h3>
 
-          <p className="c-lead">
-            Open to freelance work, collaborations, and full-time roles in web development
-            and GenAI engineering. Reach out anytime.
+          <p className="c-lead c-lead-line">
+            Open to freelance work, collaborations, and full-time roles in web development and GenAI engineering. Reach out anytime.
           </p>
 
-          <a href={`mailto:${EMAIL}`} className="c-email">{EMAIL}</a>
+          <a href={`mailto:${EMAIL}`} className="c-email-btn">
+            <span>{EMAIL}</span>
+            <span className="c-email-btn-arr" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>
