@@ -1471,18 +1471,6 @@ body.light .edu-inst { color: var(--a); }
  isolation: isolate;
  text-align: center;
 }
-@media (min-width: 769px) {
- .c-panel {
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: clamp(24px, 4vw, 48px);
-  text-align: left;
- }
- .c-text { align-items: flex-start; text-align: left; }
- .c-lead { margin: 0; text-align: left; }
- .c-actions { width: auto; flex-shrink: 0; }
-}
 body.light .c-panel {
  border-color: rgba(0,0,0,.08);
  background: linear-gradient(155deg, rgba(0,0,0,.03), rgba(0,0,0,.012));
@@ -1604,6 +1592,18 @@ body.light .c-heading em {
  justify-content: center;
  gap: 10px;
  width: 100%;
+}
+@media (min-width: 769px) {
+ .c-panel {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 48px);
+  text-align: left;
+ }
+ .c-text { align-items: flex-start; text-align: left; }
+ .c-lead { margin: 0; text-align: left; }
+ .c-actions { width: auto; flex-shrink: 0; }
 }
 .btn-o--block {
  width: auto;
@@ -2363,7 +2363,7 @@ body.light .sc-tw svg {
   .nav-toggle svg { width: 15px; height: 15px; }
 
   /* ── Hero: centered card, sized to fit tablet viewport ── */
-  .tube-light { top: clamp(2px, 1vw, 8px); width: clamp(200px, 42vw, 330px); height: clamp(40px, 5.5vw, 62px); }
+  .tube-light { top: -2px; width: clamp(200px, 42vw, 330px); height: clamp(40px, 5.5vw, 62px); }
   #home {
     padding: clamp(28px, 5vw, 48px) 0;
     min-height: calc(100svh - var(--nav));
@@ -2381,8 +2381,12 @@ body.light .sc-tw svg {
   }
   .hero-name .ac { font-weight: 600; }
 
-  .hero-card-cube { width: clamp(120px, 15vw, 170px); height: clamp(120px, 15vw, 170px); }
-  .hero-card-cube .win3d-scene { --cube-size: clamp(70px, 8.5vw, 100px); --cube-tz: clamp(40px, 4.8vw, 56px); }
+  /* Card: taller so the front screen doesn't feel empty */
+  .hero-card { padding: clamp(32px, 5.5vw, 48px) clamp(20px, 3.3vw, 39px); }
+  .hero-card-inner { gap: clamp(20px, 3vw, 30px); }
+  .hero-intro { font-size: clamp(.58rem, 1.7vw, .74rem); }
+  .hero-card-cube { width: clamp(170px, 22vw, 240px); height: clamp(170px, 22vw, 240px); }
+  .hero-card-cube .win3d-scene { --cube-size: clamp(100px, 12.5vw, 140px); --cube-tz: clamp(58px, 7vw, 78px); }
   .hero-social-row { margin-top: clamp(18px, 3vw, 26px); gap: 12px; }
 
   /* About */
@@ -2640,7 +2644,7 @@ body.light .sc-tw svg {
   .nav-logo { margin-left: 6px; }
 
   /* ── Hero: same row layout as desktop — text left, cube right ── */
-  .tube-light { top: clamp(0px, 0.5vw, 4px); width: clamp(150px, 42vw, 225px); height: clamp(30px, 6vw, 42px); }
+  .tube-light { top: -2px; width: clamp(150px, 42vw, 225px); height: clamp(30px, 6vw, 42px); }
   #home {
     padding: clamp(14px, 3vw, 24px) 0 clamp(20px, 4vw, 36px);
     min-height: calc(100svh - var(--nav));
@@ -2691,8 +2695,12 @@ body.light .sc-tw svg {
     flex: 1;
     min-width: 0;
   }
-  /* Cube: scaled down a bit more for small phones */
-  .win3d-scene { transform: scale(.86); }
+  /* Cube: bigger so the front screen doesn't look empty */
+  .hero-card { padding: clamp(26px, 6vw, 40px) clamp(18px, 4vw, 28px); }
+  .hero-card-inner { gap: clamp(16px, 3.5vw, 26px); }
+  .hero-intro { font-size: clamp(.56rem, 2.4vw, .7rem); }
+  .hero-card-cube { width: clamp(150px, 30vw, 200px); height: clamp(150px, 30vw, 200px); }
+  .hero-card-cube .win3d-scene { --cube-size: clamp(88px, 17vw, 116px); --cube-tz: clamp(50px, 9.5vw, 66px); }
 
 
   /* Skills: sizing now handled by the single fluid rule set at 768px, so it scales
