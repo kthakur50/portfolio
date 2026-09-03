@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import HeroCube from './HeroCube';
 
-const INTRO_TEXT = 'Full Stack Developer & AI Developer, building fast web apps and intelligent systems.';
+const INTRO_TEXT = 'Full Stack Developer & AI Developer,\nbuilding fast web apps and intelligent systems.';
 
 const TypedIntro = () => {
   const [count, setCount] = useState(0);
