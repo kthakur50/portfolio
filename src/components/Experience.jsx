@@ -43,7 +43,6 @@ const Experience = () => (
                 <span className="exp-badge">Full-Time</span>
               </div>
             </div>
-            <div className="exp-divider"></div>
             <p className="exp-desc">
               Built an <strong>interactive map-based web application</strong> for geospatial
               data visualization using <strong>LeafletJS + ReactJS</strong>, with dynamic
@@ -90,7 +89,6 @@ const Experience = () => (
                 <span className="exp-badge">Freelance</span>
               </div>
             </div>
-            <div className="exp-divider"></div>
             <p className="exp-desc">
               Delivered <strong>high-performance web applications</strong> for clients across
               multiple domains with pixel-perfect UIs and optimized Core Web Vitals. Built
