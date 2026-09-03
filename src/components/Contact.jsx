@@ -14,6 +14,7 @@ const Contact = () => {
 
         <div className="c-panel sr" style={{ transitionDelay: '.05s' }}>
           <div className="c-text">
+            <span className="c-kicker">Get in touch</span>
             <h3 className="c-heading">Let's <em>build together.</em></h3>
 
             <p className="c-lead">
@@ -23,13 +24,17 @@ const Contact = () => {
           </div>
 
           <div className="c-actions">
-            <a href={`mailto:${EMAIL}`} className="btn-o btn-o--block">
-              <span className="btn-o-ico">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <a href={`mailto:${EMAIL}`} className="c-cta">
+              <span className="c-cta-ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                 </svg>
               </span>
-              {EMAIL} <span className="arr">→</span>
+              <span className="c-cta-text">
+                <span className="c-cta-label">Email me</span>
+                <span className="c-cta-mail">{EMAIL}</span>
+              </span>
+              <span className="c-cta-arr" aria-hidden="true">→</span>
             </a>
           </div>
         </div>
