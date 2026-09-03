@@ -1471,7 +1471,7 @@ body.light .edu-inst { color: var(--a); }
  isolation: isolate;
  text-align: center;
 }
-@media (min-width: 760px) {
+@media (min-width: 769px) {
  .c-panel {
   flex-direction: row;
   align-items: center;
@@ -2362,75 +2362,28 @@ body.light .sc-tw svg {
   .nav-toggle { width: 32px; height: 32px; }
   .nav-toggle svg { width: 15px; height: 15px; }
 
-  /* ── Hero: text full width on top, cube centered below at the very bottom ── */
+  /* ── Hero: centered card, sized to fit tablet viewport ── */
   .tube-light { top: clamp(2px, 1vw, 8px); width: clamp(200px, 42vw, 330px); height: clamp(40px, 5.5vw, 62px); }
   #home {
-    padding: clamp(60px, 9vw, 84px) 0 clamp(40px, 6vw, 64px);
-    min-height: auto;
-    align-items: flex-start;
-  }
-  .hero-inner {
-    flex-direction: column;
+    padding: clamp(28px, 5vw, 48px) 0;
+    min-height: calc(100svh - var(--nav));
     align-items: center;
-    gap: clamp(24px, 4vw, 40px);
-  }
-  .hero-left {
-    flex: none;
-    width: 100%;
-    max-width: unset;
-    min-width: 0;
-    order: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .hero-right {
-    order: 2;
-    flex: none;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    margin: clamp(28px, 5.5vw, 42px) 0 clamp(18px, 4vw, 30px);
-    padding-bottom: 0;
   }
 
-  /* Name: single line, sized to fit width */
+  /* Name: single line, shrunk to fit the tablet card width */
   .hero-name {
-    font-size: clamp(2.4rem, 7.2vw, 4.5rem);
+    font-size: clamp(1.9rem, 5.4vw, 2.8rem);
     font-weight: 600;
-    line-height: .9;
+    line-height: .95;
     letter-spacing: .02em;
     white-space: nowrap;
-    margin-bottom: clamp(17px, 2.8vw, 23px);
+    margin-bottom: clamp(10px, 1.6vw, 14px);
   }
   .hero-name .ac { font-weight: 600; }
-  /* Info: full width, bigger horizontally */
-  .hero-block { min-width: 0; width: 100%; }
-  .hero-info { width: 100%; padding: clamp(44px, 5.8vw, 58px) clamp(24px, 3.9vw, 37px); margin-bottom: clamp(17px, 2.8vw, 23px); }
-  .hero-info-grid { flex-direction: row; align-items: stretch; gap: clamp(9px, 2vw, 13px); }
-  .hero-info-col { flex: 1 1 50%; min-width: 0; gap: clamp(18px, 2.9vw, 25px); }
-  .hero-info-col:first-child { padding-right: clamp(7px, 1.3vw, 14px); border-right: none; padding-bottom: 0; border-bottom: none; }
-  .hero-info-col:last-child { padding-left: clamp(7px, 1.3vw, 14px); padding-top: 0; }
-  .hero-info-item {
-    font-size: clamp(1rem, 2.4vw, 1.22rem);
-    height: clamp(38px, 5.6vw, 47px);
-    gap: clamp(11px, 1.8vw, 16px);
-    white-space: nowrap;
-    padding: clamp(3px, .7vw, 6px) 0;
-    line-height: 1.4;
-  }
-  .hero-info-item svg { width: clamp(19px, 3vw, 25px); height: clamp(19px, 3vw, 25px); }
-  /* Buttons: same full width as info box */
-  .hero-btns { flex-wrap: nowrap; gap: clamp(9px, 1.6vw, 13px); margin-top: 0; width: 100%; }
-  .hero-btns .btn-o {
-    font-size: clamp(.91rem, 2.1vw, 1.06rem);
-    padding: clamp(13px, 1.8vw, 16px) clamp(11px, 2vw, 18px);
-    flex: 1;
-  }
 
-  /* Cube: scaled down for phone */
-  .win3d-scene { transform: scale(.84); }
+  .hero-card-cube { width: clamp(120px, 15vw, 170px); height: clamp(120px, 15vw, 170px); }
+  .hero-card-cube .win3d-scene { --cube-size: clamp(70px, 8.5vw, 100px); --cube-tz: clamp(40px, 4.8vw, 56px); }
+  .hero-social-row { margin-top: clamp(18px, 3vw, 26px); gap: 12px; }
 
   /* About */
   .about-para { font-size: .85rem; line-height: 1.95; }
