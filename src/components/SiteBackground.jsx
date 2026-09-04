@@ -1,9 +1,8 @@
 import GradientWaves from './GradientWaves';
 
 // Full-viewport animated background used behind the entire site.
-// Deep indigo → violet palette, tuned for full visibility (higher
-// brightness/opacity/fogDepth than the first pass) so the rolling
-// waves read clearly instead of disappearing into the page background.
+// Deep indigo → violet palette, dialed down slightly so the waves
+// stay subtle in the background instead of competing with content.
 const SiteBackground = () => (
   <div className="site-waves-bg" aria-hidden="true">
     <GradientWaves
@@ -21,8 +20,8 @@ const SiteBackground = () => (
       height={5.5}
       fogDepth={24}
       detail="medium"
-      brightness={0.95}
-      opacity={0.6}
+      brightness={0.65}
+      opacity={0.32}
       mouseInteraction={true}
       parallaxStrength={0.4}
       grain={true}
