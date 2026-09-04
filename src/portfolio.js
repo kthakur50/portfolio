@@ -49,7 +49,7 @@ function initTheme() {
 
 function initNav() {
   const sections = ['home','about','skills','experience','projects','education','contact'];
-  const links    = document.querySelectorAll('.nav-desk-links a, .nav-mob a');
+  const links    = document.querySelectorAll('.nav-desk-links a, .nav-mob a, .ne-link');
   if (!links.length) return;
 
   const sectionEls = sections.map(id => document.getElementById(id)).filter(Boolean);
@@ -94,21 +94,28 @@ function initScroll() {
     a.addEventListener('click', e => {
       e.preventDefault();
       const id = a.getAttribute('href').slice(1);
-      document.querySelectorAll('.nav-desk-links a, .nav-mob a').forEach(l =>
+      document.querySelectorAll('.nav-desk-links a, .nav-mob a, .ne-link').forEach(l =>
         l.classList.toggle('active', l.getAttribute('href') === '#' + id)
       );
       scrollToSection(id);
 
+      const nav = document.getElementById('nav');
       const mob = document.getElementById('navMob');
       const ham = document.getElementById('ham');
       if (mob && mob.classList.contains('open')) {
         mob.classList.remove('open');
         ham?.classList.remove('open');
+        nav?.classList.remove('search-open');
+        document.getElementById('navMobOverlay')?.classList.remove('open');
         document.body.classList.remove('nav-mob-locked');
         const searchInput = document.getElementById('navSearchInput');
         if (searchInput) searchInput.value = '';
         document.querySelectorAll('#navMobGrid a').forEach(x => { x.style.display = ''; });
         document.getElementById('navMobEmpty')?.classList.remove('show');
+        const searchInputD = document.getElementById('navSearchInputDesktop');
+        if (searchInputD) searchInputD.value = '';
+        document.querySelectorAll('#navExpandGrid a').forEach(x => { x.style.display = ''; });
+        document.getElementById('navExpandEmpty')?.classList.remove('show');
       }
     });
   });
@@ -130,6 +137,7 @@ function initScroll() {
 function initHam() {
   if (document.getElementById('ham')?._init) return;
 
+  const nav     = document.getElementById('nav');
   const ham     = document.getElementById('ham');
   const mob     = document.getElementById('navMob');
   const overlay = document.getElementById('navMobOverlay');
@@ -137,43 +145,66 @@ function initHam() {
   const grid    = document.getElementById('navMobGrid');
   const empty   = document.getElementById('navMobEmpty');
 
-  const filterMob = () => {
-    if (!input || !grid) return;
-    const q = input.value.trim().toLowerCase();
+  // Desktop (≥1025px): the search + section links expand inside the
+  // navbar pill itself instead of the floating card used on mobile/tablet.
+  const expand  = document.getElementById('navExpand');
+  const inputD  = document.getElementById('navSearchInputDesktop');
+  const gridD   = document.getElementById('navExpandGrid');
+  const emptyD  = document.getElementById('navExpandEmpty');
+
+  const makeFilter = (inputEl, gridEl, emptyEl) => () => {
+    if (!inputEl || !gridEl) return;
+    const q = inputEl.value.trim().toLowerCase();
     let visible = 0;
-    grid.querySelectorAll('a').forEach(a => {
+    gridEl.querySelectorAll('a').forEach(a => {
       const label = (a.dataset.label || a.textContent || '').toLowerCase();
       const match = !q || label.includes(q);
       a.style.display = match ? '' : 'none';
       if (match) visible++;
     });
-    empty?.classList.toggle('show', visible === 0);
+    emptyEl?.classList.toggle('show', visible === 0);
   };
+  const filterMob    = makeFilter(input, grid, empty);
+  const filterExpand = makeFilter(inputD, gridD, emptyD);
+
   input?.addEventListener('input', filterMob);
   input?.addEventListener('click', e => e.stopPropagation());
+  inputD?.addEventListener('input', filterExpand);
+  inputD?.addEventListener('click', e => e.stopPropagation());
 
   if (ham && mob) {
     ham._init = true;
+    const isDesktop = () => window.innerWidth > 1024;
 
     const closeMob = () => {
-      if (!mob.classList.contains('open')) return;
+      const wasOpen = mob.classList.contains('open') || nav?.classList.contains('search-open');
+      if (!wasOpen) return;
       mob.classList.remove('open');
       ham.classList.remove('open');
+      nav?.classList.remove('search-open');
       overlay?.classList.remove('open');
       document.body.classList.remove('nav-mob-locked');
       if (input) { input.value = ''; filterMob(); }
+      if (inputD) { inputD.value = ''; filterExpand(); }
     };
     const openMob = () => {
-      mob.classList.add('open');
-      ham.classList.add('open');
-      overlay?.classList.add('open');
-      document.body.classList.add('nav-mob-locked');
-      if (input) setTimeout(() => input.focus(), 200);
+      if (isDesktop()) {
+        // Expand the navbar itself — no floating card, no page-scroll lock.
+        nav?.classList.add('search-open');
+        ham.classList.add('open');
+        if (inputD) setTimeout(() => inputD.focus(), 260);
+      } else {
+        mob.classList.add('open');
+        ham.classList.add('open');
+        overlay?.classList.add('open');
+        document.body.classList.add('nav-mob-locked');
+        if (input) setTimeout(() => input.focus(), 200);
+      }
     };
 
     ham.addEventListener('click', e => {
       e.stopPropagation();
-      if (mob.classList.contains('open')) closeMob();
+      if (mob.classList.contains('open') || nav?.classList.contains('search-open')) closeMob();
       else openMob();
     });
 
@@ -183,20 +214,20 @@ function initHam() {
       closeMob();
     });
 
-    // Tap/click anywhere outside the card (or press Escape) closes it.
+    // Tap/click anywhere outside the navbar / card (or press Escape) closes it.
     document.addEventListener('click', e => {
-      if (!mob.classList.contains('open')) return;
-      if (mob.contains(e.target) || ham.contains(e.target)) return;
+      if (!(mob.classList.contains('open') || nav?.classList.contains('search-open'))) return;
+      if (mob.contains(e.target) || nav?.contains(e.target)) return;
       closeMob();
     });
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeMob();
     });
-    // Crossing back above the tablet/phone breakpoint (e.g. rotating a
-    // tablet or resizing a browser window) should never leave the card
-    // stuck open and mid-animation.
+    // Crossing the desktop/tablet breakpoint mid-open (rotating a tablet,
+    // resizing a browser window) should never leave things stuck between
+    // the two layouts — just close and let the user reopen cleanly.
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 1024) closeMob();
+      closeMob();
     }, { passive: true });
   }
 
