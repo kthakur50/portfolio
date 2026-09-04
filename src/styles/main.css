@@ -153,7 +153,7 @@ body.light {
  inset: 0;
  z-index: -1;
  pointer-events: none;
- opacity: .5;
+ opacity: .85;
  transition: opacity .45s cubic-bezier(.4,0,.2,1);
 }
 body.light .site-waves-bg {
@@ -173,7 +173,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--a) transparent; }
 body.light .hero-name .ac { text-shadow: none; }
 body.light .sec-hd h2 em { text-shadow: none; }
 .wrap { max-width: var(--wrap-max); margin: 0 auto; padding: 0 var(--pad); width: 100%; }
-section { padding: 110px 0; }
+section { padding: 150px 0; }
 .sec-hd {
  display: flex;
  flex-direction: column;
@@ -181,7 +181,7 @@ section { padding: 110px 0; }
  justify-content: center;
  text-align: center;
  width: 100%;
- gap: 2px;
+ gap: 10px;
  margin: 0 auto 64px;
  padding-bottom: 0;
  position: relative;
@@ -207,11 +207,19 @@ section { padding: 110px 0; }
  line-height: 1.1;
  color: var(--tx);
  white-space: nowrap;
- display: flex;
+ display: inline-flex;
  align-items: center;
  justify-content: center;
  gap: 10px;
  order: 2;
+ background: color-mix(in srgb, var(--a2) 14%, transparent);
+ border: 1px solid color-mix(in srgb, var(--a2) 28%, transparent);
+ padding: 5px 16px;
+ border-radius: 999px;
+}
+body.light .sec-hd h2 {
+ background: color-mix(in srgb, var(--a2) 9%, transparent);
+ border: 1px solid color-mix(in srgb, var(--a2) 22%, transparent);
 }
 .sec-hd h2 em {
  display: none;
@@ -900,7 +908,7 @@ body.light .btn-o:active {
 .btn-o:hover .arr { transform: translateY(-1.5px) translateX(4px); }
 
 #about, #skills, #experience, #projects, #education, #contact {
- margin-top: 28px;
+ margin-top: 44px;
 }
 body.light #skills, body.light #contact {
  background: transparent;
@@ -1154,7 +1162,7 @@ body.light .exp-card {
  width: 100%;
  max-width: var(--wrap-max);
  height: 14px;
- margin: 0 auto;
+ margin: 20px auto;
  padding: 0 var(--pad);
  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
  mask-image: linear-gradient(90deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
@@ -1171,7 +1179,7 @@ body.light .exp-card {
 }
 body.light .section-divider path { opacity: .38; }
 @media (max-width: 600px) {
- .section-divider { height: 10px; }
+ .section-divider { height: 10px; margin: 14px auto; }
 }
 .exp-desc {
  font-size: .84rem;
@@ -2200,8 +2208,8 @@ body.light .sc-tw svg {
 /* ── TABLET LANDSCAPE + SMALL DESKTOP (≤ 1024px) ───────────── */
 @media (max-width: 1024px) {
   :root { --pad: clamp(20px, 4vw, 48px); }
-  section { padding: 80px 0; }
-  #about, #skills, #experience, #projects, #education, #contact { margin-top: 22px; }
+  section { padding: 110px 0; }
+  #about, #skills, #experience, #projects, #education, #contact { margin-top: 34px; }
 
   /* Navbar: sizing only — show/hide behaviour for the hamburger card
      lives in the single "TABLET: floating hamburger card" block below,
@@ -2303,8 +2311,8 @@ body.light .sc-tw svg {
 /* ── TABLET PORTRAIT (≤ 768px) ──────────────────────────────── */
 @media (max-width: 768px) {
   :root { --pad: clamp(16px, 4vw, 32px); }
-  section { padding: 64px 0; }
-  #about, #skills, #experience, #projects, #education, #contact { margin-top: 18px; }
+  section { padding: 92px 0; }
+  #about, #skills, #experience, #projects, #education, #contact { margin-top: 30px; }
   .sec-hd { margin-bottom: 44px; }
   .sec-hd h2 { font-size: clamp(1.12rem, 3vw, 1.35rem); }
 
@@ -2588,8 +2596,8 @@ body.light .sc-tw svg {
 /* ── LARGE PHONE (≤ 600px) ───────────────────────────────────── */
 @media (max-width: 600px) {
   :root { --pad: 18px; }
-  section { padding: 56px 0; }
-  #about, #skills, #experience, #projects, #education, #contact { margin-top: 16px; }
+  section { padding: 80px 0; }
+  #about, #skills, #experience, #projects, #education, #contact { margin-top: 26px; }
   .sec-hd { margin-bottom: 36px; gap: 2px; }
   .sec-hd h2 { font-size: clamp(1.08rem, 3.9vw, 1.24rem); }
 
@@ -2697,8 +2705,8 @@ body.light .sc-tw svg {
 /* ── SMALL PHONE (≤ 430px) ───────────────────────────────────── */
 @media (max-width: 430px) {
   :root { --pad: 16px; }
-  section { padding: 48px 0; }
-  #about, #skills, #experience, #projects, #education, #contact { margin-top: 14px; }
+  section { padding: 68px 0; }
+  #about, #skills, #experience, #projects, #education, #contact { margin-top: 22px; }
   .sec-hd h2 { font-size: clamp(1.02rem, 4.7vw, 1.13rem); }
 
   .site-footer-row { gap: 8px; }
@@ -2737,8 +2745,8 @@ body.light .sc-tw svg {
 /* ── VERY SMALL PHONE (≤ 360px) ─────────────────────────────── */
 @media (max-width: 360px) {
   :root { --pad: 14px; }
-  section { padding: 42px 0; }
-  #about, #skills, #experience, #projects, #education, #contact { margin-top: 12px; }
+  section { padding: 60px 0; }
+  #about, #skills, #experience, #projects, #education, #contact { margin-top: 20px; }
   .sec-hd h2 { font-size: clamp(.97rem, 5.6vw, 1.08rem); }
 
   .site-footer-row { gap: 6px; }
