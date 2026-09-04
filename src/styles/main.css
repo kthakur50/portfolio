@@ -275,11 +275,8 @@ body.light .sec-hd-icon { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,
  width: 76%;
  max-width: calc(var(--wrap-max) - 10 * var(--pad));
  margin: 0 auto;
- height: 52px;
- display: grid;
- grid-template-columns: 1fr auto;
- align-items: center;
- column-gap: 18px;
+ display: flex;
+ flex-direction: column;
  position: relative;
  isolation: isolate;
  overflow: hidden;
@@ -288,11 +285,26 @@ body.light .sec-hd-icon { border-color: rgba(0,0,0,.08); background: rgba(0,0,0,
  -webkit-backdrop-filter: blur(28px) saturate(160%);
  border: 1px solid rgba(255,255,255,.09);
  border-radius: 999px;
- padding: 0 10px 0 20px;
  box-shadow: none;
- transition: background .3s ease, border-color .3s ease;
+ transition: background .3s ease, border-color .3s ease, border-radius .35s cubic-bezier(.4,0,.2,1), width .38s cubic-bezier(.4,0,.2,1), max-width .38s cubic-bezier(.4,0,.2,1);
 }
-.nav-inner > a, .nav-inner > div.nav-right { position: relative; z-index: 1; }
+/* Top row: logo + theme/search buttons — always visible, fixed height.
+   This used to be `.nav-inner` itself; it's now the collapsed row so the
+   search panel below can expand the pill without disturbing this row. */
+.nav-top {
+ width: 100%;
+ height: 52px;
+ flex-shrink: 0;
+ box-sizing: border-box;
+ display: grid;
+ grid-template-columns: 1fr auto;
+ align-items: center;
+ column-gap: 18px;
+ padding: 0 10px 0 20px;
+ position: relative;
+ z-index: 1;
+}
+.nav-top > a, .nav-top > div.nav-right { position: relative; z-index: 1; }
 .nav-inner::before {
  content: '';
  position: absolute;
@@ -566,35 +578,115 @@ body.light .nav-mob-label::after { border-top-color: #fff; }
  transform: translate(-50%, 0);
 }
 
-/* ── Desktop: shortcuts expand out of the navbar itself instead of a
-   separate floating pill card. The dropdown attaches flush to the
-   nav-inner bar, matches its width, and the two merge into one
-   continuous shape while open. ── */
+/* ── Desktop: search + section links expand INSIDE the navbar pill
+   itself — the floating card used on mobile/tablet is not used here at
+   all, so nothing ever opens "below" the navbar. The bar grows wider and
+   taller in place, then folds back into a pill on close. ── */
 @media (min-width: 1025px) {
-  .nav-mob {
-    top: calc(var(--nav) - 6px);
-    left: 50%;
-    width: 82%;
-    max-width: calc(var(--wrap-max) - 10 * var(--pad));
+  .nav-mob, .nav-mob-overlay { display: none !important; }
+
+  .nav.search-open .nav-inner {
+    width: 92%;
+    max-width: calc(var(--wrap-max) - 4 * var(--pad));
+    border-radius: 28px;
+    background: rgba(22,22,24,.92);
+  }
+  body.light .nav.search-open .nav-inner { background: rgba(255,255,255,.94); }
+
+  .nav-expand {
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 0 20px;
+    transition: max-height .4s cubic-bezier(.4,0,.2,1), opacity .3s ease .02s, padding .4s cubic-bezier(.4,0,.2,1);
+  }
+  .nav.search-open .nav-expand {
+    max-height: 190px;
+    opacity: 1;
+    padding: 4px 20px 16px;
+  }
+
+  .nav-expand-search {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    max-width: 340px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    color: var(--mu);
+    transition: border-color .25s ease, background .25s ease;
+  }
+  .nav-expand-search:focus-within {
+    border-color: rgba(var(--cc, 34 197 94), .55);
+    background: rgba(var(--cc, 34 197 94), .07);
+  }
+  body.light .nav-expand-search { background: rgba(0,0,0,.03); border-color: rgba(0,0,0,.08); }
+  body.light .nav-expand-search:focus-within { background: rgba(var(--cc, 34 197 94), .06); }
+  .nav-expand-search svg { width: 15px; height: 15px; flex-shrink: 0; opacity: .75; color: var(--mu); transition: color .25s ease, opacity .25s ease; }
+  .nav-expand-search:focus-within svg { color: var(--a2); opacity: 1; }
+  .nav-expand-search input {
+    flex: 1; min-width: 0; background: transparent; border: none; outline: none;
+    font-size: .85rem; font-weight: 500; font-family: inherit; color: var(--tx);
+  }
+  .nav-expand-search input::placeholder { color: var(--mu); font-weight: 450; }
+
+  .nav-expand-grid {
+    width: 100%;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    border-radius: 0 0 26px 26px;
-    border-top: none;
-    padding-top: 16px;
-    transform: translateX(-50%) translateY(-8px) scaleY(.94);
-    transform-origin: top center;
-    box-shadow: 0 30px 70px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.22);
+    flex-wrap: wrap;
+    gap: 6px;
   }
-  .nav-mob.open {
-    transform: translateX(-50%) translateY(0) scaleY(1);
+  .ne-link {
+    display: flex; align-items: center; gap: 7px;
+    padding: 8px 13px;
+    border-radius: 999px;
+    color: var(--mu);
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 550;
+    white-space: nowrap;
+    background: transparent;
+    border: 1px solid transparent;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: color .15s ease, background .18s ease, border-color .18s ease, opacity .3s ease, transform .3s cubic-bezier(.25,1,.5,1);
   }
-  .nav-inner {
-    transition: background .3s ease, border-color .3s ease, border-radius .25s ease;
+  .nav.search-open .ne-link { opacity: 1; transform: translateY(0); }
+  .nav.search-open .ne-link:nth-child(1) { transition-delay: .05s; }
+  .nav.search-open .ne-link:nth-child(2) { transition-delay: .08s; }
+  .nav.search-open .ne-link:nth-child(3) { transition-delay: .11s; }
+  .nav.search-open .ne-link:nth-child(4) { transition-delay: .14s; }
+  .nav.search-open .ne-link:nth-child(5) { transition-delay: .17s; }
+  .nav.search-open .ne-link:nth-child(6) { transition-delay: .2s; }
+  .nav.search-open .ne-link:nth-child(7) { transition-delay: .23s; }
+  .ne-link:hover, .ne-link:focus-visible { color: var(--tx); background: rgba(255,255,255,.08); }
+  body.light .ne-link:hover, body.light .ne-link:focus-visible { background: rgba(0,0,0,.06); }
+  .ne-link.active { color: var(--a2); background: rgba(var(--cc, 34 197 94), .12); border-color: rgba(var(--cc, 34 197 94), .3); }
+  .ne-icon { display: flex; align-items: center; justify-content: center; width: 15px; height: 15px; flex-shrink: 0; }
+  .ne-icon svg { width: 15px; height: 15px; }
+
+  .nav-expand-empty {
+    display: none;
+    position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%);
+    white-space: nowrap; font-size: .76rem; font-weight: 500; color: var(--mu);
+    margin: 0; pointer-events: none;
   }
-  body:has(#navMob.open) .nav-inner {
-    border-radius: 26px 26px 0 0;
-    border-bottom-color: transparent;
-  }
-  .nav-mob-grid { flex: 1; justify-content: center; }
+  .nav-expand-empty.show { display: block; }
+}
+@media (max-width: 1024px) {
+  .nav-expand { display: none !important; }
 }
 #home {
  --htc: 225,250,238;
@@ -1000,7 +1092,7 @@ body.light #about { background: transparent; }
   .hero-name { font-size: clamp(2.6rem, 3.6vw, 4.2rem); }
   #home { padding-top: 22px; }
   :root { --nav: 72px; }
-  .nav-inner { width: 82%; padding: 0 10px 0 20px; }
+  .nav-inner { width: 82%; }
   .nav-logo .logo-k { font-size: 1.05rem; }
   .tube-light { width: clamp(300px, 38vw, 520px); height: clamp(58px, 7.2vw, 90px); }
   .hero-card { margin-top: 22px; }
@@ -2285,11 +2377,10 @@ body.light .sc-tw svg {
   .masonry-link .arr { margin-left: 0; }
 
   .nav-inner {
-    height: 52px;
-    padding: 0 8px 0 16px;
     border-radius: 999px;
     transition: background .3s ease, border-color .3s ease;
   }
+  .nav-top { height: 52px; padding: 0 8px 0 16px; }
   .nav-logo .logo-k { font-size: clamp(.78rem, 1.5vw, .95rem); }
 
   /* Hero: text takes full width, cube sits centered below as its own row */
@@ -2362,13 +2453,12 @@ body.light .sc-tw svg {
   /* ── Navbar: icons open inline inside the navbar, tablet portrait ── */
   .nav { padding: 8px 0; }
   .nav-inner {
-    height: 52px;
-    padding: 0 clamp(12px, 2.5vw, 20px);
     border-radius: 999px;
     max-width: calc(92% - 2 * var(--pad));
     backdrop-filter: blur(32px) saturate(160%);
     -webkit-backdrop-filter: blur(32px) saturate(160%);
   }
+  .nav-top { height: 52px; padding: 0 clamp(12px, 2.5vw, 20px); }
   .nav-logo .logo-k { font-size: clamp(.78rem, 2vw, .92rem); }
   .nav-right { gap: 10px; }
   .nav-ham { width: 32px; height: 32px; padding: 7px; }
@@ -2651,13 +2741,12 @@ body.light .sc-tw svg {
   /* ── Navbar: compact pill — logo + theme + hamburger ── */
   .nav { padding: 5px 0; }
   .nav-inner {
-    height: 50px;
-    padding: 0 14px;
     border-radius: 999px;
     max-width: calc(100% - 2 * var(--pad));
     backdrop-filter: blur(32px) saturate(160%);
     -webkit-backdrop-filter: blur(32px) saturate(160%);
   }
+  .nav-top { height: 50px; padding: 0 14px; }
   .nav-logo .logo-k { font-size: .8rem; }
   .nav-logo { margin-left: 6px; }
 
@@ -2755,7 +2844,8 @@ body.light .sc-tw svg {
   .site-footer-row { gap: 8px; }
   .site-footer-text { font-size: .58rem; }
 
-  .nav-inner { height: 48px; padding: 0 10px; border-radius: 999px; backdrop-filter: blur(32px) saturate(160%); -webkit-backdrop-filter: blur(32px) saturate(160%); }
+  .nav-inner { border-radius: 999px; backdrop-filter: blur(32px) saturate(160%); -webkit-backdrop-filter: blur(32px) saturate(160%); }
+  .nav-top { height: 48px; padding: 0 10px; }
   .nav-logo .logo-k { font-size: .72rem; }
 
   #home { padding: calc(var(--nav) - 6px) 0 40px; }
@@ -2796,7 +2886,8 @@ body.light .sc-tw svg {
   .site-footer-text { font-size: .54rem; }
 
 
-  .nav-inner { height: 46px; padding: 0 8px; border-radius: 999px; backdrop-filter: blur(32px) saturate(160%); -webkit-backdrop-filter: blur(32px) saturate(160%); }
+  .nav-inner { border-radius: 999px; backdrop-filter: blur(32px) saturate(160%); -webkit-backdrop-filter: blur(32px) saturate(160%); }
+  .nav-top { height: 46px; padding: 0 8px; }
   .nav-logo .logo-k { font-size: .66rem; }
   .nav-sep-line { display: none; }
 
