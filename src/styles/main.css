@@ -214,7 +214,7 @@ section { padding: 150px 0; }
  order: 2;
  background: color-mix(in srgb, var(--a2) 14%, transparent);
  border: 1px solid color-mix(in srgb, var(--a2) 28%, transparent);
- padding: 5px 16px;
+ padding: 4px 12px;
  border-radius: 999px;
 }
 body.light .sec-hd h2 {
@@ -564,6 +564,37 @@ body.light .nav-mob-label::after { border-top-color: #fff; }
 .nav-mob a:focus-visible .nav-mob-label {
  opacity: 1;
  transform: translate(-50%, 0);
+}
+
+/* ── Desktop: shortcuts expand out of the navbar itself instead of a
+   separate floating pill card. The dropdown attaches flush to the
+   nav-inner bar, matches its width, and the two merge into one
+   continuous shape while open. ── */
+@media (min-width: 1025px) {
+  .nav-mob {
+    top: calc(var(--nav) - 6px);
+    left: 50%;
+    width: 82%;
+    max-width: calc(var(--wrap-max) - 10 * var(--pad));
+    justify-content: center;
+    border-radius: 0 0 26px 26px;
+    border-top: none;
+    padding-top: 16px;
+    transform: translateX(-50%) translateY(-8px) scaleY(.94);
+    transform-origin: top center;
+    box-shadow: 0 30px 70px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.22);
+  }
+  .nav-mob.open {
+    transform: translateX(-50%) translateY(0) scaleY(1);
+  }
+  .nav-inner {
+    transition: background .3s ease, border-color .3s ease, border-radius .25s ease;
+  }
+  body:has(#navMob.open) .nav-inner {
+    border-radius: 26px 26px 0 0;
+    border-bottom-color: transparent;
+  }
+  .nav-mob-grid { flex: 1; justify-content: center; }
 }
 #home {
  --htc: 225,250,238;
@@ -967,6 +998,12 @@ body.light #about { background: transparent; }
 @media (min-width: 1025px) {
   #home .wrap { max-width: var(--wrap-max); }
   .hero-name { font-size: clamp(2.6rem, 3.6vw, 4.2rem); }
+  #home { padding-top: 22px; }
+  :root { --nav: 72px; }
+  .nav-inner { width: 82%; padding: 0 10px 0 20px; }
+  .nav-logo .logo-k { font-size: 1.05rem; }
+  .tube-light { width: clamp(300px, 38vw, 520px); height: clamp(58px, 7.2vw, 90px); }
+  .hero-card { margin-top: 22px; }
 }
 .about-para {
  font-size: .94rem; font-weight: 450;
@@ -1535,6 +1572,12 @@ body.light .c-heading em {
 }
 .c-email-btn:hover {
  transform: translateY(-2px);
+}
+.c-email-btn svg {
+ transition: transform .3s ease;
+}
+.c-email-btn:hover svg {
+ transform: rotate(-14deg);
 }
 .c-quick {
  display: flex;
@@ -2250,7 +2293,7 @@ body.light .sc-tw svg {
   .nav-logo .logo-k { font-size: clamp(.78rem, 1.5vw, .95rem); }
 
   /* Hero: text takes full width, cube sits centered below as its own row */
-  .tube-light { top: clamp(-4px, -0.3vw, 2px); width: clamp(380px, 50vw, 600px); height: clamp(56px, 7vw, 86px); }
+  .tube-light { top: clamp(-4px, -0.3vw, 2px); width: clamp(420px, 56vw, 660px); height: clamp(56px, 7vw, 86px); }
   #home { padding: clamp(72px, 9vw, 102px) 0 clamp(30px, 4vw, 50px); min-height: calc(100svh - var(--nav)); align-items: flex-start; }
   .hero-card { padding: clamp(56px, 8.5vw, 82px) clamp(24px, 3.6vw, 44px); }
   .hero-intro { white-space: pre-line; overflow: visible; text-align: center; }
@@ -2333,7 +2376,7 @@ body.light .sc-tw svg {
   .nav-toggle svg { width: 15px; height: 15px; }
 
   /* ── Hero: centered card, sized to fit tablet viewport ── */
-  .tube-light { top: -2px; width: clamp(340px, 64vw, 490px); height: clamp(50px, 6.5vw, 74px); }
+  .tube-light { top: -2px; width: clamp(380px, 70vw, 540px); height: clamp(50px, 6.5vw, 74px); }
   #home {
     padding: clamp(60px, 10vw, 90px) 0 clamp(24px, 4vw, 40px);
     min-height: calc(100svh - var(--nav));
