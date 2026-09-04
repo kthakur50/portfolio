@@ -21,7 +21,7 @@ const SiteBackground = () => (
       fogDepth={24}
       detail="medium"
       brightness={0.65}
-      opacity={0.32}
+      opacity={0.24}
       mouseInteraction={true}
       parallaxStrength={0.4}
       grain={true}
