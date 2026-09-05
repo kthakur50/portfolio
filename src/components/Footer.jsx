@@ -59,7 +59,7 @@ const Footer = () => (
       <p className="site-footer-text">
         © {new Date().getFullYear()}
         <span className="site-footer-dot">•</span>
-        Kaushal Thakur | AI Software Engineer
+        Kaushal Thakur
         <span className="site-footer-dot">•</span>
         All rights reserved.
       </p>
