@@ -212,14 +212,14 @@ section { padding: 150px 0; }
  justify-content: center;
  gap: 10px;
  order: 2;
- background: color-mix(in srgb, var(--a2) 14%, transparent);
- border: 1px solid color-mix(in srgb, var(--a2) 28%, transparent);
- padding: 4px 32px;
- border-radius: 999px;
+ background: none;
+ border: none;
+ padding: 0;
+ border-radius: 0;
 }
 body.light .sec-hd h2 {
- background: color-mix(in srgb, var(--a2) 9%, transparent);
- border: 1px solid color-mix(in srgb, var(--a2) 22%, transparent);
+ background: none;
+ border: none;
 }
 .sec-hd h2 em {
  display: none;
