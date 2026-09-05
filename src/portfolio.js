@@ -49,7 +49,7 @@ function initTheme() {
 
 function initNav() {
   const sections = ['home','about','skills','experience','projects','education','contact'];
-  const links    = document.querySelectorAll('.nav-desk-links a, .nav-mob a, .ne-link');
+  const links    = document.querySelectorAll('.nav-desk-links a, .nav-mob a');
   if (!links.length) return;
 
   const sectionEls = sections.map(id => document.getElementById(id)).filter(Boolean);
@@ -94,7 +94,7 @@ function initScroll() {
     a.addEventListener('click', e => {
       e.preventDefault();
       const id = a.getAttribute('href').slice(1);
-      document.querySelectorAll('.nav-desk-links a, .nav-mob a, .ne-link').forEach(l =>
+      document.querySelectorAll('.nav-desk-links a, .nav-mob a').forEach(l =>
         l.classList.toggle('active', l.getAttribute('href') === '#' + id)
       );
       scrollToSection(id);
@@ -105,17 +105,19 @@ function initScroll() {
       if (mob && mob.classList.contains('open')) {
         mob.classList.remove('open');
         ham?.classList.remove('open');
-        nav?.classList.remove('search-open');
         document.getElementById('navMobOverlay')?.classList.remove('open');
         document.body.classList.remove('nav-mob-locked');
         const searchInput = document.getElementById('navSearchInput');
         if (searchInput) searchInput.value = '';
         document.querySelectorAll('#navMobGrid a').forEach(x => { x.style.display = ''; });
         document.getElementById('navMobEmpty')?.classList.remove('show');
+      }
+      if (nav?.classList.contains('search-open')) {
+        nav.classList.remove('search-open');
+        ham?.classList.remove('open');
         const searchInputD = document.getElementById('navSearchInputDesktop');
         if (searchInputD) searchInputD.value = '';
-        document.querySelectorAll('#navExpandGrid a').forEach(x => { x.style.display = ''; });
-        document.getElementById('navExpandEmpty')?.classList.remove('show');
+        document.querySelectorAll('#navDeskLinks a').forEach(x => { x.style.display = ''; });
       }
     });
   });
@@ -145,31 +147,34 @@ function initHam() {
   const grid    = document.getElementById('navMobGrid');
   const empty   = document.getElementById('navMobEmpty');
 
-  // Desktop (≥1025px): the search + section links expand inside the
-  // navbar pill itself instead of the floating card used on mobile/tablet.
-  const expand  = document.getElementById('navExpand');
+  // Desktop (≥1025px): the search icon expands the navbar in place and
+  // reveals an inline input that filters the always-visible icon links.
   const inputD  = document.getElementById('navSearchInputDesktop');
-  const gridD   = document.getElementById('navExpandGrid');
-  const emptyD  = document.getElementById('navExpandEmpty');
+  const gridD   = document.getElementById('navDeskLinks');
 
-  const makeFilter = (inputEl, gridEl, emptyEl) => () => {
-    if (!inputEl || !gridEl) return;
-    const q = inputEl.value.trim().toLowerCase();
+  const filterMob = () => {
+    if (!input || !grid) return;
+    const q = input.value.trim().toLowerCase();
     let visible = 0;
-    gridEl.querySelectorAll('a').forEach(a => {
+    grid.querySelectorAll('a').forEach(a => {
       const label = (a.dataset.label || a.textContent || '').toLowerCase();
       const match = !q || label.includes(q);
       a.style.display = match ? '' : 'none';
       if (match) visible++;
     });
-    emptyEl?.classList.toggle('show', visible === 0);
+    empty?.classList.toggle('show', visible === 0);
   };
-  const filterMob    = makeFilter(input, grid, empty);
-  const filterExpand = makeFilter(inputD, gridD, emptyD);
-
+  const filterDesk = () => {
+    if (!inputD || !gridD) return;
+    const q = inputD.value.trim().toLowerCase();
+    gridD.querySelectorAll('a').forEach(a => {
+      const label = (a.dataset.label || '').toLowerCase();
+      a.style.display = (!q || label.includes(q)) ? '' : 'none';
+    });
+  };
   input?.addEventListener('input', filterMob);
   input?.addEventListener('click', e => e.stopPropagation());
-  inputD?.addEventListener('input', filterExpand);
+  inputD?.addEventListener('input', filterDesk);
   inputD?.addEventListener('click', e => e.stopPropagation());
 
   if (ham && mob) {
@@ -185,14 +190,13 @@ function initHam() {
       overlay?.classList.remove('open');
       document.body.classList.remove('nav-mob-locked');
       if (input) { input.value = ''; filterMob(); }
-      if (inputD) { inputD.value = ''; filterExpand(); }
+      if (inputD) { inputD.value = ''; filterDesk(); }
     };
     const openMob = () => {
       if (isDesktop()) {
-        // Expand the navbar itself — no floating card, no page-scroll lock.
         nav?.classList.add('search-open');
         ham.classList.add('open');
-        if (inputD) setTimeout(() => inputD.focus(), 260);
+        if (inputD) setTimeout(() => inputD.focus(), 220);
       } else {
         mob.classList.add('open');
         ham.classList.add('open');
