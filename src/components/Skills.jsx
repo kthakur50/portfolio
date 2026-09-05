@@ -290,8 +290,7 @@ const Skills = () => {
             <svg viewBox="1 1 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: 'scale(1.15)' }}><polyline points="18 16 22 12 18 8"/><polyline points="6 8 2 12 6 16"/><line x1="14.5" y1="4" x2="9.5" y2="20"/></svg>
           </span>
           <h2>Skills<em>.</em></h2>
-          <p className="sec-hd-sub">Tools and technologies I build with.</p>
-        </div>
+      </div>
 
         {/* ── Two columns: Fullstack (left) / GenAI (right), circular chips ── */}
         <div className="sk-columns sr">
