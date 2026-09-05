@@ -208,6 +208,7 @@ const GradientWaves = ({
     const mesh = new Mesh(gl, { geometry, program });
     ctxMap.set(container, { renderer, program, mesh });
 
+    let resizeRaf = 0;
     const setSize = () => {
       const rect = container.getBoundingClientRect();
       const w = Math.max(1, Math.floor(rect.width));
@@ -218,8 +219,15 @@ const GradientWaves = ({
       res[1] = gl.drawingBufferHeight;
       renderer.render({ scene: mesh });
     };
+    const queueSetSize = () => {
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(() => {
+        resizeRaf = 0;
+        setSize();
+      });
+    };
 
-    const ro = new ResizeObserver(setSize);
+    const ro = new ResizeObserver(queueSetSize);
     ro.observe(container);
     setSize();
 
@@ -270,7 +278,7 @@ const GradientWaves = ({
         isVisible = entry.isIntersecting;
         isVisible ? tryStart() : tryStop();
       },
-      { threshold: 0 }
+      { threshold: 0, rootMargin: '200px 0px' }
     );
     io.observe(container);
 
@@ -284,6 +292,7 @@ const GradientWaves = ({
 
     return () => {
       tryStop();
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
       ro.disconnect();
       io.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
