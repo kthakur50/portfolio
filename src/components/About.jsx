@@ -6,7 +6,6 @@ const About = () => (
           <svg viewBox="2 2 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </span>
         <h2>About<em>.</em></h2>
-        <p className="sec-hd-sub">A quick look at who I am and what I do.</p>
       </div>
 
       <div className="about-bio sr" style={{ transitionDelay: '.04s' }}>
