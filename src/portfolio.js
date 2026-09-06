@@ -1,52 +1,3 @@
-function initTheme() {
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let themeTransitionTimer = null;
-
-  const applyTheme = () => {
-    document.body.classList.toggle('light');
-  };
-
-  const toggleTheme = () => {
-    if (prefersReducedMotion) {
-      applyTheme();
-      return;
-    }
-
-    // Preferred path: native View Transitions — the browser cross-fades
-    // a single before/after snapshot on the GPU, so the whole page changes
-    // together as one soft animation instead of every element animating
-    // its own colors. Much smoother than the CSS fallback below.
-    if (document.startViewTransition) {
-      const root = document.documentElement;
-      // Silence every element's own color/background transition while the
-      // native snapshot crossfade plays — running both at once is what
-      // made the switch feel slow and glitchy.
-      root.classList.add('vt-swap');
-      const transition = document.startViewTransition(applyTheme);
-      transition.finished
-        .catch(() => {})
-        .finally(() => root.classList.remove('vt-swap'));
-      return;
-    }
-
-    // Fallback for browsers without View Transitions support (e.g. Firefox)
-    const root = document.documentElement;
-    root.classList.add('theme-transition');
-    // force a reflow so the transition class is registered before the
-    // theme class flips — prevents the occasional instant "snap" glitch
-    void root.offsetHeight;
-    applyTheme();
-    clearTimeout(themeTransitionTimer);
-    themeTransitionTimer = setTimeout(() => {
-      root.classList.remove('theme-transition');
-    }, 260);
-  };
-
-  ['themeBtn', 'themeBtnM'].forEach(id => {
-    document.getElementById(id)?.addEventListener('click', toggleTheme);
-  });
-}
-
 function initNav() {
   const sections = ['home','about','skills','experience','projects','education','contact'];
   const links    = document.querySelectorAll('.nav-desk-links a, .nav-mob a');
@@ -107,17 +58,10 @@ function initScroll() {
         ham?.classList.remove('open');
         document.getElementById('navMobOverlay')?.classList.remove('open');
         document.body.classList.remove('nav-mob-locked');
-        const searchInput = document.getElementById('navSearchInput');
-        if (searchInput) searchInput.value = '';
-        document.querySelectorAll('#navMobGrid a').forEach(x => { x.style.display = ''; });
-        document.getElementById('navMobEmpty')?.classList.remove('show');
       }
       if (nav?.classList.contains('search-open')) {
         nav.classList.remove('search-open');
         ham?.classList.remove('open');
-        const searchInputD = document.getElementById('navSearchInputDesktop');
-        if (searchInputD) searchInputD.value = '';
-        document.querySelectorAll('#navDeskLinks a').forEach(x => { x.style.display = ''; });
       }
     });
   });
@@ -143,39 +87,6 @@ function initHam() {
   const ham     = document.getElementById('ham');
   const mob     = document.getElementById('navMob');
   const overlay = document.getElementById('navMobOverlay');
-  const input   = document.getElementById('navSearchInput');
-  const grid    = document.getElementById('navMobGrid');
-  const empty   = document.getElementById('navMobEmpty');
-
-  // Desktop (≥1025px): the search icon expands the navbar in place and
-  // reveals an inline input that filters the always-visible icon links.
-  const inputD  = document.getElementById('navSearchInputDesktop');
-  const gridD   = document.getElementById('navDeskLinks');
-
-  const filterMob = () => {
-    if (!input || !grid) return;
-    const q = input.value.trim().toLowerCase();
-    let visible = 0;
-    grid.querySelectorAll('a').forEach(a => {
-      const label = (a.dataset.label || a.textContent || '').toLowerCase();
-      const match = !q || label.includes(q);
-      a.style.display = match ? '' : 'none';
-      if (match) visible++;
-    });
-    empty?.classList.toggle('show', visible === 0);
-  };
-  const filterDesk = () => {
-    if (!inputD || !gridD) return;
-    const q = inputD.value.trim().toLowerCase();
-    gridD.querySelectorAll('a').forEach(a => {
-      const label = (a.dataset.label || '').toLowerCase();
-      a.style.display = (!q || label.includes(q)) ? '' : 'none';
-    });
-  };
-  input?.addEventListener('input', filterMob);
-  input?.addEventListener('click', e => e.stopPropagation());
-  inputD?.addEventListener('input', filterDesk);
-  inputD?.addEventListener('click', e => e.stopPropagation());
 
   if (ham && mob) {
     ham._init = true;
@@ -189,20 +100,16 @@ function initHam() {
       nav?.classList.remove('search-open');
       overlay?.classList.remove('open');
       document.body.classList.remove('nav-mob-locked');
-      if (input) { input.value = ''; filterMob(); }
-      if (inputD) { inputD.value = ''; filterDesk(); }
     };
     const openMob = () => {
       if (isDesktop()) {
         nav?.classList.add('search-open');
         ham.classList.add('open');
-        if (inputD) setTimeout(() => inputD.focus(), 220);
       } else {
         mob.classList.add('open');
         ham.classList.add('open');
         overlay?.classList.add('open');
         document.body.classList.add('nav-mob-locked');
-        if (input) setTimeout(() => input.focus(), 200);
       }
     };
 
@@ -296,7 +203,7 @@ function initMasonry() {
     {
       cat:   'Web · Design',
       title: 'Developer Portfolio',
-      desc:  'A clean, performant personal portfolio built with modern frontend tools — featuring smooth animations, dark/light mode, and fully responsive layout.',
+      desc:  'A clean, performant personal portfolio built with modern frontend tools — featuring smooth animations and a fully responsive layout.',
       tags:  ['ReactJS', 'TailwindCSS', 'TypeScript'],
       link:  '#',
       svg:   `<svg viewBox="0 0 420 200" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><rect width="420" height="200" fill="#0f1a14"/><rect x="12" y="12" width="396" height="176" rx="8" fill="#111" stroke="#1e3028" stroke-width="1"/><rect x="12" y="12" width="396" height="28" rx="8" fill="#1a1a1a"/><circle cx="30" cy="26" r="5" fill="#ff5f57"/><circle cx="46" cy="26" r="5" fill="#febc2e"/><circle cx="62" cy="26" r="5" fill="#28c840"/><text x="210" y="31" font-family="-apple-system,sans-serif" font-size="8" fill="#555" text-anchor="middle">portfolio.dev</text><text x="40" y="72" font-family="SF Mono,monospace" font-size="13" font-weight="900" fill="#ddeae4">Kaushal</text><text x="40" y="88" font-family="SF Mono,monospace" font-size="13" font-weight="900" fill="#27a86e">Thakur.</text><text x="40" y="106" font-family="SF Mono,monospace" font-size="8" fill="#7a9087">Software Engineer</text><rect x="40" y="118" width="60" height="20" rx="5" fill="#1F7D53"/><text x="70" y="132" font-family="-apple-system,sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">Resume</text><rect x="108" y="118" width="60" height="20" rx="5" fill="none" stroke="#2a2a2a" stroke-width="1"/><text x="138" y="132" font-family="-apple-system,sans-serif" font-size="8" font-weight="700" fill="#7a9087" text-anchor="middle">GitHub</text><line x1="240" y1="50" x2="390" y2="50" stroke="#1e3028" stroke-width="1"/><line x1="240" y1="70" x2="370" y2="70" stroke="#1e3028" stroke-width="1"/><line x1="240" y1="90" x2="380" y2="90" stroke="#1e3028" stroke-width="1"/></svg>`
@@ -654,10 +561,55 @@ function initHL() {
   }, { threshold: 0.25 }).observe(section);
 }
 
+function initTilt() {
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!canHover || reduced) return;
+
+  const NODE_SEL = '.exp-node, .edu-node';
+
+  let raf = 0;
+  let pendingX = 0, pendingY = 0, pendingTarget = null;
+
+  const apply = (el, clientX, clientY, strength) => {
+    const rect = el.getBoundingClientRect();
+    const px = (clientX - rect.left) / rect.width;
+    const py = (clientY - rect.top) / rect.height;
+    const rx = (0.5 - py) * strength;
+    const ry = (px - 0.5) * strength;
+    const isExpNode = el.classList.contains('exp-node');
+    // Experience timeline node gets a subtle hover zoom on top of the tilt.
+    const scale = isExpNode ? ' scale(1.06)' : '';
+    el.style.transform = `perspective(800px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)${scale} translateZ(0)`;
+  };
+
+  document.addEventListener('pointermove', e => {
+    if (e.pointerType && e.pointerType !== 'mouse') return;
+    const target = e.target.closest(NODE_SEL);
+    if (!target) return;
+    pendingTarget = target;
+    pendingX = e.clientX;
+    pendingY = e.clientY;
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      if (!pendingTarget) return;
+      apply(pendingTarget, pendingX, pendingY, 12);
+    });
+  }, { passive: true });
+
+  document.addEventListener('pointerout', e => {
+    const el = e.target.closest(NODE_SEL);
+    if (!el) return;
+    if (el.contains(e.relatedTarget)) return;
+    el.style.transform = '';
+    if (pendingTarget === el) pendingTarget = null;
+  }, { passive: true });
+}
+
 export function initAll() {
   if (window.__portfolioInit) return;
   window.__portfolioInit = true;
-  initTheme();
   initNav();
   initScroll();
   initHam();
@@ -666,4 +618,5 @@ export function initAll() {
   initClock();
   initMasonry();
   initWin3DCube();
+  initTilt();
 }
