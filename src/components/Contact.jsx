@@ -16,7 +16,7 @@ const Contact = () => {
             <h3 className="c-heading">Let's <em>build something</em> together.</h3>
 
             <p className="c-lead">
-              Open to freelance work, collaborations, and full-time roles in web dev &amp; GenAI.
+              Open to freelance work, collaborations, and full-time roles in Full-Stack Development &amp; GenAI.
               Got something in mind? Let's talk.
             </p>
 
