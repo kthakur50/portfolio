@@ -6,7 +6,9 @@ const Navbar = () => (
 
       <div className="nav-top">
         <a className="nav-logo" href="#home">
-          <span className="logo-k">kt<em>.</em></span>
+          <span className="logo-badge">
+            <span className="logo-k">kt<em>.</em></span>
+          </span>
         </a>
 
         <div className="nav-center" id="navCenter">
