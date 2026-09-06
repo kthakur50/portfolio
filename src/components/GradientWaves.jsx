@@ -209,10 +209,23 @@ const GradientWaves = ({
     ctxMap.set(container, { renderer, program, mesh });
 
     let resizeRaf = 0;
+    let lastW = 0;
+    let lastH = 0;
     const setSize = () => {
       const rect = container.getBoundingClientRect();
-      const w = Math.max(1, Math.floor(rect.width));
-      const h = Math.max(1, Math.floor(rect.height));
+      let w = Math.floor(rect.width);
+      let h = Math.floor(rect.height);
+      // Mobile browsers can momentarily report a 0-size rect while the
+      // address bar shows/hides during scroll. Rendering at that size
+      // would clear the canvas to transparent (showing flat body bg
+      // through the fixed layer, i.e. a "black flash"), so just skip
+      // this pass and keep whatever was last drawn.
+      if (w < 2 || h < 2) return;
+      // Ignore tiny sub-pixel jitter so we don't re-render every frame
+      // during the toolbar's show/hide transition.
+      if (Math.abs(w - lastW) < 2 && Math.abs(h - lastH) < 2 && lastW !== 0) return;
+      lastW = w;
+      lastH = h;
       renderer.setSize(w, h);
       const res = program.uniforms.iResolution.value;
       res[0] = gl.drawingBufferWidth;
@@ -245,6 +258,19 @@ const GradientWaves = ({
     };
     window.addEventListener('pointermove', onPointerMove);
     canvas.addEventListener('pointerleave', onPointerLeave);
+
+    const onContextLost = e => {
+      e.preventDefault();
+      tryStop();
+    };
+    const onContextRestored = () => {
+      lastW = 0;
+      lastH = 0;
+      setSize();
+      tryStart();
+    };
+    canvas.addEventListener('webglcontextlost', onContextLost, false);
+    canvas.addEventListener('webglcontextrestored', onContextRestored, false);
 
     let raf = 0;
     let isVisible = true;
@@ -298,6 +324,8 @@ const GradientWaves = ({
       document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('pointermove', onPointerMove);
       canvas.removeEventListener('pointerleave', onPointerLeave);
+      canvas.removeEventListener('webglcontextlost', onContextLost);
+      canvas.removeEventListener('webglcontextrestored', onContextRestored);
       ctxMap.delete(container);
       try {
         container.removeChild(canvas);
