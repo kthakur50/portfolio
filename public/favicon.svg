@@ -1,8 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
   <rect width="48" height="48" rx="10" fill="#0f0f0f"/>
-  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
-    font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif"
-    font-size="20" font-weight="900" letter-spacing="0.3">
-    <tspan fill="#f2f2f2">kt</tspan><tspan fill="#22c55e" font-style="normal">.</tspan>
-  </text>
+  <text x="10" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="20" font-weight="900" letter-spacing="0.2" fill="#f2f2f2">kt</text>
+  <circle cx="35.5" cy="28" r="3.2" fill="#22c55e"/>
 </svg>
