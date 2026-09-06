@@ -57,11 +57,7 @@ const Footer = () => (
 
     <div className="site-footer-row">
       <p className="site-footer-text">
-        © {new Date().getFullYear()}
-        <span className="site-footer-dot">•</span>
-        Kaushal Thakur
-        <span className="site-footer-dot">•</span>
-        All rights reserved.
+        &copy; {new Date().getFullYear()} Kaushal Thakur. All rights reserved.
       </p>
     </div>
   </footer>
