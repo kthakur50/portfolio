@@ -329,7 +329,9 @@ const GradientWaves = ({
       ctxMap.delete(container);
       try {
         container.removeChild(canvas);
-      } catch {}
+      } catch {
+        // canvas may already be detached (e.g. container unmounted first) — safe to ignore
+      }
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
   }, []);
