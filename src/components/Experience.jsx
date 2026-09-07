@@ -38,8 +38,9 @@ const Experience = () => (
                     </svg>
                     Noida, India
                   </span>
+                  <span className="exp-dot"></span>
+                  <span className="exp-badge">Full-Time</span>
                 </div>
-                <span className="exp-badge">Full-Time</span>
               </div>
             </div>
             <p className="exp-desc">
@@ -84,8 +85,9 @@ const Experience = () => (
                     </svg>
                     Remote
                   </span>
+                  <span className="exp-dot"></span>
+                  <span className="exp-badge">Freelance</span>
                 </div>
-                <span className="exp-badge">Freelance</span>
               </div>
             </div>
             <p className="exp-desc">
