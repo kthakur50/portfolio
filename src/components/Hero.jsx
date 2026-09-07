@@ -7,7 +7,6 @@ const TypedIntro = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    setCount(0);
     let i = 0;
     const timer = setInterval(() => {
       i += 1;
