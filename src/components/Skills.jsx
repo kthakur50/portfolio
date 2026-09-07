@@ -268,7 +268,6 @@ const FULLSTACK_SKILLS = [
 const GENAI_TOOLS_SKILLS = [
   { cls: 'sc-openai',  label: 'OpenAI API',    icon: <IconOpenAI /> },
   { cls: 'sc-lang',    label: 'LangChain',     icon: <IconLangChain /> },
-  { cls: 'sc-hf',      label: 'Hugging Face',  icon: <IconHuggingFace /> },
   { cls: 'sc-git',     label: 'Git',           icon: <IconGit /> },
   { cls: 'sc-github',  label: 'GitHub',        icon: <IconGitHub /> },
   { cls: 'sc-vscode',  label: 'VS Code',       icon: <IconVSCode /> },
@@ -292,29 +291,12 @@ const Skills = () => {
           <h2>Skills<em>.</em></h2>
       </div>
 
-        {/* ── Two columns: Fullstack (left) / GenAI (right), circular chips ── */}
+        {/* ── Single merged column: all skills, circular chips ── */}
         <div className="sk-columns sr">
           <div className="sk-col">
-            <h3 className="sk-col-title">Fullstack Development</h3>
+            <h3 className="sk-col-title">Fullstack Development &amp; GenAI</h3>
             <div className="sk-chip-row">
-              {FULLSTACK_SKILLS.map((s, i) => (
-                <div
-                  key={s.cls}
-                  className={`sk-chip ${s.cls}`}
-                  style={{ animationDelay: `${Math.min(i, 20) * 0.03}s` }}
-                  title={s.label}
-                >
-                  <div className="sk-chip-ico">{s.icon}</div>
-                  <span className="sk-chip-name">{s.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="sk-col">
-            <h3 className="sk-col-title">GenAI &amp; Tools</h3>
-            <div className="sk-chip-row">
-              {GENAI_TOOLS_SKILLS.map((s, i) => (
+              {ALL_SKILLS.map((s, i) => (
                 <div
                   key={s.cls}
                   className={`sk-chip ${s.cls}`}
