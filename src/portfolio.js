@@ -220,6 +220,7 @@ function initMasonry() {
           ${p.svg}
         </div>
         <div class="masonry-body">
+          <div class="masonry-cat"><span class="masonry-cat-dot" aria-hidden="true"></span>${p.cat}</div>
           <div class="masonry-title">${p.title}</div>
           <div class="masonry-desc">${p.desc}</div>
           <div class="masonry-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
