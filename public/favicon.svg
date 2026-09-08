@@ -1,35 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="192" y2="192" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#161616"/>
-      <stop offset="1" stop-color="#080808"/>
-    </linearGradient>
-    <radialGradient id="corner-glow" cx="0.82" cy="0.78" r="0.62">
-      <stop offset="0" stop-color="#22c55e" stop-opacity="0.5"/>
-      <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/>
-      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0"/>
-    </linearGradient>
-  </defs>
+  <!-- plain black squircle background -->
+  <rect width="192" height="192" rx="44" fill="#0a0a0a"/>
 
-  <!-- base squircle -->
-  <rect width="192" height="192" rx="44" fill="url(#bg)"/>
-  <!-- soft green glow tucked into bottom-right corner, behind the dot -->
-  <rect width="192" height="192" rx="44" fill="url(#corner-glow)"/>
-  <!-- glass sheen across the top -->
-  <rect width="192" height="192" rx="44" fill="url(#sheen)"/>
-  <!-- inner glass edge -->
-  <rect x="1.5" y="1.5" width="189" height="189" rx="42.5" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="2"/>
-
-  <!-- wordmark -->
-  <text x="37" y="126" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
-    font-size="80" font-weight="800" letter-spacing="-2" fill="#f6f6f6">kt</text>
-
-  <!-- glowing accent dot (period) -->
-  <circle cx="144" cy="112" r="21" fill="#22c55e" opacity="0.14"/>
-  <circle cx="144" cy="112" r="15" fill="#22c55e" opacity="0.28"/>
-  <circle cx="144" cy="112" r="10.5" fill="#22c55e"/>
-  <circle cx="140.5" cy="108.5" r="3.4" fill="#eafff2" opacity="0.55"/>
+  <!-- wordmark, same style as navbar "kt." -->
+  <text x="34" y="123" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="76" font-weight="900" letter-spacing="0" fill="#f2f2f2">kt<tspan fill="#22c55e">.</tspan></text>
 </svg>
