@@ -123,7 +123,7 @@ section { padding: 150px 0; }
  justify-content: center;
  order: 2;
  background: rgba(34,197,94,.08);
- border: none;
+ border: 1px solid rgba(34,197,94,.18);
  padding: 8px clamp(24px, 6vw, 48px);
  border-radius: 999px;
 }
@@ -291,112 +291,23 @@ body.nav-mob-locked { overflow: hidden; }
  position: fixed;
  inset: 0;
  z-index: 998;
- background: rgba(0,0,0,.45);
- backdrop-filter: blur(10px) saturate(120%);
- -webkit-backdrop-filter: blur(10px) saturate(120%);
+ background: transparent;
  opacity: 0;
  pointer-events: none;
- transition: opacity .28s cubic-bezier(.4,0,.2,1);
 }
-.nav-mob-overlay.open { opacity: 1; pointer-events: auto; }
+.nav-mob-overlay.open { pointer-events: auto; }
 @media (prefers-reduced-motion: reduce) {
  .nav-mob-overlay { transition: none; }
 }
 
+/* Base reset — real layout/skin lives in the ≤1024px block below,
+   since the card only ever renders on phone/tablet widths. */
 .nav-mob {
- display: flex; flex-direction: row; align-items: center; position: fixed;
- top: calc(var(--nav) + 14px); left: 50%; right: auto;
- width: max-content;
- max-width: min(92vw, 600px);
- max-height: none;
- overflow: visible;
- background: rgba(22,22,24,.88);
- backdrop-filter: blur(36px) saturate(160%);
- -webkit-backdrop-filter: blur(36px) saturate(160%);
- border: 1px solid rgba(255,255,255,.10);
- border-radius: 999px;
- padding: 8px 10px 8px 8px;
- gap: 10px; z-index: 999;
+ position: fixed;
  opacity: 0;
- transform: translateX(-50%) translateY(-10px) scale(.96);
  pointer-events: none;
- transform-origin: top center;
- transition: opacity .22s cubic-bezier(.4,0,.2,1),
- transform .3s cubic-bezier(.22,1.15,.5,1);
- box-shadow: 0 24px 64px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.25);
 }
-.nav-mob.open {
- opacity: 1;
- transform: translateX(-50%) translateY(0) scale(1);
- pointer-events: auto;
-}
-.nav-mob-grid {
- display: flex; flex-direction: row; align-items: center;
- gap: 3px;
- flex-shrink: 0;
-}
-
-.nav-mob a {
- position: relative; display: flex; align-items: center; justify-content: center;
- width: 38px; height: 38px; padding: 0; border-radius: 50%; color: var(--mu); outline: none;
- text-decoration: none;
- -webkit-tap-highlight-color: transparent;
- transition: color .15s ease, opacity .25s ease, transform .2s cubic-bezier(.34,1.4,.64,1), background .18s ease;
- opacity: 0; transform: translateY(8px) scale(.85);
-}
-.nav-mob.open a { opacity: 1; transform: translateY(0) scale(1); }
-.nav-mob.open a:nth-child(1) { transition-delay: .03s; }
-.nav-mob.open a:nth-child(2) { transition-delay: .06s; }
-.nav-mob.open a:nth-child(3) { transition-delay: .09s; }
-.nav-mob.open a:nth-child(4) { transition-delay: .12s; }
-.nav-mob.open a:nth-child(5) { transition-delay: .15s; }
-.nav-mob.open a:nth-child(6) { transition-delay: .18s; }
-.nav-mob.open a:nth-child(7) { transition-delay: .21s; }
-.nav-mob a:hover, .nav-mob a:focus-visible { color: var(--tx); background: rgba(255,255,255,.09); transform: translateY(-3px) scale(1); }
-.nav-mob a.active { color: var(--a2); background: transparent; }
-.nm-icon {
- display: flex; align-items: center; justify-content: center;
- width: 18px; height: 18px; min-width: auto;
- border-radius: 0;
- flex-shrink: 0;
- margin: 0 auto;
-}
-.nm-icon svg { width: 17px; height: 17px; display: block; margin: 0 auto; }
-.nav-mob a.active .nm-icon svg { color: var(--a2); }
-.nav-mob-label {
- position: absolute;
- bottom: calc(100% + 11px);
- left: 50%;
- font-size: .7rem;
- font-weight: 600;
- letter-spacing: .01em;
- white-space: nowrap;
- padding: 6px 10px;
- border-radius: 8px;
- background: rgba(18,18,20,.95);
- color: var(--tx);
- border: 1px solid rgba(255,255,255,.1);
- box-shadow: 0 8px 20px -6px rgba(0,0,0,.45);
- max-width: none;
- margin-left: 0;
- opacity: 0;
- overflow: visible;
- pointer-events: none;
- transform: translate(-50%, 4px);
- transition: opacity .18s ease, transform .18s ease;
-}
-.nav-mob-label::after {
- content: '';
- position: absolute; top: 100%; left: 50%;
- transform: translateX(-50%);
- border: 5px solid transparent;
- border-top-color: rgba(18,18,20,.95);
-}
-.nav-mob a:hover .nav-mob-label,
-.nav-mob a:focus-visible .nav-mob-label {
- opacity: 1;
- transform: translate(-50%, 0);
-}
+.nav-mob a { text-decoration: none; -webkit-tap-highlight-color: transparent; }
 
 /* ── Desktop: navbar stays small/compact by default (just logo + theme +
    hamburger icon). Clicking the hamburger expands the navbar and reveals
@@ -406,7 +317,8 @@ body.nav-mob-locked { overflow: hidden; }
 @media (min-width: 1025px) {
   .nav-mob, .nav-mob-overlay { display: none !important; }
 
-  .nav-center { position: relative; }
+  .nav-center { position: relative; overflow: visible; }
+  .nav.search-open .nav-inner { overflow: visible; }
 
   .nav-desk-links {
     display: flex;
@@ -423,6 +335,7 @@ body.nav-mob-locked { overflow: hidden; }
     max-width: 640px;
     opacity: 1;
     pointer-events: auto;
+    overflow: visible;
   }
   .nd-link {
     display: flex; align-items: center; justify-content: center;
@@ -439,6 +352,7 @@ body.nav-mob-locked { overflow: hidden; }
     border: 1px solid transparent;
     position: relative;
     overflow: visible;
+    z-index: 1;
     font-size: .82rem;
     font-weight: 600;
     transition: color .15s ease, background .18s ease, border-color .18s ease, transform .25s cubic-bezier(.4,0,.2,1);
@@ -447,56 +361,15 @@ body.nav-mob-locked { overflow: hidden; }
     color: var(--tx);
     background: rgba(255,255,255,.08);
     transform: translateX(3px);
+    z-index: 20;
   }
   .nd-link.active { color: var(--a2); background: transparent; border-color: transparent; }
 
   .nd-icon { display: flex; align-items: center; justify-content: center; width: 16px; height: 16px; flex-shrink: 0; }
   .nd-icon svg { display: block; width: 16px; height: 16px; }
 
-  /* Name is hidden as a small floating label to the right of the icon and
-     fades in slowly on hover. It's absolutely positioned so it never
-     affects the row's width — neighbouring icons stay put and don't shift.
-     Only the hovered icon itself nudges slightly to make room. */
-  .nd-label {
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    transform: translate(6px, -50%);
-    max-width: none;
-    overflow: visible;
-    line-height: 1;
-    font-size: .68rem;
-    font-weight: 600;
-    letter-spacing: .01em;
-    white-space: nowrap;
-    color: var(--tx);
-    background: rgba(20,20,20,.92);
-    border: 1px solid rgba(255,255,255,.1);
-    padding: 5px 10px;
-    border-radius: 999px;
-    margin-left: 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .45s ease .1s, transform .45s ease .1s;
-  }
-  .nd-link:hover .nd-label,
-  .nd-link:focus-visible .nd-label {
-    opacity: 1;
-    transform: translate(10px, -50%);
-  }
-
-  /* Last icon (rightmost, Contact) would spill its label off the edge of
-     the navbar pill (overflow is clipped there) — flip its label to open
-     on the left instead so it's fully visible, same as the others. */
-  .nd-link:last-child .nd-label {
-    left: auto;
-    right: 100%;
-    transform: translate(-6px, -50%);
-  }
-  .nd-link:last-child:hover .nd-label,
-  .nd-link:last-child:focus-visible .nd-label {
-    transform: translate(-10px, -50%);
-  }
+  /* Hover name tooltip removed — icons no longer show a label on hover. */
+  .nd-label { display: none; }
 
   .nav-ham {
     width: 34px; height: 34px;
@@ -1365,51 +1238,95 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 }
 .sk-col:nth-child(2) .sk-col-title::before { background: #22d3ee; }
 .sk-chip-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
-  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
 }
 .sk-chip {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  max-width: 84px;
-  margin: 0 auto;
-  padding: 8px 4px;
-  border-radius: 12px;
-  background: transparent;
-  border: none;
-  box-shadow: none;
+  gap: 10px;
+  padding: 8px 16px 8px 8px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow: 0 1px 2px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  isolation: isolate;
+  overflow: hidden;
+  cursor: default;
   animation: skCardIn .5s cubic-bezier(.22,1,.36,1) both;
-  transition: transform .25s cubic-bezier(.34,1.56,.64,1), background .25s ease;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1),
+              border-color .3s ease,
+              background .3s ease,
+              box-shadow .3s ease;
+}
+/* glass sheen — soft highlight across the top of the pill */
+.sk-chip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 35%);
+  pointer-events: none;
+  z-index: 0;
+}
+/* soft accent glow that fades in on hover */
+.sk-chip::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--a2), transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.sk-chip:hover {
+  transform: translateY(-3px);
+  border-color: rgba(34,197,94,.45);
+  background: linear-gradient(180deg, rgba(34,197,94,.10), rgba(255,255,255,.02));
+  box-shadow: 0 10px 26px -8px rgba(34,197,94,.35), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.sk-chip:hover::after {
+  opacity: .8;
 }
 .sk-chip-ico {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  border: none;
-  background: transparent;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.05);
   animation-delay: inherit;
   position: relative;
   isolation: isolate;
   overflow: hidden;
   flex-shrink: 0;
-  transition: transform .25s cubic-bezier(.34,1.56,.64,1);
+  z-index: 1;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .3s ease, border-color .3s ease;
+}
+.sk-chip:hover .sk-chip-ico {
+  transform: scale(1.08);
+  background: rgba(34,197,94,.12);
+  border-color: rgba(34,197,94,.35);
 }
 .sk-chip-ico svg { position: relative; z-index: 1; }
-/* Desync removed — bob animation no longer used */
 .sk-chip-ico svg {
   display: block;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 .sk-chip:hover .sk-chip-ico svg {
   animation-play-state: paused;
@@ -1424,33 +1341,31 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   animation: skIconSpin 5s linear infinite;
   transform-origin: center;
 }
-.sk-chip:hover {
-  transform: translateY(-2px);
-}
 .sk-chip-name {
-  font-size: .72rem;
+  position: relative;
+  z-index: 1;
+  font-size: .82rem;
   font-weight: 600;
+  letter-spacing: -.01em;
   color: var(--tx);
+  opacity: .92;
+  white-space: nowrap;
+  transition: opacity .3s ease;
+}
+.sk-chip:hover .sk-chip-name {
   opacity: 1;
-  text-align: center;
-  line-height: 1.25;
-  white-space: normal;
-  max-width: 100%;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
 }
 @media (max-width: 860px) {
   .sk-columns { grid-template-columns: 1fr; gap: 28px; }
-  .sk-chip-row { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); }
+  .sk-chip-row { gap: 9px; }
+  .sk-chip { padding: 7px 14px 7px 7px; }
 }
 @media (max-width: 480px) {
-  .sk-chip-row { grid-template-columns: repeat(auto-fill, minmax(74px, 1fr)); row-gap: 10px; column-gap: 8px; }
-  .sk-chip { padding: 6px 4px; border-radius: 10px; max-width: 70px; }
-  .sk-chip-ico { width: 30px; height: 30px; background: transparent; }
-  .sk-chip-ico svg { width: 19px; height: 19px; }
-  .sk-chip-name { font-size: .64rem; }
+  .sk-chip-row { gap: 8px; }
+  .sk-chip { padding: 6px 12px 6px 6px; border-radius: 999px; gap: 8px; }
+  .sk-chip-ico { width: 28px; height: 28px; }
+  .sk-chip-ico svg { width: 17px; height: 17px; }
+  .sk-chip-name { font-size: .74rem; }
 }
 @keyframes skCardIn {
   from { opacity: 0; transform: translateY(14px) scale(.94); }
@@ -1981,11 +1896,16 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 }
 
 /* ── TABLET + PHONE: section-shortcut card ─────────────────────
-   Redesigned as a single fluid system (no more 1024/768/600 patch-
-   work). The panel is a CSS container, so every tile inside sizes
-   itself off the panel's *actual* rendered width instead of the
-   viewport — that's what keeps it correctly proportioned on every
-   tablet/phone size, split-screen widths, and foldables included. ── */
+   A solid, opaque "spotlight" card — background is a near-fully-
+   opaque flat colour first, with blur layered on top purely as a
+   bonus. This is deliberate: heavy backdrop-filter blur is
+   inconsistent across mobile browsers/GPUs and previously left the
+   card looking washed-out and see-through, with page content
+   bleeding through it. Solid colour guarantees it reads correctly
+   everywhere, blur or no blur. The panel is a CSS container, so
+   every tile inside sizes itself off the panel's *actual* rendered
+   width instead of the viewport — correct on every tablet/phone
+   size, split-screen widths, and foldables included. ── */
 @media (max-width: 1024px) {
   .nav-ham {
     width: clamp(30px, 7vw, 34px);
@@ -2000,51 +1920,78 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     right: auto;
     bottom: auto;
     margin: 0;
-    max-height: min(calc(100svh - var(--nav) - 26px), 480px);
+    max-height: min(calc(100svh - var(--nav) - 26px), 640px);
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    width: min(86vw, 336px);
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent 100%);
+    width: min(88vw, 340px);
     container-type: inline-size;
     container-name: navmob;
-    background: rgba(20,20,22,.94);
-    backdrop-filter: blur(60px) saturate(160%);
-    -webkit-backdrop-filter: blur(60px) saturate(160%);
+    background: #131315;
+    background-image: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0) 40%);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid rgba(255,255,255,.10);
-    border-radius: 22px;
-    padding: 16px 12px;
+    border-radius: 24px;
+    padding: 12px 12px 28px;
     display: flex !important;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: flex-start;
     gap: 12px;
     opacity: 0;
-    transform: translateX(-50%) translateY(-10px) scale(.94);
+    transform: translateX(-50%) translateY(-10px) scale(.96);
     transform-origin: top center;
     pointer-events: none;
-    transition: opacity .26s cubic-bezier(.4,0,.2,1),
+    transition: opacity .24s cubic-bezier(.4,0,.2,1),
       transform .32s cubic-bezier(.28,1.2,.55,1);
     z-index: 999;
-    box-shadow: 0 24px 64px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.25);
+    box-shadow: 0 24px 64px rgba(0,0,0,.5), 0 4px 16px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.06);
   }
   .nav-mob::-webkit-scrollbar { display: none; }
-  .nav-mob::before {
-    content: '';
-    position: absolute;
-    top: -60px;
-    right: -60px;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(255,255,255,.16), transparent 70%);
-    pointer-events: none;
-    z-index: -1;
-  }
   .nav-mob.open {
     opacity: 1;
     transform: translateX(-50%) translateY(0) scale(1);
     pointer-events: auto;
   }
+
+  /* Header row: small "Jump to" label + a real close button, so the
+     card reads as an intentional panel rather than a loose cluster
+     of icons floating over the page. */
+  .nav-mob-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 4px 10px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    flex-shrink: 0;
+  }
+  .nav-mob-head-label {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--mu);
+  }
+  .nav-mob-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    color: var(--mu);
+    cursor: pointer;
+    transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+  }
+  .nav-mob-close svg { width: 13px; height: 13px; display: block; }
+  .nav-mob-close:hover, .nav-mob-close:focus-visible { color: var(--tx); background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); }
+  .nav-mob-close:active { transform: scale(.9); }
 
   /* 2 columns by default — correct for narrow (phone-width) panels.
      A wider container (tablet) switches to 3 via the container query
@@ -2066,80 +2013,86 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     justify-content: center;
     aspect-ratio: 1 / 1;
     width: 100%;
-    gap: 6px;
-    padding: 8px;
-    border-radius: 14px;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 16px;
     color: var(--tx);
     text-decoration: none;
-    background: rgba(255,255,255,.045);
-    border: 1px solid rgba(255,255,255,.12);
-    box-shadow: 0 6px 16px -10px rgba(0,0,0,.5);
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.09);
     opacity: 0;
-    transform: scale(.92) translateX(10px);
+    transform: scale(.92) translateY(6px);
     will-change: transform, opacity;
     transition: background .18s ease, border-color .18s ease, transform .18s cubic-bezier(.34,1.5,.64,1),
-      opacity .3s cubic-bezier(.25,1,.5,1), box-shadow .18s ease;
+      opacity .3s cubic-bezier(.25,1,.5,1);
   }
-  .nav-mob.open a { opacity: 1; transform: scale(1) translateX(0); }
-  .nav-mob.open a:nth-child(1) { transition-delay: .06s; }
-  .nav-mob.open a:nth-child(2) { transition-delay: .1s; }
-  .nav-mob.open a:nth-child(3) { transition-delay: .14s; }
-  .nav-mob.open a:nth-child(4) { transition-delay: .18s; }
-  .nav-mob.open a:nth-child(5) { transition-delay: .22s; }
-  .nav-mob.open a:nth-child(6) { transition-delay: .26s; }
-  .nav-mob.open a:nth-child(7) { transition-delay: .3s; }
+  .nav-mob.open a { opacity: 1; transform: scale(1) translateY(0); }
+  .nav-mob.open a:nth-child(1) { transition-delay: .05s; }
+  .nav-mob.open a:nth-child(2) { transition-delay: .08s; }
+  .nav-mob.open a:nth-child(3) { transition-delay: .11s; }
+  .nav-mob.open a:nth-child(4) { transition-delay: .14s; }
+  .nav-mob.open a:nth-child(5) { transition-delay: .17s; }
+  .nav-mob.open a:nth-child(6) { transition-delay: .2s; }
+  .nav-mob.open a:nth-child(7) { transition-delay: .23s; }
   .nav-mob a:active {
-    transform: scale(.93);
-    background: rgba(255,255,255,.14);
-    border-color: rgba(255,255,255,.45);
-    box-shadow: 0 0 0 4px rgba(255,255,255,.10);
-    transition: transform .12s cubic-bezier(.34,1.56,.64,1), background .12s ease, border-color .12s ease, box-shadow .12s ease;
+    transform: scale(.94);
+    background: rgba(255,255,255,.10);
+    transition: transform .12s cubic-bezier(.34,1.56,.64,1), background .12s ease;
   }
-  .nav-mob a:active .nm-icon { transform: scale(.88); border-color: rgba(255,255,255,.6); background: rgba(255,255,255,.14); }
-  .nav-mob a:hover { border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.08); box-shadow: 0 10px 22px -12px rgba(0,0,0,.55); }
-  .nav-mob a.active { background: rgba(34,197,94,.08); border-color: rgba(34,197,94,.3); }
-  .nav-mob a.active .nm-icon { box-shadow: none; border-color: rgba(255,255,255,.12); background: rgba(255,255,255,.04); }
+  .nav-mob a:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
+  .nav-mob a.active {
+    background: rgba(34,197,94,.12);
+    border-color: rgba(34,197,94,.35);
+  }
+  .nav-mob a.active .nm-icon { background: rgba(34,197,94,.16); border-color: rgba(34,197,94,.4); }
   .nav-mob a.active .nm-icon svg { color: var(--a2); }
   .nav-mob a.active .nav-mob-label { color: var(--a2); }
 
-  /* Contact is the odd 7th tile — instead of an empty gap next to
-     it, it spreads across the row as a wide, icon-left CTA card. */
-  .nm-span2 {
+  /* Contact is the odd 7th tile — a wide, icon-left CTA button that
+     stands out with a solid accent fill instead of blending in.
+     Selectors are written as ".nav-mob a.nm-span2" (not just
+     ".nm-span2") so they out-rank the plain ".nav-mob a" rules above —
+     otherwise the square aspect-ratio and default background win the
+     cascade and the CTA renders as an oversized, uncoloured box. */
+  .nav-mob a.nm-span2 {
     grid-column: 1 / -1;
     width: 100%;
     aspect-ratio: auto;
     flex-direction: row;
     justify-content: center;
-    padding: 10px 14px;
+    padding: 12px 16px;
     gap: 10px;
+    background: linear-gradient(135deg, rgba(34,197,94,.16), rgba(34,197,94,.06));
+    border-color: rgba(34,197,94,.3);
   }
-  .nm-span2 .nav-mob-label { font-size: .78rem; }
+  .nav-mob a.nm-span2:hover { background: linear-gradient(135deg, rgba(34,197,94,.22), rgba(34,197,94,.08)); }
+  .nav-mob a.nm-span2 .nm-icon { background: rgba(34,197,94,.14); border-color: rgba(34,197,94,.3); }
+  .nav-mob a.nm-span2 .nm-icon svg { color: var(--a2); }
+  .nav-mob a.nm-span2 .nav-mob-label { font-size: .8rem; color: var(--tx); font-weight: 700; }
 
   .nm-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    min-height: 36px;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
     flex-shrink: 0;
-    border-radius: 10px;
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.12);
-    box-shadow: none;
+    border-radius: 11px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.10);
     transition: transform .18s cubic-bezier(.34,1.5,.64,1), border-color .18s ease, background .18s ease;
   }
-  .nav-mob a:hover .nm-icon { transform: scale(1.08) rotate(-4deg); border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.08); }
+  .nav-mob a:hover .nm-icon { transform: scale(1.06); }
   .nm-icon svg { display: block; margin: 0 auto; width: 20px; height: 20px; color: var(--tx); transition: color .18s ease; }
 
-  /* Labels sit inside the card, under the icon, instead of the
-     desktop-style floating tooltip — each tile now reads as a
-     self-contained icon + name card. */
+  /* Labels sit inside the card, under the icon — each tile reads as
+     a self-contained icon + name button. */
   .nav-mob-label {
     position: static;
-    font-size: .72rem;
+    font-size: .74rem;
     font-weight: 600;
     letter-spacing: .01em;
     white-space: nowrap;
@@ -2163,11 +2116,11 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
      spans the final row edge-to-edge. */
   @container navmob (min-width: 300px) {
     .nav-mob-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .nav-mob a { border-radius: 16px; padding: 9px; gap: 8px; }
-    .nm-icon { width: 40px; height: 40px; min-width: 40px; min-height: 40px; border-radius: 11px; }
+    .nav-mob a { border-radius: 18px; padding: 11px; gap: 9px; }
+    .nm-icon { width: 42px; height: 42px; min-width: 42px; min-height: 42px; border-radius: 12px; }
     .nm-icon svg { width: 22px; height: 22px; }
-    .nav-mob-label { font-size: .78rem; }
-    .nm-span2 { padding: 12px 16px; }
+    .nav-mob-label { font-size: .8rem; }
+    .nav-mob a.nm-span2 { padding: 13px 16px; }
   }
 }
 
