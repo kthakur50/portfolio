@@ -278,22 +278,42 @@ const GENAI_TOOLS_SKILLS = [
   { cls: 'sc-postman', label: 'Postman',       icon: <IconPostman /> },
 ];
 
-const ALL_SKILLS = [...FULLSTACK_SKILLS, ...GENAI_TOOLS_SKILLS];
-
 const Skills = () => {
   return (
     <section id="skills">
       <div className="wrap">
         <div className="sec-hd sr" data-n="02">
           <h2>Skills<em>.</em></h2>
-      </div>
+        </div>
 
-        {/* ── Single merged column: all skills, circular chips ── */}
-        <div className="sk-columns sr">
-          <div className="sk-col">
-            <h3 className="sk-col-title">Fullstack Development &amp; GenAI Technology</h3>
+        <div className="sk-panels">
+          <div className="sk-panel sr">
+            <div className="sk-panel-head">
+              <h3 className="sk-panel-title">Fullstack Development</h3>
+              <span className="sk-panel-count">{FULLSTACK_SKILLS.length} skills</span>
+            </div>
             <div className="sk-chip-row">
-              {ALL_SKILLS.map((s, i) => (
+              {FULLSTACK_SKILLS.map((s, i) => (
+                <div
+                  key={s.cls}
+                  className={`sk-chip ${s.cls}`}
+                  style={{ animationDelay: `${Math.min(i, 20) * 0.03}s` }}
+                  title={s.label}
+                >
+                  <div className="sk-chip-ico">{s.icon}</div>
+                  <span className="sk-chip-name">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="sk-panel sr" style={{ transitionDelay: '.08s' }}>
+            <div className="sk-panel-head">
+              <h3 className="sk-panel-title">Generative AI &amp; Tools</h3>
+              <span className="sk-panel-count">{GENAI_TOOLS_SKILLS.length} skills</span>
+            </div>
+            <div className="sk-chip-row">
+              {GENAI_TOOLS_SKILLS.map((s, i) => (
                 <div
                   key={s.cls}
                   className={`sk-chip ${s.cls}`}

@@ -1,15 +1,17 @@
 /* ─────────────── Focus-area icons ─────────────── */
 const IconFullstack = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="8 6 2 12 8 18" />
-    <polyline points="16 6 22 12 16 18" />
+    <polygon points="12 2 2 7 12 12 22 7 12 2" />
+    <polyline points="2 17 12 22 22 17" />
+    <polyline points="2 12 12 17 22 12" />
   </svg>
 );
 
 const IconGenAI = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
-    <path d="M12 2l1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2z" />
-    <path d="M19 14l.7 2.3L22 17l-2.3.7L19 20l-.7-2.3L16 17l2.3-.7L19 14z" opacity=".7" />
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="6" y="6" width="12" height="12" rx="2" />
+    <rect x="10" y="10" width="4" height="4" />
+    <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" />
   </svg>
 );
 
@@ -56,9 +58,12 @@ const About = () => (
             className="about-focus-card sr"
             style={{ transitionDelay: `${0.1 + i * 0.08}s` }}
           >
+            <span className="about-focus-num">{String(i + 1).padStart(2, '0')}</span>
             <div className="about-focus-ico">{f.icon}</div>
-            <h3 className="about-focus-title">{f.title}</h3>
-            <p className="about-focus-desc">{f.desc}</p>
+            <div className="about-focus-body">
+              <h3 className="about-focus-title">{f.title}</h3>
+              <p className="about-focus-desc">{f.desc}</p>
+            </div>
           </div>
         ))}
       </div>
