@@ -285,7 +285,7 @@ const Skills = () => {
     <section id="skills">
       <div className="wrap">
         <div className="sec-hd sr" data-n="02">
-          <h2><span className="sec-hd-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 16 22 12 18 8"/><polyline points="6 8 2 12 6 16"/><line x1="14.5" y1="4" x2="9.5" y2="20"/></svg></span>Skills<em>.</em></h2>
+          <h2>Skills<em>.</em></h2>
       </div>
 
         {/* ── Single merged column: all skills, circular chips ── */}
