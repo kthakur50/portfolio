@@ -12,19 +12,24 @@ import GradientWaves from './GradientWaves';
 // consistent across devices.
 const getResponsiveProps = () => {
   if (typeof window === 'undefined') {
-    return { zoom: 0.95, height: 5.5, waveScale: 0.55, fogDepth: 24 };
+    return { zoom: 0.95, height: 5.5, waveScale: 0.55, fogDepth: 24, detail: 'medium' };
   }
   const w = window.innerWidth;
+  // Coarse-pointer (touch) devices are usually phones/tablets on battery —
+  // drop the raymarch step count so the background stays smooth instead
+  // of competing with scroll/animation work on weaker GPUs.
+  const isCoarse = window.matchMedia?.('(pointer: coarse)').matches;
+  const detail = isCoarse || w <= 768 ? 'low' : 'medium';
   if (w <= 480) {
-    return { zoom: 0.72, height: 4.4, waveScale: 0.62, fogDepth: 19 };
+    return { zoom: 0.72, height: 4.4, waveScale: 0.62, fogDepth: 19, detail };
   }
   if (w <= 768) {
-    return { zoom: 0.8, height: 4.8, waveScale: 0.6, fogDepth: 21 };
+    return { zoom: 0.8, height: 4.8, waveScale: 0.6, fogDepth: 21, detail };
   }
   if (w <= 1024) {
-    return { zoom: 0.88, height: 5.1, waveScale: 0.58, fogDepth: 22 };
+    return { zoom: 0.88, height: 5.1, waveScale: 0.58, fogDepth: 22, detail };
   }
-  return { zoom: 0.95, height: 5.5, waveScale: 0.55, fogDepth: 24 };
+  return { zoom: 0.95, height: 5.5, waveScale: 0.55, fogDepth: 24, detail };
 };
 
 const SiteBackground = () => {
@@ -61,7 +66,7 @@ const SiteBackground = () => {
         zoom={props.zoom}
         height={props.height}
         fogDepth={props.fogDepth}
-        detail="medium"
+        detail={props.detail}
         brightness={0.65}
         opacity={0.24}
         mouseInteraction={true}

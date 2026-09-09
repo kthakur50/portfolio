@@ -46,7 +46,7 @@ const Footer = () => (
           key={s.label}
           href={s.href}
           target={s.href.startsWith('http') ? '_blank' : undefined}
-          rel={s.href.startsWith('http') ? 'noopener' : undefined}
+          rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
           aria-label={s.label}
           className="site-footer-social"
         >
