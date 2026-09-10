@@ -465,7 +465,7 @@ body.nav-mob-locked { overflow: hidden; }
  opacity: .82;
  line-height: 1.5;
 }
-.hero-intro {
+p.hero-intro {
  max-width: 100%;
  width: 100%;
  box-sizing: border-box;
@@ -651,6 +651,8 @@ body.nav-mob-locked { overflow: hidden; }
  font-size: var(--fs-body); font-weight: 450;
  line-height: 1.9; color: var(--mu);
  margin: 0;
+ width: 100%;
+ max-width: none;
  text-align: left;
  -webkit-font-smoothing: antialiased;
 }
@@ -679,12 +681,18 @@ body.nav-mob-locked { overflow: hidden; }
 }
 .about-focus-row {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 22px 4px 22px 14px;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  grid-template-areas:
+    "icon title"
+    ".    desc";
+  column-gap: 16px;
+  row-gap: 6px;
+  padding: 20px 0;
 }
 .about-focus-ico {
+  grid-area: icon;
+  align-self: center;
   width: 40px;
   height: 40px;
   border-radius: 11px;
@@ -696,19 +704,29 @@ body.nav-mob-locked { overflow: hidden; }
   flex-shrink: 0;
 }
 .about-focus-ico svg { width: 19px; height: 19px; display: block; }
-.about-focus-body { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.about-focus-body { display: contents; }
 .about-focus-title {
+  grid-area: title;
+  align-self: center;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -.01em;
   color: var(--tx);
   margin: 0;
 }
+.about-focus-desc {
+  grid-area: desc;
+  font-size: .82rem;
+  line-height: 1.7;
+  color: var(--mu);
+  margin: 0;
+}
 @media (max-width: 640px) {
-  .about-focus-row { padding: 18px 4px 18px 12px; gap: 13px; }
+  .about-focus-row { padding: 16px 0; }
   .about-focus-ico { width: 38px; height: 38px; border-radius: 10px; }
   .about-focus-ico svg { width: 18px; height: 18px; }
   .about-focus-title { font-size: .93rem; }
+  .about-focus-desc { font-size: .8rem; line-height: 1.65; }
 }
 #experience { background: transparent; }
 .exp-list {
@@ -1273,17 +1291,6 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   flex-shrink: 0;
 }
 .sk-panel:nth-child(2) .sk-panel-title::before { background: #22d3ee; }
-.sk-panel-count {
-  font-size: .72rem;
-  font-weight: 700;
-  color: var(--mu);
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 999px;
-  padding: 4px 11px;
-  flex-shrink: 0;
-  white-space: nowrap;
-}
 .sk-chip-row {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
@@ -1377,7 +1384,6 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 @media (max-width: 480px) {
   .sk-panel { padding: 16px 14px 18px; border-radius: 14px; }
   .sk-panel-title { font-size: .85rem; gap: 8px; }
-  .sk-panel-count { font-size: .64rem; padding: 3px 9px; }
   .sk-chip-row { grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: 12px 6px; }
   .sk-chip { padding: 6px 3px 5px; border-radius: 10px; gap: 4px; }
   .sk-chip-ico { width: 30px; height: 30px; }
@@ -1766,7 +1772,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .tube-light { top: clamp(-4px, -0.3vw, 2px); width: clamp(480px, 62vw, 740px); height: clamp(56px, 7vw, 86px); }
   #home { padding: clamp(58px, 7.5vw, 88px) 0 clamp(30px, 4vw, 50px); min-height: calc(100svh - var(--nav)); align-items: flex-start; }
   .hero-card { padding: clamp(56px, 8.5vw, 82px) clamp(24px, 3.6vw, 44px); }
-  .hero-intro { white-space: pre-line; overflow: visible; text-align: center; }
+  p.hero-intro { white-space: pre-line; overflow: visible; text-align: center; }
   .hero-right { order: 2; flex: none; width: 100%; display: flex; justify-content: center; align-self: center; margin: clamp(30px, 5vw, 46px) 0 clamp(20px, 3.5vw, 34px); padding-right: 0; }
   .hero-social-row { margin-top: clamp(36px, 5vw, 50px); }
 
@@ -1851,7 +1857,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   /* Card: taller so the front screen doesn't feel empty, and so buttons sit lower */
   .hero-card { padding: clamp(64px, 10vw, 92px) clamp(22px, 3.6vw, 42px); }
   .hero-card-inner { gap: clamp(26px, 4vw, 38px); }
-  .hero-intro { font-size: clamp(.52rem, 1.5vw, .66rem); }
+  p.hero-intro { font-size: clamp(.52rem, 1.5vw, .66rem); }
   .hero-card-cube { width: clamp(220px, 29vw, 308px); height: clamp(220px, 29vw, 308px); }
   .hero-card-cube .win3d-scene { --cube-size: clamp(130px, 16.5vw, 180px); --cube-tz: clamp(75px, 9.4vw, 101px); }
   .hero-social-row { margin-top: clamp(34px, 5vw, 46px); gap: 12px; }
@@ -1911,7 +1917,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .hero-card-inner { gap: clamp(16px, 2.4vw, 24px); }
   .hero-greeting { font-size: clamp(1.05rem, 2.2vw, 1.3rem); margin-bottom: 6px; }
   .hero-name { font-size: clamp(2.6rem, 6.5vw, 4.8rem) !important; }
-  .hero-intro { font-size: clamp(.95rem, 2.3vw, 1.2rem) !important; white-space: nowrap !important; }
+  p.hero-intro { font-size: clamp(.8rem, 1.9vw, 1rem); white-space: pre-line; overflow: visible; }
   .hero-role-sub { font-size: 1rem !important; }
   .hero-card-roles { gap: 10px; }
 }
@@ -2203,7 +2209,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   /* Cube: bigger so the front screen doesn't look empty; taller card pushes buttons down */
   .hero-card { padding: clamp(52px, 12vw, 76px) clamp(20px, 5vw, 32px); }
   .hero-card-inner { gap: clamp(22px, 5vw, 34px); }
-  .hero-intro { font-size: clamp(.48rem, 2vw, .6rem); }
+  p.hero-intro { font-size: clamp(.68rem, 3.6vw, .82rem); white-space: pre-line; overflow: visible; }
   .hero-card-cube { width: clamp(210px, 44vw, 264px); height: clamp(210px, 44vw, 264px); }
   .hero-card-cube .win3d-scene { --cube-size: clamp(121px, 24vw, 154px); --cube-tz: clamp(70px, 14vw, 90px); }
 

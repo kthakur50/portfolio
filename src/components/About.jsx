@@ -19,10 +19,12 @@ const FOCUS_AREAS = [
   {
     icon: <IconFullstack />,
     title: 'Fullstack Development',
+    desc: 'Engineering scalable full-stack web applications with React, Next.js, Node.js & Express — clean, user-centric UI/UX backed by well-structured REST APIs and databases.',
   },
   {
     icon: <IconGenAI />,
     title: 'Generative AI',
+    desc: 'Building AI agents, RAG pipelines, and LLM-powered features with the OpenAI API & LangChain to ship intelligent, production-ready applications.',
   },
 ];
 
@@ -36,17 +38,12 @@ const About = () => (
       <div className="about-main">
         <div className="about-bio sr" style={{ transitionDelay: '.04s' }}>
           <p className="about-para">
-            <em>AI Software Engineer</em> with <strong>1+ year of experience</strong> building
-            production-grade web apps at <em>RMSI, Noida</em> — working across the full stack with{' '}
-            <em>React</em>, <em>Next.js</em>, <em>TypeScript</em>, and <em>Python</em>.
-            Specialize in <strong>GIS &amp; interactive mapping</strong> using <em>Leaflet.js</em>,
-            building dynamic layers, custom markers, and real-time data overlays for complex workflows.
-          </p>
-          <p className="about-para">
-            Deeply focused on the intersection of <em>modern frontend</em> and{' '}
-            <em>Generative AI</em> — integrating <strong>LLMs</strong> and <strong>AI-powered features</strong>{' '}
-            into real products, not just prototypes. Every project is an opportunity to make
-            something faster, smarter, and easier to use.
+            <em>AI Software Engineer</em> with <strong>1+ year of experience</strong> shipping
+            production-grade applications at <em>RMSI, Noida</em> across <em>React</em>,{' '}
+            <em>Next.js</em>, <em>TypeScript</em>, and <em>Python</em>, with a specialization in{' '}
+            <strong>GIS &amp; interactive mapping</strong> using <em>Leaflet.js</em>. Now focused
+            on fusing modern frontend engineering with <strong>Generative AI</strong> — embedding{' '}
+            <em>LLMs</em> into real, production-ready products.
           </p>
         </div>
 
@@ -60,6 +57,7 @@ const About = () => (
               <div className="about-focus-ico">{f.icon}</div>
               <div className="about-focus-body">
                 <h3 className="about-focus-title">{f.title}</h3>
+                <p className="about-focus-desc">{f.desc}</p>
               </div>
             </div>
           ))}

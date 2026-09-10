@@ -290,7 +290,6 @@ const Skills = () => {
           <div className="sk-panel sr">
             <div className="sk-panel-head">
               <h3 className="sk-panel-title">Fullstack Development</h3>
-              <span className="sk-panel-count">{FULLSTACK_SKILLS.length} skills</span>
             </div>
             <div className="sk-chip-row">
               {FULLSTACK_SKILLS.map((s, i) => (
@@ -310,7 +309,6 @@ const Skills = () => {
           <div className="sk-panel sr" style={{ transitionDelay: '.08s' }}>
             <div className="sk-panel-head">
               <h3 className="sk-panel-title">Generative AI &amp; Tools</h3>
-              <span className="sk-panel-count">{GENAI_TOOLS_SKILLS.length} skills</span>
             </div>
             <div className="sk-chip-row">
               {GENAI_TOOLS_SKILLS.map((s, i) => (
