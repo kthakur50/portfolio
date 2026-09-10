@@ -293,11 +293,20 @@ body.nav-mob-locked { overflow: hidden; }
  position: fixed;
  inset: 0;
  z-index: 998;
- background: transparent;
+ background: rgba(8,8,10,0);
+ backdrop-filter: blur(0px);
+ -webkit-backdrop-filter: blur(0px);
  opacity: 0;
  pointer-events: none;
+ transition: opacity .32s ease, background .32s ease, backdrop-filter .32s ease, -webkit-backdrop-filter .32s ease;
 }
-.nav-mob-overlay.open { pointer-events: auto; }
+.nav-mob-overlay.open {
+ opacity: 1;
+ pointer-events: auto;
+ background: rgba(8,8,10,.45);
+ backdrop-filter: blur(10px) saturate(120%);
+ -webkit-backdrop-filter: blur(10px) saturate(120%);
+}
 @media (prefers-reduced-motion: reduce) {
  .nav-mob-overlay { transition: none; }
 }
@@ -1972,18 +1981,18 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob {
     position: fixed;
     top: calc(var(--nav) + 10px);
-    left: 10px;
     right: 10px;
-    bottom: auto;
+    left: auto;
+    bottom: 10px;
     margin: 0;
-    max-height: min(calc(100svh - var(--nav) - 26px), 640px);
+    max-height: none;
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
     -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent 100%);
     mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent 100%);
-    width: auto;
+    width: min(78vw, 320px);
     container-type: inline-size;
     container-name: navmob;
     background: #131315;
@@ -1999,11 +2008,11 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     justify-content: flex-start;
     gap: 12px;
     opacity: 0;
-    transform: translateX(28px);
+    transform: translateX(calc(100% + 24px));
     transform-origin: right center;
     pointer-events: none;
-    transition: opacity .24s cubic-bezier(.4,0,.2,1),
-      transform .32s cubic-bezier(.28,1.2,.55,1);
+    transition: opacity .28s cubic-bezier(.4,0,.2,1),
+      transform .38s cubic-bezier(.28,1.05,.4,1);
     z-index: 999;
     box-shadow: 0 24px 64px rgba(0,0,0,.5), 0 4px 16px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.06);
   }
@@ -2049,40 +2058,38 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob-close:hover, .nav-mob-close:focus-visible { color: var(--tx); background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); }
   .nav-mob-close:active { transform: scale(.9); }
 
-  /* 2 columns by default — correct for narrow (phone-width) panels.
-     A wider container (tablet) switches to 3 via the container query
-     below, so the grid always fits the card, not the device. */
+  /* Vertical list — one section per row, full width, icon on the
+     left and label beside it. Simpler to scan than a tile grid and
+     reads naturally in a narrow right-docked panel. */
   .nav-mob-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     width: 100%;
-    place-items: stretch;
     margin: 0;
   }
 
   .nav-mob a {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    aspect-ratio: 1 / 1;
+    justify-content: flex-start;
     width: 100%;
-    gap: 8px;
-    padding: 10px;
+    gap: 12px;
+    padding: 12px 14px;
     border-radius: 16px;
     color: var(--tx);
     text-decoration: none;
     background: rgba(255,255,255,.05);
     border: 1px solid rgba(255,255,255,.09);
     opacity: 0;
-    transform: scale(.92) translateY(6px);
+    transform: translateX(14px);
     will-change: transform, opacity;
-    transition: background .18s ease, border-color .18s ease, transform .18s cubic-bezier(.34,1.5,.64,1),
+    transition: background .18s ease, border-color .18s ease, transform .3s cubic-bezier(.25,1,.5,1),
       opacity .3s cubic-bezier(.25,1,.5,1);
   }
-  .nav-mob.open a { opacity: 1; transform: scale(1) translateY(0); }
+  .nav-mob.open a { opacity: 1; transform: translateX(0); }
   .nav-mob.open a:nth-child(1) { transition-delay: .05s; }
   .nav-mob.open a:nth-child(2) { transition-delay: .08s; }
   .nav-mob.open a:nth-child(3) { transition-delay: .11s; }
@@ -2091,7 +2098,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob.open a:nth-child(6) { transition-delay: .2s; }
   .nav-mob.open a:nth-child(7) { transition-delay: .23s; }
   .nav-mob a:active {
-    transform: scale(.94);
+    transform: scale(.98);
     background: rgba(255,255,255,.10);
     transition: transform .12s cubic-bezier(.34,1.56,.64,1), background .12s ease;
   }
@@ -2104,33 +2111,22 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob a.active .nm-icon svg { color: var(--a2); }
   .nav-mob a.active .nav-mob-label { color: var(--a2); }
 
-  /* Contact is the odd 7th tile — a wide, icon-left CTA button that
-     stands out with a solid accent fill instead of blending in.
-     Selectors are written as ".nav-mob a.nm-span2" (not just
-     ".nm-span2") so they out-rank the plain ".nav-mob a" rules above —
-     otherwise the square aspect-ratio and default background win the
-     cascade and the CTA renders as an oversized, uncoloured box. */
+  /* Contact still stands out as the CTA row, just with the same
+     full-width row shape as everything else now. */
   .nav-mob a.nm-span2 {
-    grid-column: 1 / -1;
-    width: 100%;
-    aspect-ratio: auto;
-    flex-direction: row;
-    justify-content: center;
-    padding: 12px 16px;
-    gap: 10px;
     background: linear-gradient(135deg, rgba(34,197,94,.16), rgba(34,197,94,.06));
     border-color: rgba(34,197,94,.3);
   }
   .nav-mob a.nm-span2:hover { background: linear-gradient(135deg, rgba(34,197,94,.22), rgba(34,197,94,.08)); }
   .nav-mob a.nm-span2 .nm-icon { background: rgba(34,197,94,.14); border-color: rgba(34,197,94,.3); }
   .nav-mob a.nm-span2 .nm-icon svg { color: var(--a2); }
-  .nav-mob a.nm-span2 .nav-mob-label { font-size: .8rem; color: var(--tx); font-weight: 700; }
+  .nav-mob a.nm-span2 .nav-mob-label { color: var(--tx); font-weight: 700; }
 
   .nm-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin: 0;
     width: 38px;
     height: 38px;
     min-width: 38px;
@@ -2144,11 +2140,10 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob a:hover .nm-icon { transform: scale(1.06); }
   .nm-icon svg { display: block; margin: 0 auto; width: 20px; height: 20px; color: var(--tx); transition: color .18s ease; }
 
-  /* Labels sit inside the card, under the icon — each tile reads as
-     a self-contained icon + name button. */
+  /* Label sits beside the icon on each row. */
   .nav-mob-label {
     position: static;
-    font-size: .74rem;
+    font-size: .86rem;
     font-weight: 600;
     letter-spacing: .01em;
     white-space: nowrap;
@@ -2166,26 +2161,6 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     transition: color .18s ease;
   }
   .nav-mob-label::after { display: none; }
-
-  /* Panel is wide enough (tablet-width, ≥300px of actual card) for
-     a 3-column grid — roomier tiles, still centred, 7th tile still
-     spans the final row edge-to-edge. */
-  @container navmob (min-width: 300px) {
-    .nav-mob-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .nav-mob a { border-radius: 18px; padding: 11px; gap: 9px; }
-    .nm-icon { width: 42px; height: 42px; min-width: 42px; min-height: 42px; border-radius: 12px; }
-    .nm-icon svg { width: 22px; height: 22px; }
-    .nav-mob-label { font-size: .8rem; }
-    .nav-mob a.nm-span2 { padding: 13px 16px; }
-  }
-  @container navmob (min-width: 480px) {
-    .nav-mob-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .nav-mob a { border-radius: 20px; padding: 13px; gap: 10px; }
-    .nm-icon { width: 46px; height: 46px; min-width: 46px; min-height: 46px; border-radius: 14px; }
-    .nm-icon svg { width: 24px; height: 24px; }
-    .nav-mob-label { font-size: .84rem; }
-    .nav-mob a.nm-span2 { grid-column: 1 / -1; padding: 14px 18px; }
-  }
 }
 
 /* ── LARGE PHONE (≤ 600px) ───────────────────────────────────── */
