@@ -1980,19 +1980,17 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 
   .nav-mob {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    right: auto;
+    top: calc(var(--nav) + 10px);
+    left: 10px;
+    right: 10px;
     bottom: auto;
     margin: 0;
-    max-height: min(calc(100svh - 40px), 640px);
+    max-height: min(calc(100svh - var(--nav) - 26px), 640px);
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent 100%);
-    width: min(90vw, 400px);
+    width: auto;
     container-type: inline-size;
     container-name: navmob;
     background: #131315;
@@ -2001,15 +1999,15 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid rgba(255,255,255,.10);
     border-radius: 24px;
-    padding: 12px 12px 28px;
+    padding: 12px 12px 20px;
     display: flex !important;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
     gap: 12px;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(.9);
-    transform-origin: center center;
+    transform: translateY(-14px) scale(.98);
+    transform-origin: top center;
     pointer-events: none;
     transition: opacity .26s cubic-bezier(.4,0,.2,1),
       transform .34s cubic-bezier(.28,1.05,.4,1);
@@ -2019,7 +2017,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob::-webkit-scrollbar { display: none; }
   .nav-mob.open {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateY(0) scale(1);
     pointer-events: auto;
   }
 
