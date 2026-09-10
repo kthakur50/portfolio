@@ -303,9 +303,9 @@ body.nav-mob-locked { overflow: hidden; }
 .nav-mob-overlay.open {
  opacity: 1;
  pointer-events: auto;
- background: rgba(8,8,10,.45);
- backdrop-filter: blur(10px) saturate(120%);
- -webkit-backdrop-filter: blur(10px) saturate(120%);
+ background: rgba(6,6,8,.6);
+ backdrop-filter: blur(18px) saturate(140%);
+ -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 @media (prefers-reduced-motion: reduce) {
  .nav-mob-overlay { transition: none; }
@@ -1981,17 +1981,17 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob {
     position: fixed;
     top: calc(var(--nav) + 10px);
-    left: var(--pad);
     right: var(--pad);
-    bottom: auto;
-    max-width: var(--wrap-max);
-    margin: 0 auto;
-    max-height: min(calc(100svh - var(--nav) - 26px), 640px);
+    left: auto;
+    bottom: 10px;
+    max-width: none;
+    margin: 0;
+    max-height: none;
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    width: auto;
+    width: min(80vw, 320px);
     container-type: inline-size;
     container-name: navmob;
     background: #131315;
@@ -2007,18 +2007,18 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     justify-content: flex-start;
     gap: 12px;
     opacity: 0;
-    transform: translateY(-14px) scale(.98);
-    transform-origin: top center;
+    transform: translateX(calc(100% + 24px));
+    transform-origin: right center;
     pointer-events: none;
-    transition: opacity .26s cubic-bezier(.4,0,.2,1),
-      transform .34s cubic-bezier(.28,1.05,.4,1);
+    transition: opacity .28s cubic-bezier(.4,0,.2,1),
+      transform .38s cubic-bezier(.32,.9,.34,1);
     z-index: 999;
     box-shadow: 0 24px 64px rgba(0,0,0,.5), 0 4px 16px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.06);
   }
   .nav-mob::-webkit-scrollbar { display: none; }
   .nav-mob.open {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateX(0);
     pointer-events: auto;
   }
 
@@ -2057,12 +2057,11 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob-close:hover, .nav-mob-close:focus-visible { color: var(--tx); background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); }
   .nav-mob-close:active { transform: scale(.9); }
 
-  /* 2 columns by default — correct for narrow (phone-width) panels.
-     A wider container (tablet) switches to 3/4 via the container
-     query below, so the grid always fits the card, not the device. */
+  /* Fixed 3-column grid — every tile the same size, 3 per row,
+     so the panel always reads as neat rows regardless of card width. */
   .nav-mob-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     width: 100%;
     place-items: stretch;
@@ -2171,11 +2170,10 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   }
   .nav-mob-label::after { display: none; }
 
-  /* Panel is wide enough (tablet-width, ≥300px of actual card) for
-     a 3-column grid — roomier tiles, still centred, 7th tile still
-     spans the final row edge-to-edge. */
+  /* Wider containers (tablet) just get roomier tiles — column
+     count stays fixed at 3 so the layout never re-flows oddly. */
   @container navmob (min-width: 300px) {
-    .nav-mob-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .nav-mob-grid { gap: 12px; }
     .nav-mob a { border-radius: 18px; padding: 11px; gap: 9px; }
     .nm-icon { width: 42px; height: 42px; min-width: 42px; min-height: 42px; border-radius: 12px; }
     .nm-icon svg { width: 22px; height: 22px; }
@@ -2183,7 +2181,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     .nav-mob a.nm-span2 { padding: 13px 16px; }
   }
   @container navmob (min-width: 480px) {
-    .nav-mob-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .nav-mob-grid { gap: 14px; }
     .nav-mob a { border-radius: 20px; padding: 13px; gap: 10px; }
     .nm-icon { width: 46px; height: 46px; min-width: 46px; min-height: 46px; border-radius: 14px; }
     .nm-icon svg { width: 24px; height: 24px; }
