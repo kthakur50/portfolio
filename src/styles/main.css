@@ -692,7 +692,7 @@ p.hero-intro {
 }
 .about-focus-ico {
   grid-area: icon;
-  align-self: center;
+  align-self: start;
   width: 40px;
   height: 40px;
   border-radius: 11px;
@@ -707,7 +707,7 @@ p.hero-intro {
 .about-focus-body { display: contents; }
 .about-focus-title {
   grid-area: title;
-  align-self: center;
+  align-self: start;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -.01em;
