@@ -634,70 +634,6 @@ body.nav-mob-locked { overflow: hidden; }
   .tube-light { width: clamp(345px, 43vw, 600px); height: clamp(58px, 7.2vw, 90px); }
   .hero-card { margin-top: 22px; }
 }
-.about-split {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: clamp(32px, 5vw, 64px);
-  width: 100%;
-  align-items: start;
-}
-
-.about-side {
-  position: sticky;
-  top: calc(var(--nav) + 32px);
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  min-width: 0;
-}
-.about-side-tag {
-  display: inline-flex;
-  align-self: flex-start;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  color: var(--a2);
-  background: var(--ag);
-  border: 1px solid rgba(34,197,94,.18);
-  border-radius: 999px;
-  padding: 6px 14px;
-}
-.about-side-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  border-left: 2px solid var(--br);
-  padding-left: 16px;
-}
-.about-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.about-stat-value {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--tx);
-  letter-spacing: -.01em;
-}
-.about-stat-label {
-  font-size: .7rem;
-  color: var(--mu);
-  text-transform: uppercase;
-  letter-spacing: .04em;
-}
-.about-side-mark {
-  font-size: 3.4rem;
-  font-weight: 800;
-  line-height: 1;
-  color: var(--tx);
-  opacity: .06;
-  letter-spacing: -.02em;
-  margin-top: 8px;
-  user-select: none;
-}
-
 .about-main {
   display: flex;
   flex-direction: column;
@@ -740,31 +676,13 @@ body.nav-mob-locked { overflow: hidden; }
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-top: 1px solid var(--br);
 }
 .about-focus-row {
   position: relative;
   display: flex;
-  align-items: flex-start;
-  gap: 18px;
+  align-items: center;
+  gap: 16px;
   padding: 22px 4px 22px 14px;
-  border-bottom: 1px solid var(--br);
-  border-left: 2px solid transparent;
-  transition: border-color .3s ease, background .3s ease, padding-left .3s cubic-bezier(.22,1,.36,1);
-}
-.about-focus-row:hover {
-  border-left-color: var(--a2);
-  background: rgba(255,255,255,.02);
-  padding-left: 20px;
-}
-.about-focus-idx {
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: .02em;
-  color: var(--mu);
-  padding-top: 3px;
-  flex-shrink: 0;
-  width: 22px;
 }
 .about-focus-ico {
   width: 40px;
@@ -776,11 +694,9 @@ body.nav-mob-locked { overflow: hidden; }
   justify-content: center;
   color: var(--a2);
   flex-shrink: 0;
-  transition: transform .3s cubic-bezier(.22,1,.36,1);
 }
-.about-focus-row:hover .about-focus-ico { transform: scale(1.08) rotate(-4deg); }
 .about-focus-ico svg { width: 19px; height: 19px; display: block; }
-.about-focus-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; padding-top: 2px; }
+.about-focus-body { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
 .about-focus-title {
   font-size: 1rem;
   font-weight: 700;
@@ -788,40 +704,11 @@ body.nav-mob-locked { overflow: hidden; }
   color: var(--tx);
   margin: 0;
 }
-.about-focus-desc {
-  font-size: .82rem;
-  line-height: 1.7;
-  color: var(--mu);
-  margin: 0;
-}
-@media (max-width: 860px) {
-  .about-split { grid-template-columns: 1fr; gap: 24px; }
-  .about-side {
-    position: static;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  .about-side-stats {
-    flex-direction: row;
-    border-left: none;
-    border-top: 1px solid var(--br);
-    padding-left: 0;
-    padding-top: 14px;
-    gap: 22px;
-    flex: 1;
-  }
-  .about-side-mark { display: none; }
-}
 @media (max-width: 640px) {
-  .about-side { flex-direction: column; align-items: flex-start; }
-  .about-side-stats { flex-wrap: wrap; row-gap: 10px; }
   .about-focus-row { padding: 18px 4px 18px 12px; gap: 13px; }
   .about-focus-ico { width: 38px; height: 38px; border-radius: 10px; }
   .about-focus-ico svg { width: 18px; height: 18px; }
   .about-focus-title { font-size: .93rem; }
-  .about-focus-desc { font-size: .8rem; line-height: 1.65; }
 }
 #experience { background: transparent; }
 .exp-list {
