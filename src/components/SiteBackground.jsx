@@ -9,9 +9,9 @@ const SiteBackground = () => (
       beamNumber={12}
       lightColor="#ffffff"
       speed={2}
-      noiseIntensity={1.75}
+      noiseIntensity={1.2}
       scale={0.2}
-      rotation={0}
+      rotation={18}
     />
   </div>
 );
