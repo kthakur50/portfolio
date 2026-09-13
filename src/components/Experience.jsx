@@ -1,7 +1,7 @@
 const Experience = () => (
   <section id="experience">
     <div className="wrap">
-      <div className="sec-hd" data-n="03">
+      <div className="sec-hd sr sr-zoom" data-n="03">
         <h2>
           <span className="sec-hd-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -14,7 +14,7 @@ const Experience = () => (
 
       <div className="exp-list">
 
-        <div className="exp-item sr" style={{ transitionDelay: '.07s' }}>
+        <div className="exp-item sr sr-fade-left" style={{ transitionDelay: '.07s' }}>
           <div className="exp-node">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="3" width="13" height="18" rx="1"/>
@@ -60,7 +60,7 @@ const Experience = () => (
           </div>
         </div>
 
-        <div className="exp-item sr" style={{ transitionDelay: '.15s' }}>
+        <div className="exp-item sr sr-fade-right" style={{ transitionDelay: '.15s' }}>
           <div className="exp-node">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               <rect x="2" y="4" width="20" height="13" rx="2"/>

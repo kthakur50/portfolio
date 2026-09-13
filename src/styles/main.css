@@ -148,6 +148,48 @@ section { padding: 150px 0; }
   will-change: opacity, transform;
 }
 .sr.on { opacity: 1; transform: translateY(0) translateZ(0); }
+
+/* ── Section-specific reveal variants ──────────────────────────
+   Same .sr on/off mechanism (see initSR in portfolio.js), just a
+   different resting transform per section so each area of the page
+   enters in its own subtle way instead of one repeated effect. */
+.sr.sr-fade-left {
+  transform: translateX(-30px) rotate(-1.2deg) translateZ(0);
+}
+.sr.sr-fade-left.on {
+  transform: translateX(0) rotate(0deg) translateZ(0);
+}
+.sr.sr-fade-right {
+  transform: translateX(30px) rotate(1.2deg) translateZ(0);
+}
+.sr.sr-fade-right.on {
+  transform: translateX(0) rotate(0deg) translateZ(0);
+}
+.sr.sr-zoom {
+  transform: scale(.93) translateZ(0);
+}
+.sr.sr-zoom.on {
+  transform: scale(1) translateZ(0);
+}
+.sr.sr-flip {
+  transform-origin: top center;
+  transform: perspective(900px) rotateX(-10deg) translateY(12px) translateZ(0);
+}
+.sr.sr-flip.on {
+  transform: perspective(900px) rotateX(0deg) translateY(0) translateZ(0);
+}
+.sr.sr-blur {
+  transform: translateY(12px) translateZ(0);
+  filter: blur(9px);
+  transition: opacity .6s ease, transform .6s ease, filter .6s ease;
+}
+.sr.sr-blur.on {
+  transform: translateY(0) translateZ(0);
+  filter: blur(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sr.sr-blur { transition: opacity .6s ease; filter: none; }
+}
 .nav {
  position: sticky; top: 0; left: 0; right: 0; z-index: 1000;
  height: var(--nav);
@@ -980,6 +1022,12 @@ p.hero-intro {
 .masonry-item.sr.on {
  opacity: 1;
  transform: translateY(0) translateZ(0);
+}
+.masonry-item.sr.sr-zoom {
+ transform: scale(.93) translateZ(0);
+}
+.masonry-item.sr.sr-zoom.on {
+ transform: scale(1) translateZ(0);
 }
 .masonry-item-inner {
  position: relative;
