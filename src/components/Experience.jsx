@@ -28,23 +28,19 @@ const Experience = () => (
           </div>
           <div className="exp-card">
             <div className="exp-card-top">
-              <div className="exp-card-top-row">
-                <div className="exp-role">Junior Engineer</div>
-                <span className="exp-period">May 2024 – Mar 2025</span>
-              </div>
-              <div className="exp-card-top-row">
-                <div className="exp-co-row">
-                  <span className="exp-co">RMSI</span>
-                  <span className="exp-dot"></span>
-                  <span className="exp-loc">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
-                    </svg>
-                    Noida, India
-                  </span>
-                  <span className="exp-dot"></span>
-                  <span className="exp-badge">Full-Time</span>
-                </div>
+              <div className="exp-role">Junior Engineer</div>
+              <span className="exp-period">May 2024 – Mar 2025</span>
+              <div className="exp-co-row">
+                <span className="exp-co">RMSI</span>
+                <span className="exp-dot"></span>
+                <span className="exp-loc">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  Noida, India
+                </span>
+                <span className="exp-dot"></span>
+                <span className="exp-badge">Full-Time</span>
               </div>
             </div>
             <p className="exp-desc">
@@ -73,25 +69,21 @@ const Experience = () => (
           </div>
           <div className="exp-card">
             <div className="exp-card-top">
-              <div className="exp-card-top-row">
-                <div className="exp-role">Fullstack Developer</div>
-                <span className="exp-period">Jan 2023 – Present</span>
-              </div>
-              <div className="exp-card-top-row">
-                <div className="exp-co-row">
-                  <span className="exp-co">Self-employed</span>
-                  <span className="exp-dot"></span>
-                  <span className="exp-loc">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="9"/>
-                      <path d="M12 3c0 0-3 3-3 9s3 9 3 9"/><path d="M12 3c0 0 3 3 3 9s-3 9-3 9"/>
-                      <path d="M3.5 9h17M3.5 15h17"/>
-                    </svg>
-                    Remote
-                  </span>
-                  <span className="exp-dot"></span>
-                  <span className="exp-badge">Freelance</span>
-                </div>
+              <div className="exp-role">Fullstack Developer</div>
+              <span className="exp-period">Jan 2023 – Present</span>
+              <div className="exp-co-row">
+                <span className="exp-co">Self-employed</span>
+                <span className="exp-dot"></span>
+                <span className="exp-loc">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M12 3c0 0-3 3-3 9s3 9 3 9"/><path d="M12 3c0 0 3 3 3 9s-3 9-3 9"/>
+                    <path d="M3.5 9h17M3.5 15h17"/>
+                  </svg>
+                  Remote
+                </span>
+                <span className="exp-dot"></span>
+                <span className="exp-badge">Freelance</span>
               </div>
             </div>
             <p className="exp-desc">

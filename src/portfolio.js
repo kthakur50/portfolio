@@ -145,21 +145,24 @@ function initHam() {
 }
 
 function initSR() {
+  // Every .sr element replays its reveal animation each time it crosses into
+  // or out of the viewport — scrolling down reveals it, scrolling back up
+  // hides it, scrolling down again replays it. Elements are bound once
+  // (data-sr-bound) so re-running this (e.g. after masonry injects new
+  // cards) never double-registers an observer on the same node.
+  const els = document.querySelectorAll('.sr:not([data-sr-bound])');
+  if (!els.length) return;
+
   const ob = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        const el = e.target;
-        el.classList.add('on');
-        ob.unobserve(el);
-        // Drop the compositing layer once the reveal transition is done —
-        // keeping will-change forever on every revealed element wastes GPU memory.
-        const release = () => { el.style.willChange = 'auto'; el.removeEventListener('transitionend', release); };
-        el.addEventListener('transitionend', release);
-        setTimeout(release, 700); // safety fallback if transitionend doesn't fire
-      }
+      e.target.classList.toggle('on', e.isIntersecting);
     });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.sr:not(.on)').forEach(el => ob.observe(el));
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+  els.forEach(el => {
+    el.dataset.srBound = '1';
+    ob.observe(el);
+  });
 }
 
 
