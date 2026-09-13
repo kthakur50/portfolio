@@ -19,12 +19,12 @@ const FOCUS_AREAS = [
   {
     icon: <IconFullstack />,
     title: 'Fullstack Development',
-    desc: 'Engineering scalable full-stack web applications with React, Next.js, Node.js & Express — clean, user-centric UI/UX backed by well-structured REST APIs and databases.',
+    desc: 'Engineering scalable full-stack web applications with React, Next.js, Node.js & Express — clean, user-centric UI/UX backed by well-structured REST APIs and databases. Comfortable owning a feature from database schema to deployed UI.',
   },
   {
     icon: <IconGenAI />,
     title: 'Generative AI',
-    desc: 'Building AI agents, RAG pipelines, and LLM-powered features with the OpenAI API & LangChain to ship intelligent, production-ready applications.',
+    desc: 'Building AI agents, RAG pipelines, and LLM-powered features with the OpenAI API & LangChain to ship intelligent, production-ready applications. Focused on practical integrations that make real products smarter, not just demos.',
   },
 ];
 
@@ -32,7 +32,14 @@ const About = () => (
   <section id="about">
     <div className="wrap">
       <div className="sec-hd sr" data-n="01">
-        <h2>About<em>.</em></h2>
+        <h2>
+          <span className="sec-hd-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+          </span>
+          About<em>.</em>
+        </h2>
       </div>
 
       <div className="about-main">
@@ -44,6 +51,11 @@ const About = () => (
             <strong>GIS &amp; interactive mapping</strong> using <em>Leaflet.js</em>. Now focused
             on fusing modern frontend engineering with <strong>Generative AI</strong> — embedding{' '}
             <em>LLMs</em> into real, production-ready products.
+          </p>
+          <p className="about-para">
+            Driven by clean architecture and thoughtful UX, I enjoy turning ambiguous problems
+            into <strong>reliable, well-tested products</strong> — and I'm always exploring the
+            next tool or technique that makes that process faster.
           </p>
         </div>
 
