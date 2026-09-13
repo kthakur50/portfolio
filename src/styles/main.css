@@ -143,8 +143,8 @@ section { padding: 150px 0; }
    enters/leaves the viewport (see initSR in portfolio.js). */
 .sr {
   opacity: 0;
-  transform: translateY(14px) translateZ(0);
-  transition: opacity .5s ease, transform .5s ease;
+  transform: translateY(18px) translateZ(0);
+  transition: opacity .55s ease, transform .55s ease;
   will-change: opacity, transform;
 }
 .sr.on { opacity: 1; transform: translateY(0) translateZ(0); }
@@ -970,14 +970,15 @@ p.hero-intro {
 .masonry-item {
  position: relative;
  width: 100%;
- opacity: 1;
  cursor: pointer;
 }
 .masonry-item.sr {
- transform: translateY(14px) translateZ(0);
- transition: opacity .5s ease, transform .5s ease;
+ opacity: 0;
+ transform: translateY(18px) translateZ(0);
+ transition: opacity .55s ease, transform .55s ease;
 }
 .masonry-item.sr.on {
+ opacity: 1;
  transform: translateY(0) translateZ(0);
 }
 .masonry-item-inner {
