@@ -1306,9 +1306,9 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 }
 .sk-panel:nth-child(2) .sk-panel-title::before { background: #22d3ee; }
 .sk-chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  justify-items: center;
   gap: 16px 10px;
   width: 100%;
 }
@@ -1321,7 +1321,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   gap: 6px;
   padding: 9px 4px 7px;
   min-width: 0;
-  flex: 0 0 92px;
+  width: 100%;
   border-radius: 12px;
   background: transparent;
   border: none;
@@ -1394,14 +1394,14 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .sk-panel { padding: 0; border-radius: 0; }
   .sk-panel-head { margin-bottom: 16px; padding-bottom: 14px; }
   .sk-panel-title { font-size: .92rem; }
-  .sk-chip-row { gap: 14px 8px; }
-  .sk-chip { padding: 8px 4px 6px; flex-basis: 76px; }
+  .sk-chip-row { grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 14px 8px; }
+  .sk-chip { padding: 8px 4px 6px; }
 }
 @media (max-width: 480px) {
   .sk-panel { padding: 0; border-radius: 0; }
   .sk-panel-title { font-size: .85rem; gap: 8px; }
-  .sk-chip-row { gap: 12px 6px; }
-  .sk-chip { padding: 6px 3px 5px; border-radius: 10px; gap: 4px; flex-basis: 62px; }
+  .sk-chip-row { grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); gap: 12px 6px; }
+  .sk-chip { padding: 6px 3px 5px; border-radius: 10px; gap: 4px; }
   .sk-chip-ico { width: 30px; height: 30px; }
   .sk-chip-ico svg { width: 20px; height: 20px; }
   .sk-chip-name { font-size: .6rem; }
