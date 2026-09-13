@@ -135,82 +135,19 @@ section { padding: 150px 0; }
  mask-image: linear-gradient(to top, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 100%);
  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 100%);
 }
-/* ── Scroll reveal — base (fade + rise) ─────────────────────────
-   Fallback animation for any .sr element that doesn't get a more
-   specific treatment below. Replays every time the element enters
-   the viewport (see initSR in portfolio.js). */
-.sr { opacity: 0; transform: translateY(24px) translateZ(0); transition: opacity .6s cubic-bezier(.25,.46,.45,.94), transform .6s cubic-bezier(.25,.46,.45,.94); will-change: opacity, transform, filter; }
+/* ── Scroll reveal — cards only, kept deliberately subtle ───────
+   Only the actual "card" elements in each section reveal on scroll
+   (About focus cards, Skills panels, Experience/Education timeline
+   cards, Project cards). Headings, plain text blocks, the hero, and
+   the footer/social icons never animate. Replays every time a card
+   enters/leaves the viewport (see initSR in portfolio.js). */
+.sr {
+  opacity: 0;
+  transform: translateY(14px) translateZ(0);
+  transition: opacity .5s ease, transform .5s ease;
+  will-change: opacity, transform;
+}
 .sr.on { opacity: 1; transform: translateY(0) translateZ(0); }
-
-/* Section headings — soft blur-in rise, used across every section */
-.sec-hd.sr {
-  opacity: 0;
-  transform: translateY(22px) translateZ(0);
-  filter: blur(5px);
-  transition: opacity .55s cubic-bezier(.25,.46,.45,.94), transform .55s cubic-bezier(.25,.46,.45,.94), filter .5s ease;
-}
-.sec-hd.sr.on { opacity: 1; transform: translateY(0) translateZ(0); filter: blur(0); }
-
-/* About — bio slides in from the left with a blur-focus settle */
-.about-bio.sr {
-  opacity: 0;
-  transform: translateX(-52px) translateZ(0);
-  filter: blur(8px);
-  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1), filter .6s ease;
-}
-.about-bio.sr.on { opacity: 1; transform: translateX(0) translateZ(0); filter: blur(0); }
-
-/* About — focus rows drift in from the right, staggered via inline delay */
-.about-focus-row.sr {
-  opacity: 0;
-  transform: translateX(42px) translateZ(0);
-  transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1);
-}
-.about-focus-row.sr.on { opacity: 1; transform: translateX(0) translateZ(0); }
-
-/* Skills — the two panels swing in from opposite sides with a slight tilt */
-.sk-panel.sr {
-  opacity: 0;
-  transition: opacity .65s cubic-bezier(.34,1.56,.64,1), transform .65s cubic-bezier(.34,1.56,.64,1);
-}
-.sk-panel.sr:nth-of-type(1) { transform: translateX(-64px) rotate(-2.5deg) translateZ(0); }
-.sk-panel.sr:nth-of-type(2) { transform: translateX(64px) rotate(2.5deg) translateZ(0); }
-.sk-panel.sr.on { opacity: 1; transform: translateX(0) rotate(0deg) translateZ(0); }
-
-/* Experience — timeline zig-zags in, alternating left/right per entry */
-.exp-item.sr {
-  opacity: 0;
-  transition: opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1);
-}
-.exp-item.sr:nth-child(odd)  { transform: translateX(-58px) translateZ(0); }
-.exp-item.sr:nth-child(even) { transform: translateX(58px) translateZ(0); }
-.exp-item.sr.on { opacity: 1; transform: translateX(0) translateZ(0); }
-
-/* Education — a single card tips forward into place like a flap opening */
-.edu-item.sr {
-  opacity: 0;
-  transform: perspective(900px) rotateX(-28deg) translateY(26px) translateZ(0);
-  transform-origin: top center;
-  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
-}
-.edu-item.sr.on { opacity: 1; transform: perspective(900px) rotateX(0deg) translateY(0) translateZ(0); }
-
-/* Contact — CTA card pops into place with a soft blur-focus */
-.c-info.sr {
-  opacity: 0;
-  transform: scale(.88) translateY(18px) translateZ(0);
-  filter: blur(6px);
-  transition: opacity .6s cubic-bezier(.34,1.56,.64,1), transform .6s cubic-bezier(.34,1.56,.64,1), filter .5s ease;
-}
-.c-info.sr.on { opacity: 1; transform: scale(1) translateY(0) translateZ(0); filter: blur(0); }
-
-/* Hero — social row bounces in with a slight overshoot */
-.hero-social-row.sr {
-  opacity: 0;
-  transform: translateY(14px) scale(.9) translateZ(0);
-  transition: opacity .55s cubic-bezier(.34,1.56,.64,1), transform .55s cubic-bezier(.34,1.56,.64,1);
-}
-.hero-social-row.sr.on { opacity: 1; transform: translateY(0) scale(1) translateZ(0); }
 .nav {
  position: sticky; top: 0; left: 0; right: 0; z-index: 1000;
  height: var(--nav);
@@ -1037,24 +974,11 @@ p.hero-intro {
  cursor: pointer;
 }
 .masonry-item.sr {
- transform: translateY(28px) scale(.96) translateZ(0);
- filter: blur(6px);
- transition: opacity .6s cubic-bezier(.25,.46,.45,.94), transform .6s cubic-bezier(.25,.46,.45,.94), filter .6s cubic-bezier(.25,.46,.45,.94);
-}
-/* Every third card gets its own treatment so the grid doesn't reveal in
-   lockstep: a forward tilt-in, then a rise, then a tilt-in from the side —
-   repeats however many project cards get added later. */
-.masonry-item.sr:nth-child(3n+2) {
- transform: perspective(900px) rotateX(22deg) translateY(24px) scale(.95) translateZ(0);
- transform-origin: bottom center;
-}
-.masonry-item.sr:nth-child(3n) {
- transform: perspective(900px) rotateY(-18deg) translateX(30px) scale(.95) translateZ(0);
- transform-origin: left center;
+ transform: translateY(14px) translateZ(0);
+ transition: opacity .5s ease, transform .5s ease;
 }
 .masonry-item.sr.on {
- transform: translateY(0) translateX(0) scale(1) rotateX(0) rotateY(0) translateZ(0);
- filter: blur(0);
+ transform: translateY(0) translateZ(0);
 }
 .masonry-item-inner {
  position: relative;

@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <section id="contact">
       <div className="wrap">
-        <div className="sec-hd sr" data-n="06">
+        <div className="sec-hd" data-n="06">
           <h2>
             <span className="sec-hd-ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -16,7 +16,7 @@ const Contact = () => {
         </div>
 
         <div className="c-wrap">
-          <div className="c-info sr" style={{ transitionDelay: '.04s' }}>
+          <div className="c-info" style={{ transitionDelay: '.04s' }}>
             <h3 className="c-heading">Let's <em>build something</em> together.</h3>
 
             <p className="c-lead">

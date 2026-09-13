@@ -1,26 +1,41 @@
 import { useEffect, useState } from 'react';
 import HeroCube from './HeroCube';
 
-const INTRO_TEXT = 'Full Stack Developer & AI Developer, building\nfast web apps and intelligent systems.';
+// On tablet the break moves one word later so the first line reads
+// longer and the second line shorter than on phone/desktop.
+const INTRO_TEXT_DEFAULT = 'Full Stack Developer & AI Developer, building\nfast web apps and intelligent systems.';
+const INTRO_TEXT_TABLET  = 'Full Stack Developer & AI Developer, building fast\nweb apps and intelligent systems.';
 
 const TypedIntro = () => {
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 600px) and (max-width: 1024px)');
+    const update = () => setIsTablet(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  const introText = isTablet ? INTRO_TEXT_TABLET : INTRO_TEXT_DEFAULT;
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     let i = 0;
+    setCount(0);
     const timer = setInterval(() => {
       i += 1;
       setCount(i);
-      if (i >= INTRO_TEXT.length) clearInterval(timer);
+      if (i >= introText.length) clearInterval(timer);
     }, 26);
     return () => clearInterval(timer);
-  }, []);
+  }, [introText]);
 
-  const done = count >= INTRO_TEXT.length;
+  const done = count >= introText.length;
 
   return (
-    <p className="hero-intro" aria-label={INTRO_TEXT}>
-      <span aria-hidden="true">{INTRO_TEXT.slice(0, count)}</span>
+    <p className="hero-intro" aria-label={introText}>
+      <span aria-hidden="true">{introText.slice(0, count)}</span>
       <span className={`hero-intro-cursor${done ? ' is-idle' : ''}`} aria-hidden="true"></span>
     </p>
   );
@@ -33,7 +48,7 @@ const Hero = () => (
     </div>
     <div className="wrap">
 
-      <div className="hero-card sr on">
+      <div className="hero-card">
         <div className="hero-card-grain" aria-hidden="true"></div>
         <div className="hero-card-inner">
           <div className="hero-card-text">
@@ -53,7 +68,7 @@ const Hero = () => (
         </div>
       </div>
 
-      <div className="hero-social-row sr" style={{ transitionDelay: '.08s' }}>
+      <div className="hero-social-row" style={{ transitionDelay: '.08s' }}>
         <a href="https://github.com/kaushalt18" target="_blank" rel="noopener" aria-label="GitHub" className="hero-social-ico">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>

@@ -31,7 +31,7 @@ const FOCUS_AREAS = [
 const About = () => (
   <section id="about">
     <div className="wrap">
-      <div className="sec-hd sr" data-n="01">
+      <div className="sec-hd" data-n="01">
         <h2>
           <span className="sec-hd-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -43,7 +43,7 @@ const About = () => (
       </div>
 
       <div className="about-main">
-        <div className="about-bio sr" style={{ transitionDelay: '.04s' }}>
+        <div className="about-bio" style={{ transitionDelay: '.04s' }}>
           <p className="about-para">
             <em>AI Software Engineer</em> with <strong>1+ year of experience</strong> shipping
             production-grade applications at <em>RMSI, Noida</em> across <em>React</em>,{' '}
