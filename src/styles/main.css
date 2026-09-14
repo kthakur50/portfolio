@@ -1855,13 +1855,20 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 
   /* Projects: 2 columns */
   .masonry-list { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .masonry-img { aspect-ratio: 21/10; }
-  .masonry-body { padding: 10px 10px; gap: 6px; }
+  .masonry-img { aspect-ratio: 16/9; }
+  .masonry-body { padding: 16px 16px 18px; gap: 10px; }
   .masonry-cat { font-size: .5rem; }
-  .masonry-title { font-size: .78rem; margin: 0; }
-  .masonry-desc { font-size: .68rem; line-height: 1.55; }
+  .masonry-title { font-size: .85rem; margin: 0; }
+  .masonry-desc {
+    font-size: .74rem;
+    line-height: 1.62;
+    text-align: left;
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
   .masonry-tags { margin-top: 0; gap: 4px; }
-  .masonry-link { margin-top: 0; font-size: .78rem; padding: 9px 18px; }
+  .masonry-link { margin-top: 4px; font-size: .78rem; padding: 9px 18px; border-radius: 12px; }
 
   /* Experience & Education */
   .exp-list { padding-left: 52px; }
@@ -1953,8 +1960,8 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 
   /* Projects */
   .masonry-list { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .masonry-title { font-size: .9rem; }
-  .masonry-desc { font-size: .74rem; }
+  .masonry-title { font-size: .92rem; }
+  .masonry-desc { font-size: .76rem; line-height: 1.62; }
 
   /* Education */
   .edu-list { padding-left: 44px; }
@@ -1983,14 +1990,17 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .hero-right { margin-top: clamp(72px, 9vw, 104px); }
 
 
-  /* Hero card: taller (more vertical padding) + bigger text */
-  .hero-card { padding-top: clamp(102px, 14.5vw, 145px); padding-bottom: clamp(102px, 14.5vw, 145px); }
+  /* Hero card: shortened a bit vertically (was clamp(102px,14.5vw,145px)
+     each side) — the social row below gets the same amount added to its
+     own margin-top so it stays put instead of drifting up. */
+  .hero-card { padding-top: calc(clamp(102px, 14.5vw, 145px) - 26px); padding-bottom: calc(clamp(102px, 14.5vw, 145px) - 26px); }
   .hero-card-inner { gap: clamp(16px, 2.4vw, 24px); }
   .hero-greeting { font-size: clamp(1.05rem, 2.2vw, 1.3rem); margin-bottom: 6px; }
   .hero-name { font-size: clamp(2.78rem, 6.9vw, 5.05rem) !important; }
   p.hero-intro { font-size: clamp(.88rem, 2.1vw, 1.1rem); white-space: pre-line; overflow: visible; }
   .hero-role-sub { font-size: 1rem !important; }
   .hero-card-roles { gap: 10px; }
+  .hero-social-row { margin-top: calc(clamp(36px, 5vw, 50px) + 52px); }
 }
 
 /* ── TABLET + PHONE: section-shortcut card ─────────────────────
@@ -2090,11 +2100,12 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob-close:hover, .nav-mob-close:focus-visible { color: var(--tx); background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); }
   .nav-mob-close:active { transform: scale(.9); }
 
-  /* Fixed 3-column grid — every tile the same size, 3 per row,
-     so the panel always reads as neat rows regardless of card width. */
+  /* Fixed 2-column grid — two tiles per row, so each label has more
+     room to breathe (was 3/row) while the panel still reads as neat
+     rows regardless of card width. */
   .nav-mob-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     width: 100%;
     place-items: stretch;
@@ -2272,7 +2283,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     justify-content: center;
     margin: clamp(34px, 8vw, 52px) 0 0;
   }
-  .hero-social-row { margin-top: clamp(30px, 7vw, 42px); }
+  .hero-social-row { margin-top: calc(clamp(30px, 7vw, 42px) + 36px); }
 
   /* Name */
   .hero-name {
@@ -2287,7 +2298,9 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   /* Info box */
   /* Buttons */
   /* Cube: bigger so the front screen doesn't look empty; taller card pushes buttons down */
-  .hero-card { padding: clamp(60px, 14vw, 88px) clamp(20px, 5vw, 32px); }
+  /* Card shortened a bit vertically — social row's margin-top above
+     already carries the matching +36px so it stays in the same spot. */
+  .hero-card { padding: calc(clamp(60px, 14vw, 88px) - 18px) clamp(20px, 5vw, 32px); }
   .hero-card-inner { gap: clamp(22px, 5vw, 34px); }
   p.hero-intro { font-size: clamp(.68rem, 3.6vw, .82rem); white-space: pre-line; overflow: visible; }
   .hero-card-cube { width: clamp(210px, 44vw, 264px); height: clamp(210px, 44vw, 264px); }
@@ -2302,12 +2315,20 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .exp-period { white-space: nowrap; }
 
   /* Projects: keep same 2-col structure as tablet, scaled to fit */
-  .masonry-list { grid-template-columns: 1fr; gap: 12px; }
-  .masonry-body { padding: 11px 10px; gap: 6px; }
-  .masonry-title { font-size: .78rem; margin: 0; }
-  .masonry-desc { font-size: .68rem; line-height: 1.55; }
-  .masonry-tags { gap: 4px; margin-top: 0; }
+  .masonry-list { grid-template-columns: 1fr; gap: 14px; }
+  .masonry-body { padding: 15px 15px 17px; gap: 9px; }
+  .masonry-title { font-size: .86rem; margin: 0; }
+  .masonry-desc {
+    font-size: .76rem;
+    line-height: 1.6;
+    text-align: left;
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+  .masonry-tags { gap: 5px; margin-top: 0; }
   .masonry-cat { font-size: .6rem; }
+  .masonry-link { border-radius: 12px; }
 
   /* Education: timeline sizing now matches tablet (inherited from 768px rules) */
   .edu-card { padding: 13px 14px; min-height: 50px; }
@@ -2338,12 +2359,20 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .hero-name { font-size: clamp(1.85rem, 9vw, 2.5rem); margin-top: 6px; margin-bottom: 11px; white-space: nowrap; }
 
   /* Projects: 2-col on phone */
-  .masonry-list { grid-template-columns: 1fr; gap: 12px; }
-  .masonry-body { padding: 11px 10px; gap: 6px; }
-  .masonry-title { font-size: .78rem; margin: 0; }
-  .masonry-desc { font-size: .68rem; line-height: 1.55; }
-  .masonry-tags { gap: 4px; margin-top: 0; }
+  .masonry-list { grid-template-columns: 1fr; gap: 14px; }
+  .masonry-body { padding: 14px 14px 16px; gap: 9px; }
+  .masonry-title { font-size: .84rem; margin: 0; }
+  .masonry-desc {
+    font-size: .74rem;
+    line-height: 1.58;
+    text-align: left;
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+  .masonry-tags { gap: 5px; margin-top: 0; }
   .masonry-cat { font-size: .6rem; }
+  .masonry-link { border-radius: 12px; }
 
 }
 

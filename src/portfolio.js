@@ -106,6 +106,18 @@ function initHam() {
         nav?.classList.add('search-open');
         ham.classList.add('open');
       } else {
+        // Cap the card's height to the hero card's height, so it
+        // never grows taller than that on tablet/phone — just enough
+        // room for the grid, no leftover empty space below it.
+        const heroCard = document.querySelector('.hero-card');
+        if (heroCard) {
+          const root = getComputedStyle(document.documentElement);
+          const navH = parseFloat(root.getPropertyValue('--nav')) || 64;
+          const pad  = parseFloat(root.getPropertyValue('--pad')) || 20;
+          const available = window.innerHeight - (navH + 10) - pad;
+          const heroH = heroCard.getBoundingClientRect().height;
+          mob.style.maxHeight = Math.min(heroH, available) + 'px';
+        }
         mob.classList.add('open');
         ham.classList.add('open');
         overlay?.classList.add('open');

@@ -1,23 +1,38 @@
 import { useEffect, useState } from 'react';
 import HeroCube from './HeroCube';
 
-// On tablet the break moves one word later so the first line reads
-// longer and the second line shorter than on phone/desktop.
+// Break point shifts per breakpoint so each line reads at a natural
+// length for that width: phone breaks after "fast", tablet after "web"
+// (one word later), desktop after "building" — all keep "intelligent
+// systems" together on the second line.
 const INTRO_TEXT_DEFAULT = 'Full Stack Developer & AI Developer, building\nfast web apps and intelligent systems.';
 const INTRO_TEXT_TABLET  = 'Full Stack Developer & AI Developer, building fast web\napps and intelligent systems.';
+const INTRO_TEXT_PHONE   = 'Full Stack Developer & AI Developer, building fast\nweb apps and intelligent systems.';
 
 const TypedIntro = () => {
-  const [isTablet, setIsTablet] = useState(false);
+  const [breakpoint, setBreakpoint] = useState('default');
 
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 600px) and (max-width: 1024px)');
-    const update = () => setIsTablet(mq.matches);
+    const mqTablet = window.matchMedia('(min-width: 600px) and (max-width: 1024px)');
+    const mqPhone  = window.matchMedia('(max-width: 599px)');
+    const update = () => {
+      if (mqPhone.matches) setBreakpoint('phone');
+      else if (mqTablet.matches) setBreakpoint('tablet');
+      else setBreakpoint('default');
+    };
     update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
+    mqTablet.addEventListener('change', update);
+    mqPhone.addEventListener('change', update);
+    return () => {
+      mqTablet.removeEventListener('change', update);
+      mqPhone.removeEventListener('change', update);
+    };
   }, []);
 
-  const introText = isTablet ? INTRO_TEXT_TABLET : INTRO_TEXT_DEFAULT;
+  const introText =
+    breakpoint === 'phone' ? INTRO_TEXT_PHONE :
+    breakpoint === 'tablet' ? INTRO_TEXT_TABLET :
+    INTRO_TEXT_DEFAULT;
   const [count, setCount] = useState(0);
 
   useEffect(() => {
