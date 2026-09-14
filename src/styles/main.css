@@ -1995,14 +1995,17 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   /* Hero card: shortened a bit vertically (was clamp(102px,14.5vw,145px)
      each side) — the social row below gets the same amount added to its
      own margin-top so it stays put instead of drifting up. */
-  .hero-card { padding-top: calc(clamp(102px, 14.5vw, 145px) - 26px); padding-bottom: calc(clamp(102px, 14.5vw, 145px) - 26px); }
+  .hero-card { padding-top: calc(clamp(102px, 14.5vw, 145px) - 11px); padding-bottom: calc(clamp(102px, 14.5vw, 145px) - 11px); }
   .hero-card-inner { gap: clamp(16px, 2.4vw, 24px); }
   .hero-greeting { font-size: clamp(1.05rem, 2.2vw, 1.3rem); margin-bottom: 6px; }
   .hero-name { font-size: clamp(2.78rem, 6.9vw, 5.05rem) !important; }
   p.hero-intro { font-size: clamp(.88rem, 2.1vw, 1.1rem); white-space: pre-line; overflow: visible; }
   .hero-role-sub { font-size: 1rem !important; }
   .hero-card-roles { gap: 10px; }
-  .hero-social-row { margin-top: calc(clamp(36px, 5vw, 50px) + 52px); }
+  /* Card made a bit taller (padding reduction eased from 26px to 11px
+     per side, +30px total) — social row's margin-top trimmed by the
+     same 30px so it stays exactly where it was. */
+  .hero-social-row { margin-top: calc(clamp(36px, 5vw, 50px) + 22px); }
 }
 
 /* ── TABLET + PHONE: section-shortcut card ─────────────────────
@@ -2285,7 +2288,10 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     justify-content: center;
     margin: clamp(34px, 8vw, 52px) 0 0;
   }
-  .hero-social-row { margin-top: calc(clamp(30px, 7vw, 42px) + 36px); }
+  /* Card below made a bit taller (padding reduction eased from 18px to
+     3px per side, +30px total) — margin-top here trimmed by the same
+     30px so the social row stays exactly where it was. */
+  .hero-social-row { margin-top: calc(clamp(30px, 7vw, 42px) + 6px); }
 
   /* Name */
   .hero-name {
@@ -2300,9 +2306,9 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   /* Info box */
   /* Buttons */
   /* Cube: bigger so the front screen doesn't look empty; taller card pushes buttons down */
-  /* Card shortened a bit vertically — social row's margin-top above
-     already carries the matching +36px so it stays in the same spot. */
-  .hero-card { padding: calc(clamp(60px, 14vw, 88px) - 18px) clamp(20px, 5vw, 32px); }
+  /* Card made a bit taller — social row's margin-top above already
+     carries the matching -30px reduction so it stays in the same spot. */
+  .hero-card { padding: calc(clamp(60px, 14vw, 88px) - 3px) clamp(20px, 5vw, 32px); }
   .hero-card-inner { gap: clamp(22px, 5vw, 34px); }
   p.hero-intro { font-size: clamp(.68rem, 3.6vw, .82rem); white-space: pre-line; overflow: visible; }
   .hero-card-cube { width: clamp(210px, 44vw, 264px); height: clamp(210px, 44vw, 264px); }

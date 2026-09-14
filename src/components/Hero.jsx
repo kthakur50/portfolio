@@ -6,7 +6,7 @@ import HeroCube from './HeroCube';
 // (one word later), desktop after "building" — all keep "intelligent
 // systems" together on the second line.
 const INTRO_TEXT_DEFAULT = 'Full Stack Developer & AI Developer, building\nfast web apps and intelligent systems.';
-const INTRO_TEXT_TABLET  = 'Full Stack Developer & AI Developer, building fast web\napps and intelligent systems.';
+const INTRO_TEXT_TABLET  = 'Full Stack Developer & AI Developer, building fast web apps and\nintelligent systems.';
 const INTRO_TEXT_PHONE   = 'Full Stack Developer & AI Developer, building fast\nweb apps and intelligent systems.';
 
 const TypedIntro = () => {
