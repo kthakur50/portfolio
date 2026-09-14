@@ -4,7 +4,7 @@ import HeroCube from './HeroCube';
 // On tablet the break moves one word later so the first line reads
 // longer and the second line shorter than on phone/desktop.
 const INTRO_TEXT_DEFAULT = 'Full Stack Developer & AI Developer, building\nfast web apps and intelligent systems.';
-const INTRO_TEXT_TABLET  = 'Full Stack Developer & AI Developer, building fast\nweb apps and intelligent systems.';
+const INTRO_TEXT_TABLET  = 'Full Stack Developer & AI Developer, building fast web\napps and intelligent systems.';
 
 const TypedIntro = () => {
   const [isTablet, setIsTablet] = useState(false);

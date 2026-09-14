@@ -2107,10 +2107,12 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: auto;
+    min-height: 76px;
+    min-width: 0;
     width: 100%;
     gap: 8px;
-    padding: 10px;
+    padding: 10px 6px;
     border-radius: 16px;
     color: var(--tx);
     text-decoration: none;
@@ -2149,7 +2151,9 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob a.nm-span2 {
     grid-column: 1 / -1;
     width: 100%;
+    min-width: 0;
     aspect-ratio: auto;
+    min-height: 0;
     flex-direction: row;
     justify-content: center;
     padding: 12px 16px;
@@ -2187,8 +2191,10 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     font-size: .74rem;
     font-weight: 600;
     letter-spacing: .01em;
-    white-space: nowrap;
-    max-width: none;
+    white-space: normal;
+    max-width: 100%;
+    text-align: center;
+    line-height: 1.2;
     margin-left: 0;
     overflow: visible;
     background: none;
@@ -2202,6 +2208,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     transition: color .18s ease;
   }
   .nav-mob-label::after { display: none; }
+  .nav-mob a.nm-span2 .nav-mob-label { white-space: nowrap; }
 
   /* Wider containers (tablet) just get roomier tiles — column
      count stays fixed at 3 so the layout never re-flows oddly. */
