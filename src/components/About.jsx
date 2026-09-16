@@ -19,12 +19,12 @@ const FOCUS_AREAS = [
   {
     icon: <IconFullstack />,
     title: 'Fullstack Development',
-    desc: 'Engineering scalable full-stack web applications with React, Next.js, Node.js & Express — clean, user-centric UI/UX backed by well-structured REST APIs and databases. Comfortable owning a feature from database schema to deployed UI.',
+    desc: 'Scalable web apps with React, Next.js, Node.js & Express — clean, user-centric UI backed by well-structured REST APIs and databases.',
   },
   {
     icon: <IconGenAI />,
     title: 'Generative AI',
-    desc: 'Building AI agents, RAG pipelines, and LLM-powered features with the OpenAI API & LangChain to ship intelligent, production-ready applications. Focused on practical integrations that make real products smarter, not just demos.',
+    desc: 'AI agents, RAG pipelines and LLM-powered features built with the OpenAI API & LangChain, focused on shipping practical, production-ready apps.',
   },
 ];
 
@@ -43,7 +43,7 @@ const About = () => (
       </div>
 
       <div className="about-main">
-        <div className="about-bio" style={{ transitionDelay: '.04s' }}>
+        <div className="about-bio sr sr-fade-left" style={{ transitionDelay: '.04s' }}>
           <p className="about-para">
             <em>AI Software Engineer</em> with <strong>1+ year of experience</strong> shipping
             production-grade applications at <em>RMSI, Noida</em> across <em>React</em>,{' '}
@@ -57,13 +57,18 @@ const About = () => (
             into <strong>reliable, well-tested products</strong> — and I'm always exploring the
             next tool or technique that makes that process faster.
           </p>
+          <p className="about-para">
+            Along the way I've picked up a habit of documenting decisions clearly and writing{' '}
+            <strong>maintainable code</strong>, so teams I work with can move fast without
+            piling up technical debt.
+          </p>
         </div>
 
         <div className="about-focus-list">
           {FOCUS_AREAS.map((f, i) => (
             <div
               key={f.title}
-              className="about-focus-row sr sr-latest"
+              className={`about-focus-row sr ${i % 2 === 0 ? 'sr-fade-left' : 'sr-fade-right'}`}
               style={{ transitionDelay: `${0.1 + i * 0.08}s` }}
             >
               <div className="about-focus-ico">{f.icon}</div>
