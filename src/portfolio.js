@@ -227,7 +227,7 @@ function initMasonry() {
 
   projects.forEach((p, i) => {
     const el = document.createElement('div');
-    el.className = 'masonry-item sr sr-latest';
+    el.className = 'masonry-item sr sr-tilt';
     el.style.transitionDelay = (i * 0.07) + 's';
     el.innerHTML = `
       <div class="masonry-item-inner">

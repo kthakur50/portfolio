@@ -19,12 +19,12 @@ const FOCUS_AREAS = [
   {
     icon: <IconFullstack />,
     title: 'Fullstack Development',
-    desc: 'Scalable web apps with React, Next.js, Node.js & Express — clean, user-centric UI backed by well-structured REST APIs and databases.',
+    desc: 'Scalable web apps with React, Next.js, Node.js & Express — clean UI backed by REST APIs and databases.',
   },
   {
     icon: <IconGenAI />,
     title: 'Generative AI',
-    desc: 'AI agents, RAG pipelines and LLM-powered features built with the OpenAI API & LangChain, focused on shipping practical, production-ready apps.',
+    desc: 'AI agents, RAG pipelines and LLM-powered features built with the OpenAI API & LangChain for production-ready apps.',
   },
 ];
 
@@ -43,7 +43,7 @@ const About = () => (
       </div>
 
       <div className="about-main">
-        <div className="about-bio sr sr-fade-left" style={{ transitionDelay: '.04s' }}>
+        <div className="about-bio">
           <p className="about-para">
             <em>AI Software Engineer</em> with <strong>1+ year of experience</strong> shipping
             production-grade applications at <em>RMSI, Noida</em> across <em>React</em>,{' '}
@@ -56,11 +56,6 @@ const About = () => (
             Driven by clean architecture and thoughtful UX, I enjoy turning ambiguous problems
             into <strong>reliable, well-tested products</strong> — and I'm always exploring the
             next tool or technique that makes that process faster.
-          </p>
-          <p className="about-para">
-            Along the way I've picked up a habit of documenting decisions clearly and writing{' '}
-            <strong>maintainable code</strong>, so teams I work with can move fast without
-            piling up technical debt.
           </p>
         </div>
 
