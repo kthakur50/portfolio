@@ -1,7 +1,7 @@
 const Education = () => (
   <section id="education">
     <div className="wrap">
-      <div className="sec-hd sr sr-flip" data-n="05">
+      <div className="sec-hd" data-n="05">
         <h2>
           <span className="sec-hd-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -12,7 +12,7 @@ const Education = () => (
         </h2>
       </div>
       <div className="edu-list">
-        <div className="edu-item sr sr-flip" style={{ transitionDelay: '.07s' }}>
+        <div className="edu-item sr sr-fade-left" style={{ transitionDelay: '.07s' }}>
           <div className="edu-node">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="100%" height="100%">
               <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/>
