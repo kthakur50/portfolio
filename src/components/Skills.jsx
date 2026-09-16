@@ -293,44 +293,18 @@ const Skills = () => {
           </h2>
         </div>
 
-        <div className="sk-panels">
-          <div className="sk-panel sr">
-            <div className="sk-panel-head">
-              <h3 className="sk-panel-title">Fullstack development</h3>
+        <div className="sk-chip-row">
+          {[...FULLSTACK_SKILLS, ...GENAI_TOOLS_SKILLS].map((s, i) => (
+            <div
+              key={s.cls}
+              className={`sk-chip ${s.cls}`}
+              style={{ animationDelay: `${Math.min(i, 20) * 0.03}s` }}
+              title={s.label}
+            >
+              <div className="sk-chip-ico">{s.icon}</div>
+              <span className="sk-chip-name">{s.label}</span>
             </div>
-            <div className="sk-chip-row">
-              {FULLSTACK_SKILLS.map((s, i) => (
-                <div
-                  key={s.cls}
-                  className={`sk-chip ${s.cls}`}
-                  style={{ animationDelay: `${Math.min(i, 20) * 0.03}s` }}
-                  title={s.label}
-                >
-                  <div className="sk-chip-ico">{s.icon}</div>
-                  <span className="sk-chip-name">{s.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="sk-panel sr" style={{ transitionDelay: '.08s' }}>
-            <div className="sk-panel-head">
-              <h3 className="sk-panel-title">Generative AI &amp; tools</h3>
-            </div>
-            <div className="sk-chip-row">
-              {GENAI_TOOLS_SKILLS.map((s, i) => (
-                <div
-                  key={s.cls}
-                  className={`sk-chip ${s.cls}`}
-                  style={{ animationDelay: `${Math.min(i, 20) * 0.03}s` }}
-                  title={s.label}
-                >
-                  <div className="sk-chip-ico">{s.icon}</div>
-                  <span className="sk-chip-name">{s.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
 
       </div>
