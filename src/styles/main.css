@@ -1426,53 +1426,22 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 }
 
 .sk-group-title {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
   width: 100%;
   margin: 0 0 30px;
   font-size: clamp(.98rem, 1.7vw, 1.15rem);
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: -.01em;
   text-align: center;
   color: var(--tx);
-}
-.sk-group-title::before,
-.sk-group-title::after {
-  content: '';
-  height: 1px;
-  flex: 1 1 auto;
-  max-width: 90px;
-  background: linear-gradient(90deg, transparent, var(--br) 50%, transparent);
-}
-.sk-group-title span {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 1;
-  white-space: normal;
-  text-align: center;
-  line-height: 1.4;
-}
-.sk-group-title span::before {
-  content: '';
-  width: 7px;
-  height: 7px;
-  border-radius: 2px;
-  background: var(--a2);
-  flex-shrink: 0;
-  transform: rotate(45deg);
 }
 
 .sk-chip-row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: stretch;
+  align-items: flex-start;
   justify-content: center;
-  gap: 12px;
+  gap: 22px 16px;
   width: 100%;
   max-width: var(--wrap-max);
   margin: 0 auto;
@@ -1481,25 +1450,23 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   --cc: 255,255,255;
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 12px;
-  width: auto;
-  padding: 10px 16px;
-  overflow: hidden;
+  gap: 9px;
+  width: 76px;
+  padding: 0;
+  overflow: visible;
   cursor: default;
-  border-radius: 12px;
-  border: 1px solid var(--br);
-  background: var(--card-bg);
+  border-radius: 0;
+  border: none;
+  background: none;
   animation: skCardIn .5s cubic-bezier(.22,1,.36,1) both;
-  transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease;
+  transition: transform .3s cubic-bezier(.22,1,.36,1);
 }
 .sk-chip:hover,
 .sk-chip:focus-visible {
   transform: translateY(-3px);
-  border-color: rgba(34,197,94,.45);
-  background: rgba(34,197,94,.06);
 }
 
 .sk-chip-ico {
@@ -1546,39 +1513,33 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 .sk-chip-name {
   position: relative;
   z-index: 1;
-  font-size: .84rem;
+  font-size: .72rem;
   font-weight: 600;
   letter-spacing: -.01em;
-  line-height: 1.3;
+  line-height: 1.28;
   color: var(--tx);
-  opacity: .88;
-  text-align: left;
-  white-space: nowrap;
+  opacity: .82;
+  text-align: center;
+  white-space: normal;
+  max-width: 82px;
   transition: opacity .3s ease;
 }
 .sk-chip:hover .sk-chip-name,
 .sk-chip:focus-visible .sk-chip-name { opacity: 1; }
 
-/* Tablet + phone: one chip per line (same square-chip shape, just smaller/shorter) */
 @media (max-width: 1024px) {
-  .sk-chip-row { flex-direction: column; flex-wrap: nowrap; gap: 8px; }
-  .sk-chip { width: 100%; padding: 7px 14px; gap: 10px; border-radius: 10px; }
-  .sk-chip-ico { width: 28px; height: 28px; border-radius: 7px; }
-  .sk-chip-ico svg { width: 16px; height: 16px; }
-  .sk-chip-name { font-size: .78rem; white-space: nowrap; }
-  .sk-group-title { margin-bottom: 24px; }
-  .sk-group-title::before,
-  .sk-group-title::after { max-width: 44px; }
+  .sk-chip-row { gap: 18px 12px; }
+  .sk-chip { width: 68px; gap: 7px; }
+  .sk-chip-ico { width: 30px; height: 30px; border-radius: 7px; }
+  .sk-chip-ico svg { width: 17px; height: 17px; }
+  .sk-chip-name { font-size: .68rem; max-width: 74px; }
 }
 @media (max-width: 480px) {
-  .sk-chip-row { gap: 7px; }
-  .sk-chip { padding: 6px 12px; gap: 8px; border-radius: 9px; }
-  .sk-chip-ico { width: 25px; height: 25px; border-radius: 6px; }
-  .sk-chip-ico svg { width: 14px; height: 14px; }
-  .sk-chip-name { font-size: .73rem; }
-  .sk-group-title { margin-bottom: 20px; }
-  .sk-group-title::before,
-  .sk-group-title::after { max-width: 24px; }
+  .sk-chip-row { gap: 16px 10px; }
+  .sk-chip { width: 60px; gap: 6px; }
+  .sk-chip-ico { width: 27px; height: 27px; border-radius: 6px; }
+  .sk-chip-ico svg { width: 15px; height: 15px; }
+  .sk-chip-name { font-size: .64rem; max-width: 66px; }
 }
 @keyframes skCardIn {
   from { opacity: 0; transform: translateY(14px) scale(.98); }

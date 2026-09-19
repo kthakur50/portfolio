@@ -277,7 +277,7 @@ const ALL_SKILLS = [
 
 const SkillGroup = ({ title, skills, delayOffset }) => (
   <div className="sk-group">
-    <h3 className="sk-group-title"><span>{title}</span></h3>
+    <h3 className="sk-group-title">{title}</h3>
     <div className="sk-chip-row">
       {skills.map((s, i) => (
         <div
