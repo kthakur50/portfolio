@@ -19,12 +19,12 @@ const FOCUS_AREAS = [
   {
     icon: <IconFullstack />,
     title: 'Fullstack Development',
-    desc: 'Scalable web apps with React, Next.js, Node.js & Express — clean UI backed by REST APIs and databases.',
+    desc: 'Scalable web apps with React, Next.js, Node.js & Express — clean, user-centric UI backed by REST APIs and well-structured databases.',
   },
   {
     icon: <IconGenAI />,
     title: 'Generative AI',
-    desc: 'AI agents, RAG pipelines and LLM-powered features built with the OpenAI API & LangChain for production-ready apps.',
+    desc: 'AI agents, RAG pipelines and LLM-powered features built with the OpenAI API & LangChain, focused on shipping practical, production-ready apps.',
   },
 ];
 
@@ -33,11 +33,6 @@ const About = () => (
     <div className="wrap">
       <div className="sec-hd" data-n="01">
         <h2>
-          <span className="sec-hd-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-            </svg>
-          </span>
           About<em>.</em>
         </h2>
       </div>
