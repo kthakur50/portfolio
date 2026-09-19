@@ -1,55 +1,68 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const LOAD_MS = 1400;
-const HIDE_MS = 1900;
-
+/* Subtle, smooth entry loader.
+   - Shows for a short minimum time so it never just "flashes".
+   - Waits for the window `load` event (fonts/images/assets settled)
+     before it's allowed to fade out, with a safety timeout so it can
+     never get stuck if `load` is slow/blocked.
+   - Fades out smoothly, then unmounts itself entirely so it leaves
+     nothing behind in the DOM. */
 const Loader = () => {
-  const [hidden, setHidden] = useState(false);
-  const [done, setDone] = useState(false);
-  const [pct, setPct] = useState(0);
-  const rafRef = useRef(null);
+  const [fading, setFading] = useState(false);
+  const [removed, setRemoved] = useState(false);
 
   useEffect(() => {
     document.body.classList.add('is-loading');
 
-    const start = performance.now();
-    const tick = (now) => {
-      const t = Math.min(1, (now - start) / LOAD_MS);
-      const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic — quick start, gentle finish
-      setPct(Math.round(eased * 100));
-      if (t < 1) rafRef.current = requestAnimationFrame(tick);
-    };
-    rafRef.current = requestAnimationFrame(tick);
+    const MIN_MS = 900;
+    const FADE_MS = 650;
+    const start = Date.now();
+    let fadeTimer;
+    let removeTimer;
 
-    const t1 = setTimeout(() => setHidden(true), LOAD_MS);
-    const t2 = setTimeout(() => {
-      setDone(true);
-      document.body.classList.remove('is-loading');
-    }, HIDE_MS);
+    const startFade = () => {
+      const elapsed = Date.now() - start;
+      const wait = Math.max(MIN_MS - elapsed, 0);
+      fadeTimer = setTimeout(() => {
+        setFading(true);
+        document.body.classList.remove('is-loading');
+        removeTimer = setTimeout(() => setRemoved(true), FADE_MS);
+      }, wait);
+    };
+
+    if (document.readyState === 'complete') {
+      startFade();
+    } else {
+      window.addEventListener('load', startFade, { once: true });
+    }
+
+    // Safety net: never let the loader hang forever.
+    const fallback = setTimeout(startFade, 4000);
 
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      window.removeEventListener('load', startFade);
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+      clearTimeout(fallback);
+      document.body.classList.remove('is-loading');
     };
   }, []);
 
-  if (done) return null;
+  if (removed) return null;
 
   return (
-    <div className={`loader${hidden ? ' loader-hide' : ''}`} aria-hidden="true">
-      <div className="loader-inner">
-        <span className="loader-tag">Portfolio<em>.</em>init</span>
-
-        <div className="loader-mark-wrap">
-          <span className="loader-mark">kt<em>.</em></span>
-        </div>
-
-        <div className="loader-progress">
-          <div className="loader-bar-track">
-            <div className="loader-bar-fill" style={{ width: `${pct}%` }} />
-          </div>
-          <span className="loader-pct">{String(pct).padStart(2, '0')}<em>%</em></span>
+    <div
+      className={`site-loader${fading ? ' site-loader--out' : ''}`}
+      role="status"
+      aria-live="polite"
+      aria-label="Loading"
+    >
+      <div className="site-loader-inner">
+        <span className="site-loader-logo">
+          kt<em>.</em>
+        </span>
+        <div className="site-loader-bar">
+          <span className="site-loader-bar-fill"></span>
         </div>
       </div>
     </div>

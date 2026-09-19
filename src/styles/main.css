@@ -66,6 +66,79 @@ html { scrollbar-width: thin; scrollbar-color: var(--a) transparent; }
 
 .wrap { max-width: var(--wrap-max); margin: 0 auto; padding: 0 var(--pad); width: 100%; }
 section { padding: 130px 0; }
+
+/* ── Entry loader — subtle, smooth, brief ───────────────────────
+   Full-screen overlay shown for a minimum time while the page's
+   fonts/images settle, then fades out and unmounts. Body scroll is
+   locked while it's visible (see .is-loading below). */
+body.is-loading { overflow: hidden; }
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .65s cubic-bezier(.4,0,.2,1), visibility .65s;
+}
+.site-loader--out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.site-loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.site-loader-logo {
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--tx);
+  animation: loaderPulse 1.7s ease-in-out infinite;
+}
+.site-loader-logo em {
+  font-style: normal;
+  color: var(--a2);
+}
+.site-loader-bar {
+  position: relative;
+  width: 120px;
+  height: 2px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: rgba(255,255,255,.08);
+}
+.site-loader-bar-fill {
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 40%;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--a2);
+  animation: loaderSlide 1.25s ease-in-out infinite;
+}
+@keyframes loaderPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .5; }
+}
+@keyframes loaderSlide {
+  0%   { left: -40%; }
+  50%  { left: 60%; }
+  100% { left: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-loader-logo { animation: none; }
+  .site-loader-bar-fill { animation: none; left: 0; width: 100%; }
+}
+
 .sec-hd {
  display: flex;
  flex-direction: row;

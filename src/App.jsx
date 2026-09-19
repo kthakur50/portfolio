@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import './styles/main.css';
 
 import Navbar           from './components/Navbar';
+import Loader           from './components/Loader';
 import Hero             from './components/Hero';
 import About            from './components/About';
 import Skills           from './components/Skills';
@@ -18,6 +19,7 @@ const App = () => {
 
   return (
     <>
+      <Loader />
       <Navbar />
       <main>
         <Hero />
