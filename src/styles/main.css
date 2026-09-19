@@ -745,7 +745,7 @@ p.hero-intro {
     "icon title"
     "desc desc";
   column-gap: 14px;
-  row-gap: 8px;
+  row-gap: 12px;
   padding: 16px 18px;
   background: var(--card-bg);
   border: none;
@@ -799,7 +799,7 @@ p.hero-intro {
   overflow-wrap: break-word;
 }
 @media (max-width: 640px) {
-  .about-focus-row { padding: 14px 15px; row-gap: 6px; }
+  .about-focus-row { padding: 14px 15px; row-gap: 9px; }
   .about-focus-ico { width: 34px; height: 34px; border-radius: 9px; }
   .about-focus-ico svg { width: 17px; height: 17px; }
   .about-focus-title { font-size: .91rem; }
@@ -1997,8 +1997,10 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .edu-item::before { left: calc(-44px + clamp(30px, 4.8vw, 34px) / 2); top: 46px; }
   .edu-card { padding: 15px 17px; min-height: 54px; display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
-  .edu-deg-title { font-size: .92rem; order: 2; margin-top: 4px; }
-  .edu-inst { font-size: .74rem; order: 1; }
+  .edu-deg-title { font-size: .92rem; order: 1; }
+  .edu-inst { font-size: .74rem; order: 2; margin-top: 4px; display: flex; flex-direction: column; gap: 2px; }
+  .edu-inst-sep { display: none; }
+  .edu-inst-loc { display: block; }
   .edu-yr { font-size: .74rem; white-space: nowrap; order: 3; margin-left: 0; margin-top: 8px; text-align: left; align-self: flex-start; }
 
   /* Contact */
@@ -2395,8 +2397,8 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .edu-card { padding: 13px 14px; min-height: 50px; }
   .edu-card { display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
-  .edu-inst-sep { display: inline; }
-  .edu-inst-loc { display: inline; margin-top: 0; }
+  .edu-inst-sep { display: none; }
+  .edu-inst-loc { display: block; margin-top: 0; }
 
   /* Footer */
 }
