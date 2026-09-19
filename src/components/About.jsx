@@ -58,8 +58,8 @@ const About = () => (
           {FOCUS_AREAS.map((f, i) => (
             <div
               key={f.title}
-              className={`about-focus-row sr ${i % 2 === 0 ? 'sr-pop-a' : 'sr-pop-b'}`}
-              style={{ transitionDelay: `${i * 0.07}s` }}
+              className={`about-focus-row sr ${i % 2 === 0 ? 'sr-fade-left' : 'sr-fade-right'}`}
+              style={{ transitionDelay: `${0.07 + i * 0.08}s` }}
             >
               <div className="about-focus-ico">{f.icon}</div>
               <div className="about-focus-body">

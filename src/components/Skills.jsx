@@ -305,7 +305,7 @@ const Skills = () => {
         </div>
 
         <div className="sk-panel">
-          <SkillGroup title="Fullstack & GenAI Technology" skills={ALL_SKILLS} delayOffset={0} />
+          <SkillGroup title="Full Stack Development, Generative AI & DevOps Technologies" skills={ALL_SKILLS} delayOffset={0} />
         </div>
 
       </div>
