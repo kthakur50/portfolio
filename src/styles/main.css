@@ -1340,6 +1340,12 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   margin: 0 auto;
   padding: 0;
 }
+@media (max-width: 860px) {
+  .sk-panel { padding-bottom: 18px; }
+}
+@media (max-width: 480px) {
+  .sk-panel { padding-bottom: 24px; }
+}
 
 /* ── Segmented filter tabs ── */
 .sk-tabs {
@@ -1424,7 +1430,9 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   justify-content: center;
   gap: 10px;
   width: 104px;
+  aspect-ratio: 1 / 1;
   padding: 6px;
+  overflow: hidden;
   cursor: default;
   animation: skCardIn .5s cubic-bezier(.22,1,.36,1) both;
   transition: transform .35s cubic-bezier(.22,1,.36,1);
@@ -1977,7 +1985,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 
   /* Name: single line, shrunk to fit the tablet card width */
   .hero-name {
-    font-size: clamp(1.9rem, 5.4vw, 2.8rem);
+    font-size: clamp(2rem, 5.6vw, 2.9rem);
     font-weight: 600;
     line-height: .95;
     letter-spacing: .02em;
@@ -1990,7 +1998,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .hero-card { padding: clamp(64px, 10vw, 92px) clamp(22px, 3.6vw, 42px); }
   .hero-card-inner { gap: clamp(26px, 4vw, 38px); }
   p.hero-intro { font-size: clamp(.52rem, 1.5vw, .66rem); }
-  .hero-card-cube { width: clamp(220px, 29vw, 308px); height: clamp(220px, 29vw, 308px); }
+  .hero-card-cube { width: clamp(220px, 29vw, 308px); height: clamp(220px, 29vw, 308px); margin-top: 10px; }
   .hero-card-cube .win3d-scene { --cube-size: clamp(130px, 16.5vw, 180px); --cube-tz: clamp(75px, 9.4vw, 101px); }
   .hero-social-row { margin-top: clamp(34px, 5vw, 46px); gap: 12px; }
 
@@ -2352,7 +2360,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 
   /* Name */
   .hero-name {
-    font-size: clamp(2.05rem, 8vw, 3.1rem);
+    font-size: clamp(2.15rem, 8.3vw, 3.2rem);
     line-height: .95;
     letter-spacing: .02em;
     margin-top: clamp(4px, 1vw, 8px);
@@ -2368,7 +2376,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .hero-card { padding: calc(clamp(60px, 14vw, 88px) - 3px) clamp(20px, 5vw, 32px); }
   .hero-card-inner { gap: clamp(22px, 5vw, 34px); }
   p.hero-intro { font-size: clamp(.68rem, 3.6vw, .82rem); white-space: pre-line; overflow: visible; }
-  .hero-card-cube { width: clamp(210px, 44vw, 264px); height: clamp(210px, 44vw, 264px); }
+  .hero-card-cube { width: clamp(210px, 44vw, 264px); height: clamp(210px, 44vw, 264px); margin-top: 12px; }
   .hero-card-cube .win3d-scene { --cube-size: clamp(121px, 24vw, 154px); --cube-tz: clamp(70px, 14vw, 90px); }
 
 
