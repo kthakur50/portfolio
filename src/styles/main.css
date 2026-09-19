@@ -2057,42 +2057,45 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     top: calc(var(--nav) + 10px);
     right: var(--pad);
     left: auto;
-    bottom: var(--pad);
+    bottom: auto;
     max-width: none;
+    max-height: calc(100vh - var(--nav) - var(--pad) - 20px);
     margin: 0;
     height: auto;
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    width: min(62vw, 260px);
+    width: min(72vw, 292px);
     container-type: inline-size;
     container-name: navmob;
-    background: #131315;
-    background-image: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0) 40%);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    background:
+      radial-gradient(120% 100% at 100% 0%, rgba(34,197,94,.10), transparent 55%),
+      linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 45%),
+      #121214;
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
     border: 1px solid rgba(255,255,255,.10);
-    border-radius: 24px;
-    padding: 14px 14px 22px;
+    border-radius: 26px;
+    padding: 8px 10px 14px;
     display: flex !important;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    gap: 12px;
+    gap: 10px;
     opacity: 0;
-    transform: translateX(calc(100% + 24px));
-    transform-origin: right center;
+    transform: scale(.9) translateY(-10px);
+    transform-origin: top right;
     pointer-events: none;
-    transition: opacity .28s cubic-bezier(.4,0,.2,1),
+    transition: opacity .26s cubic-bezier(.4,0,.2,1),
       transform .38s cubic-bezier(.32,.9,.34,1);
     z-index: 999;
-    box-shadow: 0 24px 64px rgba(0,0,0,.5), 0 4px 16px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.06);
+    box-shadow: 0 28px 70px rgba(0,0,0,.55), 0 6px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.07);
   }
   .nav-mob::-webkit-scrollbar { display: none; }
   .nav-mob.open {
     opacity: 1;
-    transform: translateX(0);
+    transform: scale(1) translateY(0);
     pointer-events: auto;
   }
 
@@ -2103,14 +2106,15 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2px 4px 10px;
+    padding: 8px 8px 10px;
+    margin-bottom: 2px;
     border-bottom: 1px solid rgba(255,255,255,.08);
     flex-shrink: 0;
   }
   .nav-mob-head-label {
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: .06em;
+    font-size: .66rem;
+    font-weight: 800;
+    letter-spacing: .08em;
     text-transform: uppercase;
     color: var(--mu);
   }
@@ -2118,8 +2122,8 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     background: rgba(255,255,255,.06);
     border: 1px solid rgba(255,255,255,.10);
@@ -2131,110 +2135,135 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob-close:hover, .nav-mob-close:focus-visible { color: var(--tx); background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); }
   .nav-mob-close:active { transform: scale(.9); }
 
-  /* Single column — every item is one horizontal row (icon + label
-     on the same line), stacked one below the other, so the card
-     reads as a vertical list on phone and tablet. */
+  /* App-launcher style grid: two columns of square icon tiles (icon on
+     top, label underneath) instead of a plain vertical list — reads as
+     a modern quick-actions panel. Contact stays a full-width CTA row. */
   .nav-mob-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 9px;
     width: 100%;
     place-items: stretch;
     margin: 0;
+    padding: 4px 2px 0;
   }
 
   .nav-mob a {
+    --tile: 34,197,94;
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    aspect-ratio: auto;
+    justify-content: center;
+    aspect-ratio: 1 / .92;
     min-height: 0;
     min-width: 0;
     width: 100%;
-    gap: 12px;
-    padding: 10px 14px;
-    border-radius: 16px;
+    gap: 8px;
+    padding: 14px 8px;
+    border-radius: 18px;
     color: var(--tx);
     text-decoration: none;
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(255,255,255,.09);
+    background: rgba(var(--tile), .07);
+    border: 1px solid rgba(var(--tile), .16);
     opacity: 0;
-    transform: scale(.92) translateY(6px);
+    transform: scale(.85) translateY(8px);
     will-change: transform, opacity;
-    transition: background .18s ease, border-color .18s ease, transform .18s cubic-bezier(.34,1.5,.64,1),
-      opacity .3s cubic-bezier(.25,1,.5,1);
+    transition: background .2s ease, border-color .2s ease, box-shadow .2s ease,
+      transform .18s cubic-bezier(.34,1.5,.64,1), opacity .3s cubic-bezier(.25,1,.5,1);
   }
   .nav-mob.open a { opacity: 1; transform: scale(1) translateY(0); }
-  .nav-mob.open a:nth-child(1) { transition-delay: .05s; }
-  .nav-mob.open a:nth-child(2) { transition-delay: .08s; }
-  .nav-mob.open a:nth-child(3) { transition-delay: .11s; }
-  .nav-mob.open a:nth-child(4) { transition-delay: .14s; }
-  .nav-mob.open a:nth-child(5) { transition-delay: .17s; }
-  .nav-mob.open a:nth-child(6) { transition-delay: .2s; }
-  .nav-mob.open a:nth-child(7) { transition-delay: .23s; }
+  .nav-mob.open a:nth-child(1) { transition-delay: .04s; }
+  .nav-mob.open a:nth-child(2) { transition-delay: .07s; }
+  .nav-mob.open a:nth-child(3) { transition-delay: .1s; }
+  .nav-mob.open a:nth-child(4) { transition-delay: .13s; }
+  .nav-mob.open a:nth-child(5) { transition-delay: .16s; }
+  .nav-mob.open a:nth-child(6) { transition-delay: .19s; }
+  .nav-mob.open a:nth-child(7) { transition-delay: .22s; }
+
+  /* Each tile gets its own subtle accent hue — reads as a lively,
+     colour-coded set of quick-actions rather than one flat grid. */
+  .nav-mob a.nm-home       { --tile: 45,212,191; }
+  .nav-mob a.nm-about      { --tile: 96,165,250; }
+  .nav-mob a.nm-skills     { --tile: 167,139,250; }
+  .nav-mob a.nm-experience { --tile: 251,146,60; }
+  .nav-mob a.nm-projects   { --tile: 244,114,182; }
+  .nav-mob a.nm-education  { --tile: 250,204,21; }
+
+  .nav-mob a:hover {
+    background: rgba(var(--tile), .13);
+    border-color: rgba(var(--tile), .32);
+    transform: translateY(-2px);
+  }
   .nav-mob a:active {
-    transform: scale(.94);
-    background: rgba(255,255,255,.10);
+    transform: scale(.94) translateY(0);
     transition: transform .12s cubic-bezier(.34,1.56,.64,1), background .12s ease;
   }
-  .nav-mob a:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
+  .nav-mob.open a:hover { transform: scale(1) translateY(-2px); }
   .nav-mob a.active {
-    background: rgba(34,197,94,.12);
-    border-color: rgba(34,197,94,.35);
+    background: rgba(var(--tile), .16);
+    border-color: rgba(var(--tile), .4);
+    box-shadow: 0 6px 18px -6px rgba(var(--tile), .5);
   }
-  .nav-mob a.active .nm-icon { background: rgba(34,197,94,.16); border-color: rgba(34,197,94,.4); }
-  .nav-mob a.active .nm-icon svg { color: var(--a2); }
-  .nav-mob a.active .nav-mob-label { color: var(--a2); }
+  .nav-mob a.active .nm-icon { background: rgba(var(--tile), .22); border-color: rgba(var(--tile), .5); }
+  .nav-mob a.active .nm-icon svg { color: rgb(var(--tile)); }
+  .nav-mob a.active .nav-mob-label { color: var(--tx); }
 
-  /* Contact is the last row — a CTA button with a solid accent fill
-     so it stands out from the plain rows above it. */
+  /* Contact is the closing row — a solid, full-width CTA that reads as
+     the primary action beneath the grid of quick links. */
   .nav-mob a.nm-span2 {
+    grid-column: 1 / -1;
     width: 100%;
     min-width: 0;
     aspect-ratio: auto;
     min-height: 0;
     flex-direction: row;
-    justify-content: flex-start;
-    padding: 10px 14px;
-    gap: 12px;
-    background: linear-gradient(135deg, rgba(34,197,94,.16), rgba(34,197,94,.06));
-    border-color: rgba(34,197,94,.3);
+    justify-content: center;
+    padding: 12px 14px;
+    gap: 10px;
+    margin-top: 2px;
+    background: linear-gradient(135deg, rgba(34,197,94,.9), rgba(22,163,74,.85));
+    border-color: rgba(34,197,94,.6);
+    box-shadow: 0 10px 24px -10px rgba(34,197,94,.55);
   }
-  .nav-mob a.nm-span2:hover { background: linear-gradient(135deg, rgba(34,197,94,.22), rgba(34,197,94,.08)); }
-  .nav-mob a.nm-span2 .nm-icon { background: rgba(34,197,94,.14); border-color: rgba(34,197,94,.3); }
-  .nav-mob a.nm-span2 .nm-icon svg { color: var(--a2); }
-  .nav-mob a.nm-span2 .nav-mob-label { font-size: .8rem; color: var(--tx); font-weight: 700; }
+  .nav-mob a.nm-span2:hover {
+    background: linear-gradient(135deg, rgba(34,197,94,1), rgba(22,163,74,.95));
+    transform: translateY(-2px);
+  }
+  .nav-mob a.nm-span2 .nm-icon { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.3); }
+  .nav-mob a.nm-span2 .nm-icon svg { color: #06170c; }
+  .nav-mob a.nm-span2 .nav-mob-label { font-size: .82rem; color: #06170c; font-weight: 800; }
+  .nav-mob a.nm-span2.active .nm-icon svg,
+  .nav-mob a.nm-span2.active .nav-mob-label { color: #06170c; }
 
   .nm-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0;
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-    min-height: 38px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     flex-shrink: 0;
-    border-radius: 11px;
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 12px;
+    background: rgba(var(--tile), .14);
+    border: 1px solid rgba(var(--tile), .3);
     transition: transform .18s cubic-bezier(.34,1.5,.64,1), border-color .18s ease, background .18s ease;
   }
-  .nav-mob a:hover .nm-icon { transform: scale(1.06); }
-  .nm-icon svg { display: block; margin: 0 auto; width: 22px; height: 22px; color: var(--tx); transition: color .18s ease; }
+  .nav-mob a:hover .nm-icon { transform: scale(1.08) rotate(-3deg); }
+  .nm-icon svg { display: block; margin: 0 auto; width: 21px; height: 21px; color: rgb(var(--tile)); transition: color .18s ease; }
 
-  /* Label sits beside the icon on the same line — each row reads as
-     a self-contained icon + name button, left-aligned. */
+  /* Label centred beneath the icon — each tile reads as a
+     self-contained app-style shortcut. */
   .nav-mob-label {
     position: static;
-    font-size: .78rem;
-    font-weight: 600;
-    letter-spacing: .01em;
+    font-size: .72rem;
+    font-weight: 650;
+    letter-spacing: .005em;
     white-space: normal;
     max-width: 100%;
-    text-align: left;
+    text-align: center;
     line-height: 1.2;
     margin-left: 0;
     overflow: visible;
@@ -2251,22 +2280,22 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob-label::after { display: none; }
   .nav-mob a.nm-span2 .nav-mob-label { white-space: nowrap; }
 
-  /* Wider containers (tablet) just get roomier tiles — column
-     count stays fixed at 3 so the layout never re-flows oddly. */
-  @container navmob (min-width: 300px) {
-    .nav-mob-grid { gap: 10px; }
-    .nav-mob a { border-radius: 18px; padding: 11px 16px; gap: 12px; }
-    .nm-icon { width: 42px; height: 42px; min-width: 42px; min-height: 42px; border-radius: 12px; }
-    .nm-icon svg { width: 24px; height: 24px; }
-    .nav-mob-label { font-size: .84rem; }
+  /* Wider containers (tablet) get roomier tiles and a wider panel —
+     the grid stays two columns so it still reads as tidy app tiles. */
+  @container navmob (min-width: 260px) {
+    .nav-mob-grid { gap: 11px; }
+    .nav-mob a { border-radius: 20px; padding: 16px 8px; gap: 9px; }
+    .nm-icon { width: 44px; height: 44px; min-width: 44px; min-height: 44px; border-radius: 13px; }
+    .nm-icon svg { width: 23px; height: 23px; }
+    .nav-mob-label { font-size: .76rem; }
     .nav-mob a.nm-span2 { padding: 13px 16px; }
   }
-  @container navmob (min-width: 480px) {
-    .nav-mob-grid { gap: 12px; }
-    .nav-mob a { border-radius: 20px; padding: 13px 18px; gap: 14px; }
-    .nm-icon { width: 46px; height: 46px; min-width: 46px; min-height: 46px; border-radius: 14px; }
-    .nm-icon svg { width: 26px; height: 26px; }
-    .nav-mob-label { font-size: .88rem; }
+  @container navmob (min-width: 340px) {
+    .nav-mob-grid { gap: 13px; }
+    .nav-mob a { border-radius: 22px; padding: 18px 10px; gap: 10px; }
+    .nm-icon { width: 48px; height: 48px; min-width: 48px; min-height: 48px; border-radius: 15px; }
+    .nm-icon svg { width: 25px; height: 25px; }
+    .nav-mob-label { font-size: .8rem; }
     .nav-mob a.nm-span2 { padding: 14px 18px; }
   }
 }
