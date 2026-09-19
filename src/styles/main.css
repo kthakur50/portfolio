@@ -1394,16 +1394,14 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   overflow: hidden;
   cursor: default;
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.02);
+  border: none;
+  background: none;
   animation: skCardIn .5s cubic-bezier(.22,1,.36,1) both;
-  transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, background .3s ease;
+  transition: transform .3s cubic-bezier(.22,1,.36,1);
 }
 .sk-chip:hover,
 .sk-chip:focus-visible {
   transform: translateX(4px);
-  border-color: rgba(var(--cc),.4);
-  background: rgba(255,255,255,.035);
 }
 
 .sk-chip-ico {
@@ -1412,7 +1410,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   justify-content: center;
   width: 38px;
   height: 38px;
-  border-radius: 50%;
+  border-radius: 7px;
   border: none;
   background: #ffffff;
   color: #1c1c1e;
@@ -1422,12 +1420,19 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   overflow: hidden;
   flex-shrink: 0;
   z-index: 1;
-  box-shadow: 0 2px 6px -2px rgba(0,0,0,.5);
-  transition: transform .35s cubic-bezier(.22,1,.36,1);
+  box-shadow:
+    3px 3px 0 0 rgba(0,0,0,.16),
+    6px 6px 0 0 rgba(0,0,0,.09),
+    0 2px 6px -2px rgba(0,0,0,.5);
+  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s cubic-bezier(.22,1,.36,1);
 }
 .sk-chip:hover .sk-chip-ico,
 .sk-chip:focus-visible .sk-chip-ico {
-  transform: scale(1.08);
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow:
+    4px 4px 0 0 rgba(0,0,0,.18),
+    8px 8px 0 0 rgba(0,0,0,.1),
+    0 4px 10px -2px rgba(0,0,0,.55);
 }
 .sk-chip-ico svg {
   display: block;
@@ -1992,8 +1997,8 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .edu-item::before { left: calc(-44px + clamp(30px, 4.8vw, 34px) / 2); top: 46px; }
   .edu-card { padding: 15px 17px; min-height: 54px; display: flex; flex-direction: column; }
   .edu-header-row { display: contents; }
-  .edu-deg-title { font-size: .92rem; order: 1; }
-  .edu-inst { font-size: .74rem; order: 2; }
+  .edu-deg-title { font-size: .92rem; order: 2; margin-top: 4px; }
+  .edu-inst { font-size: .74rem; order: 1; }
   .edu-yr { font-size: .74rem; white-space: nowrap; order: 3; margin-left: 0; margin-top: 8px; text-align: left; align-self: flex-start; }
 
   /* Contact */

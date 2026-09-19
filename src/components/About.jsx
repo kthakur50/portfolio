@@ -19,7 +19,7 @@ const FOCUS_AREAS = [
   {
     icon: <IconFullstack />,
     title: 'Fullstack Development',
-    desc: 'Scalable web apps with React, Next.js, Node.js & Express — clean, user-centric UI backed by REST APIs and well-structured databases. Comfortable owning a feature end-to-end, from schema to a polished, responsive interface.',
+    desc: 'Scalable web apps with React, Next.js, Node.js & Express — clean, user-centric UI backed by REST APIs and well-structured databases. I enjoy owning a feature end-to-end, from schema to interface.',
   },
   {
     icon: <IconGenAI />,

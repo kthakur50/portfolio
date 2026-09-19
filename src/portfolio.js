@@ -625,30 +625,21 @@ function initTilt() {
   }, { passive: true });
 }
 
-/* ── Pencil cursor: a small pencil icon follows the mouse and leaves a
-   soft, fading sketch-like trail behind it. Desktop only (devices with a
-   real mouse) — untouched on touch devices so nothing interferes with
-   tapping/scrolling on tablets and phones. ── */
+/* ── Pencil trail: leaves a soft, fading, hand-drawn-looking sketch trail
+   behind the real cursor (no icon — just the line itself). Desktop only
+   (devices with a real mouse) — fully skipped on touch devices (tablet /
+   phone) so nothing draws or interferes with tapping/scrolling there. ── */
 function initPencilCursor() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const hasMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  /* Tablet/phone (touch, no real pointer) — skip the trail entirely. */
+  if (!hasMouse) return;
 
   const canvas = document.createElement('canvas');
   canvas.id = 'pencil-trail';
   canvas.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9998;';
   document.body.appendChild(canvas);
   const ctx = canvas.getContext('2d');
-
-  const pencil = document.createElement('div');
-  pencil.id = 'pencil-cursor';
-  pencil.innerHTML = `
-    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 21l1.6-5.6L15.9 4.1a2 2 0 0 1 2.83 0l1.17 1.17a2 2 0 0 1 0 2.83L8.6 19.4 3 21z" fill="#22c55e" stroke="#0a3d1f" stroke-width="1"/>
-      <path d="M14.5 5.5l4 4" stroke="#0a3d1f" stroke-width="1"/>
-      <path d="M4.6 15.4l4 4" stroke="#0a3d1f" stroke-width="1"/>
-    </svg>`;
-  pencil.style.cssText = 'position:fixed;top:0;left:0;width:26px;height:26px;pointer-events:none;z-index:9999;will-change:transform;opacity:0;transition:opacity .25s ease;';
-  document.body.appendChild(pencil);
 
   let dpr = Math.min(window.devicePixelRatio || 1, 2);
   function resize() {
@@ -661,72 +652,56 @@ function initPencilCursor() {
   window.addEventListener('resize', resize);
 
   let points = [];
-  let lastX = 0, lastY = 0, lastAngle = -45;
-  let hasMoved = false;
 
-  function movePencil(x, y, offset) {
-    if (hasMoved) {
-      const dx = x - lastX, dy = y - lastY;
-      if (Math.hypot(dx, dy) > 2) {
-        lastAngle = Math.atan2(dy, dx) * (180 / Math.PI) - 45;
+  function addPoint(x, y) {
+    const last = points[points.length - 1];
+    if (last) {
+      /* Insert extra interpolated points between fast mouse jumps so the
+         curve has enough samples to stay smooth instead of segmented. */
+      const dx = x - last.x, dy = y - last.y;
+      const dist = Math.hypot(dx, dy);
+      const steps = Math.min(Math.floor(dist / 6), 8);
+      for (let i = 1; i < steps; i++) {
+        points.push({ x: last.x + (dx * i) / steps, y: last.y + (dy * i) / steps, t: performance.now() });
       }
-    } else {
-      hasMoved = true;
     }
-    lastX = x; lastY = y;
-    const tx = offset ? x + 8 : x - 3;
-    const ty = offset ? y - 26 : y - 21;
-    pencil.style.transform = `translate(${tx}px, ${ty}px) rotate(${lastAngle}deg)`;
     points.push({ x, y, t: performance.now() });
   }
 
-  /* Desktop: pencil trails alongside the real mouse cursor, offset so
-     the two don't sit exactly on top of each other, and stays visible
-     the whole time the pointer is over the page. */
-  if (hasMouse) {
-    document.addEventListener('mousemove', e => {
-      movePencil(e.clientX, e.clientY, true);
-      pencil.style.opacity = '1';
-    }, { passive: true });
-    document.addEventListener('mouseleave', () => { pencil.style.opacity = '0'; }, { passive: true });
-    document.addEventListener('mouseenter', () => { if (hasMoved) pencil.style.opacity = '1'; }, { passive: true });
-  }
-
-  /* Touch: finger dragging across the screen draws the same trail —
-     the pencil icon sits right at the fingertip and only shows up
-     while actively touching, since there's no persistent pointer. */
-  document.addEventListener('touchstart', e => {
-    const t = e.touches[0];
-    if (!t) return;
-    hasMoved = false;
-    movePencil(t.clientX, t.clientY, false);
-    pencil.style.opacity = '1';
+  document.addEventListener('mousemove', e => {
+    addPoint(e.clientX, e.clientY);
   }, { passive: true });
-  document.addEventListener('touchmove', e => {
-    const t = e.touches[0];
-    if (!t) return;
-    movePencil(t.clientX, t.clientY, false);
-  }, { passive: true });
-  document.addEventListener('touchend', () => { pencil.style.opacity = '0'; }, { passive: true });
-  document.addEventListener('touchcancel', () => { pencil.style.opacity = '0'; }, { passive: true });
 
-  const LIFETIME = 550;
+  const LIFETIME = 650;
   function draw() {
     const now = performance.now();
     points = points.filter(p => now - p.t < LIFETIME);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 1; i < points.length; i++) {
-      const p0 = points[i - 1], p1 = points[i];
-      const age = now - p1.t;
-      const life = 1 - age / LIFETIME;
-      if (life <= 0) continue;
-      ctx.beginPath();
-      ctx.moveTo(p0.x, p0.y);
-      ctx.lineTo(p1.x, p1.y);
-      ctx.strokeStyle = `rgba(34,197,94,${(life * 0.5).toFixed(3)})`;
-      ctx.lineWidth = Math.max(1, life * 2.4);
-      ctx.lineCap = 'round';
-      ctx.stroke();
+
+    if (points.length > 2) {
+      /* Draw the trail as one continuous smoothed path (quadratic curves
+         through midpoints) rather than raw straight segments, and taper
+         both opacity and width along its length for a realistic,
+         hand-sketched pencil-stroke feel. */
+      for (let i = 1; i < points.length - 1; i++) {
+        const p0 = points[i - 1], p1 = points[i], p2 = points[i + 1];
+        const age = now - p1.t;
+        const life = 1 - age / LIFETIME;
+        if (life <= 0) continue;
+        const midX = (p1.x + p2.x) / 2;
+        const midY = (p1.y + p2.y) / 2;
+        const prevMidX = (p0.x + p1.x) / 2;
+        const prevMidY = (p0.y + p1.y) / 2;
+
+        ctx.beginPath();
+        ctx.moveTo(prevMidX, prevMidY);
+        ctx.quadraticCurveTo(p1.x, p1.y, midX, midY);
+        ctx.strokeStyle = `rgba(34,197,94,${(life * 0.45).toFixed(3)})`;
+        ctx.lineWidth = Math.max(0.6, life * 2.2);
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+      }
     }
     requestAnimationFrame(draw);
   }

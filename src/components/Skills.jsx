@@ -245,8 +245,8 @@ const IconHuggingFace = () => (
 
 
 
-/* ─────────────── Skill data (grouped) ─────────────── */
-const FULLSTACK_SKILLS = [
+/* ─────────────── Skill data (merged: Fullstack + GenAI) ─────────────── */
+const ALL_SKILLS = [
   { cls: 'sc-html',    label: 'HTML5',        icon: <IconHTML /> },
   { cls: 'sc-css',     label: 'CSS3',          icon: <IconCSS /> },
   { cls: 'sc-tw',      label: 'Tailwind CSS',  icon: <IconTailwind /> },
@@ -263,9 +263,6 @@ const FULLSTACK_SKILLS = [
   { cls: 'sc-pg',      label: 'PostgreSQL',    icon: <IconPostgres /> },
   { cls: 'sc-python',  label: 'Python',        icon: <IconPython /> },
   { cls: 'sc-redis',   label: 'Redis',         icon: <IconRedis /> },
-];
-
-const GENAI_TECH_SKILLS = [
   { cls: 'sc-openai',  label: 'OpenAI API',    icon: <IconOpenAI /> },
   { cls: 'sc-lang',    label: 'LangChain',     icon: <IconLangChain /> },
   { cls: 'sc-git',     label: 'Git',           icon: <IconGit /> },
@@ -308,8 +305,7 @@ const Skills = () => {
         </div>
 
         <div className="sk-panel">
-          <SkillGroup title="Fullstack" skills={FULLSTACK_SKILLS} delayOffset={0} />
-          <SkillGroup title="GenAI Technology" skills={GENAI_TECH_SKILLS} delayOffset={0.05} />
+          <SkillGroup title="Fullstack & GenAI Technology" skills={ALL_SKILLS} delayOffset={0} />
         </div>
 
       </div>
