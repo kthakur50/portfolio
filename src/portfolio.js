@@ -227,7 +227,7 @@ function initMasonry() {
 
   projects.forEach((p, i) => {
     const el = document.createElement('div');
-    el.className = 'masonry-item sr sr-tilt';
+    el.className = `masonry-item sr ${i % 2 === 0 ? 'sr-pop-a' : 'sr-pop-b'}`;
     el.style.transitionDelay = (i * 0.07) + 's';
     el.innerHTML = `
       <div class="masonry-item-inner">
@@ -625,6 +625,114 @@ function initTilt() {
   }, { passive: true });
 }
 
+/* ── Pencil cursor: a small pencil icon follows the mouse and leaves a
+   soft, fading sketch-like trail behind it. Desktop only (devices with a
+   real mouse) — untouched on touch devices so nothing interferes with
+   tapping/scrolling on tablets and phones. ── */
+function initPencilCursor() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const hasMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  const canvas = document.createElement('canvas');
+  canvas.id = 'pencil-trail';
+  canvas.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9998;';
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+
+  const pencil = document.createElement('div');
+  pencil.id = 'pencil-cursor';
+  pencil.innerHTML = `
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 21l1.6-5.6L15.9 4.1a2 2 0 0 1 2.83 0l1.17 1.17a2 2 0 0 1 0 2.83L8.6 19.4 3 21z" fill="#22c55e" stroke="#0a3d1f" stroke-width="1"/>
+      <path d="M14.5 5.5l4 4" stroke="#0a3d1f" stroke-width="1"/>
+      <path d="M4.6 15.4l4 4" stroke="#0a3d1f" stroke-width="1"/>
+    </svg>`;
+  pencil.style.cssText = 'position:fixed;top:0;left:0;width:26px;height:26px;pointer-events:none;z-index:9999;will-change:transform;opacity:0;transition:opacity .25s ease;';
+  document.body.appendChild(pencil);
+
+  let dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  let points = [];
+  let lastX = 0, lastY = 0, lastAngle = -45;
+  let hasMoved = false;
+
+  function movePencil(x, y, offset) {
+    if (hasMoved) {
+      const dx = x - lastX, dy = y - lastY;
+      if (Math.hypot(dx, dy) > 2) {
+        lastAngle = Math.atan2(dy, dx) * (180 / Math.PI) - 45;
+      }
+    } else {
+      hasMoved = true;
+    }
+    lastX = x; lastY = y;
+    const tx = offset ? x + 8 : x - 3;
+    const ty = offset ? y - 26 : y - 21;
+    pencil.style.transform = `translate(${tx}px, ${ty}px) rotate(${lastAngle}deg)`;
+    points.push({ x, y, t: performance.now() });
+  }
+
+  /* Desktop: pencil trails alongside the real mouse cursor, offset so
+     the two don't sit exactly on top of each other, and stays visible
+     the whole time the pointer is over the page. */
+  if (hasMouse) {
+    document.addEventListener('mousemove', e => {
+      movePencil(e.clientX, e.clientY, true);
+      pencil.style.opacity = '1';
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => { pencil.style.opacity = '0'; }, { passive: true });
+    document.addEventListener('mouseenter', () => { if (hasMoved) pencil.style.opacity = '1'; }, { passive: true });
+  }
+
+  /* Touch: finger dragging across the screen draws the same trail —
+     the pencil icon sits right at the fingertip and only shows up
+     while actively touching, since there's no persistent pointer. */
+  document.addEventListener('touchstart', e => {
+    const t = e.touches[0];
+    if (!t) return;
+    hasMoved = false;
+    movePencil(t.clientX, t.clientY, false);
+    pencil.style.opacity = '1';
+  }, { passive: true });
+  document.addEventListener('touchmove', e => {
+    const t = e.touches[0];
+    if (!t) return;
+    movePencil(t.clientX, t.clientY, false);
+  }, { passive: true });
+  document.addEventListener('touchend', () => { pencil.style.opacity = '0'; }, { passive: true });
+  document.addEventListener('touchcancel', () => { pencil.style.opacity = '0'; }, { passive: true });
+
+  const LIFETIME = 550;
+  function draw() {
+    const now = performance.now();
+    points = points.filter(p => now - p.t < LIFETIME);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 1; i < points.length; i++) {
+      const p0 = points[i - 1], p1 = points[i];
+      const age = now - p1.t;
+      const life = 1 - age / LIFETIME;
+      if (life <= 0) continue;
+      ctx.beginPath();
+      ctx.moveTo(p0.x, p0.y);
+      ctx.lineTo(p1.x, p1.y);
+      ctx.strokeStyle = `rgba(34,197,94,${(life * 0.5).toFixed(3)})`;
+      ctx.lineWidth = Math.max(1, life * 2.4);
+      ctx.lineCap = 'round';
+      ctx.stroke();
+    }
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+}
+
 export function initAll() {
   if (window.__portfolioInit) return;
   window.__portfolioInit = true;
@@ -637,4 +745,5 @@ export function initAll() {
   initMasonry();
   initWin3DCube();
   initTilt();
+  initPencilCursor();
 }

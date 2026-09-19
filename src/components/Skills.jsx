@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 /* ─────────────── SVG Icon Components ─────────────── */
 
 const IconHTML = () => (
@@ -247,48 +245,59 @@ const IconHuggingFace = () => (
 
 
 
-/* ─────────────── Skill data (single source of truth) ─────────────── */
-const SKILL_DATA = [
-  { cls: 'sc-html',    label: 'HTML5',        icon: <IconHTML />,       cat: 'frontend' },
-  { cls: 'sc-css',     label: 'CSS3',          icon: <IconCSS />,        cat: 'frontend' },
-  { cls: 'sc-tw',      label: 'Tailwind CSS',  icon: <IconTailwind />,   cat: 'frontend' },
-  { cls: 'sc-react',   label: 'React.js',      icon: <IconReact />,      cat: 'frontend' },
-  { cls: 'sc-redux',   label: 'Redux',         icon: <IconRedux />,      cat: 'frontend' },
-  { cls: 'sc-next',    label: 'Next.js',       icon: <IconNext />,       cat: 'frontend' },
-  { cls: 'sc-js',      label: 'JavaScript',    icon: <IconJS />,         cat: 'frontend' },
-  { cls: 'sc-ts',      label: 'TypeScript',    icon: <IconTS />,         cat: 'frontend' },
-  { cls: 'sc-node',    label: 'Node.js',       icon: <IconNode />,       cat: 'backend' },
-  { cls: 'sc-express', label: 'Express.js',    icon: <IconExpress />,    cat: 'backend' },
-  { cls: 'sc-api',     label: 'REST APIs',     icon: <IconRestAPI />,    cat: 'backend' },
-  { cls: 'sc-fastapi', label: 'FastAPI',       icon: <IconFastAPI />,    cat: 'backend' },
-  { cls: 'sc-mongo',   label: 'MongoDB',       icon: <IconMongoDB />,    cat: 'backend' },
-  { cls: 'sc-pg',      label: 'PostgreSQL',    icon: <IconPostgres />,   cat: 'backend' },
-  { cls: 'sc-python',  label: 'Python',        icon: <IconPython />,     cat: 'backend' },
-  { cls: 'sc-redis',   label: 'Redis',         icon: <IconRedis />,      cat: 'backend' },
-  { cls: 'sc-openai',  label: 'OpenAI API',    icon: <IconOpenAI />,     cat: 'tools' },
-  { cls: 'sc-lang',    label: 'LangChain',     icon: <IconLangChain />,  cat: 'tools' },
-  { cls: 'sc-git',     label: 'Git',           icon: <IconGit />,        cat: 'tools' },
-  { cls: 'sc-github',  label: 'GitHub',        icon: <IconGitHub />,     cat: 'tools' },
-  { cls: 'sc-vscode',  label: 'VS Code',       icon: <IconVSCode />,     cat: 'tools' },
-  { cls: 'sc-netlify', label: 'Netlify',       icon: <IconNetlify />,    cat: 'tools' },
-  { cls: 'sc-vercel',  label: 'Vercel',        icon: <IconVercel />,     cat: 'tools' },
-  { cls: 'sc-docker',  label: 'Docker',        icon: <IconDocker />,     cat: 'tools' },
-  { cls: 'sc-k8s',     label: 'Kubernetes',    icon: <IconKubernetes />, cat: 'tools' },
-  { cls: 'sc-postman', label: 'Postman',       icon: <IconPostman />,    cat: 'tools' },
+/* ─────────────── Skill data (grouped) ─────────────── */
+const FULLSTACK_SKILLS = [
+  { cls: 'sc-html',    label: 'HTML5',        icon: <IconHTML /> },
+  { cls: 'sc-css',     label: 'CSS3',          icon: <IconCSS /> },
+  { cls: 'sc-tw',      label: 'Tailwind CSS',  icon: <IconTailwind /> },
+  { cls: 'sc-react',   label: 'React.js',      icon: <IconReact /> },
+  { cls: 'sc-redux',   label: 'Redux',         icon: <IconRedux /> },
+  { cls: 'sc-next',    label: 'Next.js',       icon: <IconNext /> },
+  { cls: 'sc-js',      label: 'JavaScript',    icon: <IconJS /> },
+  { cls: 'sc-ts',      label: 'TypeScript',    icon: <IconTS /> },
+  { cls: 'sc-node',    label: 'Node.js',       icon: <IconNode /> },
+  { cls: 'sc-express', label: 'Express.js',    icon: <IconExpress /> },
+  { cls: 'sc-api',     label: 'REST APIs',     icon: <IconRestAPI /> },
+  { cls: 'sc-fastapi', label: 'FastAPI',       icon: <IconFastAPI /> },
+  { cls: 'sc-mongo',   label: 'MongoDB',       icon: <IconMongoDB /> },
+  { cls: 'sc-pg',      label: 'PostgreSQL',    icon: <IconPostgres /> },
+  { cls: 'sc-python',  label: 'Python',        icon: <IconPython /> },
+  { cls: 'sc-redis',   label: 'Redis',         icon: <IconRedis /> },
 ];
 
-const CATEGORIES = [
-  { key: 'all',      label: 'All' },
-  { key: 'frontend', label: 'Frontend' },
-  { key: 'backend',  label: 'Backend' },
-  { key: 'tools',    label: 'Tools & AI' },
+const GENAI_TECH_SKILLS = [
+  { cls: 'sc-openai',  label: 'OpenAI API',    icon: <IconOpenAI /> },
+  { cls: 'sc-lang',    label: 'LangChain',     icon: <IconLangChain /> },
+  { cls: 'sc-git',     label: 'Git',           icon: <IconGit /> },
+  { cls: 'sc-github',  label: 'GitHub',        icon: <IconGitHub /> },
+  { cls: 'sc-vscode',  label: 'VS Code',       icon: <IconVSCode /> },
+  { cls: 'sc-netlify', label: 'Netlify',       icon: <IconNetlify /> },
+  { cls: 'sc-vercel',  label: 'Vercel',        icon: <IconVercel /> },
+  { cls: 'sc-docker',  label: 'Docker',        icon: <IconDocker /> },
+  { cls: 'sc-k8s',     label: 'Kubernetes',    icon: <IconKubernetes /> },
+  { cls: 'sc-postman', label: 'Postman',       icon: <IconPostman /> },
 ];
+
+const SkillGroup = ({ title, skills, delayOffset }) => (
+  <div className="sk-group">
+    <h3 className="sk-group-title">{title}</h3>
+    <div className="sk-chip-row">
+      {skills.map((s, i) => (
+        <div
+          key={s.cls}
+          className={`sk-chip ${s.cls}`}
+          style={{ animationDelay: `${Math.min(i, 16) * 0.035 + delayOffset}s` }}
+          title={s.label}
+        >
+          <div className="sk-chip-ico">{s.icon}</div>
+          <span className="sk-chip-name">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
 
 const Skills = () => {
-  const [active, setActive] = useState('all');
-  const activeIndex = CATEGORIES.findIndex(c => c.key === active);
-  const visible = active === 'all' ? SKILL_DATA : SKILL_DATA.filter(s => s.cat === active);
-
   return (
     <section id="skills">
       <div className="wrap">
@@ -299,45 +308,8 @@ const Skills = () => {
         </div>
 
         <div className="sk-panel">
-          <div className="sk-tabs" role="tablist" aria-label="Filter skills by category">
-            <span
-              className="sk-tabs-indicator"
-              style={{
-                width: `${100 / CATEGORIES.length}%`,
-                transform: `translateX(${activeIndex * 100}%)`,
-              }}
-              aria-hidden="true"
-            />
-            {CATEGORIES.map(c => (
-              <button
-                key={c.key}
-                type="button"
-                role="tab"
-                aria-selected={active === c.key}
-                className={`sk-tab ${active === c.key ? 'is-active' : ''}`}
-                onClick={() => setActive(c.key)}
-              >
-                {c.label}
-                <span className="sk-tab-count">
-                  {c.key === 'all' ? SKILL_DATA.length : SKILL_DATA.filter(s => s.cat === c.key).length}
-                </span>
-              </button>
-            ))}
-          </div>
-
-          <div className="sk-chip-row">
-            {visible.map((s, i) => (
-              <div
-                key={`${active}-${s.cls}`}
-                className={`sk-chip ${s.cls}`}
-                style={{ animationDelay: `${Math.min(i, 16) * 0.035}s` }}
-                title={s.label}
-              >
-                <div className="sk-chip-ico">{s.icon}</div>
-                <span className="sk-chip-name">{s.label}</span>
-              </div>
-            ))}
-          </div>
+          <SkillGroup title="Fullstack" skills={FULLSTACK_SKILLS} delayOffset={0} />
+          <SkillGroup title="GenAI Technology" skills={GENAI_TECH_SKILLS} delayOffset={0.05} />
         </div>
 
       </div>

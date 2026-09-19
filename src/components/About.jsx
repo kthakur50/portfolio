@@ -19,12 +19,12 @@ const FOCUS_AREAS = [
   {
     icon: <IconFullstack />,
     title: 'Fullstack Development',
-    desc: 'Scalable web apps with React, Next.js, Node.js & Express — clean, user-centric UI backed by REST APIs and well-structured databases.',
+    desc: 'Scalable web apps with React, Next.js, Node.js & Express — clean, user-centric UI backed by REST APIs and well-structured databases. Comfortable owning a feature end-to-end, from schema to a polished, responsive interface.',
   },
   {
     icon: <IconGenAI />,
     title: 'Generative AI',
-    desc: 'AI agents, RAG pipelines and LLM-powered features built with the OpenAI API & LangChain, focused on shipping practical, production-ready apps.',
+    desc: 'AI agents, RAG pipelines and LLM-powered features built with the OpenAI API & LangChain, focused on shipping practical, production-ready apps. I enjoy turning raw model output into reliable, user-facing features.',
   },
 ];
 
