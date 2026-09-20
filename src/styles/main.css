@@ -317,7 +317,7 @@ body.is-loading { overflow: hidden; }
  backface-visibility: hidden;
 }
 .nav.scrolled {
- transform: translateY(8px) translateZ(0);
+ transform: translateY(14px) translateZ(0);
 }
 .nav-inner {
  width: 79%;
@@ -1473,29 +1473,24 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 
 .sk-group-title {
   align-self: center;
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
   margin: 0 0 36px;
-  padding: 9px 24px;
-  border-radius: 999px;
-  background: rgba(34,197,94,.07);
-  border: 1px solid rgba(34,197,94,.22);
-  font-size: clamp(.72rem, 1.3vw, .82rem);
-  font-weight: 700;
-  letter-spacing: .08em;
+  font-size: clamp(.85rem, 1.5vw, .98rem);
+  font-weight: 600;
+  letter-spacing: .05em;
   text-transform: uppercase;
   text-align: center;
-  color: var(--a2);
+  color: var(--tx);
 }
-.sk-group-title::before {
+.sk-group-title::after {
   content: '';
-  width: 6px;
-  height: 6px;
-  flex-shrink: 0;
-  border-radius: 50%;
+  width: 34px;
+  height: 2px;
+  border-radius: 2px;
   background: var(--a2);
-  box-shadow: 0 0 0 3px rgba(34,197,94,.18);
 }
 
 .sk-chip-row {
@@ -1971,7 +1966,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
      for a `margin-top` nudge on mobile/tablet so `.nav-inner`'s blur can
      render, since it's a direct child. */
   .nav { transform: none; margin-top: 0; transition: margin-top .4s cubic-bezier(.4,0,.2,1); will-change: auto; }
-  .nav.scrolled { transform: none; margin-top: 8px; }
+  .nav.scrolled { transform: none; margin-top: 14px; }
 
 
   .nav-inner {
