@@ -68,11 +68,20 @@ function initScroll() {
 
   const nav = document.querySelector('.nav');
   if (!nav) return;
+
+  // Navbar drops slightly once the person has scrolled past the hero
+  // section, and returns to its default spot as soon as the hero is
+  // back in view — rather than reacting to an arbitrary pixel amount.
+  const heroEl = document.getElementById('home');
+  const getThreshold = () => (heroEl ? Math.max(heroEl.offsetHeight - 60, 80) : 80);
+  let threshold = getThreshold();
+  window.addEventListener('resize', () => { threshold = getThreshold(); }, { passive: true });
+
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
       requestAnimationFrame(() => {
-        nav.classList.toggle('scrolled', window.scrollY > 80);
+        nav.classList.toggle('scrolled', window.scrollY > threshold);
         ticking = false;
       });
       ticking = true;
