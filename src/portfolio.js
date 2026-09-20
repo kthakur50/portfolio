@@ -40,6 +40,19 @@ function scrollToSection(id) {
   history.replaceState(null, '', window.location.pathname + window.location.search);
 }
 
+// Undo the scroll-lock applied while the mobile "jump to" card is open,
+// restoring the exact scroll position it was frozen at so the page never
+// visibly jumps up or down when the lock is released.
+function unlockBodyScroll() {
+  const lockedY = document.body.dataset.lockedScrollY;
+  document.body.classList.remove('nav-mob-locked');
+  document.body.style.top = '';
+  if (lockedY !== undefined) {
+    window.scrollTo(0, parseInt(lockedY, 10) || 0);
+    delete document.body.dataset.lockedScrollY;
+  }
+}
+
 function initScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
@@ -48,7 +61,6 @@ function initScroll() {
       document.querySelectorAll('.nav-desk-links a, .nav-mob a').forEach(l =>
         l.classList.toggle('active', l.getAttribute('href') === '#' + id)
       );
-      scrollToSection(id);
 
       const nav = document.getElementById('nav');
       const mob = document.getElementById('navMob');
@@ -57,12 +69,16 @@ function initScroll() {
         mob.classList.remove('open');
         ham?.classList.remove('open');
         document.getElementById('navMobOverlay')?.classList.remove('open');
-        document.body.classList.remove('nav-mob-locked');
+        // Release the scroll lock before scrolling to the section, so the
+        // scroll-position math below isn't thrown off by the frozen body.
+        unlockBodyScroll();
       }
       if (nav?.classList.contains('search-open')) {
         nav.classList.remove('search-open');
         ham?.classList.remove('open');
       }
+
+      scrollToSection(id);
     });
   });
 
@@ -115,7 +131,7 @@ function initHam() {
       ham.classList.remove('open');
       nav?.classList.remove('search-open');
       overlay?.classList.remove('open');
-      document.body.classList.remove('nav-mob-locked');
+      unlockBodyScroll();
     };
     const openMob = () => {
       if (isDesktop()) {
@@ -128,6 +144,12 @@ function initHam() {
         mob.classList.add('open');
         ham.classList.add('open');
         overlay?.classList.add('open');
+        // Freeze the body at its current scroll position (rather than a
+        // plain `overflow: hidden`) so the page never visibly jumps up or
+        // down the instant the card opens or closes.
+        const scrollY = window.scrollY;
+        document.body.dataset.lockedScrollY = String(scrollY);
+        document.body.style.top = `-${scrollY}px`;
         document.body.classList.add('nav-mob-locked');
       }
     };

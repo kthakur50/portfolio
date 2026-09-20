@@ -58,7 +58,7 @@ const About = () => (
           {FOCUS_AREAS.map((f, i) => (
             <div
               key={f.title}
-              className="about-focus-row sr"
+              className="about-focus-row sr sr-focus-in"
               style={{ transitionDelay: `${0.07 + i * 0.08}s` }}
             >
               <div className="about-focus-ico">{f.icon}</div>
