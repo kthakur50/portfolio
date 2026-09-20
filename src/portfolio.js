@@ -104,6 +104,13 @@ function initHam() {
     const closeMob = () => {
       const wasOpen = mob.classList.contains('open') || nav?.classList.contains('search-open');
       if (!wasOpen) return;
+      // The card sits still while open; it only moves as it closes, so
+      // that transition is driven by its own 'closing' class rather than
+      // the plain open/closed states.
+      if (mob.classList.contains('open')) {
+        mob.classList.add('closing');
+        window.setTimeout(() => mob.classList.remove('closing'), 320);
+      }
       mob.classList.remove('open');
       ham.classList.remove('open');
       nav?.classList.remove('search-open');
