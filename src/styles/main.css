@@ -525,29 +525,38 @@ body.nav-mob-locked { overflow: hidden; }
     pointer-events: auto;
   }
   .nd-link {
-    display: flex; align-items: center; justify-content: center;
+    display: grid;
+    grid-template-columns: 18px 0fr;
+    align-items: center;
+    column-gap: 0;
     height: 34px;
-    width: 34px;
-    padding: 0;
+    width: auto;
+    min-width: 34px;
+    padding: 0 8px;
     flex-shrink: 0;
     white-space: nowrap;
     box-sizing: border-box;
-    border-radius: 50%;
+    border-radius: 999px;
     color: var(--mu);
     text-decoration: none;
     background: transparent;
     border: 1px solid transparent;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     z-index: 1;
     font-size: .82rem;
     font-weight: 600;
-    transition: color .15s ease, background .18s ease, border-color .18s ease, transform .25s cubic-bezier(.4,0,.2,1);
+    transition: color .15s ease, background .18s ease, border-color .18s ease,
+      transform .25s cubic-bezier(.4,0,.2,1),
+      grid-template-columns .32s cubic-bezier(.4,0,.2,1),
+      column-gap .32s cubic-bezier(.4,0,.2,1);
   }
   .nd-link:hover, .nd-link:focus-visible {
     color: var(--tx);
     background: rgba(255,255,255,.08);
     transform: translateX(3px);
+    grid-template-columns: 18px 1fr;
+    column-gap: 8px;
     z-index: 20;
   }
   .nd-link.active { color: var(--a2); background: transparent; border-color: transparent; }
@@ -555,8 +564,24 @@ body.nav-mob-locked { overflow: hidden; }
   .nd-icon { display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; flex-shrink: 0; }
   .nd-icon svg { display: block; width: 18px; height: 18px; }
 
-  /* Hover name tooltip removed — icons no longer show a label on hover. */
-  .nd-label { display: none; }
+  /* Label stays clipped to zero width until hover, then the icon's
+     pill grows just enough to reveal the section name beside it. */
+  .nd-label {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    min-width: 0;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: -.005em;
+    opacity: 0;
+    transition: opacity .22s ease;
+  }
+  .nd-link:hover .nd-label,
+  .nd-link:focus-visible .nd-label {
+    opacity: 1;
+    transition: opacity .22s ease .08s;
+  }
 
   .nav-ham {
     width: 34px; height: 34px;
