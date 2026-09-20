@@ -12,6 +12,7 @@ import Education        from './components/Education';
 import Contact          from './components/Contact';
 import Footer           from './components/Footer';
 import SectionDivider   from './components/SectionDivider';
+import ScrollTop        from './components/ScrollTop';
 import { initAll } from './portfolio';
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
         <Contact />
       </main>
       <Footer />
+      <ScrollTop />
       <div className="bottom-blur" aria-hidden="true"></div>
     </>
   );
