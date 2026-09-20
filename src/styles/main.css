@@ -40,7 +40,11 @@ html {
  -webkit-font-smoothing: antialiased;
  -moz-osx-font-smoothing: grayscale;
  text-rendering: optimizeLegibility;
- overflow-x: hidden;
+ /* clip (not hidden) so the browser doesn't force overflow-y into an
+    implicit "auto" scroll container here — that quirk is what was
+    breaking the navbar's position: sticky and making it scroll away
+    instead of staying pinned while scrolling down. */
+ overflow-x: clip;
  width: 100%;
 }
 /* Every tap target gets an instant response — no 300ms delay, no
@@ -55,7 +59,7 @@ body {
  -webkit-font-smoothing: antialiased;
  -moz-osx-font-smoothing: grayscale;
  text-rendering: optimizeLegibility;
- overflow-x: hidden;
+ overflow-x: clip;
 }
 a { text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; padding: 0; }
