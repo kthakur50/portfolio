@@ -14,7 +14,7 @@ const Loader = () => {
   useEffect(() => {
     document.body.classList.add('is-loading');
 
-    const MIN_MS = 900;
+    const MIN_MS = 2100;
     const FADE_MS = 650;
     const start = Date.now();
     let fadeTimer;
@@ -59,7 +59,7 @@ const Loader = () => {
     >
       <div className="site-loader-inner">
         <span className="site-loader-logo">
-          kt<em>.</em>
+          <em>K</em> Thakur
         </span>
         <div className="site-loader-bar">
           <span className="site-loader-bar-fill"></span>
