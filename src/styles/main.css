@@ -2193,6 +2193,23 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .c-heading { font-size: clamp(1rem, 3vw, 1.3rem); }
   .c-lead { max-width: 100%; }
 
+}
+
+/* ── TABLET PORTRAIT (600–768px): keep college name + location on
+   one line too, same as the 769–1024 landscape rule — only phones
+   below 600px keep the stacked, two-line layout. ── */
+@media (min-width: 600px) and (max-width: 768px) {
+  .edu-inst {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .edu-inst-name { flex: 0 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .edu-inst-sep { display: inline; flex-shrink: 0; }
+  .edu-inst-loc { display: inline; flex-shrink: 0; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: none; }
   /* Footer */
 }
 
