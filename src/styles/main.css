@@ -96,15 +96,12 @@ body.is-loading { overflow: hidden; }
   gap: 18px;
 }
 .site-loader-logo {
-  font-family: 'Dancing Script', cursive;
-  font-size: clamp(2.1rem, 5.5vw, 3.1rem);
-  font-weight: 700;
-  letter-spacing: .01em;
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-weight: 900;
+  letter-spacing: 0;
   line-height: 1;
   color: var(--tx);
-  opacity: 0;
-  transform: translateY(16px) scale(.94);
-  animation: loaderReveal 1.9s cubic-bezier(.16,1,.3,1) .15s both;
+  animation: loaderPulse 2.6s ease-in-out infinite;
 }
 .site-loader-logo em {
   font-style: normal;
@@ -126,11 +123,11 @@ body.is-loading { overflow: hidden; }
   height: 100%;
   border-radius: 2px;
   background: var(--a2);
-  animation: loaderSlide 1.25s ease-in-out infinite;
+  animation: loaderSlide 1.7s ease-in-out infinite;
 }
-@keyframes loaderReveal {
-  0%   { opacity: 0; transform: translateY(16px) scale(.94); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+@keyframes loaderPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .5; }
 }
 @keyframes loaderSlide {
   0%   { left: -40%; }
@@ -147,47 +144,41 @@ body.is-loading { overflow: hidden; }
    in smoothly. Fixed to the bottom-right corner on every viewport. */
 .scroll-top {
   position: fixed;
-  right: clamp(16px, 3vw, 28px);
-  bottom: clamp(16px, 3vw, 28px);
+  right: clamp(16px, 3vw, 26px);
+  bottom: clamp(16px, 3vw, 26px);
   z-index: 500;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(18,18,20,.85);
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  color: var(--tx);
+  border: 1px solid var(--br);
+  background: transparent;
+  color: var(--mu);
   cursor: pointer;
-  box-shadow: 0 10px 26px -8px rgba(0,0,0,.55);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(14px) scale(.85);
-  transition: opacity .35s cubic-bezier(.4,0,.2,1),
-    transform .35s cubic-bezier(.34,1.4,.64,1),
-    visibility .35s, background .2s ease, border-color .2s ease, color .2s ease;
+  transform: translateY(8px);
+  transition: opacity .3s ease, transform .3s ease, visibility .3s,
+    border-color .2s ease, color .2s ease;
 }
 .scroll-top--show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
-.scroll-top svg { width: 19px; height: 19px; display: block; }
+.scroll-top svg { width: 15px; height: 15px; display: block; }
 .scroll-top:hover,
 .scroll-top:focus-visible {
-  color: #06170c;
-  background: var(--a2);
-  border-color: var(--a2);
-  transform: translateY(-3px) scale(1.05);
+  color: var(--a2);
+  border-color: rgba(34,197,94,.4);
 }
-.scroll-top:active { transform: translateY(-1px) scale(.94); }
+.scroll-top:active { transform: scale(.92); }
 
 @media (max-width: 600px) {
-  .scroll-top { width: 40px; height: 40px; }
-  .scroll-top svg { width: 17px; height: 17px; }
+  .scroll-top { width: 34px; height: 34px; }
+  .scroll-top svg { width: 13px; height: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .scroll-top { transition: opacity .2s ease, visibility .2s; transform: none !important; }
@@ -1481,13 +1472,30 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 }
 
 .sk-group-title {
-  width: 100%;
-  margin: 0 0 30px;
-  font-size: clamp(.98rem, 1.7vw, 1.15rem);
-  font-weight: 600;
-  letter-spacing: -.01em;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 36px;
+  padding: 9px 24px;
+  border-radius: 999px;
+  background: rgba(34,197,94,.07);
+  border: 1px solid rgba(34,197,94,.22);
+  font-size: clamp(.72rem, 1.3vw, .82rem);
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
   text-align: center;
-  color: var(--tx);
+  color: var(--a2);
+}
+.sk-group-title::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--a2);
+  box-shadow: 0 0 0 3px rgba(34,197,94,.18);
 }
 
 .sk-chip-row {
@@ -1509,7 +1517,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  width: 88px;
+  width: 96px;
   padding: 0;
   overflow: visible;
   cursor: default;
@@ -1517,20 +1525,20 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   border: none;
   background: none;
   animation: skCardIn .5s cubic-bezier(.22,1,.36,1) both;
-  transition: transform .3s cubic-bezier(.22,1,.36,1);
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
 }
 .sk-chip:hover,
 .sk-chip:focus-visible {
-  transform: translateY(-3px);
+  transform: scale(1.1);
 }
 
 .sk-chip-ico {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 9px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   border: none;
   background: #ffffff;
   color: #1c1c1e;
@@ -1541,17 +1549,16 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   flex-shrink: 0;
   z-index: 1;
   box-shadow: 0 2px 6px -2px rgba(0,0,0,.5);
-  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s cubic-bezier(.22,1,.36,1);
+  transition: box-shadow .35s cubic-bezier(.22,1,.36,1);
 }
 .sk-chip:hover .sk-chip-ico,
 .sk-chip:focus-visible .sk-chip-ico {
-  transform: scale(1.1) rotate(-4deg);
-  box-shadow: 0 4px 10px -2px rgba(0,0,0,.55);
+  box-shadow: 0 6px 14px -4px rgba(0,0,0,.55);
 }
 .sk-chip-ico svg {
   display: block;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   position: relative;
   z-index: 1;
 }
@@ -1568,7 +1575,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 .sk-chip-name {
   position: relative;
   z-index: 1;
-  font-size: .77rem;
+  font-size: .8rem;
   font-weight: 600;
   letter-spacing: -.01em;
   line-height: 1.28;
@@ -1576,25 +1583,25 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   opacity: .82;
   text-align: center;
   white-space: normal;
-  max-width: 92px;
+  max-width: 96px;
   transition: opacity .3s ease;
 }
 .sk-chip:hover .sk-chip-name,
 .sk-chip:focus-visible .sk-chip-name { opacity: 1; }
 
 @media (max-width: 1024px) {
-  .sk-chip-row { gap: 20px 14px; }
-  .sk-chip { width: 76px; gap: 8px; }
-  .sk-chip-ico { width: 34px; height: 34px; border-radius: 8px; }
-  .sk-chip-ico svg { width: 19px; height: 19px; }
-  .sk-chip-name { font-size: .72rem; max-width: 82px; }
+  .sk-chip-row { gap: 22px 16px; }
+  .sk-chip { width: 84px; gap: 9px; }
+  .sk-chip-ico { width: 38px; height: 38px; border-radius: 9px; }
+  .sk-chip-ico svg { width: 21px; height: 21px; }
+  .sk-chip-name { font-size: .75rem; max-width: 88px; }
 }
 @media (max-width: 480px) {
   .sk-chip-row { gap: 18px 12px; }
-  .sk-chip { width: 66px; gap: 7px; }
-  .sk-chip-ico { width: 30px; height: 30px; border-radius: 7px; }
-  .sk-chip-ico svg { width: 17px; height: 17px; }
-  .sk-chip-name { font-size: .67rem; max-width: 74px; }
+  .sk-chip { width: 72px; gap: 8px; }
+  .sk-chip-ico { width: 33px; height: 33px; border-radius: 8px; }
+  .sk-chip-ico svg { width: 19px; height: 19px; }
+  .sk-chip-name { font-size: .69rem; max-width: 78px; }
 }
 @keyframes skCardIn {
   from { opacity: 0; transform: translateY(14px) scale(.98); }
