@@ -1540,34 +1540,28 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
    bordered pill instead of a plain heading with an underline bar. */
 .sk-group-title {
   align-self: center;
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 9px;
+  gap: 12px;
   margin: 0 auto 38px;
   font-family: 'Poppins', 'Open Sans', sans-serif;
-  font-size: clamp(.68rem, 1.15vw, .78rem);
+  font-size: clamp(.85rem, 1.5vw, .98rem);
   font-weight: 600;
-  letter-spacing: .07em;
+  letter-spacing: .05em;
   text-transform: uppercase;
   text-align: center;
-  color: var(--mu);
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.10);
-  padding: 10px 24px;
-  border-radius: 999px;
-  white-space: normal;
+  color: var(--tx);
 }
 .sk-group-title::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--a2);
-  box-shadow: 0 0 0 4px var(--ag);
+  display: none;
 }
 .sk-group-title::after {
-  display: none;
+  content: '';
+  width: 44px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--a2);
 }
 
 /* Chips: icon + label sit side by side inside a soft rounded pill,
