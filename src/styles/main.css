@@ -1521,11 +1521,13 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   border: none;
   background: none;
   animation: skCardIn .5s cubic-bezier(.22,1,.36,1) both;
-  transition: transform .35s cubic-bezier(.22,1,.36,1);
+  transition: transform .4s cubic-bezier(.25,1,.5,1);
+  will-change: transform;
 }
 .sk-chip:hover,
 .sk-chip:focus-visible {
-  transform: scale(1.1);
+  transform: scale(1.14);
+  z-index: 2;
 }
 
 .sk-chip-ico {
