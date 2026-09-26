@@ -767,16 +767,15 @@ p.hero-intro {
  margin-top: clamp(22px, 3vw, 32px);
 }
 .hero-social-ico {
- --brand: 34,197,94;
  display: inline-flex;
  align-items: center;
  justify-content: center;
  width: 42px;
  height: 42px;
  border-radius: 50%;
- border: 1px solid rgba(var(--brand),.22);
- background: rgba(var(--brand),.08);
- color: rgb(var(--brand));
+ border: 1px solid rgba(255,255,255,.06);
+ background: rgba(255,255,255,.04);
+ color: var(--tx);
  position: relative;
  isolation: isolate;
  overflow: hidden;
@@ -784,17 +783,18 @@ p.hero-intro {
 }
 .hero-social-ico svg { position: relative; z-index: 1; }
 .hero-social-ico:hover {
- color: rgb(var(--brand));
- background: rgba(var(--brand),.18);
- border-color: rgba(var(--brand),.45);
+ color: var(--tx);
+ background: rgba(255,255,255,.09);
+ border-color: rgba(255,255,255,.18);
  transform: translateY(-3px);
 }
-/* Real brand colours per icon, instead of one flat muted grey. */
-.hero-social-gh     { --brand: 235,240,245; }   /* GitHub — mark is monochrome, shown light on this dark card */
-.hero-social-li     { --brand: 10,102,194; }    /* LinkedIn blue */
-.hero-social-x      { --brand: 245,245,245; }   /* X — monochrome mark, shown light on this dark card */
-.hero-social-resume { --brand: 52,211,153; }    /* Resume — site accent teal/green */
-.hero-social-mail   { --brand: 251,191,36; }    /* Email — warm amber */
+/* All icons share the hero card's own neutral off-white palette now,
+   instead of each having a separate brand colour. */
+.hero-social-gh,
+.hero-social-li,
+.hero-social-x,
+.hero-social-resume,
+.hero-social-mail { color: var(--tx); }
 @media (max-width: 640px) {
  .hero-card-cube { align-self: center; }
 }
@@ -2279,8 +2279,8 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
      width, so it also shrinks correctly on short/landscape tablets —
      the old width-only clamps here made the card taller than the
      screen on landscape tablets, pushing page content below the fold. */
-  .hero-card { padding-top: clamp(32px, 7svh, 64px); padding-bottom: clamp(32px, 7svh, 64px); }
-  .hero-card-inner { gap: clamp(12px, 2.4svh, 24px); }
+  .hero-card { padding-top: clamp(40px, 9svh, 78px); padding-bottom: clamp(40px, 9svh, 78px); }
+  .hero-card-inner { gap: clamp(14px, 2.8svh, 28px); }
   .hero-greeting { font-size: clamp(.85rem, 2svh, 1.1rem); margin-bottom: 4px; }
   .hero-name { font-size: clamp(2.2rem, 5.5svh, 3.6rem) !important; }
   p.hero-intro { font-size: clamp(.7rem, 1.8svh, .95rem); white-space: pre-line; overflow: visible; }
@@ -2338,10 +2338,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     height: auto;
     max-height: calc(100vh - var(--nav) - var(--pad) - 70px);
     margin: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    overflow: hidden;
     width: min(76vw, 264px);
     container-type: inline-size;
     container-name: navmob;
@@ -2432,11 +2429,17 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     grid-auto-rows: auto;
     gap: 8px;
     width: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     place-items: stretch;
-    align-content: start;
+    align-content: center;
     margin: 0;
     padding: 3px 1px 0;
   }
+  .nav-mob-grid::-webkit-scrollbar { display: none; }
 
   .nav-mob a {
     --tile: 34,197,94;
@@ -2645,8 +2648,8 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   /* Cube: bigger so the front screen doesn't look empty; taller card pushes buttons down */
   /* Card made a bit taller — social row's margin-top above already
      carries the matching -30px reduction so it stays in the same spot. */
-  .hero-card { padding: calc(clamp(80px, 19vw, 116px) - 3px) clamp(20px, 5vw, 32px); }
-  .hero-card-inner { gap: clamp(26px, 6vw, 40px); }
+  .hero-card { padding: calc(clamp(68px, 15.5vw, 98px) - 3px) clamp(20px, 5vw, 32px); }
+  .hero-card-inner { gap: clamp(24px, 5.4vw, 36px); }
   p.hero-intro { font-size: clamp(.68rem, 3.6vw, .82rem); white-space: pre-line; overflow: visible; }
   .hero-card-cube { width: clamp(210px, 44vw, 264px); height: clamp(210px, 44vw, 264px); margin-top: 12px; }
   .hero-card-cube .win3d-scene { --cube-size: clamp(121px, 24vw, 154px); --cube-tz: clamp(70px, 14vw, 90px); }

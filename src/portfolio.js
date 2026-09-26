@@ -125,7 +125,15 @@ function initHam() {
       // the plain open/closed states.
       if (mob.classList.contains('open')) {
         mob.classList.add('closing');
-        window.setTimeout(() => mob.classList.remove('closing'), 320);
+        window.setTimeout(() => {
+          mob.classList.remove('closing');
+          // Drop the inline top/height so the CSS fallback values take
+          // over again until the card is measured against the hero card
+          // on the next open.
+          mob.style.top = '';
+          mob.style.height = '';
+          mob.style.maxHeight = '';
+        }, 320);
       }
       mob.classList.remove('open');
       ham.classList.remove('open');
@@ -138,9 +146,19 @@ function initHam() {
         nav?.classList.add('search-open');
         ham.classList.add('open');
       } else {
-        // Height is capped purely by available viewport space (handled in
-        // CSS via max-height), so the card always has room to show every
-        // tile without needing to scroll internally.
+        // On phone/tablet the card's top and bottom should line up exactly
+        // with the hero card's own top and bottom, whatever the current
+        // breakpoint or content length happens to produce — so measure
+        // the hero card live rather than trying to replicate its padding
+        // math here.
+        const heroCard = document.querySelector('.hero-card');
+        if (heroCard) {
+          const rect = heroCard.getBoundingClientRect();
+          const top = Math.max(rect.top, 8);
+          mob.style.top = `${top}px`;
+          mob.style.height = `${Math.max(rect.height, 0)}px`;
+          mob.style.maxHeight = `${Math.max(rect.height, 0)}px`;
+        }
         mob.classList.add('open');
         ham.classList.add('open');
         overlay?.classList.add('open');
