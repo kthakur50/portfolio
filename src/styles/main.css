@@ -767,15 +767,16 @@ p.hero-intro {
  margin-top: clamp(22px, 3vw, 32px);
 }
 .hero-social-ico {
+ --brand: 34,197,94;
  display: inline-flex;
  align-items: center;
  justify-content: center;
  width: 42px;
  height: 42px;
  border-radius: 50%;
- border: 1px solid rgba(255,255,255,.06);
- background: rgba(255,255,255,.03);
- color: var(--mu);
+ border: 1px solid rgba(var(--brand),.22);
+ background: rgba(var(--brand),.08);
+ color: rgb(var(--brand));
  position: relative;
  isolation: isolate;
  overflow: hidden;
@@ -783,11 +784,17 @@ p.hero-intro {
 }
 .hero-social-ico svg { position: relative; z-index: 1; }
 .hero-social-ico:hover {
- color: var(--a2);
- background: rgba(34,197,94,.12);
- border-color: rgba(34,197,94,.28);
+ color: rgb(var(--brand));
+ background: rgba(var(--brand),.18);
+ border-color: rgba(var(--brand),.45);
  transform: translateY(-3px);
 }
+/* Real brand colours per icon, instead of one flat muted grey. */
+.hero-social-gh     { --brand: 235,240,245; }   /* GitHub — mark is monochrome, shown light on this dark card */
+.hero-social-li     { --brand: 10,102,194; }    /* LinkedIn blue */
+.hero-social-x      { --brand: 245,245,245; }   /* X — monochrome mark, shown light on this dark card */
+.hero-social-resume { --brand: 52,211,153; }    /* Resume — site accent teal/green */
+.hero-social-mail   { --brand: 251,191,36; }    /* Email — warm amber */
 @media (max-width: 640px) {
  .hero-card-cube { align-self: center; }
 }
@@ -1208,14 +1215,14 @@ p.hero-intro {
  border-radius: var(--rad);
  background: rgba(255,255,255,.08);
  color: var(--a2);
- border: 1px solid rgba(255,255,255,.24);
+ border: 1px solid rgba(255,255,255,.10);
  letter-spacing: .02em;
  transition: background var(--ease), color var(--ease), border-color var(--ease);
 }
 .tag:hover {
  background: rgba(255,255,255,.18);
  color: #e2e2e2;
- border-color: rgba(255,255,255,.50);
+ border-color: rgba(255,255,255,.22);
 }
 #projects { background: transparent; }
 .masonry-list {
