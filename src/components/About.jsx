@@ -47,11 +47,6 @@ const About = () => (
             on fusing modern frontend engineering with <strong>Generative AI</strong> — embedding{' '}
             <em>LLMs</em> into real, production-ready products.
           </p>
-          <p className="about-para">
-            Driven by clean architecture and thoughtful UX, I enjoy turning ambiguous problems
-            into <strong>reliable, well-tested products</strong> — and I'm always exploring the
-            next tool or technique that makes that process faster.
-          </p>
         </div>
 
         <div className="about-focus-list">

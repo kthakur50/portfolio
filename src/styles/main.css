@@ -968,13 +968,13 @@ p.hero-intro {
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -.01em;
-  color: var(--mu);
-  opacity: .75;
+  color: var(--tx);
+  opacity: 1;
   margin: 0;
   transition: color .3s ease, opacity .3s ease;
 }
 .about-focus-row:hover .about-focus-title {
-  color: var(--tx);
+  color: var(--a2);
   opacity: 1;
 }
 .about-focus-desc {
@@ -1559,8 +1559,8 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   font-family: 'Poppins', 'Open Sans', sans-serif;
   font-size: clamp(.85rem, 1.5vw, .98rem);
   font-weight: 600;
-  letter-spacing: .05em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-transform: none;
   text-align: center;
   color: var(--mu);
   opacity: .75;
