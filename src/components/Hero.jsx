@@ -37,13 +37,35 @@ const TypedIntro = () => {
 
   useEffect(() => {
     let i = 0;
+    let cancelled = false;
+    let timer;
     setCount(0);
-    const timer = setInterval(() => {
+
+    // A human hand doesn't type at one constant speed — it runs quickly
+    // through most letters, eases up slightly on spaces, and pauses a
+    // beat longer after commas and full stops. That variation is what
+    // reads as real typing rather than a mechanical character reveal.
+    const delayFor = (ch) => {
+      if (ch === ',') return 260;
+      if (ch === '.') return 360;
+      if (ch === ' ' || ch === '\n') return 60;
+      return 22 + Math.random() * 34;
+    };
+
+    const tick = () => {
+      if (cancelled) return;
       i += 1;
       setCount(i);
-      if (i >= introText.length) clearInterval(timer);
-    }, 26);
-    return () => clearInterval(timer);
+      if (i >= introText.length) return;
+      timer = window.setTimeout(tick, delayFor(introText[i - 1]));
+    };
+    // A short beat before the first letter appears, like a breath before speaking.
+    timer = window.setTimeout(tick, 300);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
   }, [introText]);
 
   const done = count >= introText.length;
@@ -51,7 +73,7 @@ const TypedIntro = () => {
   return (
     <p className="hero-intro" aria-label={introText}>
       <span aria-hidden="true">{introText.slice(0, count)}</span>
-      <span className={`hero-intro-cursor${done ? ' is-idle' : ''}`} aria-hidden="true"></span>
+      <span className={`hero-intro-cursor${done ? ' is-idle' : ' is-typing'}`} aria-hidden="true"></span>
     </p>
   );
 };

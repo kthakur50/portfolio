@@ -1,8 +1,8 @@
 :root {
  --a: #6b7280;
- --a2: #22c55e;
+ --a2: #14b8a6;
  --a3: #8a8f8e;
- --ag: rgba(34,197,94,.16);
+ --ag: rgba(20,184,166,.16);
  --bg: #000000;
  --bg2: #000000;
  --bg3: #000000;
@@ -185,8 +185,8 @@ body.is-loading { overflow: hidden; }
 .scroll-top--show:hover,
 .scroll-top--show:focus-visible {
   color: var(--a2);
-  background: rgba(34,197,94,.12);
-  border-color: rgba(34,197,94,.28);
+  background: rgba(20,184,166,.12);
+  border-color: rgba(20,184,166,.28);
   transform: translateY(-3px);
 }
 .scroll-top:active { transform: scale(.94); }
@@ -718,7 +718,7 @@ p.hero-intro {
  margin-left: 2px;
  background: currentColor;
  vertical-align: -0.15em;
- animation: heroCursorBlink .9s steps(1) infinite;
+ opacity: 1;
 }
 .hero-intro-cursor.is-idle {
  animation: heroCursorBlink 1s steps(1) infinite;
@@ -764,7 +764,7 @@ p.hero-intro {
  align-items: center;
  justify-content: center;
  gap: 14px;
- margin-top: clamp(22px, 3vw, 32px);
+ margin-top: clamp(16px, 3svh, 32px);
 }
 .hero-social-ico {
  display: inline-flex;
@@ -1491,7 +1491,7 @@ p.hero-intro {
 }
 .c-heading em {
  font-style: normal;
- background: linear-gradient(90deg, #22c55e, #86efac);
+ background: linear-gradient(90deg, #14b8a6, #5eead4);
  -webkit-background-clip: text;
  background-clip: text;
  color: transparent;
@@ -1512,7 +1512,7 @@ p.hero-intro {
  padding: 12px 28px;
  margin-top: 4px;
  border-radius: 999px;
- background: linear-gradient(90deg, #22c55e, #16a34a);
+ background: linear-gradient(90deg, #14b8a6, #0d9488);
  color: #06120a;
  font-weight: 700;
  font-size: .9rem;
@@ -2067,7 +2067,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .tube-light { top: clamp(-4px, -0.3vw, 2px); width: clamp(480px, 62vw, 740px); height: clamp(56px, 7vw, 86px); }
   #home { padding: clamp(58px, 7.5vw, 88px) 0 clamp(30px, 4vw, 50px); min-height: calc(100svh - var(--nav)); align-items: flex-start; }
   .hero-card { padding: clamp(70px, 11vw, 106px) clamp(24px, 3.6vw, 44px); }
-  p.hero-intro { white-space: pre-line; overflow: visible; text-align: center; }
+  p.hero-intro { white-space: pre-line; overflow: visible; text-align: center; min-height: 3em; }
   .hero-right { order: 2; flex: none; width: 100%; display: flex; justify-content: center; align-self: center; margin: clamp(30px, 5vw, 46px) 0 clamp(20px, 3.5vw, 34px); padding-right: 0; }
   .hero-social-row { margin-top: clamp(36px, 5vw, 50px); }
 
@@ -2283,7 +2283,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .hero-card-inner { gap: clamp(14px, 2.8svh, 28px); }
   .hero-greeting { font-size: clamp(.85rem, 2svh, 1.1rem); margin-bottom: 4px; }
   .hero-name { font-size: clamp(2.2rem, 5.5svh, 3.6rem) !important; }
-  p.hero-intro { font-size: clamp(.7rem, 1.8svh, .95rem); white-space: pre-line; overflow: visible; }
+  p.hero-intro { font-size: clamp(.7rem, 1.8svh, .95rem); white-space: pre-line; overflow: visible; min-height: 3em; }
   .hero-role-sub { font-size: .88rem !important; }
   .hero-card-roles { gap: 8px; }
   .hero-social-row { margin-top: clamp(16px, 3svh, 32px); }
@@ -2343,7 +2343,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     container-type: inline-size;
     container-name: navmob;
     background:
-      radial-gradient(120% 100% at 100% 0%, rgba(34,197,94,.10), transparent 55%),
+      radial-gradient(120% 100% at 100% 0%, rgba(20,184,166,.10), transparent 55%),
       linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 45%),
       #121214;
     backdrop-filter: blur(40px) saturate(160%);
@@ -2442,7 +2442,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob-grid::-webkit-scrollbar { display: none; }
 
   .nav-mob a {
-    --tile: 34,197,94;
+    --tile: 20,184,166;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -2507,18 +2507,18 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     width: 100%;
     padding: 12px 6px;
     margin: 2px 0 0;
-    background: rgba(34,197,94,.07);
-    border-color: rgba(34,197,94,.16);
+    background: rgba(20,184,166,.07);
+    border-color: rgba(20,184,166,.16);
   }
   .nav-mob a.nm-span2:hover {
-    background: rgba(34,197,94,.13);
-    border-color: rgba(34,197,94,.32);
+    background: rgba(20,184,166,.13);
+    border-color: rgba(20,184,166,.32);
   }
-  .nav-mob a.nm-span2 .nm-icon { background: rgba(34,197,94,.14); border-color: rgba(34,197,94,.3); }
-  .nav-mob a.nm-span2 .nm-icon svg { color: rgb(34,197,94); }
+  .nav-mob a.nm-span2 .nm-icon { background: rgba(20,184,166,.14); border-color: rgba(20,184,166,.3); }
+  .nav-mob a.nm-span2 .nm-icon svg { color: rgb(20,184,166); }
   .nav-mob a.nm-span2 .nav-mob-label { font-size: .68rem; color: var(--mu); font-weight: 650; }
   .nav-mob a.nm-span2.active .nm-icon svg,
-  .nav-mob a.nm-span2.active .nav-mob-label { color: rgb(34,197,94); }
+  .nav-mob a.nm-span2.active .nav-mob-label { color: rgb(20,184,166); }
 
   .nm-icon {
     display: flex;
@@ -2631,7 +2631,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   /* Card below made a bit taller (padding reduction eased from 18px to
      3px per side, +30px total) — margin-top here trimmed by the same
      30px so the social row stays exactly where it was. */
-  .hero-social-row { margin-top: calc(clamp(30px, 7vw, 42px) + 6px); }
+  .hero-social-row { margin-top: clamp(16px, 3svh, 32px); }
 
   /* Name */
   .hero-name {
@@ -2648,9 +2648,9 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   /* Cube: bigger so the front screen doesn't look empty; taller card pushes buttons down */
   /* Card made a bit taller — social row's margin-top above already
      carries the matching -30px reduction so it stays in the same spot. */
-  .hero-card { padding: calc(clamp(68px, 15.5vw, 98px) - 3px) clamp(20px, 5vw, 32px); }
-  .hero-card-inner { gap: clamp(24px, 5.4vw, 36px); }
-  p.hero-intro { font-size: clamp(.68rem, 3.6vw, .82rem); white-space: pre-line; overflow: visible; }
+  .hero-card { padding: calc(clamp(60px, 13.5vw, 88px) - 3px) clamp(20px, 5vw, 32px); }
+  .hero-card-inner { gap: clamp(22px, 5vw, 34px); }
+  p.hero-intro { font-size: clamp(.68rem, 3.6vw, .82rem); white-space: pre-line; overflow: visible; min-height: 3em; }
   .hero-card-cube { width: clamp(210px, 44vw, 264px); height: clamp(210px, 44vw, 264px); margin-top: 12px; }
   .hero-card-cube .win3d-scene { --cube-size: clamp(121px, 24vw, 154px); --cube-tz: clamp(70px, 14vw, 90px); }
 

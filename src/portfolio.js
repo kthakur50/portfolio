@@ -743,7 +743,7 @@ function initPencilCursor() {
         ctx.beginPath();
         ctx.moveTo(prevMidX, prevMidY);
         ctx.quadraticCurveTo(p1.x, p1.y, midX, midY);
-        ctx.strokeStyle = `rgba(34,197,94,${(life * 0.45).toFixed(3)})`;
+        ctx.strokeStyle = `rgba(20,184,166,${(life * 0.45).toFixed(3)})`;
         ctx.lineWidth = Math.max(0.6, life * 2.2);
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
