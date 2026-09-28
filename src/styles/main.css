@@ -100,54 +100,57 @@ body.is-loading { overflow: hidden; }
   gap: 18px;
 }
 
-/* Name draws in stroke-by-stroke like it's being written by hand,
-   with a small pencil tip travelling along and revealing it. */
+/* Name is written in pencil (outline traces left to right, then the
+   graphite fill settles in), and afterwards a pencil line is struck
+   through the middle of it. No pencil icon. */
 .loader-write {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
+  display: block;
+  width: min(88vw, 560px);
+  height: auto;
+  overflow: visible;
+  color: var(--tx);
+}
+.loader-wipe-rect {
+  transform-box: fill-box;
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: loaderWipe 2.2s cubic-bezier(.55,0,.35,1) .2s forwards;
 }
 .loader-write-text {
   font-family: 'Caveat', 'Segoe Script', cursive;
-  font-size: clamp(2.1rem, 7vw, 3.6rem);
+  font-size: 84px;
   font-weight: 700;
-  line-height: 1;
-  color: var(--tx);
   letter-spacing: .01em;
-  white-space: nowrap;
-  display: inline-block;
-  clip-path: inset(0 100% 0 0);
-  animation: loaderWriteReveal 2.1s cubic-bezier(.65,0,.35,1) .15s forwards;
+  fill: currentColor;
+  fill-opacity: 0;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  animation:
+    loaderStroke 2.2s ease-out .2s forwards,
+    loaderFill .7s ease-out 1.9s forwards;
 }
-.loader-write-pencil {
-  position: absolute;
-  top: 46%;
-  left: 0;
-  width: clamp(20px, 4vw, 30px);
-  height: clamp(20px, 4vw, 30px);
-  color: var(--a2);
-  transform: translate(-15%, -55%) rotate(45deg);
-  opacity: 0;
-  animation: loaderWriteMove 2.1s cubic-bezier(.65,0,.35,1) .15s forwards,
-    loaderWriteBob .16s ease-in-out .15s infinite;
+.loader-strike {
+  fill: none;
+  stroke: var(--a2);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: .95;
+  animation: loaderStrike .6s cubic-bezier(.6,0,.3,1) 2.55s forwards;
 }
-.loader-write-pencil svg { display: block; width: 100%; height: 100%; }
-@keyframes loaderWriteReveal {
-  0%   { clip-path: inset(0 100% 0 0); }
-  100% { clip-path: inset(0 0 0 0); }
-}
-@keyframes loaderWriteMove {
-  0%   { left: 0; opacity: 1; }
-  96%  { opacity: 1; }
-  100% { left: 100%; opacity: 0; }
-}
-@keyframes loaderWriteBob {
-  0%, 100% { transform: translate(-15%, -55%) rotate(45deg) translateY(0); }
-  50%      { transform: translate(-15%, -55%) rotate(45deg) translateY(-3px); }
-}
+@keyframes loaderWipe   { to { transform: scaleX(1); } }
+@keyframes loaderStroke { to { stroke-dashoffset: 0; } }
+@keyframes loaderFill   { to { fill-opacity: 1; } }
+@keyframes loaderStrike { to { stroke-dashoffset: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .loader-write-text { animation: none; clip-path: inset(0 0 0 0); }
-  .loader-write-pencil { display: none; }
+  .loader-wipe-rect { animation: none; transform: scaleX(1); }
+  .loader-write-text { animation: none; fill-opacity: 1; stroke-dashoffset: 0; }
+  .loader-strike { animation: none; stroke-dashoffset: 0; }
 }
 
 /* ── Back-to-top shortcut ────────────────────────────────────────
@@ -166,8 +169,8 @@ body.is-loading { overflow: hidden; }
   height: 42px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,.06);
-  background: rgba(255,255,255,.03);
-  color: var(--mu);
+  background: rgba(255,255,255,.04);
+  color: var(--tx);
   cursor: pointer;
   isolation: isolate;
   overflow: hidden;
@@ -191,9 +194,9 @@ body.is-loading { overflow: hidden; }
 }
 .scroll-top--show:hover,
 .scroll-top--show:focus-visible {
-  color: var(--a2);
-  background: rgba(20,184,166,.12);
-  border-color: rgba(20,184,166,.28);
+  color: var(--tx);
+  background: rgba(255,255,255,.09);
+  border-color: rgba(255,255,255,.18);
   transform: translateY(-3px);
 }
 .scroll-top:active { transform: scale(.94); }
@@ -1480,6 +1483,20 @@ p.hero-intro {
 .edu-inst-name { flex: 0 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .edu-inst-sep { flex-shrink: 0; }
 .edu-inst-loc { flex-shrink: 0; white-space: nowrap; }
+
+/* Desktop only: date sits on the right, aligned with the degree title.
+   Tablet/phone keep the stacked layout. */
+@media (min-width: 1025px) {
+ .edu-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  order: 1;
+ }
+ .edu-yr { text-align: right; align-self: auto; order: 0; }
+}
 /* ── Contact: single column, centered ────────────────────────── */
 .c-wrap {
  display: flex;
@@ -2782,33 +2799,6 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
  padding: 32px 0 24px;
  text-align: center;
 }
-.site-footer-socials {
- display: flex;
- align-items: center;
- justify-content: center;
- gap: 12px;
- margin-bottom: 18px;
-}
-.site-footer-social {
- display: inline-flex;
- align-items: center;
- justify-content: center;
- width: 34px;
- height: 34px;
- border-radius: 8px;
- color: rgba(255,255,255,.55);
- background: transparent;
- border: none;
- transition: color .2s ease, transform .2s ease;
-}
-.site-footer-social svg {
- width: 17px;
- height: 17px;
-}
-.site-footer-social:hover {
- color: var(--a2);
- transform: translateY(-2px);
-}
 .site-footer-row {
  display: flex;
  align-items: center;
@@ -2829,6 +2819,5 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
 }
 @media (max-width: 480px) {
  .site-footer-text { font-size: .68rem; gap: 6px; }
- .site-footer-social { width: 32px; height: 32px; }
 }
 

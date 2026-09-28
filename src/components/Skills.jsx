@@ -245,8 +245,8 @@ const IconHuggingFace = () => (
 
 
 
-/* ─────────────── Skill data (merged: Fullstack + GenAI) ─────────────── */
-const ALL_SKILLS = [
+/* ─────────────── Skill data (two groups) ─────────────── */
+const FULLSTACK_SKILLS = [
   { cls: 'sc-html',    label: 'HTML5',        icon: <IconHTML /> },
   { cls: 'sc-css',     label: 'CSS3',          icon: <IconCSS /> },
   { cls: 'sc-tw',      label: 'Tailwind CSS',  icon: <IconTailwind /> },
@@ -258,13 +258,9 @@ const ALL_SKILLS = [
   { cls: 'sc-node',    label: 'Node.js',       icon: <IconNode /> },
   { cls: 'sc-express', label: 'Express.js',    icon: <IconExpress /> },
   { cls: 'sc-api',     label: 'REST APIs',     icon: <IconRestAPI /> },
-  { cls: 'sc-fastapi', label: 'FastAPI',       icon: <IconFastAPI /> },
   { cls: 'sc-mongo',   label: 'MongoDB',       icon: <IconMongoDB /> },
   { cls: 'sc-pg',      label: 'PostgreSQL',    icon: <IconPostgres /> },
-  { cls: 'sc-python',  label: 'Python',        icon: <IconPython /> },
   { cls: 'sc-redis',   label: 'Redis',         icon: <IconRedis /> },
-  { cls: 'sc-openai',  label: 'OpenAI API',    icon: <IconOpenAI /> },
-  { cls: 'sc-lang',    label: 'LangChain',     icon: <IconLangChain /> },
   { cls: 'sc-git',     label: 'Git',           icon: <IconGit /> },
   { cls: 'sc-github',  label: 'GitHub',        icon: <IconGitHub /> },
   { cls: 'sc-vscode',  label: 'VS Code',       icon: <IconVSCode /> },
@@ -273,6 +269,13 @@ const ALL_SKILLS = [
   { cls: 'sc-docker',  label: 'Docker',        icon: <IconDocker /> },
   { cls: 'sc-k8s',     label: 'Kubernetes',    icon: <IconKubernetes /> },
   { cls: 'sc-postman', label: 'Postman',       icon: <IconPostman /> },
+];
+
+const GENAI_SKILLS = [
+  { cls: 'sc-fastapi', label: 'FastAPI',       icon: <IconFastAPI /> },
+  { cls: 'sc-python',  label: 'Python',        icon: <IconPython /> },
+  { cls: 'sc-openai',  label: 'OpenAI API',    icon: <IconOpenAI /> },
+  { cls: 'sc-lang',    label: 'LangChain',     icon: <IconLangChain /> },
 ];
 
 const SkillGroup = ({ title, skills, delayOffset }) => (
@@ -305,7 +308,8 @@ const Skills = () => {
         </div>
 
         <div className="sk-panel">
-          <SkillGroup title="Full Stack Development & Gen AI Technologies" skills={ALL_SKILLS} delayOffset={0} />
+          <SkillGroup title="Full Stack Development" skills={FULLSTACK_SKILLS} delayOffset={0} />
+          <SkillGroup title="Gen AI" skills={GENAI_SKILLS} delayOffset={0.1} />
         </div>
 
       </div>

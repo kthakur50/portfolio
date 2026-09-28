@@ -14,7 +14,7 @@ const Loader = () => {
   useEffect(() => {
     document.body.classList.add('is-loading');
 
-    const MIN_MS = 2400;
+    const MIN_MS = 3600;
     const FADE_MS = 650;
     const start = Date.now();
     let fadeTimer;
@@ -37,7 +37,7 @@ const Loader = () => {
     }
 
     // Safety net: never let the loader hang forever.
-    const fallback = setTimeout(startFade, 4500);
+    const fallback = setTimeout(startFade, 5500);
 
     return () => {
       window.removeEventListener('load', startFade);
@@ -57,15 +57,35 @@ const Loader = () => {
       aria-live="polite"
       aria-label="Loading"
     >
-      <div className="loader-write">
-        <span className="loader-write-text">Kaushal Thakur</span>
-        <span className="loader-write-pencil" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-            <path d="m15 5 4 4"/>
-          </svg>
-        </span>
-      </div>
+      <svg
+        className="loader-write"
+        viewBox="0 0 560 110"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <defs>
+          {/* rough graphite edge so it reads as pencil, not vector */}
+          <filter id="pencilRough" x="-5%" y="-20%" width="110%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="n" />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" />
+          </filter>
+          <clipPath id="loaderWipe">
+            <rect className="loader-wipe-rect" x="0" y="0" width="560" height="110" />
+          </clipPath>
+        </defs>
+        <g filter="url(#pencilRough)">
+          <g clipPath="url(#loaderWipe)">
+            <text className="loader-write-text" x="280" y="78" textAnchor="middle">
+              Kaushal Thakur
+            </text>
+          </g>
+          <path
+            className="loader-strike"
+            pathLength="1"
+            d="M 22 56 C 120 51, 210 61, 300 54 S 470 50, 540 57"
+          />
+        </g>
+      </svg>
     </div>
   );
 };
