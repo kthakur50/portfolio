@@ -249,7 +249,7 @@ const IconHuggingFace = () => (
 
 
 /* ─────────────── Skill data (everything in one pile) ─────────────── */
-const ALL_SKILLS = [
+const FULLSTACK_SKILLS = [
   { cls: 'sc-html',    label: 'HTML5',        icon: <IconHTML /> },
   { cls: 'sc-css',     label: 'CSS3',          icon: <IconCSS /> },
   { cls: 'sc-tw',      label: 'Tailwind CSS',  icon: <IconTailwind /> },
@@ -272,6 +272,9 @@ const ALL_SKILLS = [
   { cls: 'sc-docker',  label: 'Docker',        icon: <IconDocker /> },
   { cls: 'sc-k8s',     label: 'Kubernetes',    icon: <IconKubernetes /> },
   { cls: 'sc-postman', label: 'Postman',       icon: <IconPostman /> },
+];
+
+const GENAI_SKILLS = [
   { cls: 'sc-python',  label: 'Python',        icon: <IconPython /> },
   { cls: 'sc-fastapi', label: 'FastAPI',       icon: <IconFastAPI /> },
   { cls: 'sc-openai',  label: 'OpenAI API',    icon: <IconOpenAI /> },
@@ -302,7 +305,7 @@ const shuffle = arr => {
   return a;
 };
 
-const Skills = () => {
+const SkillLand = ({ skills, label, minH = 380 }) => {
   const stageRef = useRef(null);
   const chipRefs = useRef([]);
 
@@ -345,7 +348,7 @@ const Skills = () => {
       sizes = chips.map(c => ({ w: c.offsetWidth, h: c.offsetHeight }));
       const area = sizes.reduce((sum, z) => sum + (z.w + 8) * (z.h + 8), 0);
       const pileH = area / (W * 0.66);
-      H = Math.round(clamp(pileH + 110 + GROUND_H, 380, 1400));
+      H = Math.round(clamp(pileH + 110 + GROUND_H, minH, 1400));
       stage.style.height = `${H}px`;
     };
 
@@ -443,15 +446,15 @@ const Skills = () => {
       hideAll();
     };
 
-    /* Poke: a landed chip hops when hovered / tapped. */
+    /* Poke: a landed chip gives a tiny, gentle nudge when hovered / tapped. */
     const pokers = chips.map((c, i) => {
       const fn = () => {
         const b = bodies[i];
         const now = performance.now();
-        if (!b || now - pokedAt[i] < 400) return;
+        if (!b || now - pokedAt[i] < 900) return;
         pokedAt[i] = now;
         Sleeping.set(b, false);
-        Body.setVelocity(b, { x: (Math.random() - 0.5) * 4, y: -5.5 });
+        Body.setVelocity(b, { x: (Math.random() - 0.5) * 0.8, y: -1.6 });
         ensureLoop();
       };
       c.addEventListener('pointerenter', fn);
@@ -506,35 +509,47 @@ const Skills = () => {
   }, []);
 
   return (
-    <section id="skills">
-      <div className="wrap">
-        <div className="sec-hd" data-n="02">
-          <h2>
-            Skills<em>.</em>
-          </h2>
+    <div className="sk-land" ref={stageRef} role="list" aria-label={label}>
+      {skills.map((sk, i) => (
+        <div
+          key={sk.cls}
+          ref={el => { chipRefs.current[i] = el; }}
+          className={`sk-chip ${sk.cls}`}
+          role="listitem"
+        >
+          <div className="sk-chip-ico">{sk.icon}</div>
+          <span className="sk-chip-name">{sk.label}</span>
         </div>
-
-        <div className="sk-land" ref={stageRef} role="list" aria-label="Technologies">
-          {ALL_SKILLS.map((s, i) => (
-            <div
-              key={s.cls}
-              ref={el => { chipRefs.current[i] = el; }}
-              className={`sk-chip ${s.cls}`}
-              role="listitem"
-              title={s.label}
-            >
-              <div className="sk-chip-ico">{s.icon}</div>
-              <span className="sk-chip-name">{s.label}</span>
-            </div>
-          ))}
-          <div className="sk-ground" aria-hidden="true">
-            <div className="sk-ground-top" />
-            <div className="sk-ground-front" />
-          </div>
-        </div>
+      ))}
+      <div className="sk-ground" aria-hidden="true">
+        <div className="sk-ground-top" />
+        <div className="sk-ground-front" />
       </div>
-    </section>
+    </div>
   );
 };
+
+const Skills = () => (
+  <section id="skills">
+    <div className="wrap">
+      <div className="sec-hd" data-n="02">
+        <h2>
+          Skills<em>.</em>
+        </h2>
+      </div>
+
+      <div className="sk-panel">
+        <div className="sk-group">
+          <h3 className="sk-group-title">Full Stack</h3>
+          <SkillLand skills={FULLSTACK_SKILLS} label="Full Stack technologies" />
+        </div>
+        <div className="sk-group">
+          <h3 className="sk-group-title">GenAI</h3>
+          <SkillLand skills={GENAI_SKILLS} label="GenAI technologies" minH={230} />
+        </div>
+      </div>
+    </div>
+  </section>
+);
 
 export default Skills;
