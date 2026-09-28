@@ -1,5 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
-import Matter from 'matter-js';
+import { useEffect, useRef } from 'react';
 
 /* ─────────────── SVG Icon Components ─────────────── */
 
@@ -281,231 +280,26 @@ const GENAI_SKILLS = [
   { cls: 'sc-lang',    label: 'LangChain',     icon: <IconLangChain /> },
 ];
 
-/* ─────────────── Falling-chips "land" ───────────────
-   All technologies drop from the top of the stage and pile up on a 3D
-   ground slab at the bottom, driven by a small 2D physics engine
-   (matter-js). Each chip is a real DOM element whose transform follows
-   its physics body, with a little perspective tilt while it's moving so
-   it reads as a 3D tile tumbling down and settling.
-   - Starts when the stage scrolls into view; resets when it leaves, so
-     it replays like the other scroll reveals.
-   - Chips are hoverable/tappable: they hop when poked.
-   - With "reduce motion" on, chips just sit in a normal wrapped grid. */
-const GROUND_H = 64;     // visual height of the ground slab
-const FLOOR_LIFT = 24;   // how far above the bottom edge chips come to rest
-const STEP = 1000 / 60;
-
-const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
-const shuffle = arr => {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-};
-
-const SkillLand = ({ skills, label, minH = 380 }) => {
+/* ─────────────── Skill group ───────────────
+   A normal wrapped grid of chips. When the group scrolls into view the
+   chips fade/rise in one after another (staggered); it replays when the
+   group leaves and re-enters the viewport, like the other scroll reveals.
+   With "reduce motion" on, chips are simply shown. */
+const SkillLand = ({ skills, label }) => {
   const stageRef = useRef(null);
-  const chipRefs = useRef([]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const stage = stageRef.current;
-    const chips = chipRefs.current.filter(Boolean);
-    if (!stage || !chips.length) return undefined;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
-
-    const { Engine, Bodies, Body, Composite, Sleeping } = Matter;
-
-    let engine = null;
-    let raf = 0;
-    let last = 0;
-    let acc = 0;
-    let active = false;
-    let disposed = false;
-    let W = 0;
-    let H = 0;
-    let spawned = 0;
-    let sizes = [];
-    let bodies = [];
-    let tilt = [];
-    let pokedAt = [];
-    let timers = [];
-
-    const clearTimers = () => { timers.forEach(clearTimeout); timers = []; };
-    const stopLoop = () => { cancelAnimationFrame(raf); raf = 0; };
-
-    const hideAll = () => chips.forEach(c => {
-      c.style.opacity = '0';
-      c.style.transform = 'translate3d(0,-300px,0)';
-    });
-
-    /* Size the stage from the chips' real dimensions so the whole pile
-       always fits, on any screen width. */
-    const measure = () => {
-      stage.classList.add('sk-land--live');
-      W = stage.clientWidth;
-      sizes = chips.map(c => ({ w: c.offsetWidth, h: c.offsetHeight }));
-      const area = sizes.reduce((sum, z) => sum + (z.w + 8) * (z.h + 8), 0);
-      const pileH = area / (W * 0.66);
-      H = Math.round(clamp(pileH + 110 + GROUND_H, minH, 1400));
-      stage.style.height = `${H}px`;
-    };
-
-    const buildWorld = () => {
-      stopLoop();
-      clearTimers();
-      engine = Engine.create({ enableSleeping: true });
-      engine.gravity.y = 1.1;
-      const T = 300;
-      const floorY = H - FLOOR_LIFT;
-      Composite.add(engine.world, [
-        Bodies.rectangle(W / 2, floorY + T / 2, W + 2 * T, T, { isStatic: true, friction: 0.5 }),
-        Bodies.rectangle(-T / 2, H / 2 - 500, T, H + 1400, { isStatic: true }),
-        Bodies.rectangle(W + T / 2, H / 2 - 500, T, H + 1400, { isStatic: true }),
-      ]);
-      spawned = 0;
-      bodies = chips.map(() => null);
-      tilt = chips.map(() => ({ rx: 0, ry: 0, rz: 0 }));
-      pokedAt = chips.map(() => 0);
-      hideAll();
-    };
-
-    /* Write each body's position/rotation onto its chip. Returns true
-       once everything has come to rest. */
-    const paint = () => {
-      let settled = true;
-      bodies.forEach((b, i) => {
-        if (!b) return;
-        const { w, h } = sizes[i];
-        const t = tilt[i];
-        const tx = b.isSleeping ? 0 : clamp(-b.velocity.y * 1.8, -16, 16);
-        const ty = b.isSleeping ? 0 : clamp(b.velocity.x * 6, -24, 24);
-        const tz = b.isSleeping ? 0 : clamp(b.velocity.x * 4, -18, 18);
-        t.rz += (tz - t.rz) * 0.15;
-        t.rx += (tx - t.rx) * 0.18;
-        t.ry += (ty - t.ry) * 0.18;
-        if (!b.isSleeping || Math.abs(t.rx) > 0.05 || Math.abs(t.ry) > 0.05 || Math.abs(t.rz) > 0.05) settled = false;
-        chips[i].style.transform =
-          `translate3d(${(b.position.x - w / 2).toFixed(2)}px, ${(b.position.y - h / 2).toFixed(2)}px, 0) ` +
-          `rotate(${(b.angle + (t.rz * Math.PI) / 180).toFixed(4)}rad) perspective(650px) ` +
-          `rotateX(${t.rx.toFixed(2)}deg) rotateY(${t.ry.toFixed(2)}deg)`;
-      });
-      return settled;
-    };
-
-    const tick = now => {
-      raf = requestAnimationFrame(tick);
-      acc += Math.min(now - last, 50);
-      last = now;
-      while (acc >= STEP) { Engine.update(engine, STEP); acc -= STEP; }
-      if (paint() && spawned === chips.length) stopLoop();
-    };
-    const ensureLoop = () => {
-      if (raf) return;
-      last = performance.now();
-      acc = 0;
-      raf = requestAnimationFrame(tick);
-    };
-
-    const spawn = i => {
-      const { w, h } = sizes[i];
-      const x = w / 2 + 6 + Math.random() * Math.max(1, W - w - 12);
-      const b = Bodies.rectangle(x, -h - 30, w + 4, h + 4, {
-        chamfer: { radius: Math.min(16, h / 4) },
-        restitution: 0.16,
-        friction: 0.3,
-        frictionStatic: 0.4,
-        frictionAir: 0.01,
-        density: 0.0022,
-        angle: (Math.random() - 0.5) * 0.35,
-        slop: 0.06,
-        sleepThreshold: 50,
-      });
-      // high rotational inertia: tiles tip and slide off each other but never flip over
-      Body.setInertia(b, b.inertia * 10);
-      Body.setVelocity(b, { x: (Math.random() - 0.5) * 2, y: 2 });
-      bodies[i] = b;
-      spawned += 1;
-      Composite.add(engine.world, b);
-      chips[i].style.opacity = '1';
-      ensureLoop();
-    };
-
-    const start = () => {
-      active = true;
-      buildWorld();
-      shuffle(chips.map((_, i) => i)).forEach((idx, k) => {
-        timers.push(setTimeout(() => spawn(idx), 150 + k * 85));
-      });
-    };
-    const end = () => {
-      active = false;
-      stopLoop();
-      clearTimers();
-      hideAll();
-    };
-
-    /* Poke: a landed chip gives a tiny, gentle nudge when hovered / tapped. */
-    const pokers = chips.map((c, i) => {
-      const fn = () => {
-        const b = bodies[i];
-        const now = performance.now();
-        if (!b || now - pokedAt[i] < 900) return;
-        pokedAt[i] = now;
-        Sleeping.set(b, false);
-        Body.setVelocity(b, { x: (Math.random() - 0.5) * 0.8, y: -1.6 });
-        ensureLoop();
-      };
-      c.addEventListener('pointerenter', fn);
-      return fn;
-    });
-
-    measure();
-    hideAll();
-
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.intersectionRatio >= 0.2) { if (!active) start(); }
-        else if (!e.isIntersecting) { if (active) end(); }
-      });
-    }, { threshold: [0, 0.2] });
-    io.observe(stage);
-
-    let lastW = W;
-    const ro = new ResizeObserver(() => {
-      const w = stage.clientWidth;
-      if (Math.abs(w - lastW) < 2) return;
-      lastW = w;
-      measure();
-      if (active) start(); else hideAll();
-    });
-    ro.observe(stage);
-
-    // Web fonts change chip widths — re-measure once they're in.
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => {
-        if (disposed) return;
-        measure();
-        lastW = W;
-        if (active) start();
-      });
+    if (!stage) return undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      stage.classList.add('in');
+      return undefined;
     }
-
-    return () => {
-      disposed = true;
-      io.disconnect();
-      ro.disconnect();
-      stopLoop();
-      clearTimers();
-      chips.forEach((c, i) => {
-        c.removeEventListener('pointerenter', pokers[i]);
-        c.style.opacity = '';
-        c.style.transform = '';
-      });
-      stage.classList.remove('sk-land--live');
-      stage.style.height = '';
-    };
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => stage.classList.toggle('in', e.isIntersecting));
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    io.observe(stage);
+    return () => io.disconnect();
   }, []);
 
   return (
@@ -513,18 +307,14 @@ const SkillLand = ({ skills, label, minH = 380 }) => {
       {skills.map((sk, i) => (
         <div
           key={sk.cls}
-          ref={el => { chipRefs.current[i] = el; }}
           className={`sk-chip ${sk.cls}`}
           role="listitem"
+          style={{ '--i': i }}
         >
           <div className="sk-chip-ico">{sk.icon}</div>
           <span className="sk-chip-name">{sk.label}</span>
         </div>
       ))}
-      <div className="sk-ground" aria-hidden="true">
-        <div className="sk-ground-top" />
-        <div className="sk-ground-front" />
-      </div>
     </div>
   );
 };
@@ -545,7 +335,7 @@ const Skills = () => (
         </div>
         <div className="sk-group">
           <h3 className="sk-group-title">GenAI</h3>
-          <SkillLand skills={GENAI_SKILLS} label="GenAI technologies" minH={230} />
+          <SkillLand skills={GENAI_SKILLS} label="GenAI technologies" />
         </div>
       </div>
     </div>

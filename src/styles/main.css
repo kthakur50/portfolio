@@ -100,10 +100,8 @@ body.is-loading { overflow: hidden; }
   gap: 18px;
 }
 
-/* Name is really written: each pen stroke of the upright outline is
-   drawn one after another (letter by letter, left to right) with a thin
-   graphite line, then a pencil line is struck through the middle. No
-   pencil icon. */
+/* Name is revealed left to right in a simple handwriting face, then a
+   line is struck through the middle. No pencil icon. */
 .loader-write {
   display: block;
   width: min(88vw, 560px);
@@ -111,28 +109,26 @@ body.is-loading { overflow: hidden; }
   overflow: visible;
   color: var(--tx);
 }
-.loader-strokes {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 4.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.loader-stroke {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  stroke-opacity: 0;
-  animation: loaderDraw var(--dur, .2s) linear var(--del, 0s) forwards;
+.loader-name { fill: currentColor; }
+/* left-to-right reveal, as if the name is being written */
+.loader-reveal {
+  transform-box: fill-box;
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: loaderWrite 1.7s cubic-bezier(.45,.05,.3,1) .15s forwards;
 }
 .loader-strike {
   fill: none;
   stroke: var(--a2);
-  stroke-width: 3;
+  stroke-width: 26;
   stroke-linecap: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   stroke-opacity: 0;
   animation: loaderDraw .4s cubic-bezier(.6,0,.3,1) 1.75s forwards;
+}
+@keyframes loaderWrite {
+  to { transform: scaleX(1); }
 }
 @keyframes loaderDraw {
   0%   { stroke-dashoffset: 1; stroke-opacity: 0; }
@@ -140,7 +136,8 @@ body.is-loading { overflow: hidden; }
   100% { stroke-dashoffset: 0; stroke-opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .loader-stroke, .loader-strike { animation: none; stroke-dashoffset: 0; stroke-opacity: 1; }
+  .loader-reveal { animation: none; transform: none; }
+  .loader-strike { animation: none; stroke-dashoffset: 0; stroke-opacity: 1; }
 }
 
 /* ── Back-to-top shortcut ────────────────────────────────────────
@@ -353,9 +350,8 @@ section .sec-hd h2 {
 
 /* ── About cards: 3D tilt-in reveal ─────────────────────────────
    Each card swings up out of depth (perspective tilt + slide from its
-   own side + soft blur that sharpens), then a light sweep glides
-   across it while its icon spins in and the title/description
-   stagger in one after another. Left card tilts from the left,
+   own side + soft blur that sharpens) while its icon spins in and the
+   title/description stagger in one after another. Left card tilts from the left,
    right card from the right. Replays on every scroll in/out like the
    rest of the .sr system. */
 .sr.sr-tilt-a,
@@ -375,27 +371,6 @@ section .sec-hd h2 {
   opacity: 1;
   filter: blur(0);
   transform: perspective(900px) translate3d(0, 0, 0) rotateX(0) rotateY(0) scale(1);
-}
-/* light sweep */
-.about-focus-row.sr-tilt-a::after,
-.about-focus-row.sr-tilt-b::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.11) 50%, transparent 62%);
-  background-size: 260% 100%;
-  background-position: 130% 0;
-  opacity: 0;
-}
-.about-focus-row.sr-tilt-a.on::after,
-.about-focus-row.sr-tilt-b.on::after {
-  animation: aboutSweep 1.3s cubic-bezier(.4,0,.2,1) calc(var(--d, 0s) + .35s) 1 forwards;
-}
-@keyframes aboutSweep {
-  0%   { opacity: 1; background-position: 130% 0; }
-  100% { opacity: 0; background-position: -30% 0; }
 }
 /* staggered inner content */
 .about-focus-row.sr-tilt-a .about-focus-ico,
@@ -446,7 +421,6 @@ section .sec-hd h2 {
   .about-focus-row.sr-tilt-a .about-focus-desc, .about-focus-row.sr-tilt-b .about-focus-desc {
     opacity: 1; transform: none; filter: none; transition: none;
   }
-  .about-focus-row.sr-tilt-a::after, .about-focus-row.sr-tilt-b::after { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .sr.sr-pop-a, .sr.sr-pop-b { transition: opacity .5s ease; transform: none; }
@@ -1748,7 +1722,6 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   border-radius: 14px;
   border: 1px solid transparent;
   background: transparent;
-  animation: skCardIn .5s cubic-bezier(.22,1,.36,1) both;
   transition: transform .45s cubic-bezier(.16,1,.3,1),
     background .35s ease, border-color .35s ease,
     box-shadow .45s cubic-bezier(.16,1,.3,1);
@@ -1838,10 +1811,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ── SKILLS: falling-chips land ─────────────────────────────────
-   Default (no JS / reduced motion): a normal centred, wrapping grid.
-   With JS the stage becomes "live": chips are absolutely positioned and
-   moved by the physics loop, and a 3D ground slab sits at the bottom. */
+/* ── SKILLS: chip grid with staggered scroll-in ───────────────── */
 .sk-land {
   position: relative;
   display: flex;
@@ -1853,73 +1823,16 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   max-width: var(--wrap-max);
   margin: 0 auto;
 }
-.sk-ground { display: none; }
-.sk-land--live {
-  display: block;
-  overflow: hidden;
-  border-radius: 18px;
+/* hidden until the group scrolls into view, then each chip animates in
+   with a small stagger (delay lives on the animation, so hover stays instant) */
+.sk-land:not(.in) .sk-chip { opacity: 0; }
+.sk-land.in .sk-chip {
+  animation: skCardIn .55s cubic-bezier(.22,1,.36,1) backwards;
+  animation-delay: calc(var(--i, 0) * 45ms);
 }
-.sk-land--live .sk-ground {
-  display: block;
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 64px;
-  pointer-events: none;
-  z-index: 0;
+@media (prefers-reduced-motion: reduce) {
+  .sk-land .sk-chip { opacity: 1 !important; animation: none !important; }
 }
-/* far surface of the ground, tilted back in perspective, with a faint grid */
-.sk-ground-top {
-  position: absolute;
-  left: 0; right: 0; top: 0;
-  height: 46px;
-  background:
-    repeating-linear-gradient(90deg, rgba(255,255,255,.09) 0 1px, transparent 1px 64px),
-    repeating-linear-gradient(0deg, rgba(255,255,255,.06) 0 1px, transparent 1px 16px),
-    linear-gradient(to bottom, rgba(255,255,255,.03), rgba(255,255,255,.10));
-  border-top: 1px solid rgba(255,255,255,.22);
-  transform: perspective(240px) rotateX(52deg);
-  transform-origin: top center;
-}
-/* front lip / thickness of the slab */
-.sk-ground-front {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 18px;
-  background: linear-gradient(to bottom, #23272f, #14161b);
-  border-top: 1px solid rgba(255,255,255,.12);
-  border-radius: 0 0 14px 14px;
-  box-shadow: 0 -10px 24px -12px rgba(0,0,0,.6);
-}
-/* chips in live mode: thick, lit 3D tiles driven by JS transforms */
-.sk-land--live .sk-chip {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: max-content;
-  z-index: 1;
-  opacity: 0;
-  animation: none;
-  transform-style: preserve-3d;
-  background: linear-gradient(160deg, rgba(255,255,255,.11), rgba(255,255,255,.04));
-  border: 1px solid rgba(255,255,255,.15);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.2),
-    0 4px 0 rgba(0,0,0,.4),
-    0 12px 18px -8px rgba(0,0,0,.6);
-  /* JS owns transform + opacity: no CSS transition on them */
-  transition: background .45s ease, border-color .45s ease;
-  cursor: default;
-  user-select: none;
-  -webkit-user-select: none;
-}
-.sk-land--live .sk-chip:hover,
-.sk-land--live .sk-chip:focus-visible {
-  background: linear-gradient(160deg, rgba(255,255,255,.13), rgba(255,255,255,.05));
-  border-color: rgba(255,255,255,.2);
-}
-/* parallax depth inside each tile while it tilts */
-.sk-land--live .sk-chip-ico  { transform: translateZ(10px); }
-.sk-land--live .sk-chip-name { transform: translateZ(6px); opacity: .9; }
 .hero-right {
  flex: 1;
  min-width: clamp(180px, 17vw, 270px);
