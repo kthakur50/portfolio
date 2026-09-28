@@ -14,7 +14,7 @@ const Loader = () => {
   useEffect(() => {
     document.body.classList.add('is-loading');
 
-    const MIN_MS = 1300;
+    const MIN_MS = 2400;
     const FADE_MS = 650;
     const start = Date.now();
     let fadeTimer;
@@ -37,7 +37,7 @@ const Loader = () => {
     }
 
     // Safety net: never let the loader hang forever.
-    const fallback = setTimeout(startFade, 4000);
+    const fallback = setTimeout(startFade, 4500);
 
     return () => {
       window.removeEventListener('load', startFade);
@@ -57,13 +57,14 @@ const Loader = () => {
       aria-live="polite"
       aria-label="Loading"
     >
-      <div className="site-loader-inner">
-        <span className="site-loader-logo">
-          kt<em>.</em>
+      <div className="loader-write">
+        <span className="loader-write-text">Kaushal Thakur</span>
+        <span className="loader-write-pencil" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+            <path d="m15 5 4 4"/>
+          </svg>
         </span>
-        <div className="site-loader-bar">
-          <span className="site-loader-bar-fill"></span>
-        </div>
       </div>
     </div>
   );
