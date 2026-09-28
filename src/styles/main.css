@@ -1,8 +1,8 @@
 :root {
  --a: #6b7280;
- --a2: #14b8a6;
+ --a2: #C44A3A;
  --a3: #8a8f8e;
- --ag: rgba(20,184,166,.16);
+ --ag: rgba(196,74,58,.16);
  --bg: #000000;
  --bg2: #000000;
  --bg3: #000000;
@@ -114,7 +114,7 @@ body.is-loading { overflow: hidden; }
 .loader-strokes {
   fill: none;
   stroke: currentColor;
-  stroke-width: 3.6;
+  stroke-width: 4.4;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -1626,7 +1626,7 @@ p.hero-intro {
 }
 .c-heading em {
  font-style: normal;
- background: linear-gradient(90deg, #14b8a6, #5eead4);
+ background: linear-gradient(90deg, #C44A3A, #E8806F);
  -webkit-background-clip: text;
  background-clip: text;
  color: transparent;
@@ -1647,8 +1647,8 @@ p.hero-intro {
  padding: 12px 28px;
  margin-top: 4px;
  border-radius: 999px;
- background: linear-gradient(90deg, #14b8a6, #0d9488);
- color: #06120a;
+ background: linear-gradient(90deg, #C44A3A, #9E3428);
+ color: #fff;
  font-weight: 700;
  font-size: .9rem;
  text-decoration: none;
@@ -2563,7 +2563,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     container-type: inline-size;
     container-name: navmob;
     background:
-      radial-gradient(120% 100% at 100% 0%, rgba(20,184,166,.10), transparent 55%),
+      radial-gradient(120% 100% at 100% 0%, rgba(196,74,58,.10), transparent 55%),
       linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 45%),
       #121214;
     backdrop-filter: blur(40px) saturate(160%);
@@ -2662,7 +2662,7 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
   .nav-mob-grid::-webkit-scrollbar { display: none; }
 
   .nav-mob a {
-    --tile: 20,184,166;
+    --tile: 196,74,58;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -2727,18 +2727,18 @@ footer { padding: 20px var(--pad); border-top: 1px solid var(--br); background: 
     width: 100%;
     padding: 12px 6px;
     margin: 2px 0 0;
-    background: rgba(20,184,166,.07);
-    border-color: rgba(20,184,166,.16);
+    background: rgba(196,74,58,.07);
+    border-color: rgba(196,74,58,.16);
   }
   .nav-mob a.nm-span2:hover {
-    background: rgba(20,184,166,.13);
-    border-color: rgba(20,184,166,.32);
+    background: rgba(196,74,58,.13);
+    border-color: rgba(196,74,58,.32);
   }
-  .nav-mob a.nm-span2 .nm-icon { background: rgba(20,184,166,.14); border-color: rgba(20,184,166,.3); }
-  .nav-mob a.nm-span2 .nm-icon svg { color: rgb(20,184,166); }
+  .nav-mob a.nm-span2 .nm-icon { background: rgba(196,74,58,.14); border-color: rgba(196,74,58,.3); }
+  .nav-mob a.nm-span2 .nm-icon svg { color: rgb(196,74,58); }
   .nav-mob a.nm-span2 .nav-mob-label { font-size: .68rem; color: var(--mu); font-weight: 650; }
   .nav-mob a.nm-span2.active .nm-icon svg,
-  .nav-mob a.nm-span2.active .nav-mob-label { color: rgb(20,184,166); }
+  .nav-mob a.nm-span2.active .nav-mob-label { color: rgb(196,74,58); }
 
   .nm-icon {
     display: flex;
